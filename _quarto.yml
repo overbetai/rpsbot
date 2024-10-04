@@ -25,8 +25,8 @@ website:
     style: "docked"
     background: light
     contents:
-        - text: "Intro"
-          href: "intro.qmd"
+        - text: "Home (Intro)"
+          href: "index.qmd"
         - text: "#1: Game Theory"
           href: "1_gametheory.qmd"
         - text: "#2: Kuhn Poker"
