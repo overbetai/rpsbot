@@ -4,4 +4,4 @@ format:
   html
 ---
 ## Cards to Code
-Stuff 
+Coming October 2024

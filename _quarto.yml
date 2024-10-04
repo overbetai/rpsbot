@@ -7,9 +7,9 @@ website:
   page-footer: "\xA9 2024 Overbet.ai. All rights reserved."
   open-graph: true
   google-analytics: G-68E8GHZRHQ
-  favicon: ./assets/c2c.svg
+  favicon: ./assets/c2c-favicon.svg
   navbar: 
-    logo: ./assets/logo.png
+    logo: ./assets/logosmall.png
     background: primary
     right: 
       - text: "About"
@@ -25,33 +25,30 @@ website:
     style: "docked"
     background: light
     contents:
-      - text: "Cards to Code"
-      - section: "Sections"
-        contents: 
-          - text: "Intro"
-            href: "intro.qmd"
-          - text: "#1: Game Theory"
-            href: "gametheory.qmd"
-          - text: "#2: Kuhn Poker"
-            href: "kuhnpoker.qmd"
-          - text: "#3: Game Trees"
-            href: "gametrees.qmd"
-          - text: "#4: Regret and Decision Making"
-            href: "regret.qmd"
-          - text: "#5: Counterfactual Regret Minimization (CFR)"
-            href: "cfr.qmd"
-          - text: "#6: Monte Carlo CFR"
-            href: "mccfr.qmd"
-          - text: "#7: Kuhn CFR Results"
-            href: "kuhncfr.qmd"
-          - text: "#8: Scaling Up: 100-card Kuhn"
-            href: "100cardkuhn.qmd"
-          - text: "#9: Opponent Modeling"
-            href: "opponentmodeling.qmd"
-          - text: "#10: Challenge Project"
-            href: "challenge.qmd"
-          - Text: "Next Directions"
-            href: "next.qmd"
+        - text: "Intro"
+          href: "intro.qmd"
+        - text: "#1: Game Theory"
+          href: "1_gametheory.qmd"
+        - text: "#2: Kuhn Poker"
+          href: "2_kuhnpoker.qmd"
+        - text: "#3: Game Trees"
+          href: "3_gametrees.qmd"
+        - text: "#4: Regret and Decision Making"
+          href: "4_regret.qmd"
+        - text: "#5: Counterfactual Regret Minimization"
+          href: "5_cfr.qmd"
+        - text: "#6: Monte Carlo CFR"
+          href: "6_mccfr.qmd"
+        - text: "#7: Kuhn CFR Results"
+          href: "7_kuhncfr.qmd"
+        - text: "#8: Scaling Up to 100-card Kuhn"
+          href: "8_100cardkuhn.qmd"
+        - text: "#9: Opponent Modeling"
+          href: "9_opponentmodeling.qmd"
+        - text: "#10: Challenge Project"
+          href: "10_challenge.qmd"
+        - Text: "Next Directions"
+          href: "next.qmd"
 format:
   html:
     theme: cerulean

@@ -1,0 +1,3 @@
+---
+title: "C2C #5: Counterfactual Regret Minimization (CFR)"
+---

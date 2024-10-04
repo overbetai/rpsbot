@@ -1,8 +1,0 @@
----
-title: "C2C: Intro"
-format:
-  html:
-    math: true
----
-
-$5+5 = 10$

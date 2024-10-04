@@ -1,0 +1,3 @@
+---
+title: "C2C #2: Kuhn Poker"
+---
