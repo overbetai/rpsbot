@@ -10,7 +10,7 @@ website:
   favicon: ./assets/c2c-favicon.svg
   navbar: 
     logo: ./assets/logo.png
-    background: primary
+    background: dark
     right: 
       - text: "About"
         href: about.qmd
@@ -51,7 +51,8 @@ website:
           href: "next.qmd"
 format:
   html:
-    theme: cerulean
+    theme: 
+      - cerulean
     grid:
       sidebar-width: 240px
     math: true 
