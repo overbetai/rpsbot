@@ -9,7 +9,7 @@ website:
   google-analytics: G-68E8GHZRHQ
   favicon: ./assets/c2c-favicon.svg
   navbar: 
-    logo: ./assets/logosmall.png
+    logo: ./assets/logo.png
     background: primary
     right: 
       - text: "About"
@@ -33,27 +33,27 @@ website:
           href: "2_kuhnpoker.qmd"
         - text: "#3: Game Trees"
           href: "3_gametrees.qmd"
-        - text: "#4: Regret and Decision Making"
+        - text: "#4: Regret"
           href: "4_regret.qmd"
-        - text: "#5: Counterfactual Regret Minimization"
+        - text: "#5: CFR"
           href: "5_cfr.qmd"
         - text: "#6: Monte Carlo CFR"
           href: "6_mccfr.qmd"
         - text: "#7: Kuhn CFR Results"
           href: "7_kuhncfr.qmd"
-        - text: "#8: Scaling Up to 100-card Kuhn"
+        - text: "#8: 100-card Kuhn"
           href: "8_100cardkuhn.qmd"
         - text: "#9: Opponent Modeling"
           href: "9_opponentmodeling.qmd"
-        - text: "#10: Challenge Project"
+        - text: "#10: Challenge Projects"
           href: "10_challenge.qmd"
-        - Text: "Next Directions"
+        - text: "Next Directions"
           href: "next.qmd"
 format:
   html:
     theme: cerulean
     grid:
-      sidebar-width: 360px
+      sidebar-width: 240px
     math: true 
     html-math-method: katex
     toc: true

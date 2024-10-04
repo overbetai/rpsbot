@@ -6,4 +6,4 @@ format:
 ## Cards to Code
 Coming October 2024
 
-![](assets/logo.png)
+![](assets/logo2.png)
