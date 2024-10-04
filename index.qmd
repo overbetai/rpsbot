@@ -5,4 +5,4 @@ format:
 ---
 Coming October 2024
 
-![](assets/logo2.png)
+![](assets/aces.png)
