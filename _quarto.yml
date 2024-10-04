@@ -7,7 +7,7 @@ website:
   page-footer: "\xA9 2024 Overbet.ai. All rights reserved."
   open-graph: true
   google-analytics: G-68E8GHZRHQ
-  favicon: ./assets/c2c-favicon.svg
+  favicon: ./assets/logo.png
   navbar: 
     logo: ./assets/logo.png
     background: dark
