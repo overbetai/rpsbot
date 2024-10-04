@@ -1,0 +1,6 @@
+---
+title: "C2C: Intro"
+format:
+  html:
+    math: true
+---

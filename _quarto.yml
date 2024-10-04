@@ -1,0 +1,65 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Cards to Code"
+  page-footer: "\xA9 2024 Overbet.ai. All rights reserved."
+  open-graph: true
+  google-analytics: G-68E8GHZRHQ
+  favicon: ./assets/c2c.svg
+  navbar: 
+    logo: ./assets/logo.png
+    background: primary
+    right: 
+      - text: "About"
+        href: about.qmd
+      - text: "Overbet.ai"
+        href: https://overbet.ai
+    # tools: 
+    #     - icon: mailbox2-flag
+    #       href: 
+      # - icon: github
+      #   href: https://github.com/overbetai/cardstocode
+  sidebar: 
+    style: "docked"
+    background: light
+    contents:
+      - text: "Cards to Code"
+      - section: "Sections"
+        contents: 
+          - text: "Intro"
+            href: "intro.qmd"
+          - text: "#1: Game Theory"
+            href: "gametheory.qmd"
+          - text: "#2: Kuhn Poker"
+            href: "kuhnpoker.qmd"
+          - text: "#3: Game Trees"
+            href: "gametrees.qmd"
+          - text: "#4: Regret and Decision Making"
+            href: "regret.qmd"
+          - text: "#5: Counterfactual Regret Minimization (CFR)"
+            href: "cfr.qmd"
+          - text: "#6: Monte Carlo CFR"
+            href: "mccfr.qmd"
+          - text: "#7: Kuhn CFR Results"
+            href: "kuhncfr.qmd"
+          - text: "#8: Scaling Up: 100-card Kuhn"
+            href: "100cardkuhn.qmd"
+          - text: "#9: Opponent Modeling"
+            href: "opponentmodeling.qmd"
+          - text: "#10: Challenge Project"
+            href: "challenge.qmd"
+          - Text: "Next Directions"
+            href: "next.qmd"
+format:
+  html:
+    theme: cerulean
+    grid:
+      sidebar-width: 360px
+    math: true 
+    html-math-method: katex
+    toc: true
+    toc-expand: true
+
+          
