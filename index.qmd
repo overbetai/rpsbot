@@ -49,7 +49,7 @@ We can use the bot solutions to gain insights from the underlying game itself. F
 
 Beyond building a basic bot, there is a broad area for further research, including agent evaluation, opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent. 
 
-## AI agents in 2024
+## Modern AI agents
 LLM-based AI agents are very popular in 2024. The poker bot we’re building here is different and uses the classic AI method of reinforcement learning, where the goal is to maximize long-term reward given feedback from the environment (i.e. maximizing winnings in a poker game). 
 
 The poker bot learns how to make optimal decisions given a state of the game by repeatedly playing the game against itself and optimizing the strategy over time. 
