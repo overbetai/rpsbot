@@ -1,3 +1,13 @@
 ---
 title: "C2C: About"
 ---
+## About Us
+We ran an AI Poker Camp course in summer 2024 in San Francisco and developed this as a foundational course on building a functional poker bot. 
+
+Check out [Overbet.ai](https://overbet.ai) (under development) and [Poker Camp](https://poker.camp). 
+
+## Inspiration
+Some inspiration: 
+- [Nand to Tetris](https://www.nand2tetris.org/): Building a Modern Computer From First Principles 
+- [Neural Networks: Zero to Hero](https://karpathy.ai/zero-to-hero.html): A course by Andrej Karpathy on building neural networks, from scratch, in code
+- [fast.ai's Practical Deep Learning](https://course.fast.ai/): A free course designed for people with some coding experience, who want to learn how to apply deep learning and machine learning to practical problems

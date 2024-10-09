@@ -16,11 +16,13 @@ website:
         href: about.qmd
       - text: "Overbet.ai"
         href: https://overbet.ai
-    # tools: 
-    #     - icon: mailbox2-flag
-    #       href: 
-      # - icon: github
-      #   href: https://github.com/overbetai/cardstocode
+    tools: 
+      - icon: discord
+        href: https://discord.gg/KZQK2xN8Da
+      - icon: mailbox2-flag
+        href: https://overbetai.substack.com/
+      - icon: github
+        href: https://github.com/overbetai/cardstocode
   sidebar: 
     style: "docked"
     background: light

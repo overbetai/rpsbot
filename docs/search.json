@@ -4,10 +4,64 @@
     "href": "index.html",
     "title": "Cards to Code",
     "section": "",
-    "text": "Coming October 2024",
+    "text": "A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch.\nThe course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm.\nThroughout the course, we’re building up code to first develop the game, and then piece by piece to develop the poker bot.\nWe end on opponent modeling and challenge problems that go beyond game theory optimal play.\nPrerequisites: Basic Python and math\nGroups/Questions: We encourage you to work through this in groups. You can chat in our Discord to discuss the course or look for others to work with.",
     "crumbs": [
       "About",
       "Home (Intro)"
     ]
+  },
+  {
+    "objectID": "index.html#overbet.ai",
+    "href": "index.html#overbet.ai",
+    "title": "Cards to Code",
+    "section": "Overbet.ai",
+    "text": "Overbet.ai\nWe’re excited about learning through games.\nVisit Overbet.ai for daily puzzles that make you think, starting with Rock Paper Scissors.\nWe’ll have more advanced courses available soon.",
+    "crumbs": [
+      "About",
+      "Home (Intro)"
+    ]
+  },
+  {
+    "objectID": "index.html#why-poker",
+    "href": "index.html#why-poker",
+    "title": "Cards to Code",
+    "section": "Why poker?",
+    "text": "Why poker?",
+    "crumbs": [
+      "About",
+      "Home (Intro)"
+    ]
+  },
+  {
+    "objectID": "index.html#ai-agents-in-2024",
+    "href": "index.html#ai-agents-in-2024",
+    "title": "Cards to Code",
+    "section": "AI agents in 2024",
+    "text": "AI agents in 2024",
+    "crumbs": [
+      "About",
+      "Home (Intro)"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "C2C: About",
+    "section": "",
+    "text": "We ran an AI Poker Camp course in summer 2024 in San Francisco and developed this as a foundational course on building a functional poker bot.\nCheck out Overbet.ai (under development) and Poker Camp."
+  },
+  {
+    "objectID": "about.html#about-us",
+    "href": "about.html#about-us",
+    "title": "C2C: About",
+    "section": "",
+    "text": "We ran an AI Poker Camp course in summer 2024 in San Francisco and developed this as a foundational course on building a functional poker bot.\nCheck out Overbet.ai (under development) and Poker Camp."
+  },
+  {
+    "objectID": "about.html#inspiration",
+    "href": "about.html#inspiration",
+    "title": "C2C: About",
+    "section": "Inspiration",
+    "text": "Inspiration\nSome inspiration: - Nand to Tetris: Building a Modern Computer From First Principles - Neural Networks: Zero to Hero: A course by Andrej Karpathy on building neural networks, from scratch, in code - fast.ai’s Practical Deep Learning: A free course designed for people with some coding experience, who want to learn how to apply deep learning and machine learning to practical problems"
   }
 ]
