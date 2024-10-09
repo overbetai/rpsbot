@@ -61,7 +61,7 @@ import random
 ```
 :::
 
-### Step 2: Set up the basic structure 
+### Step 2: Cards and scores 
 Define a `Game` class that is initialized with these class attributes: 
 
 - 3-card `deck` array with cards `0`, `1`, and `2`
@@ -110,7 +110,7 @@ Create a `play_round` function in the `Game` class that first deals the cards us
 :::
 
 ### Step 5: Run the game
-Create the `main` function that defines `num_games` as 100, creates an object of the `Game` class in `game`, and runs the game. 
+Create the `main` function that defines `num_games` as 100, creates an object of the `Game` class in `game`, and runs the game `num_games` times. 
 
 :::{.callout-tip collapse="true" appearance="minimal"}
 ### `main` function
@@ -159,8 +159,8 @@ import random
 class Game:
     def __init__(self):
         self.deck = [0, 1, 2]
-        self.cards = [None, None]  # Cards for player 0 and 1
-        self.scores = [0, 0]  # Scores for player 0 and 1
+        self.cards = [None, None]
+        self.scores = [0, 0]
 
     def deal_cards(self):
         self.cards = random.sample(self.deck, 2)
