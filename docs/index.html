@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -262,13 +296,23 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overbet.ai" id="toc-overbet.ai" class="nav-link active" data-scroll-target="#overbet.ai">Overbet.ai</a></li>
-  <li><a href="#why-poker" id="toc-why-poker" class="nav-link" data-scroll-target="#why-poker">Why poker?</a>
+  <li><a href="#set-up-your-environment" id="toc-set-up-your-environment" class="nav-link active" data-scroll-target="#set-up-your-environment">Set up your environment</a>
   <ul class="collapse">
-  <li><a href="#why-play-poker" id="toc-why-play-poker" class="nav-link" data-scroll-target="#why-play-poker">Why play poker?</a></li>
-  <li><a href="#why-build-a-poker-bot" id="toc-why-build-a-poker-bot" class="nav-link" data-scroll-target="#why-build-a-poker-bot">Why build a poker bot?</a></li>
+  <li><a href="#step-1-set-up-virtual-environment" id="toc-step-1-set-up-virtual-environment" class="nav-link" data-scroll-target="#step-1-set-up-virtual-environment">Step 1: Set up virtual environment</a></li>
+  <li><a href="#step-2-import-and-install-packages" id="toc-step-2-import-and-install-packages" class="nav-link" data-scroll-target="#step-2-import-and-install-packages">Step 2: Import and install packages</a></li>
   </ul></li>
-  <li><a href="#modern-ai-agents" id="toc-modern-ai-agents" class="nav-link" data-scroll-target="#modern-ai-agents">Modern AI agents</a></li>
+  <li><a href="#face-up-1-card-poker" id="toc-face-up-1-card-poker" class="nav-link" data-scroll-target="#face-up-1-card-poker">Face up 1-card poker</a>
+  <ul class="collapse">
+  <li><a href="#step-1-imports" id="toc-step-1-imports" class="nav-link" data-scroll-target="#step-1-imports">Step 1: Imports</a></li>
+  <li><a href="#step-2-set-up-the-basic-structure" id="toc-step-2-set-up-the-basic-structure" class="nav-link" data-scroll-target="#step-2-set-up-the-basic-structure">Step 2: Set up the basic structure</a></li>
+  <li><a href="#step-3-deal-cards" id="toc-step-3-deal-cards" class="nav-link" data-scroll-target="#step-3-deal-cards">Step 3: Deal cards</a></li>
+  <li><a href="#step-4-play-round" id="toc-step-4-play-round" class="nav-link" data-scroll-target="#step-4-play-round">Step 4: Play round</a></li>
+  <li><a href="#step-5-run-the-game" id="toc-step-5-run-the-game" class="nav-link" data-scroll-target="#step-5-run-the-game">Step 5: Run the game</a></li>
+  <li><a href="#step-6-print-the-scores" id="toc-step-6-print-the-scores" class="nav-link" data-scroll-target="#step-6-print-the-scores">Step 6: Print the scores</a></li>
+  <li><a href="#step-7-create-the-main-block" id="toc-step-7-create-the-main-block" class="nav-link" data-scroll-target="#step-7-create-the-main-block">Step 7: Create the main block</a></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting it all together</a></li>
+  <li><a href="#run-the-code" id="toc-run-the-code" class="nav-link" data-scroll-target="#run-the-code">Run the code</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -313,46 +357,287 @@ window.Quarto = {
 <p>We end on opponent modeling and challenge problems that go beyond game theory optimal play.</p>
 <p><strong>Prerequisites:</strong> Basic Python and math (no poker knowledge necessary)</p>
 <p><strong>Groups/Questions:</strong> We encourage you to work through this in groups. You can chat in our <a href="https://discord.gg/KZQK2xN8Da">Discord</a> to discuss the course or look for others to work with.</p>
-<section id="overbet.ai" class="level2">
-<h2 class="anchored" data-anchor-id="overbet.ai"><a href="https://overbet.ai">Overbet.ai</a></h2>
-<p>We’re excited about learning through games.</p>
-<p>Visit <a href="https://overbet.ai">Overbet.ai</a> for daily puzzles that make you think, starting with Rock Paper Scissors.</p>
-<p>We’ll have more advanced courses available soon.</p>
+<section id="set-up-your-environment" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-your-environment">Set up your environment</h2>
+<p>You can use a code editor of your choice. We like <a href="https://code.visualstudio.com/">VSCode</a>. You can also work with <a href="https://colab.research.google.com/">Google Colab</a> in the browser. The instructions below are for coding locally on MacOS or Unix.</p>
+<section id="step-1-set-up-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-set-up-virtual-environment">Step 1: Set up virtual environment</h3>
+<ol type="1">
+<li>Make a local directory for the project <code>cardstocode</code>. From the command line:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> cardstocode</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cardstocode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Create and activate a virtual environment:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv venv</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should now see <code>(venv)</code> at the beginning of your command prompt, indicating that the virtual environment is active.</p>
+<ol start="3" type="1">
+<li>Create a Python file <code>c2c.py</code>. From the command line:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> c2c.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Deactivating and reactivating the virtual environment:</li>
+</ol>
+<p>To deactivate:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To reactivate:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="why-poker" class="level2">
-<h2 class="anchored" data-anchor-id="why-poker">Why poker?</h2>
-<p>Let’s split this into two questions.</p>
-<section id="why-play-poker" class="level3">
-<h3 class="anchored" data-anchor-id="why-play-poker">Why play poker?</h3>
-<p>Games of incomplete information like poker are most similar to real-life settings. Incomplete information means that there is some hidden information – in Texas Hold’em this is the opponent cards and the yet to be revealed board cards.</p>
-<p>This means we need to infer our opponents’ hands and understand the probabilities of the cards that we can’t see.</p>
-<p>Poker is useful from a math perspective – probability, expected value, risk, and bankroll management are all important skills.</p>
-<p>It’s also useful from a psychological perspective – emotional control, reading opponents, and adapting to other players are all valuable.</p>
-<p>We learn to make decisions and focus on the quality of the decision, rather than the results.</p>
-</section>
-<section id="why-build-a-poker-bot" class="level3">
-<h3 class="anchored" data-anchor-id="why-build-a-poker-bot">Why build a poker bot?</h3>
-<p>Poker has clear rules and structure, so we can apply reinforcement learning where the rewards are the profits in the game. Reinforcement learning, game theory, and Monte Carlo methods are applicable across many domains.</p>
-<p>Here we mainly focus on a simplified poker game that can be solved in under a minute, but the same core principles apply for scaled up versions that are much larger and more complex, though they will also involve approximating states of the game.</p>
-<p>The richness of the game is an ideal testbed for decision making under uncertainty, probabilistic reasoning, and taking actions that can have both immediate and longer horizon consequences.</p>
-<p>We can use the bot solutions to gain insights from the underlying game itself. For example, you’ll see that bots automatically learn to bluff, showing that this is a theoretically correct play and not a “loss leader” just to get more action later.</p>
-<p>Beyond building a basic bot, there is a broad area for further research, including agent evaluation, opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent.</p>
+<section id="step-2-import-and-install-packages" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-import-and-install-packages">Step 2: Import and install packages</h3>
+<p>Install <code>numpy</code>, which we will use later.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="modern-ai-agents" class="level2">
-<h2 class="anchored" data-anchor-id="modern-ai-agents">Modern AI agents</h2>
-<p>LLM-based AI agents are very popular in 2024. The poker bot we’re building here is different and uses the classic AI method of reinforcement learning, where the goal is to maximize long-term reward given feedback from the environment (i.e.&nbsp;maximizing winnings in a poker game).</p>
-<p>The poker bot learns how to make optimal decisions given a state of the game by repeatedly playing the game against itself and optimizing the strategy over time.</p>
-<p>LLM agents generally use large amounts of text data to understand and generate human-like language based on patterns in the data, which could include strategy in a game like poker.</p>
-<p>So is RL still relevant? Yes! OpenAI recently released their o1 chain of thought model:</p>
-<blockquote class="blockquote">
-<p>Our large-scale reinforcement learning algorithm teaches the model how to think productively using its chain of thought in a highly data-efficient training process.</p>
-</blockquote>
-<p>In chain of thought, each step in the reasoning process can be seen as a state with possible actions. RLHF (Reinforcement Learning from Human Feedback) is also a popular technique for LLM agents where a human acts as the reward signal to shape a model’s outputs.</p>
-<p>Hybrid approaches seem promising and may be a future direction for poker agents as well.</p>
+<section id="face-up-1-card-poker" class="level2">
+<h2 class="anchored" data-anchor-id="face-up-1-card-poker">Face up 1-card poker</h2>
+<p>We’ll start by setting up a poker game with a 3-card deck where the cards are given values {0, 1, 2}. Each player is dealt a card “face up” and the higher card wins. This is like the game <a href="https://en.wikipedia.org/wiki/War_(card_game)">War</a>, but even more simplified because there are no ties since the entire deck is only 3 cards.</p>
+<section id="step-1-imports" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-imports">Step 1: Imports</h3>
+<p>Let’s start by importing <code>numpy</code> and <code>random</code>.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Imports
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-set-up-the-basic-structure" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-set-up-the-basic-structure">Step 2: Set up the basic structure</h3>
+<p>Define a <code>Game</code> class that is initialized with these class attributes:</p>
+<ul>
+<li><p>3-card <code>deck</code> array with cards <code>0</code>, <code>1</code>, and <code>2</code></p></li>
+<li><p>Card placeholders for each player in a <code>cards</code> array that are initialized as <code>None</code></p></li>
+<li><p>Score placeholders for each player in <code>scores</code> array that are initialized as <code>0</code></p></li>
+</ul>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Initialize <code>Game</code> class
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Game:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.deck <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cards <span class="op">=</span> [<span class="va">None</span>, <span class="va">None</span>]</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.scores <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-deal-cards" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-deal-cards">Step 3: Deal cards</h3>
+<p>Let’s now add a <code>deal_cards</code> function into the <code>Game</code> class that samples two cards from the deck into <code>self.cards</code>. This is the first of two class methods.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>deal_cards</code> function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> deal_cards(<span class="va">self</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cards <span class="op">=</span> random.sample(<span class="va">self</span>.deck, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-play-round" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-play-round">Step 4: Play round</h3>
+<p>Create a <code>play_round</code> function in the <code>Game</code> class that first deals the cards using <code>self.deal_cards</code> and then accumulates the scores for each player using <code>self.scores</code>. This is the second class method.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>play_round</code> function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play_round(<span class="va">self</span>):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.deal_cards()</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.cards[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="va">self</span>.cards[<span class="dv">1</span>]:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">0</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">1</span>] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.cards[<span class="dv">0</span>] <span class="op">&lt;</span> <span class="va">self</span>.cards[<span class="dv">1</span>]:</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">0</span>] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">1</span>] <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-run-the-game" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-run-the-game">Step 5: Run the game</h3>
+<p>Create the <code>main</code> function that defines <code>num_games</code> as 100, creates an object of the <code>Game</code> class in <code>game</code>, and runs the game.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>main</code> function
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    num_games <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    game <span class="op">=</span> Game()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_games):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        game.play_round()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>game</code> object now has all the attributes and methods defined in the <code>Game</code> class.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-print-the-scores" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-print-the-scores">Step 6: Print the scores</h3>
+<p>Print the scores for each player after the game ends, also in the <code>main</code> function.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Print scores
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"After </span><span class="sc">{</span>num_games<span class="sc">}</span><span class="ss"> games:"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Player 1 score: </span><span class="sc">{</span>game<span class="sc">.</span>scores[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Player 2 score: </span><span class="sc">{</span>game<span class="sc">.</span>scores[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-7-create-the-main-block" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-create-the-main-block">Step 7: Create the main block</h3>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Main block
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="putting-it-all-together" class="level3">
+<h3 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h3>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+All the code
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Game:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.deck <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cards <span class="op">=</span> [<span class="va">None</span>, <span class="va">None</span>]  <span class="co"># Cards for player 0 and 1</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.scores <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">0</span>]  <span class="co"># Scores for player 0 and 1</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> deal_cards(<span class="va">self</span>):</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cards <span class="op">=</span> random.sample(<span class="va">self</span>.deck, <span class="dv">2</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> play_round(<span class="va">self</span>):</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.deal_cards()</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.cards[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="va">self</span>.cards[<span class="dv">1</span>]:</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">0</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">1</span>] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="va">self</span>.cards[<span class="dv">0</span>] <span class="op">&lt;</span> <span class="va">self</span>.cards[<span class="dv">1</span>]:</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">0</span>] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.scores[<span class="dv">1</span>] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    num_games <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    game <span class="op">=</span> Game()</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(num_games):</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>        game.play_round()</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"After </span><span class="sc">{</span>num_games<span class="sc">}</span><span class="ss"> games:"</span>)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Player 1 score: </span><span class="sc">{</span>game<span class="sc">.</span>scores[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Player 2 score: </span><span class="sc">{</span>game<span class="sc">.</span>scores[<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="run-the-code" class="level3">
+<h3 class="anchored" data-anchor-id="run-the-code">Run the code</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>python3 c2c.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output should look something like:</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sample code output from 100 games
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">After</span> 100 games:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Player</span> 1 score: <span class="at">-12</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Player</span> 2 score: 12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
