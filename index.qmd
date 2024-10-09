@@ -5,7 +5,11 @@ format:
 ---
 A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch. 
 
+::: {layout="[[1,1]]"}
+![](assets/kuhn_strategy.gif)
+
 ![](assets/kuhn_solve.gif)
+:::
 
 The course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm. 
 
