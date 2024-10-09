@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Cards to Code",
     "section": "",
-    "text": "A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch.\nThe course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm.\nThroughout the course, we’re building up code to first develop the game, and then piece by piece to develop the poker bot.\nWe end on opponent modeling and challenge problems that go beyond game theory optimal play.\nPrerequisites: Basic Python and math\nGroups/Questions: We encourage you to work through this in groups. You can chat in our Discord to discuss the course or look for others to work with.",
+    "text": "A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch.\nThe course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm.\nThroughout the course, we’re building up code to first develop the game, and then piece by piece to develop the poker bot.\nWe end on opponent modeling and challenge problems that go beyond game theory optimal play.\nPrerequisites: Basic Python and math (no poker knowledge necessary)\nGroups/Questions: We encourage you to work through this in groups. You can chat in our Discord to discuss the course or look for others to work with.",
     "crumbs": [
       "About",
       "Home (Intro)"

@@ -17,7 +17,7 @@ Throughout the course, we're building up code to first develop the game, and the
 
 We end on opponent modeling and challenge problems that go beyond game theory optimal play. 
 
-**Prerequisites:** Basic Python and math
+**Prerequisites:** Basic Python and math (no poker knowledge necessary)
 
 **Groups/Questions:** We encourage you to work through this in groups. You can chat in our [Discord](https://discord.gg/KZQK2xN8Da) to discuss the course or look for others to work with. 
 
