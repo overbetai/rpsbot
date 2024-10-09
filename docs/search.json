@@ -48,20 +48,20 @@
     "href": "about.html",
     "title": "C2C: About",
     "section": "",
-    "text": "We ran an AI Poker Camp course in summer 2024 in San Francisco and developed this as a foundational course on building a functional poker bot.\nCheck out Overbet.ai (under development) and Poker Camp."
+    "text": "We ran an AI Poker Camp course in summer 2024 in San Francisco and developed Cards to Code as a foundational course on building a functional poker bot.\nCheck out Overbet.ai (under development) and Poker Camp."
   },
   {
     "objectID": "about.html#about-us",
     "href": "about.html#about-us",
     "title": "C2C: About",
     "section": "",
-    "text": "We ran an AI Poker Camp course in summer 2024 in San Francisco and developed this as a foundational course on building a functional poker bot.\nCheck out Overbet.ai (under development) and Poker Camp."
+    "text": "We ran an AI Poker Camp course in summer 2024 in San Francisco and developed Cards to Code as a foundational course on building a functional poker bot.\nCheck out Overbet.ai (under development) and Poker Camp."
   },
   {
     "objectID": "about.html#inspiration",
     "href": "about.html#inspiration",
     "title": "C2C: About",
     "section": "Inspiration",
-    "text": "Inspiration\nSome inspiration: - Nand to Tetris: Building a Modern Computer From First Principles - Neural Networks: Zero to Hero: A course by Andrej Karpathy on building neural networks, from scratch, in code - fast.ai’s Practical Deep Learning: A free course designed for people with some coding experience, who want to learn how to apply deep learning and machine learning to practical problems"
+    "text": "Inspiration\nSome inspiration:\n\nNand to Tetris: Building a Modern Computer From First Principles\nNeural Networks: Zero to Hero: A course by Andrej Karpathy on building neural networks, from scratch, in code\nfast.ai’s Practical Deep Learning: A free course designed for people with some coding experience, who want to learn how to apply deep learning and machine learning to practical problems"
   }
 ]
