@@ -41,11 +41,13 @@ We learn to make decisions and focus on the quality of the decision, rather than
 ### Why build a poker bot? 
 Poker has clear rules and structure, so we can apply reinforcement learning where the rewards are the profits in the game. Reinforcement learning, game theory, and Monte Carlo methods are applicable across many domains. 
 
-Here we mainly focus on a simplified poker game that can be solved in under a minute, but the same principles apply for scaled up versions that are much larger and more complex. The richness of the game is an ideal testbed for decision making under uncertainty, probabilistic reasoning, and taking actions that can have immediate and longer horizon consequences. 
+Here we mainly focus on a simplified poker game that can be solved in under a minute, but the same core principles apply for scaled up versions that are much larger and more complex, though they will also involve approximating states of the game. 
+
+The richness of the game is an ideal testbed for decision making under uncertainty, probabilistic reasoning, and taking actions that can have both immediate and longer horizon consequences. 
 
 We can use the bot solutions to gain insights from the underlying game itself. For example, you'll see that bots automatically learn to bluff, showing that this is a theoretically correct play and not a "loss leader" just to get more action later. 
 
-Beyond building a basic bot, there is a rich area for further research, including agent evaluation, opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent. 
+Beyond building a basic bot, there is a broad area for further research, including agent evaluation, opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent. 
 
 ## AI agents in 2024
 LLM-based AI agents are very popular in 2024. The poker bot we’re building here is different and uses the classic AI method of reinforcement learning, where the goal is to maximize long-term reward given feedback from the environment (i.e. maximizing winnings in a poker game). 
