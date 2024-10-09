@@ -58,7 +58,7 @@ format:
     theme: 
       - cerulean
     grid:
-      sidebar-width: 240px
+      sidebar-width: 260px
     math: true 
     html-math-method: katex
     toc: true
