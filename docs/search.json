@@ -1,35 +1,35 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Cards to Code",
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "C2C: Setup and Face-up Poker",
     "section": "",
-    "text": "A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch.\nThe course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm.\nThroughout the course, we’re building up code to first develop the game, and then piece by piece to develop the poker bot.\nWe end on opponent modeling and challenge problems that go beyond game theory optimal play.\nPrerequisites: Basic Python and math (no poker knowledge necessary)\nGroups/Questions: We encourage you to work through this in groups. You can chat in our Discord to discuss the course or look for others to work with.",
+    "text": "You can use a code editor of your choice. We like VSCode. You can also work with Google Colab in the browser. The instructions below are for coding locally on MacOS or Unix.\n\n\nMake a local directory for the project cardstocode. From the command line:\nmkdir cardstocode\ncd cardstocode\n\n\n\nCreate and activate a virtual environment:\npython3 -m venv venv\nsource venv/bin/activate\nYou should now see (venv) at the beginning of your command prompt, indicating that the virtual environment is active.\n\n\n\nCreate a Python file c2c.py. From the command line:\ntouch c2c.py\n\n\n\nTo deactivate:\ndeactivate\nTo reactivate:\nsource venv/bin/activate\n\n\n\nInstall numpy, which we will use later.\npip install numpy",
     "crumbs": [
       "About",
-      "Home (Intro)"
+      "Setup and Face-up Poker"
     ]
   },
   {
-    "objectID": "index.html#set-up-your-environment",
-    "href": "index.html#set-up-your-environment",
-    "title": "Cards to Code",
-    "section": "Set up your environment",
-    "text": "Set up your environment\nYou can use a code editor of your choice. We like VSCode. You can also work with Google Colab in the browser. The instructions below are for coding locally on MacOS or Unix.\n\nStep 1: Make directory\nMake a local directory for the project cardstocode. From the command line:\nmkdir cardstocode\ncd cardstocode\n\n\nStep 2: Virtual environment\nCreate and activate a virtual environment:\npython3 -m venv venv\nsource venv/bin/activate\nYou should now see (venv) at the beginning of your command prompt, indicating that the virtual environment is active.\n\n\nStep 3: Create Python file\nCreate a Python file c2c.py. From the command line:\ntouch c2c.py\n\n\nStep 4: Deactivating and reactivating virtual environment\nTo deactivate:\ndeactivate\nTo reactivate:\nsource venv/bin/activate\n\n\nStep 5: Install numpy\nInstall numpy, which we will use later.\npip install numpy",
+    "objectID": "setup.html#set-up-your-environment",
+    "href": "setup.html#set-up-your-environment",
+    "title": "C2C: Setup and Face-up Poker",
+    "section": "",
+    "text": "You can use a code editor of your choice. We like VSCode. You can also work with Google Colab in the browser. The instructions below are for coding locally on MacOS or Unix.\n\n\nMake a local directory for the project cardstocode. From the command line:\nmkdir cardstocode\ncd cardstocode\n\n\n\nCreate and activate a virtual environment:\npython3 -m venv venv\nsource venv/bin/activate\nYou should now see (venv) at the beginning of your command prompt, indicating that the virtual environment is active.\n\n\n\nCreate a Python file c2c.py. From the command line:\ntouch c2c.py\n\n\n\nTo deactivate:\ndeactivate\nTo reactivate:\nsource venv/bin/activate\n\n\n\nInstall numpy, which we will use later.\npip install numpy",
     "crumbs": [
       "About",
-      "Home (Intro)"
+      "Setup and Face-up Poker"
     ]
   },
   {
-    "objectID": "index.html#face-up-1-card-poker",
-    "href": "index.html#face-up-1-card-poker",
-    "title": "Cards to Code",
-    "section": "Face up 1-card poker",
-    "text": "Face up 1-card poker\nWe’ll start by setting up a poker game with a 3-card deck where the cards are given values {0, 1, 2}. Each player is dealt a card “face up” and the higher card wins. This is like the game War, but even more simplified because there are no ties since the entire deck is only 3 cards.\n\nStep 1: Imports\nLet’s start by importing numpy (will be used later) and random.\n\n\n\n\n\n\nImports\n\n\n\n\n\nimport numpy as np\nimport random\n\n\n\n\n\nStep 2: Set up the basic structure\nDefine a Game class that is initialized with these class attributes:\n\n3-card deck array with cards 0, 1, and 2\nCard placeholders for each player in a cards array that are initialized as None\nScore placeholders for each player in scores array that are initialized as 0\n\n\n\n\n\n\n\nInitialize Game class\n\n\n\n\n\nclass Game:\n    def __init__(self):\n        self.deck = [0, 1, 2]\n        self.cards = [None, None]\n        self.scores = [0, 0]\n\n\n\n\n\nStep 3: Deal cards\nLet’s now add a deal_cards function into the Game class that samples two cards from the deck into self.cards. This is the first of two class methods.\n\n\n\n\n\n\ndeal_cards function\n\n\n\n\n\n    def deal_cards(self):\n        self.cards = random.sample(self.deck, 2)\n\n\n\n\n\nStep 4: Play round\nCreate a play_round function in the Game class that first deals the cards using self.deal_cards and then accumulates the scores for each player using self.scores. This is the second class method.\n\n\n\n\n\n\nplay_round function\n\n\n\n\n\n    def play_round(self):\n        self.deal_cards()\n        if self.cards[0] &gt; self.cards[1]:\n            self.scores[0] += 1\n            self.scores[1] -= 1\n        elif self.cards[0] &lt; self.cards[1]:\n            self.scores[0] -= 1\n            self.scores[1] += 1\n\n\n\n\n\nStep 5: Run the game\nCreate the main function that defines num_games as 100, creates an object of the Game class in game, and runs the game.\n\n\n\n\n\n\nmain function\n\n\n\n\n\ndef main():\n    num_games = 100\n    game = Game()\n\n    for _ in range(num_games):\n        game.play_round()\nThe game object now has all the attributes and methods defined in the Game class.\n\n\n\n\n\nStep 6: Print the scores\nPrint the scores for each player after the game ends, also in the main function.\n\n\n\n\n\n\nPrint scores\n\n\n\n\n\n\n    print(f\"After {num_games} games:\")\n    print(f\"Player 1 score: {game.scores[0]}\")\n    print(f\"Player 2 score: {game.scores[1]}\")\n\n\n\n\n\nStep 7: Create the main block\n\n\n\n\n\n\nMain block\n\n\n\n\n\nif __name__ == \"__main__\":\n    main()\n\n\n\n\n\nPutting it all together\n\n\n\n\n\n\nAll the code\n\n\n\n\n\nimport random\n\nclass Game:\n    def __init__(self):\n        self.deck = [0, 1, 2]\n        self.cards = [None, None]  # Cards for player 0 and 1\n        self.scores = [0, 0]  # Scores for player 0 and 1\n\n    def deal_cards(self):\n        self.cards = random.sample(self.deck, 2)\n\n    def play_round(self):\n        self.deal_cards()\n        if self.cards[0] &gt; self.cards[1]:\n            self.scores[0] += 1\n            self.scores[1] -= 1\n        elif self.cards[0] &lt; self.cards[1]:\n            self.scores[0] -= 1\n            self.scores[1] += 1\n\ndef main():\n    num_games = 100\n    game = Game()\n\n    for _ in range(num_games):\n        game.play_round()\n\n    print(f\"After {num_games} games:\")\n    print(f\"Player 1 score: {game.scores[0]}\")\n    print(f\"Player 2 score: {game.scores[1]}\")\n\nif __name__ == \"__main__\":\n    main()\n\n\n\n\n\nRun the code\npython3 c2c.py\nThe output should look something like:\n\n\n\n\n\n\nSample code output from 100 games\n\n\n\n\n\nAfter 100 games:\nPlayer 1 score: -12\nPlayer 2 score: 12",
+    "objectID": "setup.html#face-up-1-card-poker",
+    "href": "setup.html#face-up-1-card-poker",
+    "title": "C2C: Setup and Face-up Poker",
+    "section": "Face-up 1-card poker",
+    "text": "Face-up 1-card poker\nWe’ll start by setting up a poker game with a 3-card deck where the cards are given values {0, 1, 2}. Each player is dealt a card “face-up” and the higher card wins. This is like the game War, but even more simplified because there are no ties since the entire deck is only 3 cards.\n\nStep 1: Imports\nLet’s start by importing numpy (will be used later) and random.\n\n\n\n\n\n\nImports\n\n\n\n\n\nimport numpy as np\nimport random\n\n\n\n\n\nStep 2: Set up the basic structure\nDefine a Game class that is initialized with these class attributes:\n\n3-card deck array with cards 0, 1, and 2\nCard placeholders for each player in a cards array that are initialized as None\nScore placeholders for each player in scores array that are initialized as 0\n\n\n\n\n\n\n\nInitialize Game class\n\n\n\n\n\nclass Game:\n    def __init__(self):\n        self.deck = [0, 1, 2]\n        self.cards = [None, None]\n        self.scores = [0, 0]\n\n\n\n\n\nStep 3: Deal cards\nLet’s now add a deal_cards function into the Game class that samples two cards from the deck into self.cards. This is the first of two class methods.\n\n\n\n\n\n\ndeal_cards function\n\n\n\n\n\n    def deal_cards(self):\n        self.cards = random.sample(self.deck, 2)\n\n\n\n\n\nStep 4: Play round\nCreate a play_round function in the Game class that first deals the cards using self.deal_cards and then accumulates the scores for each player using self.scores. This is the second class method.\n\n\n\n\n\n\nplay_round function\n\n\n\n\n\n    def play_round(self):\n        self.deal_cards()\n        if self.cards[0] &gt; self.cards[1]:\n            self.scores[0] += 1\n            self.scores[1] -= 1\n        elif self.cards[0] &lt; self.cards[1]:\n            self.scores[0] -= 1\n            self.scores[1] += 1\n\n\n\n\n\nStep 5: Run the game\nCreate the main function that defines num_games as 100, creates an object of the Game class in game, and runs the game.\n\n\n\n\n\n\nmain function\n\n\n\n\n\ndef main():\n    num_games = 100\n    game = Game()\n\n    for _ in range(num_games):\n        game.play_round()\nThe game object now has all the attributes and methods defined in the Game class.\n\n\n\n\n\nStep 6: Print the scores\nPrint the scores for each player after the game ends, also in the main function.\n\n\n\n\n\n\nPrint scores\n\n\n\n\n\n\n    print(f\"After {num_games} games:\")\n    print(f\"Player 1 score: {game.scores[0]}\")\n    print(f\"Player 2 score: {game.scores[1]}\")\n\n\n\n\n\nStep 7: Create the main block\n\n\n\n\n\n\nMain block\n\n\n\n\n\nif __name__ == \"__main__\":\n    main()\n\n\n\n\n\nPutting it all together\n\n\n\n\n\n\nAll the code\n\n\n\n\n\nimport random\n\nclass Game:\n    def __init__(self):\n        self.deck = [0, 1, 2]\n        self.cards = [None, None]  # Cards for player 0 and 1\n        self.scores = [0, 0]  # Scores for player 0 and 1\n\n    def deal_cards(self):\n        self.cards = random.sample(self.deck, 2)\n\n    def play_round(self):\n        self.deal_cards()\n        if self.cards[0] &gt; self.cards[1]:\n            self.scores[0] += 1\n            self.scores[1] -= 1\n        elif self.cards[0] &lt; self.cards[1]:\n            self.scores[0] -= 1\n            self.scores[1] += 1\n\ndef main():\n    num_games = 100\n    game = Game()\n\n    for _ in range(num_games):\n        game.play_round()\n\n    print(f\"After {num_games} games:\")\n    print(f\"Player 1 score: {game.scores[0]}\")\n    print(f\"Player 2 score: {game.scores[1]}\")\n\nif __name__ == \"__main__\":\n    main()\n\n\n\n\n\nRun the code\npython3 c2c.py\nThe output should look something like:\n\n\n\n\n\n\nSample code output from 100 games\n\n\n\n\n\nAfter 100 games:\nPlayer 1 score: -12\nPlayer 2 score: 12",
     "crumbs": [
       "About",
-      "Home (Intro)"
+      "Setup and Face-up Poker"
     ]
   },
   {
@@ -66,5 +66,16 @@
     "title": "C2C: About",
     "section": "Inspiration",
     "text": "Inspiration\nSome inspiration:\n\nNand to Tetris: Building a Modern Computer From First Principles\nNeural Networks: Zero to Hero: A course by Andrej Karpathy on building neural networks, from scratch, in code\nfast.ai’s Practical Deep Learning: A free course designed for people with some coding experience, who want to learn how to apply deep learning and machine learning to practical problems"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cards to Code",
+    "section": "",
+    "text": "A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch.\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm.\nThroughout the course, we’re building up code to first develop the game, and then piece by piece to develop the poker bot.\nWe end on opponent modeling and challenge problems that go beyond game theory optimal play.\nPrerequisites: Basic Python and math (no poker knowledge necessary)\nGroups/Questions: We encourage you to work through this in groups. You can chat in our Discord to discuss the course or look for others to work with.\nGet started now! Start with the Setup and Face-up Poker page.",
+    "crumbs": [
+      "About",
+      "Home"
+    ]
   }
 ]

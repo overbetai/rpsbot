@@ -1,0 +1,207 @@
+---
+title: "C2C: Setup and Face-up Poker"
+---
+## Set up your environment
+You can use a code editor of your choice. We like [VSCode](https://code.visualstudio.com/). You can also work with [Google Colab](https://colab.research.google.com/) in the browser. The instructions below are for coding locally on MacOS or Unix. 
+
+### Step 1: Make directory
+Make a local directory for the project `cardstocode`. From the command line: 
+
+```bash
+mkdir cardstocode
+cd cardstocode
+```
+### Step 2: Virtual environment
+Create and activate a virtual environment: 
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+You should now see `(venv)` at the beginning of your command prompt, indicating that the virtual environment is active.
+
+### Step 3: Create Python file
+Create a Python file `c2c.py`. From the command line: 
+
+```bash
+touch c2c.py
+```
+### Step 4: Deactivating and reactivating virtual environment
+To deactivate: 
+
+```bash
+deactivate
+```
+
+To reactivate: 
+
+```bash
+source venv/bin/activate
+```
+
+### Step 5: Install `numpy`
+Install `numpy`, which we will use later. 
+
+```bash
+pip install numpy
+```
+
+## Face-up 1-card poker 
+We'll start by setting up a poker game with a 3-card deck where the cards are given values {0, 1, 2}. Each player is dealt a card "face-up" and the higher card wins. This is like the game [War](https://en.wikipedia.org/wiki/War_(card_game)), but even more simplified because there are no ties since the entire deck is only 3 cards. 
+
+### Step 1: Imports
+Let's start by importing `numpy` (will be used later) and `random`. 
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### Imports
+```python
+import numpy as np
+import random
+```
+:::
+
+### Step 2: Set up the basic structure 
+Define a `Game` class that is initialized with these class attributes: 
+
+- 3-card `deck` array with cards `0`, `1`, and `2`
+
+- Card placeholders for each player in a `cards` array that are initialized as `None`
+
+- Score placeholders for each player in `scores` array that are initialized as `0`
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### Initialize `Game` class
+```python
+class Game:
+    def __init__(self):
+        self.deck = [0, 1, 2]
+        self.cards = [None, None]
+        self.scores = [0, 0]
+```
+:::
+
+### Step 3: Deal cards
+Let's now add a `deal_cards` function into the `Game` class that samples two cards from the deck into `self.cards`. This is the first of two class methods. 
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### `deal_cards` function
+```python
+    def deal_cards(self):
+        self.cards = random.sample(self.deck, 2)
+```
+:::
+
+### Step 4: Play round
+Create a `play_round` function in the `Game` class that first deals the cards using `self.deal_cards` and then accumulates the scores for each player using `self.scores`. This is the second class method. 
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### `play_round` function
+```python
+    def play_round(self):
+        self.deal_cards()
+        if self.cards[0] > self.cards[1]:
+            self.scores[0] += 1
+            self.scores[1] -= 1
+        elif self.cards[0] < self.cards[1]:
+            self.scores[0] -= 1
+            self.scores[1] += 1
+```
+:::
+
+### Step 5: Run the game
+Create the `main` function that defines `num_games` as 100, creates an object of the `Game` class in `game`, and runs the game. 
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### `main` function
+```python
+def main():
+    num_games = 100
+    game = Game()
+
+    for _ in range(num_games):
+        game.play_round()
+```
+
+The `game` object now has all the attributes and methods defined in the `Game` class.
+:::
+
+### Step 6: Print the scores
+Print the scores for each player after the game ends, also in the `main` function.
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### Print scores
+```python
+
+    print(f"After {num_games} games:")
+    print(f"Player 1 score: {game.scores[0]}")
+    print(f"Player 2 score: {game.scores[1]}")
+```
+:::
+
+### Step 7: Create the main block
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### Main block
+```python
+if __name__ == "__main__":
+    main()
+```
+:::
+
+### Putting it all together
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### All the code
+```python
+import random
+
+class Game:
+    def __init__(self):
+        self.deck = [0, 1, 2]
+        self.cards = [None, None]  # Cards for player 0 and 1
+        self.scores = [0, 0]  # Scores for player 0 and 1
+
+    def deal_cards(self):
+        self.cards = random.sample(self.deck, 2)
+
+    def play_round(self):
+        self.deal_cards()
+        if self.cards[0] > self.cards[1]:
+            self.scores[0] += 1
+            self.scores[1] -= 1
+        elif self.cards[0] < self.cards[1]:
+            self.scores[0] -= 1
+            self.scores[1] += 1
+
+def main():
+    num_games = 100
+    game = Game()
+
+    for _ in range(num_games):
+        game.play_round()
+
+    print(f"After {num_games} games:")
+    print(f"Player 1 score: {game.scores[0]}")
+    print(f"Player 2 score: {game.scores[1]}")
+
+if __name__ == "__main__":
+    main()
+```
+:::
+
+### Run the code
+```python
+python3 c2c.py
+```
+
+The output should look something like: 
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### Sample code output from 100 games
+```bash
+After 100 games:
+Player 1 score: -12
+Player 2 score: 12
+```
+:::

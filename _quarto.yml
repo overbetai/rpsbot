@@ -27,8 +27,10 @@ website:
     style: "docked"
     background: light
     contents:
-        - text: "Home (Intro)"
+        - text: "Home"
           href: "index.qmd"
+        - text: "Setup and Face-up Poker"
+          href: "setup.qmd"
         - text: "#1: Game Theory"
           href: "1_gametheory.qmd"
         - text: "#2: Kuhn Poker"
