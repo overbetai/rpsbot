@@ -28,11 +28,11 @@ We'll have more advanced courses available soon.
 Let's split this into two questions. 
 
 ### Why play poker?
-Games of incomplete information like poker are most similar to real-life. Incomplete information means that there is some hidden information -- in Texas Hold'em this is the opponent cards and the yet to be revealed board cards. 
+Games of incomplete information like poker are most similar to real-life settings. Incomplete information means that there is some hidden information -- in Texas Hold'em this is the opponent cards and the yet to be revealed board cards. 
 
 This means we need to infer our opponents' hands and understand the probabilities of the cards that we can't see. 
 
-Poker is useful from a math perspective -- probability, expected value, risk, and bankroll management are all important. 
+Poker is useful from a math perspective -- probability, expected value, risk, and bankroll management are all important skills. 
 
 It's also useful from a psychological perspective -- emotional control, reading opponents, and adapting to other players are all valuable. 
 
@@ -45,7 +45,7 @@ Here we mainly focus on a simplified poker game that can be solved in under a mi
 
 We can use the bot solutions to gain insights from the underlying game itself. For example, you'll see that bots automatically learn to bluff, showing that this is a theoretically correct play and not a "loss leader" just to get more action later. 
 
-Beyond building a basic bot, there is a rich area for further research, including opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent. 
+Beyond building a basic bot, there is a rich area for further research, including agent evaluation, opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent. 
 
 ## AI agents in 2024
 LLM-based AI agents are very popular in 2024. The poker bot we’re building here is different and uses the classic AI method of reinforcement learning, where the goal is to maximize long-term reward given feedback from the environment (i.e. maximizing winnings in a poker game). 
