@@ -2,7 +2,7 @@
 title: "C2C: About"
 ---
 ## About Us
-We ran an AI Poker Camp course in summer 2024 in San Francisco and developed Cards to Code as a foundational course on building a functional poker bot. 
+We developed Cards to Code as a foundational course on building a functional poker bot after running an AI Poker Camp course in San Francisco in summer 2024. 
 
 Check out [Overbet.ai](https://overbet.ai) (under development) and [Poker Camp](https://poker.camp). 
 
