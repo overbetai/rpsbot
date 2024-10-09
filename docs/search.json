@@ -26,7 +26,7 @@
     "href": "index.html#why-poker",
     "title": "Cards to Code",
     "section": "Why poker?",
-    "text": "Why poker?",
+    "text": "Why poker?\nLet’s split this into two questions.\n\nWhy play poker?\nGames of incomplete information like poker are most similar to real-life. Incomplete information means that there is some hidden information – in Texas Hold’em this is the opponent cards and the yet to be revealed board cards.\nThis means we need to infer our opponents’ hands and understand the probabilities of the cards that we can’t see.\nPoker is useful from a math perspective – probability, expected value, risk, and bankroll management are all important.\nIt’s also useful from a psychological perspective – emotional control, reading opponents, and adapting to other players are all valuable.\nWe learn to make decisions and focus on the quality of the decision, rather than the results.\n\n\nWhy build a poker bot?\nPoker has clear rules and structure, so we can apply reinforcement learning where the rewards are the profits in the game. Reinforcement learning, game theory, and Monte Carlo methods are applicable across many domains.\nHere we mainly focus on a simplified poker game that can be solved in under a minute, but the same principles apply for scaled up versions that are much larger and more complex. The richness of the game is an ideal testbed for decision making under uncertainty, probabilistic reasoning, and taking actions that can have immediate and longer horizon consequences.\nWe can use the bot solutions to gain insights from the underlying game itself. For example, you’ll see that bots automatically learn to bluff, showing that this is a theoretically correct play and not a “loss leader” just to get more action later.\nBeyond building a basic bot, there is a rich area for further research, including opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent.",
     "crumbs": [
       "About",
       "Home (Intro)"
@@ -37,7 +37,7 @@
     "href": "index.html#ai-agents-in-2024",
     "title": "Cards to Code",
     "section": "AI agents in 2024",
-    "text": "AI agents in 2024",
+    "text": "AI agents in 2024\nLLM-based AI agents are very popular in 2024. The poker bot we’re building here is different and uses the classic AI method of reinforcement learning, where the goal is to maximize long-term reward given feedback from the environment (i.e. maximizing winnings in a poker game).\nThe poker bot learns how to make optimal decisions given a state of the game by repeatedly playing the game against itself and optimizing the strategy over time.\nLLM agents generally use large amounts of text data to understand and generate human-like language based on patterns in the data, which could include strategy in a game like poker.\nSo is RL still relevant? Yes! OpenAI recently released their o1 chain of thought model:\n\nOur large-scale reinforcement learning algorithm teaches the model how to think productively using its chain of thought in a highly data-efficient training process.\n\nIn chain of thought, each step in the reasoning process can be seen as a state with possible actions. RLHF (Reinforcement Learning from Human Feedback) is also a popular technique for LLM agents where a human acts as the reward signal to shape a model’s outputs.\nHybrid approaches seem promising and may be a future direction for poker agents as well.",
     "crumbs": [
       "About",
       "Home (Intro)"

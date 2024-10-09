@@ -41,7 +41,7 @@ website:
           href: "5_cfr.qmd"
         - text: "#6: Monte Carlo CFR"
           href: "6_mccfr.qmd"
-        - text: "#7: Kuhn CFR Results"
+        - text: "#7: Evals and Results"
           href: "7_kuhncfr.qmd"
         - text: "#8: 100-card Kuhn"
           href: "8_100cardkuhn.qmd"
