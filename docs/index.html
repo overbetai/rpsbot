@@ -298,8 +298,11 @@ window.Quarto = {
   <ul>
   <li><a href="#set-up-your-environment" id="toc-set-up-your-environment" class="nav-link active" data-scroll-target="#set-up-your-environment">Set up your environment</a>
   <ul class="collapse">
-  <li><a href="#step-1-set-up-virtual-environment" id="toc-step-1-set-up-virtual-environment" class="nav-link" data-scroll-target="#step-1-set-up-virtual-environment">Step 1: Set up virtual environment</a></li>
-  <li><a href="#step-2-import-and-install-packages" id="toc-step-2-import-and-install-packages" class="nav-link" data-scroll-target="#step-2-import-and-install-packages">Step 2: Import and install packages</a></li>
+  <li><a href="#step-1-make-directory" id="toc-step-1-make-directory" class="nav-link" data-scroll-target="#step-1-make-directory">Step 1: Make directory</a></li>
+  <li><a href="#step-2-virtual-environment" id="toc-step-2-virtual-environment" class="nav-link" data-scroll-target="#step-2-virtual-environment">Step 2: Virtual environment</a></li>
+  <li><a href="#step-3-create-python-file" id="toc-step-3-create-python-file" class="nav-link" data-scroll-target="#step-3-create-python-file">Step 3: Create Python file</a></li>
+  <li><a href="#step-4-deactivating-and-reactivating-virtual-environment" id="toc-step-4-deactivating-and-reactivating-virtual-environment" class="nav-link" data-scroll-target="#step-4-deactivating-and-reactivating-virtual-environment">Step 4: Deactivating and reactivating virtual environment</a></li>
+  <li><a href="#step-5-install-numpy" id="toc-step-5-install-numpy" class="nav-link" data-scroll-target="#step-5-install-numpy">Step 5: Install <code>numpy</code></a></li>
   </ul></li>
   <li><a href="#face-up-1-card-poker" id="toc-face-up-1-card-poker" class="nav-link" data-scroll-target="#face-up-1-card-poker">Face up 1-card poker</a>
   <ul class="collapse">
@@ -360,33 +363,33 @@ window.Quarto = {
 <section id="set-up-your-environment" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-your-environment">Set up your environment</h2>
 <p>You can use a code editor of your choice. We like <a href="https://code.visualstudio.com/">VSCode</a>. You can also work with <a href="https://colab.research.google.com/">Google Colab</a> in the browser. The instructions below are for coding locally on MacOS or Unix.</p>
-<section id="step-1-set-up-virtual-environment" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-set-up-virtual-environment">Step 1: Set up virtual environment</h3>
-<ol type="1">
-<li>Make a local directory for the project <code>cardstocode</code>. From the command line:</li>
-</ol>
+<section id="step-1-make-directory" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-make-directory">Step 1: Make directory</h3>
+<p>Make a local directory for the project <code>cardstocode</code>. From the command line:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> cardstocode</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cardstocode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="1">
-<li>Create and activate a virtual environment:</li>
-</ol>
+</section>
+<section id="step-2-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-virtual-environment">Step 2: Virtual environment</h3>
+<p>Create and activate a virtual environment:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv venv</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should now see <code>(venv)</code> at the beginning of your command prompt, indicating that the virtual environment is active.</p>
-<ol start="3" type="1">
-<li>Create a Python file <code>c2c.py</code>. From the command line:</li>
-</ol>
+</section>
+<section id="step-3-create-python-file" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-create-python-file">Step 3: Create Python file</h3>
+<p>Create a Python file <code>c2c.py</code>. From the command line:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> c2c.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="1">
-<li>Deactivating and reactivating the virtual environment:</li>
-</ol>
+</section>
+<section id="step-4-deactivating-and-reactivating-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-deactivating-and-reactivating-virtual-environment">Step 4: Deactivating and reactivating virtual environment</h3>
 <p>To deactivate:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To reactivate:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-2-import-and-install-packages" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-import-and-install-packages">Step 2: Import and install packages</h3>
+<section id="step-5-install-numpy" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-install-numpy">Step 5: Install <code>numpy</code></h3>
 <p>Install <code>numpy</code>, which we will use later.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -396,7 +399,7 @@ window.Quarto = {
 <p>We’ll start by setting up a poker game with a 3-card deck where the cards are given values {0, 1, 2}. Each player is dealt a card “face up” and the higher card wins. This is like the game <a href="https://en.wikipedia.org/wiki/War_(card_game)">War</a>, but even more simplified because there are no ties since the entire deck is only 3 cards.</p>
 <section id="step-1-imports" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-imports">Step 1: Imports</h3>
-<p>Let’s start by importing <code>numpy</code> and <code>random</code>.</p>
+<p>Let’s start by importing <code>numpy</code> (will be used later) and <code>random</code>.</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">

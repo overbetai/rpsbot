@@ -24,16 +24,15 @@ We end on opponent modeling and challenge problems that go beyond game theory op
 ## Set up your environment
 You can use a code editor of your choice. We like [VSCode](https://code.visualstudio.com/). You can also work with [Google Colab](https://colab.research.google.com/) in the browser. The instructions below are for coding locally on MacOS or Unix. 
 
-### Step 1: Set up virtual environment
-
-1. Make a local directory for the project `cardstocode`. From the command line: 
+### Step 1: Make directory
+Make a local directory for the project `cardstocode`. From the command line: 
 
 ```bash
 mkdir cardstocode
 cd cardstocode
 ```
-
-2. Create and activate a virtual environment: 
+### Step 2: Virtual environment
+Create and activate a virtual environment: 
 
 ```bash
 python3 -m venv venv
@@ -42,14 +41,13 @@ source venv/bin/activate
 
 You should now see `(venv)` at the beginning of your command prompt, indicating that the virtual environment is active.
 
-3. Create a Python file `c2c.py`. From the command line: 
+### Step 3: Create Python file
+Create a Python file `c2c.py`. From the command line: 
 
 ```bash
 touch c2c.py
 ```
-
-4. Deactivating and reactivating the virtual environment: 
-
+### Step 4: Deactivating and reactivating virtual environment
 To deactivate: 
 
 ```bash
@@ -62,7 +60,7 @@ To reactivate:
 source venv/bin/activate
 ```
 
-### Step 2: Import and install packages
+### Step 5: Install `numpy`
 Install `numpy`, which we will use later. 
 
 ```bash
@@ -73,7 +71,7 @@ pip install numpy
 We'll start by setting up a poker game with a 3-card deck where the cards are given values {0, 1, 2}. Each player is dealt a card "face up" and the higher card wins. This is like the game [War](https://en.wikipedia.org/wiki/War_(card_game)), but even more simplified because there are no ties since the entire deck is only 3 cards. 
 
 ### Step 1: Imports
-Let's start by importing `numpy` and `random`. 
+Let's start by importing `numpy` (will be used later) and `random`. 
 
 :::{.callout-tip collapse="true" appearance="minimal"}
 ### Imports
