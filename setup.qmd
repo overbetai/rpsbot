@@ -112,7 +112,7 @@ Accumulate the scores for each player using `self.scores` in a `compare_cards` f
 Create a `play_round` function in the `Game` class that deals the cards using `self.deal_cards`.
 
 :::{.callout-tip collapse="true" appearance="minimal"}
-### `play_round` function
+### Update `play_round` function
 ```python
     def play_round(self):
         self.deal_cards()
