@@ -253,7 +253,7 @@ $$
 \mathbb{E}(\text{Equilibrium vs. 622}) &= 0.6(\text{Result vs. Rock}) \\ 
 + 0.2(\text{Result vs. Paper}) \\  
 + 0.2(\text{Result vs. Scissors}) \\
-&= 0.6(0) + 0.2(0) + 0.2(0)
+&= 0.6(0) + 0.2(0) + 0.2(0) \\
 &= 0
 \end{split}
 \end{equation}
