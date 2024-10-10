@@ -12,13 +12,13 @@ We'll also have more advanced courses available soon.
 Let's split this into two questions. 
 
 ### Why play poker?
-Games of incomplete information like poker are most similar to real-life settings. Incomplete information means that there is some hidden information -- in Texas Hold'em this is the opponent cards and the yet to be revealed board cards. 
+Games of incomplete information like poker are most similar to real-life settings. Incomplete information means that there is some hidden information -- in poker this is the private opponent cards and, in games like Texas Hold'em, the yet to be revealed board cards. 
 
 This means we need to infer our opponents' hands and understand the probabilities of the cards that we can't see. 
 
-Poker is useful from a math perspective -- probability, expected value, risk, and bankroll management are all important skills. 
+Poker is interesting from a math perspective -- probability, expected value, risk, and bankroll management are all important skills. 
 
-It's also useful from a psychological perspective -- emotional control, reading opponents, and adapting to other players are all valuable. 
+Also from a psychological perspective -- emotional control, reading opponents, and adapting to other players are all valuable. 
 
 We learn to make decisions and focus on the quality of the decision, rather than the results. 
 
@@ -49,7 +49,7 @@ In chain of thought, each step in the reasoning process can be seen as a state w
 Hybrid approaches seem promising and may be a future direction for poker agents as well. 
 
 ## Inspiration
-Some inspiration: 
+Some inspiration for this course: 
 
 - [Nand to Tetris](https://www.nand2tetris.org/): Building a Modern Computer From First Principles 
 

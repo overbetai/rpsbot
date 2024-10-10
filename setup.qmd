@@ -92,14 +92,13 @@ Let's now add a `deal_cards` function into the `Game` class that samples two car
 ```
 :::
 
-### Step 4: Play round
-Create a `play_round` function in the `Game` class that first deals the cards using `self.deal_cards` and then accumulates the scores for each player using `self.scores`. This is the second class method. 
+### Step 4: Compare cards
+Accumulate the scores for each player using `self.scores` in a `compare_cards` function. This is the second class method. 
 
 :::{.callout-tip collapse="true" appearance="minimal"}
 ### `play_round` function
 ```python
-    def play_round(self):
-        self.deal_cards()
+    def compare_cards(self):
         if self.cards[0] > self.cards[1]:
             self.scores[0] += 1
             self.scores[1] -= 1
@@ -109,7 +108,19 @@ Create a `play_round` function in the `Game` class that first deals the cards us
 ```
 :::
 
-### Step 5: Run the game
+### Step 5: Play round
+Create a `play_round` function in the `Game` class that deals the cards using `self.deal_cards`.
+
+:::{.callout-tip collapse="true" appearance="minimal"}
+### `play_round` function
+```python
+    def play_round(self):
+        self.deal_cards()
+        self.compare_cards()
+```
+:::
+
+### Step 6: Run the game
 Create the `main` function that defines `num_games` as 100, creates an object of the `Game` class in `game`, and runs the game `num_games` times. 
 
 :::{.callout-tip collapse="true" appearance="minimal"}
@@ -126,7 +137,7 @@ def main():
 The `game` object now has all the attributes and methods defined in the `Game` class.
 :::
 
-### Step 6: Print the scores
+### Step 7: Print the scores
 Print the scores for each player after the game ends, also in the `main` function.
 
 :::{.callout-tip collapse="true" appearance="minimal"}
@@ -139,7 +150,7 @@ Print the scores for each player after the game ends, also in the `main` functio
 ```
 :::
 
-### Step 7: Create the main block
+### Step 8: Create the main block
 
 :::{.callout-tip collapse="true" appearance="minimal"}
 ### Main block
@@ -165,14 +176,17 @@ class Game:
     def deal_cards(self):
         self.cards = random.sample(self.deck, 2)
 
-    def play_round(self):
-        self.deal_cards()
+    def compare_cards(self): 
         if self.cards[0] > self.cards[1]:
             self.scores[0] += 1
             self.scores[1] -= 1
         elif self.cards[0] < self.cards[1]:
             self.scores[0] -= 1
             self.scores[1] += 1
+
+    def play_round(self):
+        self.deal_cards()
+        self.compare_cards()
 
 def main():
     num_games = 100
