@@ -592,9 +592,9 @@ We solve for the P1 strategy that makes P2 indifferent.
 $$
 \begin{equation}
 \begin{split}
-0 &= 2(1-p) - p //
-0 &= 2 - 2p - p //
-3p &= 2 //
+0 &= 2(1-p) - p \\
+0 &= 2 - 2p - p \\
+3p &= 2 \\
 p &= 2/3
 \end{split}
 \end{equation}
