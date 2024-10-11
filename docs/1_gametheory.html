@@ -322,9 +322,6 @@ window.Quarto = {
   <li><a href="#probabilistic-interpretations" id="toc-probabilistic-interpretations" class="nav-link" data-scroll-target="#probabilistic-interpretations">Probabilistic interpretations</a></li>
   <li><a href="#finding-equilibrium" id="toc-finding-equilibrium" class="nav-link" data-scroll-target="#finding-equilibrium">Finding equilibrium</a></li>
   <li><a href="#switching-out-of-equilibrium" id="toc-switching-out-of-equilibrium" class="nav-link" data-scroll-target="#switching-out-of-equilibrium">Switching out of equilibrium</a></li>
-  <li><a href="#whats-up-with-indifference" id="toc-whats-up-with-indifference" class="nav-link" data-scroll-target="#whats-up-with-indifference">What’s up with indifference?</a></li>
-  <li><a href="#deviating-from-nash" id="toc-deviating-from-nash" class="nav-link" data-scroll-target="#deviating-from-nash">Deviating from Nash</a></li>
-  <li><a href="#indifference" id="toc-indifference" class="nav-link" data-scroll-target="#indifference">Indifference</a></li>
   </ul></li>
   <li><a href="#clairvoyance-poker" id="toc-clairvoyance-poker" class="nav-link" data-scroll-target="#clairvoyance-poker">Clairvoyance Poker</a>
   <ul class="collapse">
@@ -368,7 +365,7 @@ window.Quarto = {
 <p>The most simple type of game is the one that we built in the <a href="./setup.html">setup</a> section. Cards get flipped over and you either win or lose. Not much skill…and not much fun!</p>
 <p>Other games like Bingo, Dreidel, and of course Snakes and Ladders can deceptively seem like you have strategic control of the game, but really this is just the “illusion of agency”, since you’re only, for example, rolling dice to randomize your next move. A disturbing fact:</p>
 <p><img src="assets/eliezer_snakes.jpg" class="img-fluid"></p>
-<p>There are three main classes of games that do have significant strategic agency: <strong>perfect information</strong>, <strong>perfect information with randomness</strong>, and <strong>imperfect (hidden) information</strong>.</p>
+<p>There are three main classes of games that do have significant strategic agency: <strong>perfect information</strong>, <strong>perfect information with randomness</strong>, and <strong>imperfect (hidden) information</strong>. Perfect information means all game information is visible, while imperfect information meanas there is hidden/private information.</p>
 <p>We can also think about games along the axis of <strong>fixed or random opponents</strong> and <strong>adversarial opponents</strong>.</p>
 <p>(There are also other game classes like sequential vs.&nbsp;simultaneous action games.)</p>
 <table class="caption-top table">
@@ -392,7 +389,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td><strong>Perfect Info</strong></td>
-<td>Puzzles, Rubix cube</td>
+<td>Puzzles, Rubik’s Cube</td>
 <td>Tictactoe, Checkers, Chess, Arimaa, Go, Connect Four</td>
 </tr>
 <tr class="odd">
@@ -477,11 +474,11 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>The payoffs for Player 1 are on the left and for Player 2 on the right in each payoff outcome of the game. For example, the bottom left payoff is when Player 1 plays Scissors and Player 2 plays Rock, resulting in -1 for P1 and +1 for P2.</p>
+<p>The <strong>payoffs</strong> for Player 1 are on the left and for Player 2 on the right in each payoff outcome of the game. For example, the bottom left payoff is when Player 1 plays Scissors and Player 2 plays Rock, resulting in -1 for P1 and +1 for P2.</p>
+<p>A <strong>strategy</strong> says which actions you would take for every state of the game.</p>
 </section>
 <section id="expected-value" class="level3">
 <h3 class="anchored" data-anchor-id="expected-value">Expected value</h3>
-<p>A strategy says which actions you would take for every state of the game.</p>
 <p><strong>Expected value</strong> in a game represents the average outcome of a strategy if it were repeated many times. It’s calculated by multiplying each possible outcome by its probability of occurrence and then summing these products.</p>
 <p>Suppose that Player 1 plays the strategy:</p>
 <p><span class="math display">
@@ -612,7 +609,7 @@ s = 0.6
 </table>
 <p>Note that the total probabilities sum to 1 and each row and column sums to the probability of playing that row or column.</p>
 <p>We can work out the expected value of the game to Player 1 (summing all payoffs multiplied by probabilities from top left to bottom right):</p>
-<p><span class="math inline">\mathbb{E} = 0(0.05) + -1(0.15) + 1(0.3) + 1(0.025) + 0(0.075) + -1(0.15) + -1(0.025) + 1(0.075) + 0(0.15) = 0.075</span></p>
+<p><span class="math inline">\mathbb{E}[P_1] = 0(0.05) + -1(0.15) + 1(0.3) + 1(0.025) + 0(0.075) + -1(0.15) + -1(0.025) + 1(0.075) + 0(0.15) = 0.075</span></p>
 <p>Therefore P1 is <em>expected</em> to gain 0.075 per game given these strategies. Since payoffs are reversed for P2, P2’s expectation is -0.075 per game.</p>
 </section>
 <section id="zero-sum" class="level3">
@@ -623,7 +620,7 @@ s = 0.6
 <h3 class="anchored" data-anchor-id="nash-equilibrium">Nash equilibrium</h3>
 <p>A Nash equilibrium means that no player can improve their expected payoff by unilaterally changing their strategy. That is, changing one’s strategy can only result in the same or worse payoff (assuming the other player does not change).</p>
 <p>In RPS, the Nash equilibrium strategy is to play each action <span class="math inline">r = p = s = 1/3</span> of the time. I.e., to play totally randomly.</p>
-<p>This is called a mixed strategy, as opposed to a pure strategy, which would select only one action. Mixed strategies are useful in games of imperfect information because it’s valuable to not be predictable and to conceal your private information. In perfect information games, the theoretically optimal play would not contain any mixing (i.e., if you could calculate all possible moves to the end of the game).</p>
+<p>Played a combination of strategies is called a mixed strategy, as opposed to a pure strategy, which would select only one action. Mixed strategies are useful in games of imperfect information because it’s valuable to not be predictable and to conceal your private information. In perfect information games, the theoretically optimal play would not contain any mixing (i.e., if you could calculate all possible moves to the end of the game).</p>
 <p>The equilibrium RPS strategy is worked out below:</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -746,7 +743,7 @@ s + r = 2p \\
 <section id="exploiting-vs.-nash" class="level3">
 <h3 class="anchored" data-anchor-id="exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</h3>
 <p>The equilibrium strategy vs.&nbsp;a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing the worst possible strategy, yet equilibrium is still breaking even!</p>
-<p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>.</p>
+<p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
 <p><span class="math display">
 \begin{equation}
 \begin{split}
@@ -757,7 +754,7 @@ s + r = 2p \\
 \end{equation}
 </span></p>
 <p>We’d win 1 each game playing Paper vs.&nbsp;Rock.</p>
-<p>How about against the opponent playing 60% Rock, 20% Paper, 20% Scissors? Here we can see that because they are overplaying Rock, our best strategy is again to always play Paper.</p>
+<p>How about against the opponent playing 60% Rock, 20% Paper, 20% Scissors? Here we can see that because they are overplaying Rock, our best strategy is again to always play Paper. We write the payoffs for playing Paper and the probabilities according to the <em>622</em> strategy.</p>
 <p><span class="math display">
 \begin{equation}
 \begin{split}
@@ -768,7 +765,7 @@ s + r = 2p \\
 \end{split}
 \end{equation}
 </span></p>
-<p>Playing Paper vs.&nbsp;622 results in an expected win of 0.4 per game.</p>
+<p>Playing Paper vs.&nbsp;<em>622</em> results in an expected win of 0.4 per game.</p>
 </section>
 </section>
 <section id="soccer-kicker-vs.-goalie" class="level2">
@@ -955,8 +952,8 @@ Solution
 <thead>
 <tr class="header">
 <th>Kicker/Goalie</th>
-<th>Lean Left (p)</th>
-<th>Lean Right (1-p)</th>
+<th>Lean Left (<span class="math inline">p</span>)</th>
+<th>Lean Right (<span class="math inline">1-p</span>)</th>
 </tr>
 </thead>
 <tbody>
@@ -974,16 +971,17 @@ Solution
 </table>
 <p><span class="math inline">\mathbb{E}[K(L)] = p(0) + (1-p)(2) = 2 - 2p</span></p>
 <p><span class="math inline">\mathbb{E}[K(R)] = p(1) + (1-p)(0) = p</span></p>
-<p>The Kicker is going to play the best response to the Goalie’s strategy. The Goalie wants to make the Kicker <strong>indifferent</strong> to Kick Left and Kick Right because if the Kicker was not going to be indifferent, then he would prefer one of the actions, meaning that action would be superior to the other. Therefore the Kicker will play a mixed strategy in response that will result in a Nash equilibrium where neither player benefits from unilaterally changing strategies. (Note that indifferent does not mean 50% each, but means the expected value is the same for each.)</p>
+<p>The Kicker is going to play the best response to the Goalie’s strategy. The Goalie wants to make the Kicker <strong>indifferent</strong> to Kick Left and Kick Right because if the Kicker was not going to be indifferent, then he would prefer one of the actions, meaning that action would be superior to the other. When you make your opponent indifferent, then you don’t give them any best play.</p>
+<p>Therefore the Kicker will play a mixed strategy in response that will result in a Nash equilibrium where neither player benefits from unilaterally changing strategies. (Note that indifferent does not mean 50% each, but means the expected value is the same for each.)</p>
 <p><img src="assets/kickergoalieplot.png" class="img-fluid"></p>
 <p>By setting the values equal, we get <span class="math inline">2 - 2p = p \Rightarrow p = \frac{2}{3}</span> as shown in the plot.</p>
 <p>This means that <span class="math inline">1-p = 1 - \frac{2}{3} = \frac{1}{3}</span>.</p>
-<p>Therefore the Goalie should play Lean Left <span class="math inline">\frac{2}{3}</span> and Lean Right <span class="math inline">\frac{1}{3}</span>.</p>
+<p>Therefore the Goalie should play Lean Left (<span class="math inline">p</span>) <span class="math inline">\frac{2}{3}</span> and Lean Right (<span class="math inline">1-p</span>) <span class="math inline">\frac{1}{3}</span>.</p>
 <p>The value for the Kicker is <span class="math inline">\frac{2}{3}</span>, or <span class="math inline">(0.67)</span>, for both actions, regardless of the Kicker’s mixing strategy.</p>
 <p>Note that the Kicker is worse off now (<span class="math inline">0.67</span> now compared to <span class="math inline">0.75</span>) than when both players played 50% each action. Why?</p>
-<p>If the Kicker plays Left with probability <span class="math inline">q</span> and Right with probability <span class="math inline">1-q</span>, then the Goalie’s values are:</p>
-<p><span class="math inline">\mathbb{E}(\text{Lean Left}) = 0q - 1(1-q) = -1 + q</span></p>
-<p><span class="math inline">\mathbb{E}(\text{Lean Right}) = -2q + 0 = -2q</span></p>
+<p>If the Kicker plays Kick Left with probability <span class="math inline">q</span> and Kick Right with probability <span class="math inline">1-q</span>, then the Goalie’s values are:</p>
+<p><span class="math inline">\mathbb{E}[G(L)] = 0(q) - 1(1-q) = -1 + q</span></p>
+<p><span class="math inline">\mathbb{E}[G(R)] = -2q + 0(1-q) = -2q</span></p>
 <p>Setting equal,</p>
 <p><span class="math display">
 \begin{equation}
@@ -994,7 +992,7 @@ Solution
 \end{split}
 \end{equation}
 </span></p>
-<p>Therefore the Kicker should play Left <span class="math inline">\frac{1}{3}</span> and Right <span class="math inline">\frac{2}{3}</span>, giving a value of <span class="math inline">-\frac{2}{3}</span> to the Goalie.</p>
+<p>Therefore the Kicker should play Kick Left (<span class="math inline">q</span>) <span class="math inline">\frac{1}{3}</span> and Kick Right (<span class="math inline">1-q</span>) <span class="math inline">\frac{2}{3}</span>, giving a value of <span class="math inline">-\frac{2}{3}</span> to the Goalie.</p>
 <p>We can see this from the game table:</p>
 <table class="caption-top table">
 <colgroup>
@@ -1012,13 +1010,13 @@ Solution
 <tbody>
 <tr class="odd">
 <td><strong>Kick Left (<span class="math inline">\frac{1}{3}</span>)</strong></td>
-<td>Val: (0, 0) <br>Pr: (<span class="math inline">\frac{2}{9}</span>)</td>
-<td>Val: (2, -2) <br>Pr: (<span class="math inline">\frac{1}{9}</span>)</td>
+<td>Val: (0, 0) <br>Pr: <span class="math inline">\frac{2}{9}</span></td>
+<td>Val: (2, -2) <br>Pr: <span class="math inline">\frac{1}{9}</span></td>
 </tr>
 <tr class="even">
 <td><strong>Kick Right (<span class="math inline">\frac{2}{3}</span>)</strong></td>
-<td>Val: (1, -1) <br>Pr: (<span class="math inline">\frac{4}{9}</span>)</td>
-<td>Val: (0, 0) <br>Pr: (<span class="math inline">\frac{2}{9}</span>)</td>
+<td>Val: (1, -1) <br>Pr: <span class="math inline">\frac{4}{9}</span></td>
+<td>Val: (0, 0) <br>Pr: <span class="math inline">\frac{2}{9}</span></td>
 </tr>
 </tbody>
 </table>
@@ -1027,7 +1025,8 @@ Solution
 </section>
 <section id="switching-out-of-equilibrium" class="level3">
 <h3 class="anchored" data-anchor-id="switching-out-of-equilibrium">Switching out of equilibrium</h3>
-<p>In an equilibrium, no player should be able to unilaterally improve by changing their strategy. What if the Kicker switches to always Kick Left?</p>
+<p>In equilibrium, both players are playing a <em>best response</em> against each other, giving no incentive to deviate.</p>
+<p>Therefore no player can unilaterally improve by changing their strategy. What if the Kicker switches to always Kick Left?</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 38%">
@@ -1044,33 +1043,21 @@ Solution
 <tbody>
 <tr class="odd">
 <td><strong>Kick Left (<span class="math inline">1</span>)</strong></td>
-<td>Val: (0, 0) <br>Pr: (<span class="math inline">\frac{2}{3}</span>)</td>
-<td>Val: (2, -2) <br>Pr: (<span class="math inline">\frac{1}{3}</span>)</td>
+<td>Val: (0, 0) <br>Pr: <span class="math inline">\frac{2}{3}</span></td>
+<td>Val: (2, -2) <br>Pr: <span class="math inline">\frac{1}{3}</span></td>
 </tr>
 <tr class="even">
 <td><strong>Kick Right (<span class="math inline">0</span>)</strong></td>
-<td>Val: (1, -1) <br>Pr: (<span class="math inline">0</span>)</td>
-<td>Val: (0, 0) <br>Pr: (<span class="math inline">0</span>)</td>
+<td>Val: (1, -1) <br>Pr: <span class="math inline">0</span></td>
+<td>Val: (0, 0) <br>Pr: <span class="math inline">0</span></td>
 </tr>
 </tbody>
 </table>
 <p>Now the Kicker’s payoff is still <span class="math inline">\frac{1}{3}(2) = 0.67</span>.</p>
-<p>When a player makes their opponent indifferent, this means that any action the opponent takes (within the set of equilibrium actions) will result in the same payoff!</p>
+<p>When a player makes their opponent indifferent, this means that any action the opponent takes (within the set of equilibrium actions) will result in the same payoff! But now they are no longer in equilibrium.</p>
 <p>So if you know your opponent is playing the equilibrium strategy, then you can actually do whatever you want with no penalty with the mixing actions. Sort of.</p>
 <p>The risk is that the opponent can now deviate from equilibrium and take advantage of your new strategy. For example, if the Goalie caught on and moved to always Lean Left, then the value is reduced to <span class="math inline">0</span> for both players. Though if the Kicker then caught on and moved to always Kick Right, then the value goes up to <span class="math inline">1</span> for the Kicker and <span class="math inline">-1</span> for the Goalie. Perhaps after a few cycles like this, the players would go back to equilibrium.</p>
 <p>To summarize, you can only be penalized for not playing the equilibrium mixing strategy if your opponent plays a non-equilibrium strategy that exploits your strategy. You can only profit more than the equilibrium strategy if your opponent either plays off equilibrium and you do as well or if you play equilibrium and they play some action that is not part of the equilibrium strategy (also known as the support, or the set of pure strategies that are played with non-zero probability under the mixed strategy, which is not possible in this game since both possible actions are played at equilibrium).</p>
-</section>
-<section id="whats-up-with-indifference" class="level3">
-<h3 class="anchored" data-anchor-id="whats-up-with-indifference">What’s up with indifference?</h3>
-<p>Why do players make their opponent indifferent? When you make your opponent indifferent, then you don’t give them any best play.</p>
-</section>
-<section id="deviating-from-nash" class="level3">
-<h3 class="anchored" data-anchor-id="deviating-from-nash">Deviating from Nash</h3>
-<p>Best response to each other in equilibrium, no incentive to deviate. Deviate means no longer in equilibrium, though EV is same. only guarantee worst-case payoff of 0 if you randomize</p>
-</section>
-<section id="indifference" class="level3">
-<h3 class="anchored" data-anchor-id="indifference">Indifference</h3>
-<p>why is fundamental goal to make other player indifferent? if deviate, indifference guarantees can’t improve by changing unliterally</p>
 </section>
 </section>
 <section id="clairvoyance-poker" class="level2">
