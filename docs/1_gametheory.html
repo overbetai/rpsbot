@@ -1053,7 +1053,7 @@ Solution
 </tr>
 </tbody>
 </table>
-<p>Now the Kicker’s payoff is still <span class="math inline">\frac{1}{3}(2) = 0.67</span>.</p>
+<p>Now the Kicker’s payoff is still <span class="math inline">\frac{2}{3}(0) + \frac{1}{3}(2) = 0.67</span>.</p>
 <p>When a player makes their opponent indifferent, this means that any action the opponent takes (within the set of equilibrium actions) will result in the same payoff! But now they are no longer in equilibrium.</p>
 <p>So if you know your opponent is playing the equilibrium strategy, then you can actually do whatever you want with no penalty with the mixing actions. Sort of.</p>
 <p>The risk is that the opponent can now deviate from equilibrium and take advantage of your new strategy. For example, if the Goalie caught on and moved to always Lean Left, then the value is reduced to <span class="math inline">0</span> for both players. Though if the Kicker then caught on and moved to always Kick Right, then the value goes up to <span class="math inline">1</span> for the Kicker and <span class="math inline">-1</span> for the Goalie. Perhaps after a few cycles like this, the players would go back to equilibrium.</p>
@@ -1063,7 +1063,7 @@ Solution
 <section id="clairvoyance-poker" class="level2">
 <h2 class="anchored" data-anchor-id="clairvoyance-poker">Clairvoyance Poker</h2>
 <p>Back to poker. We previously built <strong>Face-up 3-card Poker</strong> where each player was dealt a card from the deck of {0, 1, 2} and the high card won.</p>
-<p>Now we’re going to make the game more interesting with the same deck. This game was first shown in The Mathematics of Poker (Bill Chen, Jared Ankenman) and then also in the excellent Play Optimal Poker 1 (Andrew Brokos).</p>
+<p>Now we’re going to make a small change to the game, while keeping the same deck.</p>
 <ul>
 <li><p>Player 1 will <em>always</em> be dealt card 1.</p></li>
 <li><p>Player 2 will be dealt randomly from {0, 2}.</p></li>
@@ -1106,6 +1106,7 @@ Update <code>deal_cards</code> function
 </section>
 <section id="betting-rules-and-sequences" class="level3">
 <h3 class="anchored" data-anchor-id="betting-rules-and-sequences">Betting Rules and Sequences</h3>
+<p>Let’s make this a real strategic poker game with betting. This game, Clairvoyance Poker, was first shown in The Mathematics of Poker (Bill Chen, Jared Ankenman) and then also in the excellent Play Optimal Poker (Andrew Brokos).</p>
 <ul>
 <li><p>Both players ante 1 chip, so the starting pot is 2</p></li>
 <li><p>Each player has 1 remaining chip to use for betting</p></li>
@@ -1191,8 +1192,8 @@ Update <code>deal_cards</code> function
 <ul>
 <li>P1[1, Starting]: Randomly Bet/Check
 <ul>
-<li><strong>P2[0, Starting]: Bet</strong></li>
-<li><strong>P2[0, Starting]: Check</strong></li>
+<li><strong>P1[1, Starting]: Bet</strong></li>
+<li><strong>P1[1, Starting]: Check</strong></li>
 </ul></li>
 <li><strong>P2[0, After Bet]: Fold</strong></li>
 <li><strong>P2[2, After Bet]: Call</strong></li>
@@ -1202,113 +1203,110 @@ Update <code>deal_cards</code> function
 <li><strong>P2[0, After Check]: Check</strong></li>
 </ul></li>
 <li><strong>P2[2, After Check]: Bet</strong></li>
-<li>P1[1, After Check and Bet]: Randomly Bet/Check
+<li>P1[1, After Check and Bet]: Randomly Call/Fold
 <ul>
-<li><strong>P2[0, After Check and Bet]: Bet</strong></li>
-<li><strong>P2[0, After Check and Bet]: Check</strong></li>
+<li><strong>P1[1, After Check and Bet]: Call</strong></li>
+<li><strong>P1[1, After Check and Bet]: Fold</strong></li>
 </ul></li>
 </ul>
-<p>—&gt; show wins/losses, frequency, total for each strategic decision P1 bet, P1 check/call, P1 check/fold P2 0 after bet call, P2 0 after bet fold, P2 0 after check bet, P2 0 after check check P2 2 after bet call, P2 2 after bet fold, P2 2 after check bet, P2 2 after check check</p>
+<p>For now, we’ll do this in a simple, but not-so-elegant way.</p>
+<p>—&gt; Logic for taking these actions</p>
+<p>—&gt; Logic for keeping track of frequency of each situation/action and results for each situation/action (and still output stuff from before)</p>
 </section>
 <section id="dominated-strategy" class="level3">
 <h3 class="anchored" data-anchor-id="dominated-strategy">Dominated Strategy</h3>
-<p>Note that P1 betting is strictly worse and why</p>
+<p>Note that P1 betting is strictly worse and why –&gt; show math</p>
+<p>–&gt; Update logic to always check</p>
+<ul>
+<li><strong>P1[1, Starting]: Check</strong></li>
+<li><strong>P2[0, After Bet]: Fold</strong></li>
+<li><strong>P2[2, After Bet]: Call</strong></li>
+<li>P2[0, After Check]: Randomly Bet/Check
+<ul>
+<li><strong>P2[0, After Check]: Bet</strong></li>
+<li><strong>P2[0, After Check]: Check</strong></li>
+</ul></li>
+<li><strong>P2[2, After Check]: Bet</strong></li>
+<li>P1[1, After Check and Bet]: Randomly Call/Fold
+<ul>
+<li><strong>P1[1, After Check and Bet]: Call</strong></li>
+<li><strong>P1[1, After Check and Bet]: Fold</strong></li>
+</ul></li>
+</ul>
 </section>
 <section id="your-strategies" class="level3">
 <h3 class="anchored" data-anchor-id="your-strategies">Your Strategies</h3>
 <p>—&gt; Try strat for P1 then for P2 See results</p>
+<ul>
+<li><strong>P1[1, Starting]:</strong> Check</li>
+<li><strong>P2[0, After Bet]:</strong> Fold</li>
+<li><strong>P2[2, After Bet]:</strong> Call</li>
+<li><strong>P2[0, After Check]:</strong> ??</li>
+<li><strong>P2[2, After Check]:</strong> Bet</li>
+<li><strong>P1[1, After Check and Bet]:</strong> ??</li>
+</ul>
 </section>
 <section id="indifference-in-poker" class="level3">
 <h3 class="anchored" data-anchor-id="indifference-in-poker">Indifference in Poker</h3>
-<p>Figuring out strategy for 0 facing check, actually thinking about strategy for 0 and 2. goal indifference</p>
-<p>EV folding 0, EV calling should also be 0</p>
-<p>shows EV = bluff<em>3 - value</em>1 (but this is for overall range 1/4 bluffs)</p>
-<p>bluff to value ratio bet/(bet+pot)</p>
-<p>Figuring out strategy for 1 after check/bet</p>
-<p>bluffing frequency goes up as bet size gets larger relative to pot</p>
-<p>Only mix when both same EV</p>
-<p>Making P1 indifferent between calling and folding with a K</p>
-<p>We can work out Player 2’s betting strategy by calculating the indifference. Let <span class="math inline">b</span> be the probability that P2 bets with a Q after P1 checks.</p>
-<p><span class="math display">\begin{equation}
+<p>There are two strategies for which we can find an equilibrium:</p>
+<ul>
+<li><strong>P2[0, After Check]:</strong> ??</li>
+<li><strong>P1[1, After Check and Bet]:</strong> ??</li>
+</ul>
+<p>Let’s start by looking at the EVs for P2’s action with card 0 facing a Check.</p>
+<p><span class="math inline">\mathbb{E}[P2](0,Check) = 0</span> <span class="math inline">\mathbb{E}[P2](0,Bet) = 2(\Pr(\text{P1 Fold})) + -1(\Pr(\text{P1 Call}))</span></p>
+<p>These should be equal in order for P2 to be indifferent. Let <span class="math inline">\Pr(\text{P1 Call}) = p</span> and <span class="math inline">\Pr(\text{P1 Fold}) = 1-p</span>.</p>
+<p>Note that we set the Check action to have an EV of 0 because we are counting any chips already in the pot as already used.</p>
+<p>We solve for the P1 strategy that makes P2 indifferent.</p>
+<p><span class="math display">
+\begin{equation}
 \begin{split}
-\mathbb{E}(\text{P1 Check K then Fold to Bet}) &amp;= 0 \\
-\\
-
-\mathbb{E}(\text{P1 Check K then Call Bet}) &amp;= -1*\Pr(\text{P2 has A and Bets}) + 3*\Pr(\text{P2 has Q and Bets}) \\
-  &amp;= -1*\frac{1}{2} + 3*\frac{1}{2}*b \\
-  &amp;= -0.5 + 1.5*b
+0 &amp;= 2(1-p) - p //
+0 &amp;= 2 - 2p - p //
+3p &amp;= 2 //
+p &amp;= 2/3
 \end{split}
-\end{equation}</span></p>
-<p>Setting these equal:</p>
-<p><span class="math inline">0 = -0.5 + 1.5*b</span></p>
-<p><span class="math inline">b = \frac{1}{3}</span></p>
-<p>Therefore in equilibrium, P2 should bet <span class="math inline">\frac{1}{3}</span> with Q after P1 checks.<br>
-:::</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Equilibrium Mixed Strategy Change Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If P2 bet <span class="math inline">\frac{2}{3}</span> instead of <span class="math inline">\frac{1}{3}</span> with Q after P1 checks and P1 is playing an equilibrium strategy, how would P2’s expected value change?</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>It wouldn’t! As long as P1 doesn’t modify their equilibrium strategy, then P2 can mix his strategy (at mixing infosets) however he wants and have the same EV.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Bluff:Value Ratio Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Given that P2 has bet after P1 checks and is playing the equilibrium strategy, what is the probability that they are bluffing?</p>
-<p>(Note: Including cases where you have an A, so Q bets are bluffs and A bets are value bets.)</p>
-</div>
-</div>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>P2 has Q and A each <span class="math inline">\frac{1}{2}</span> of the time.</p>
-<p>P2 is betting Q <span class="math inline">\frac{1}{3}</span> of the time (bluffing).</p>
-<p>P2 is betting A always (value betting).</p>
-<p>Therefore for every 3 times you have Q you will bet once and for every 3 times you have A you will bet 3 times. Out of the 4 bets, 1 of them is a bluff.</p>
+\end{equation}
+</span></p>
+<p>Therefore P1 should play $p =</p>
+<p>Now let’s look at the EVs for P1’s action with card 1 facing a Bet after Checking.</p>
+<p><span class="math inline">\mathbb{E}[P1](1,Fold) = 0</span> <span class="math inline">\mathbb{E}[P2](1,Call) = 3(\Pr(\text{P2 Card 0 and Bets})) + -1(\Pr(\text{P2 Card 2 and Bets}))</span></p>
+<p>We know that <span class="math inline">\Pr\text{P2 Card 2 and Bets} = \frac{1}{2}(1)</span> since P2 has the card half the time and bets always with the card.</p>
+<p>Let <span class="math inline">b</span> represent how often P2 bluffs with card 0.</p>
+<p><span class="math inline">\Pr(\text{P2 Card 0 and Bets}) = (1/2)(b)</span></p>
+<p>Now to equate the two equations above, we have:</p>
+<p><span class="math inline">0 = 3(1/2)(b) - 1/2</span> <span class="math inline">b = 1/3</span></p>
+<p>Therefore P2 will bet <span class="math inline">1/3</span> of the time with card 0 facing a Check, i.e.&nbsp;P2 will bluff <span class="math inline">1/3</span> of the time with the Q.</p>
+<p>Note that the indifference equation also accounts for how often P2 is betting with card 2 and we are really thinking about an overall strategy for playing the range of cards {0, 2}.</p>
+<p>One additional step is that we can compute the overall ratio of bluffs vs.&nbsp;value bets that P1 is facing.</p>
+<p>P2 has card 0 and 2 each <span class="math inline">\frac{1}{2}</span> of the time.</p>
+<p>P2 is betting card 0 <span class="math inline">\frac{1}{3}</span> of the time (bluffing).</p>
+<p>P2 is betting card 2 always (value betting).</p>
+<p>Therefore for every 3 times with card 0 you will bet once and for every 3 times with card 2 you will bet 3 times. Out of the 4 bets, 1 of them is a bluff.</p>
 <p><span class="math inline">\Pr(\text{P2 Bluff after P1 Check}) = \frac{1}{4}</span></p>
+<p>Overall we have this strategy for P2:</p>
+<ul>
+<li><span class="math inline">2/6</span>: Give up (check) with card 0</li>
+<li><span class="math inline">1/6</span>: Bluff with card 0</li>
+<li><span class="math inline">3/6</span>: Value bet with card 2</li>
+</ul>
+<p>If P2 bet <span class="math inline">\frac{2}{3}</span> instead of <span class="math inline">\frac{1}{3}</span> with card 0 after P1 checks and P1 is playing an equilibrium strategy, how would P2’s expected value change?</p>
+<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>It wouldn’t! As long as P1 doesn’t modify their equilibrium strategy, then P2 can mix his strategy however he wants and have the same EV.</p>
 </div>
 </div>
 </div>
-<p>call strategy wants indifferent between betting and checking card 0 checking 0 has EV 0 betting 0 also needs to have EV 0</p>
-<p>EV = fold<em>2 - call</em>1 get call = 2/3 1 - bet/(bet+pot) larger bet means call less, let them get away with bluffs the bigger they bet</p>
 </section>
 <section id="equity-vs.-expected-value" class="level3">
 <h3 class="anchored" data-anchor-id="equity-vs.-expected-value">Equity vs.&nbsp;Expected Value</h3>
@@ -1323,7 +1321,9 @@ Solution
 </section>
 <section id="bonus-bet-sizing" class="level3">
 <h3 class="anchored" data-anchor-id="bonus-bet-sizing">Bonus: Bet Sizing</h3>
-<p>pot sizing affects strategy pot large etc. –&gt; Add pot size stuff</p>
+<p>pot sizing affects strategy pot large etc. –&gt; Add pot size stuff pot odds</p>
+<p>1 - bet/(bet+pot) larger bet means call less, let them get away with bluffs the bigger they bet</p>
+<p>bluff to value ratio bet/(bet+pot) bluffing frequency goes up as bet size gets larger relative to pot</p>
 
 
 

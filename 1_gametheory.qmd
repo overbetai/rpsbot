@@ -424,7 +424,7 @@ Therefore no player can unilaterally improve by changing their strategy. What if
 | **Kick Left ($1$)** | Val: (0, 0) <br>Pr: $\frac{2}{3}$ | Val: (2, -2) <br>Pr: $\frac{1}{3}$ |
 | **Kick Right ($0$)** | Val: (1, -1) <br>Pr: $0$ | Val: (0, 0) <br>Pr: $0$ |
 
-Now the Kicker's payoff is still $\frac{1}{3}(2) = 0.67$.
+Now the Kicker's payoff is still $\frac{2}{3}(0) + \frac{1}{3}(2) = 0.67$.
 
 When a player makes their opponent indifferent, this means that any action the opponent takes (within the set of equilibrium actions) will result in the same payoff! But now they are no longer in equilibrium. 
 
@@ -437,7 +437,7 @@ To summarize, you can only be penalized for not playing the equilibrium mixing s
 ## Clairvoyance Poker 
 Back to poker. We previously built **Face-up 3-card Poker** where each player was dealt a card from the deck of {0, 1, 2} and the high card won. 
 
-Now we're going to make the game more interesting with the same deck. This game was first shown in The Mathematics of Poker (Bill Chen, Jared Ankenman) and then also in the excellent Play Optimal Poker 1 (Andrew Brokos). 
+Now we're going to make a small change to the game, while keeping the same deck. 
 
 - Player 1 will *always* be dealt card 1. 
 
@@ -478,6 +478,8 @@ Standard Error: This measures the precision of our sample mean as an estimate of
 Confidence Interval: This gives us a range where we expect the true population mean to lie with 95% confidence.
 
 ### Betting Rules and Sequences 
+Let's make this a real strategic poker game with betting. This game, Clairvoyance Poker, was first shown in The Mathematics of Poker (Bill Chen, Jared Ankenman) and then also in the excellent Play Optimal Poker (Andrew Brokos). 
+
 - Both players ante 1 chip, so the starting pot is 2
 
 - Each player has 1 remaining chip to use for betting 
@@ -524,112 +526,127 @@ This strategy randomizes uncertain decisions and takes clearly smart decisions w
 Let's put the strategies into our code and see how each strategy is doing. There are 9 total state-action pairs bolded below:  
 
 - P1[1, Starting]: Randomly Bet/Check
-    - **P2[0, Starting]: Bet**
-    - **P2[0, Starting]: Check**
+    - **P1[1, Starting]: Bet**
+    - **P1[1, Starting]: Check**
 - **P2[0, After Bet]: Fold**
 - **P2[2, After Bet]: Call**
 - P2[0, After Check]: Randomly Bet/Check
     - **P2[0, After Check]: Bet**
     - **P2[0, After Check]: Check**
 - **P2[2, After Check]: Bet**
-- P1[1, After Check and Bet]: Randomly Bet/Check
-    - **P2[0, After Check and Bet]: Bet**
-    - **P2[0, After Check and Bet]: Check**
+- P1[1, After Check and Bet]: Randomly Call/Fold
+    - **P1[1, After Check and Bet]: Call**
+    - **P1[1, After Check and Bet]: Fold**
 
----> show wins/losses, frequency, total for each strategic decision
-P1 bet, P1 check/call, P1 check/fold
-P2 0 after bet call, P2 0 after bet fold, P2 0 after check bet, P2 0 after check check
-P2 2 after bet call, P2 2 after bet fold, P2 2 after check bet, P2 2 after check check
+For now, we'll do this in a simple, but not-so-elegant way. 
+
+---> Logic for taking these actions
+
+---> Logic for keeping track of frequency of each situation/action and results for each situation/action (and still output stuff from before) 
 
 ### Dominated Strategy 
 Note that P1 betting is strictly worse and why 
+--> show math 
+
+--> Update logic to always check 
+
+- **P1[1, Starting]: Check**
+- **P2[0, After Bet]: Fold**
+- **P2[2, After Bet]: Call**
+- P2[0, After Check]: Randomly Bet/Check
+    - **P2[0, After Check]: Bet**
+    - **P2[0, After Check]: Check**
+- **P2[2, After Check]: Bet**
+- P1[1, After Check and Bet]: Randomly Call/Fold
+    - **P1[1, After Check and Bet]: Call**
+    - **P1[1, After Check and Bet]: Fold**
 
 ### Your Strategies
 ---> Try strat for P1 then for P2
 See results
 
+- **P1[1, Starting]:** Check
+- **P2[0, After Bet]:** Fold
+- **P2[2, After Bet]:** Call
+- **P2[0, After Check]:** ??
+- **P2[2, After Check]:** Bet
+- **P1[1, After Check and Bet]:** ??
+
 ### Indifference in Poker 
-Figuring out strategy for 0 facing check, actually thinking about strategy for 0 and 2. goal indifference
+There are two strategies for which we can find an equilibrium: 
 
-EV folding 0, EV calling should also be 0 
+- **P2[0, After Check]:** ??
+- **P1[1, After Check and Bet]:** ??
 
-shows EV = bluff*3 - value*1 (but this is for overall range 1/4 bluffs)
+Let's start by looking at the EVs for P2's action with card 0 facing a Check. 
 
-bluff to value ratio bet/(bet+pot)
+$\mathbb{E}[P2](0,Check) = 0$
+$\mathbb{E}[P2](0,Bet) = 2(\Pr(\text{P1 Fold})) + -1(\Pr(\text{P1 Call}))$
 
-Figuring out strategy for 1 after check/bet
+These should be equal in order for P2 to be indifferent. Let $\Pr(\text{P1 Call}) = p$ and $\Pr(\text{P1 Fold}) = 1-p$.
 
-bluffing frequency goes up as bet size gets larger relative to pot
+Note that we set the Check action to have an EV of 0 because we are counting any chips already in the pot as already used. 
 
-Only mix when both same EV 
+We solve for the P1 strategy that makes P2 indifferent. 
 
-Making P1 indifferent between calling and folding with a K 
-
-We can work out Player 2's betting strategy by calculating the indifference. Let $b$ be the probability that P2 bets with a Q after P1 checks. 
-
+$$
 \begin{equation}
 \begin{split}
-\mathbb{E}(\text{P1 Check K then Fold to Bet}) &= 0 \\
-\\
-
-\mathbb{E}(\text{P1 Check K then Call Bet}) &= -1*\Pr(\text{P2 has A and Bets}) + 3*\Pr(\text{P2 has Q and Bets}) \\
-  &= -1*\frac{1}{2} + 3*\frac{1}{2}*b \\
-  &= -0.5 + 1.5*b
+0 &= 2(1-p) - p //
+0 &= 2 - 2p - p //
+3p &= 2 //
+p &= 2/3
 \end{split}
 \end{equation}
+$$
 
-Setting these equal: 
+Therefore P1 should play $p = 
 
-$0 = -0.5 + 1.5*b$ 
+Now let's look at the EVs for P1's action with card 1 facing a Bet after Checking. 
 
-$b = \frac{1}{3}$
+$\mathbb{E}[P1](1,Fold) = 0$
+$\mathbb{E}[P2](1,Call) = 3(\Pr(\text{P2 Card 0 and Bets})) + -1(\Pr(\text{P2 Card 2 and Bets}))$
 
-Therefore in equilibrium, P2 should bet $\frac{1}{3}$ with Q after P1 checks.  
-:::
+We know that $\Pr\text{P2 Card 2 and Bets} = \frac{1}{2}(1)$ since P2 has the card half the time and bets always with the card. 
 
-:::{.callout-note  appearance="minimal"}
-## Equilibrium Mixed Strategy Change Exercise
-If P2 bet $\frac{2}{3}$ instead of $\frac{1}{3}$ with Q after P1 checks and P1 is playing an equilibrium strategy, how would P2’s expected value change? 
+Let $b$ represent how often P2 bluffs with card 0. 
 
-:::
+$\Pr(\text{P2 Card 0 and Bets}) = (1/2)(b)$
 
-:::{.callout-warning collapse="true" appearance="minimal"}
-## Solution
-It wouldn't! As long as P1 doesn't modify their equilibrium strategy, then P2 can mix his strategy (at mixing infosets) however he wants and have the same EV. 
+Now to equate the two equations above, we have: 
 
-:::
+$0 = 3(1/2)(b) - 1/2$ 
+$b = 1/3$
 
-:::{.callout-note  appearance="minimal"}
-## Bluff:Value Ratio Exercise
-Given that P2 has bet after P1 checks and is playing the equilibrium strategy, what is the probability that they are bluffing?
+Therefore P2 will bet $1/3$ of the time with card 0 facing a Check, i.e. P2 will bluff $1/3$ of the time with the Q. 
 
-(Note: Including cases where you have an A, so Q bets are bluffs and A bets are value bets.)
+Note that the indifference equation also accounts for how often P2 is betting with card 2 and we are really thinking about an overall strategy for playing the range of cards {0, 2}. 
 
-:::
+One additional step is that we can compute the overall ratio of bluffs vs. value bets that P1 is facing. 
 
-:::{.callout-warning collapse="true" appearance="minimal"}
-## Solution
-P2 has Q and A each $\frac{1}{2}$ of the time. 
+P2 has card 0 and 2 each $\frac{1}{2}$ of the time. 
 
-P2 is betting Q $\frac{1}{3}$ of the time (bluffing). 
+P2 is betting card 0 $\frac{1}{3}$ of the time (bluffing). 
 
-P2 is betting A always (value betting). 
+P2 is betting card 2 always (value betting). 
 
-Therefore for every 3 times you have Q you will bet once and for every 3 times you have A you will bet 3 times. Out of the 4 bets, 1 of them is a bluff. 
+Therefore for every 3 times with card 0 you will bet once and for every 3 times with card 2 you will bet 3 times. Out of the 4 bets, 1 of them is a bluff. 
 
 $\Pr(\text{P2 Bluff after P1 Check}) = \frac{1}{4}$
 
+Overall we have this strategy for P2: 
+
+- $2/6$: Give up (check) with card 0
+- $1/6$: Bluff with card 0
+- $3/6$: Value bet with card 2
+
+
+If P2 bet $\frac{2}{3}$ instead of $\frac{1}{3}$ with card 0 after P1 checks and P1 is playing an equilibrium strategy, how would P2’s expected value change? 
+
+:::{.callout-warning collapse="true" appearance="minimal"}
+## Solution
+It wouldn't! As long as P1 doesn't modify their equilibrium strategy, then P2 can mix his strategy however he wants and have the same EV. 
 :::
-
-
-call strategy wants indifferent between betting and checking card 0 
-checking 0 has EV 0
-betting 0 also needs to have EV 0
-
-EV = fold*2 - call*1
-get call = 2/3 
-1 - bet/(bet+pot)
-larger bet means call less, let them get away with bluffs the bigger they bet
 
 ### Equity vs. Expected Value 
 can tell opponent strategy to bet 1/3 0s but can't stop 
@@ -656,3 +673,10 @@ adepend on pot size
 pot sizing affects strategy
 pot large etc. 
 --> Add pot size stuff 
+pot odds 
+
+1 - bet/(bet+pot)
+larger bet means call less, let them get away with bluffs the bigger they bet
+
+bluff to value ratio bet/(bet+pot)
+bluffing frequency goes up as bet size gets larger relative to pot
