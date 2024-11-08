@@ -1,0 +1,174 @@
+[
+  {
+    "objectID": "botsubmit.html",
+    "href": "botsubmit.html",
+    "title": "RPS Hackathon @ Recurse: Submit",
+    "section": "",
+    "text": "Edit Code\n\n\nUpload File\n\n\nLink Repo\n\n\n\n\nSubmit\n\n\n\n\n\n\n\n\n\n\n\nUpload File\n\n\n\n\nThe file you upload should be a Python file that looks something like this. You can download this file in the rps-engine repo at players/default/player.py and for more info on testing see: Game Engine.\n# Simple example bot, written in Python.\n\nfrom skeleton.actions import RockAction, PaperAction, ScissorsAction\nfrom skeleton.bot import Bot\nfrom skeleton.runner import parse_args, run_bot\n\nimport random\n\nclass Player(Bot):\n    # A bot for playing Rock-Paper-Scissors.\n\n    def __init__(self):\n        # Called when a new matchup starts. Called exactly once.\n        \n        self.my_profit = 0\n        self.history = []\n\n    def handle_results(self, *, my_action, their_action, my_payoff, match_clock):\n        # Called after a round. Called NUM_ROUNDS times.\n        \n        self.history.append((my_action, their_action))\n        self.my_profit += my_payoff\n\n    def get_action(self, *, match_clock):\n        # Where the magic happens. Called when the engine needs an action from\n        # your bot. Called NUM_ROUNDS times.\n        #\n        # Returns a RockAction(), PaperAction(), or ScissorsAction().\n        \n        return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\nif __name__ == '__main__':\n    run_bot(Player(), parse_args())\n\n\n\nComing soon! Ask if you’d like to use this to upload multiple files or something else that doesn’t fit into a player.py file."
+  },
+  {
+    "objectID": "leaderboard.html",
+    "href": "leaderboard.html",
+    "title": "RPS Hackathon @ Recurse: Leaderboard",
+    "section": "",
+    "text": "Latest freeplay round\n\n\nLoading…\n\n\n\n\n\nLatest scoring round\n\n\nLoading…\n\n\n\n\n\nNext round\n\n\n\nAll scoring rounds\n\n\nLoading…"
+  },
+  {
+    "objectID": "instructions.html",
+    "href": "instructions.html",
+    "title": "RPS Hackathon @ Recurse: Hackathon Instructions",
+    "section": "",
+    "text": "Image by Enzoklop under CC BY-SA 3.0\n\n\n\nRock defeats scissors, scissors defeats paper, and paper defeats rock\nYou get +1 point for a win, -1 for a loss, and 0 for ties\n\n\n\n\nThere will be 5 rounds of RPS competitions. Each will have:\n\n1 bot entered by each participant\n4 new house bots\n\nYou’ll play 200 games against each other bot twice.\nBefore each round, you’ll be given the next round’s name, which will be a hint about the strategies for all of those bots.\n\n\n\nEach house bot that enters during a round will stay for all future rounds.\nThe bot names reveal the bot strategies. The names will be anonymized during each round and then revealed afterwards (except for the final round where they will be revealed, but won’t be that useful!).\n\n\n\n\nFor each round, you can submit as many times as you want up to the end of that round\nStarting in the 2nd round, each submission during the round will receive a test result based on how that bot would have done in the previous round\n\nDoing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new environment bots\n\nThe final submission before the end of the round will be entered into that round’s competition (and will stay active for future rounds as well until you submit a new one)\nAt the end of each round, we’ll run the tournament and show the results\n\n\n\n\nAt the end of each round, you’ll get the following information:\n\nMatrix score report with results against every other bot\n\nYour score is reported as profit per 100 games\n\nGame histories for each match\n\nYour cumulative score is the sum of all of the round scores, where the first round is worth 1x and each future round increases by 1.3x (i.e., round 2 is 1.3x, round 3 is 1.69x, etc.).\n\n\n\nThere will be a small on-theme prize for the overall winner."
+  },
+  {
+    "objectID": "instructions.html#how-it-works",
+    "href": "instructions.html#how-it-works",
+    "title": "RPS Hackathon @ Recurse: Hackathon Instructions",
+    "section": "",
+    "text": "Image by Enzoklop under CC BY-SA 3.0\n\n\n\nRock defeats scissors, scissors defeats paper, and paper defeats rock\nYou get +1 point for a win, -1 for a loss, and 0 for ties\n\n\n\n\nThere will be 5 rounds of RPS competitions. Each will have:\n\n1 bot entered by each participant\n4 new house bots\n\nYou’ll play 200 games against each other bot twice.\nBefore each round, you’ll be given the next round’s name, which will be a hint about the strategies for all of those bots.\n\n\n\nEach house bot that enters during a round will stay for all future rounds.\nThe bot names reveal the bot strategies. The names will be anonymized during each round and then revealed afterwards (except for the final round where they will be revealed, but won’t be that useful!).\n\n\n\n\nFor each round, you can submit as many times as you want up to the end of that round\nStarting in the 2nd round, each submission during the round will receive a test result based on how that bot would have done in the previous round\n\nDoing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new environment bots\n\nThe final submission before the end of the round will be entered into that round’s competition (and will stay active for future rounds as well until you submit a new one)\nAt the end of each round, we’ll run the tournament and show the results\n\n\n\n\nAt the end of each round, you’ll get the following information:\n\nMatrix score report with results against every other bot\n\nYour score is reported as profit per 100 games\n\nGame histories for each match\n\nYour cumulative score is the sum of all of the round scores, where the first round is worth 1x and each future round increases by 1.3x (i.e., round 2 is 1.3x, round 3 is 1.69x, etc.).\n\n\n\nThere will be a small on-theme prize for the overall winner."
+  },
+  {
+    "objectID": "instructions.html#strategy",
+    "href": "instructions.html#strategy",
+    "title": "RPS Hackathon @ Recurse: Hackathon Instructions",
+    "section": "Strategy",
+    "text": "Strategy\nYour mission is to play well against the environment bots without getting counterplayed by other participant bots.\n\nStrategy vs. House Bots\nThe histories that are shown against the bots will generally be very useful in discovering patterns. Combine this with the bot names, and you’ll be able to develop a strong strategy against these bots for future rounds.\n\n\nStrategy vs. Participant Bots\nLook for patterns. If participant bots are only trying to exploit environment bots, then they might be exploitable themselves."
+  },
+  {
+    "objectID": "instructions.html#writing-bots",
+    "href": "instructions.html#writing-bots",
+    "title": "RPS Hackathon @ Recurse: Hackathon Instructions",
+    "section": "Writing Bots",
+    "text": "Writing Bots\nClick here for our guide on getting started writing RPS bots."
+  },
+  {
+    "objectID": "instructions.html#schedule",
+    "href": "instructions.html#schedule",
+    "title": "RPS Hackathon @ Recurse: Hackathon Instructions",
+    "section": "Schedule",
+    "text": "Schedule\n2:00pm: Get set up\n2:15pm: Begin Round 1\n2:45pm: Round 1 results, begin Round 2\n3:15pm: Round 2 results, begin Round 3\n3:45pm: Round 3 results, begin Round 4\n4:15pm: Round 4 results, begin Round 5\n4:45pm: Round 5 results, finish up/hang out\n5:00pm: End"
+  },
+  {
+    "objectID": "instructions.html#why",
+    "href": "instructions.html#why",
+    "title": "RPS Hackathon @ Recurse: Hackathon Instructions",
+    "section": "Why?",
+    "text": "Why?\nFun! And thinking about strategy in a repeated game against a variety of opponents.\nFrom DeepMind in 2023:\n\nIn sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors."
+  },
+  {
+    "objectID": "testing.html",
+    "href": "testing.html",
+    "title": "RPS Hackathon @ Recurse: Tests and Logs",
+    "section": "",
+    "text": "Latest submission versus last scoring round\n\n\nLoading…\n\n\n\n\n\nNext round\n\nLoading…\n\nMatch logs\n\n\nLoading…"
+  },
+  {
+    "objectID": "botguide.html",
+    "href": "botguide.html",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "",
+    "text": "We provide Python starter code that you can submit directly on the Submission page or that you can download and submit through file upload.\nWe provide code that by default plays randomly. The random strategy guarantees a breakeven result, which won’t be good enough to win because it won’t take advantage of the suboptimal house bots!\n\n\nThe profit so far in the match is stored in:\n\nself.my_profit\n\nAnd the history of your actions and your opponent actions are stored in the following array, where each history is a tuple of (my_action, their_action).\n\nself.history[]\n\n\n\n\n\ndef __init__(self):\n\nInitializes profit self.my_profit\nInitializes the history array self.history[]\n\nhandle_results(self, *, my_action, their_action, my_payoff, match_clock):\n\nThis is run at the end of every game\nIt updates the history with my_action and their_action\nIt updates the payoff with my_payoff\nmatch_clock can be used to see how much of your 30 second total time is remaining (this can generally be ignored)\n\ndef get_action(self, *, match_clock):\n\nThis is the main function where you run your strategy and return an action\nYou can return RockAction(), PaperAction(), or ScissorsAction()"
+  },
+  {
+    "objectID": "botguide.html#starter-code",
+    "href": "botguide.html#starter-code",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "",
+    "text": "We provide Python starter code that you can submit directly on the Submission page or that you can download and submit through file upload.\nWe provide code that by default plays randomly. The random strategy guarantees a breakeven result, which won’t be good enough to win because it won’t take advantage of the suboptimal house bots!\n\n\nThe profit so far in the match is stored in:\n\nself.my_profit\n\nAnd the history of your actions and your opponent actions are stored in the following array, where each history is a tuple of (my_action, their_action).\n\nself.history[]\n\n\n\n\n\ndef __init__(self):\n\nInitializes profit self.my_profit\nInitializes the history array self.history[]\n\nhandle_results(self, *, my_action, their_action, my_payoff, match_clock):\n\nThis is run at the end of every game\nIt updates the history with my_action and their_action\nIt updates the payoff with my_payoff\nmatch_clock can be used to see how much of your 30 second total time is remaining (this can generally be ignored)\n\ndef get_action(self, *, match_clock):\n\nThis is the main function where you run your strategy and return an action\nYou can return RockAction(), PaperAction(), or ScissorsAction()"
+  },
+  {
+    "objectID": "botguide.html#problem-solving-and-strategy",
+    "href": "botguide.html#problem-solving-and-strategy",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "Problem Solving and Strategy",
+    "text": "Problem Solving and Strategy\nThe goal of the hackathon is to figure out how to adapt to your opponents (other participants and house bots)!\nA few possible strategies are:\n\nSingle out specific bots that are exploitable and write code to identify and exploit them\n\nBuild an ensemble of exploits targeting many opponents\n\nAttempt to predict the next move of each bot using a general algorithm\nUse random play as a backup plan (see below for a full explanation of why this Nash equilibrium strategy always breaks even)"
+  },
+  {
+    "objectID": "botguide.html#llms",
+    "href": "botguide.html#llms",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "LLMs",
+    "text": "LLMs\nWe welcome you to use LLMs like Claude or ChatGPT. You can provide the starter code/code samples and get their help with implementing better strategies."
+  },
+  {
+    "objectID": "botguide.html#writing-your-own-bot",
+    "href": "botguide.html#writing-your-own-bot",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "Writing Your Own Bot",
+    "text": "Writing Your Own Bot\nYour bot will be facing off against a variety of participant bots and house bots. Here we illustrate some examples of how to write more complex bots. The main function to modify is get_action, which is the one that returns the move for each game.\n\nWin vs. Last Action\nThis bot plays to beat the opponent’s last action.\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      last_opponent_move = self.history[-1][1] # Find last opponent move\n      if isinstance(last_opponent_move, RockAction): # If Rock\n          return PaperAction() # Play Paper\n      elif isinstance(last_opponent_move, PaperAction): # If Paper\n          return ScissorsAction() # Play Scissors\n      else: # If Scissors\n          return RockAction() # Play Rock\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nWin vs. Opponent Playing “Win vs. Last Action”\nThis bot plays to beat the opponent playing the above “win vs. last action” strategy.\nIf our last action is Rock, they would play Paper, so we should play Scissors.\nIf our last action is Paper, they would play Scissors, so we should play Rock.\nIf our last action is Scissors, they would play Rock, so we should play Paper.\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      our_last_move = self.history[-1][0] # Find our last move\n      if isinstance(our_last_move, RockAction): # If Rock\n          return ScissorsAction() # Play Scissors\n      elif isinstance(our_last_move, PaperAction): # If Paper\n          return RockAction() # Play Rock\n      else: # If Scissors\n          return PaperAction() # Play Paper\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nWin vs. Full Opponent History Most Frequent\nInstead of just looking at the last action, this bot plays to beat the most frequent opponent action over the entire history.\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      opponent_moves = [move[1] for move in self.history]\n      \n      # Count the occurrences of each move\n      move_counts = {} # Count each R/P/S\n      for move in opponent_moves:\n          if move in move_counts:\n              move_counts[move] += 1 # Add to counter\n          else:\n              move_counts[move] = 1 # Start counter\n      \n      # Find the move with the highest count\n      most_common_move = None\n      highest_count = 0\n      for move, count in move_counts.items():\n          if count &gt; highest_count:\n              most_common_move = move\n              highest_count = count\n      \n      if isinstance(most_common_move, RockAction):\n          return PaperAction()\n      elif isinstance(most_common_move, PaperAction):\n          return ScissorsAction()\n      else: # most_common_move is ScissorsAction\n          return RockAction()\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nSometimes Playing Randomly\nSince there are many suboptimal environment bots, breaking even by playing randomly won’t be a good enough overall strategy, but could be valuable to consider in some situations. Here is an example of using random play in combination with another strategy.\nOne of the bots above is Win vs. Last Action. Suppose that you have a theory that you should actually play to beat the action that they played two games ago.\nYou could try something like this:\n\nIf you’re winning or tying, then play to beat the action from two games ago 80% of the time and play randomly 20% of the time so that you aren’t too predictable\nIf you’re losing (i.e. maybe this strategy is not working well), then always play randomly\n\ndef get_action(self, *, match_clock):\n\n  # If losing, play randomly\n  if self.my_profit &lt; 0:\n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n  # If winning or tying, and there are at least 2 rounds of history\n  if len(self.history) &gt;= 2:\n      # 80% chance to play based on opponent's action from 2 rounds ago\n      if random.random() &lt; 0.8:\n          two_rounds_ago = self.history[-2][1]  # Opponent's action from 2 rounds ago\n          if isinstance(two_rounds_ago, RockAction):\n              return PaperAction()\n          elif isinstance(two_rounds_ago, PaperAction):\n              return ScissorsAction()\n          else:  # ScissorsAction\n              return RockAction()\n\n  # In all other cases (including 1st 2 rounds), play randomly\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nExploiting a Weak Bot\nIn practice in this hackathon, a lot of value will come from exploiting weak bots or other opponents.\nFor example, you could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot.\nHere’s how to execute this strategy:\ndef get_action(self, *, match_clock):\n  if self.history: # Check if the opponent has played at least once\n      # Get all of the opponent's moves\n      opponent_moves = [move[1] for move in self.history]\n      \n      # Count how many times the opponent played Rock\n      rock_count = sum(1 for move in opponent_moves if isinstance(move, RockAction))\n      \n      # If opponent has only played Rock, we play Paper\n      if rock_count == len(opponent_moves):\n          return PaperAction()\n\n  # If it's the first move or opponent hasn't only played Rock, play randomly\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nExploiting a Weak Bart"
+  },
+  {
+    "objectID": "botguide.html#game-theory-equilibrium",
+    "href": "botguide.html#game-theory-equilibrium",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "Game Theory Equilibrium",
+    "text": "Game Theory Equilibrium\nRPS is a zero-sum game and the payouts are symmetrical as follows:\n\n\n\nPlayer 1/2\nRock\nPaper\nScissors\n\n\n\n\nRock\n(0, 0)\n(-1, 1)\n(1, -1)\n\n\nPaper\n(1, -1)\n(0, 0)\n(-1, 1)\n\n\nScissors\n(-1, 1)\n(1, -1)\n(0, 0)\n\n\n\nThe Nash Equilibrium strategy is to play each action r = p = s = 1/3 of the time.\n\n\n\n\n\n\nNash Equilibrium Strategy for RPS\n\n\n\n\n\nIf Player 1 plays Rock with probability r, Paper with probability p, and Scissors with probability s, we have the following expected value equations for Player 2:\n\\mathbb{E}(\\text{R}) = -1p + 1s\n\\mathbb{E}(\\text{P}) = 1r - 1s\n\\mathbb{E}(\\text{S}) = -1r + 1p\nSince no action dominates, we know that the EV of every strategic action should be equal (since if a certain strategy was best, we’d want to always play that strategy).\nTo solve for r, p, and s, we can start by setting these EVs equal:\n\\mathbb{E}(\\text{R}) = \\mathbb{E}(\\text{P})\n-1p + 1s = 1r - 1s\n2s = p + r\nThen setting these equal:\n\\mathbb{E}(\\text{R}) = \\mathbb{E}(\\text{S})\n-1p + 1s = -1r + 1p\ns + r = 2p\nAnd finally setting these equal:\n\\mathbb{E}(\\text{P}) = \\mathbb{E}(\\text{S})\n1r - 1s = -1r + 1p\n2r = s + p\nNow we have these equations:\n\n\\begin{cases}\n2s = p + r \\\\\ns + r = 2p \\\\\n2r = s + p\n\\end{cases}\n\nWe can rewrite the 1st:\nr = 2s - p\nAnd combine with the 2nd:\ns + (2s - p) = 2p\n3s = 3p\nResulting in:\ns = p\nNow we can go back to the 2nd equation:\ns + r = 2p\nAnd insert s = p:\ns + r = 2s\nAnd arrive at:\nr = s\nWe now see that all are equal:\ns = p = r\nWe also know that they must all sum to 1:\nr + p + s = 1\nSince they’re all equal and sum to 1, we can substitute p and s with r:\n3r = 1\nr = 1/3\nSo all actions are taken with probability 1/3:\nr = p = s = 1/3 \\quad \\blacksquare\n\n\n\nPlaying this strategy means that whatever your opponent does, you will breakeven! For example, think about an opponent that always plays Rock.\n\n\\begin{equation}\n\\begin{split}\n\\mathbb{E}(\\text{Equilibrium vs. Rock}) &= r*0 + p*1 + s*-1 \\\\\n&= 1/3*0 + 1/3*1 + 1/3*-1 \\\\\n&= 0\n\\end{split}\n\\end{equation}"
+  },
+  {
+    "objectID": "botguide.html#submitting-bots",
+    "href": "botguide.html#submitting-bots",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "Submitting Bots",
+    "text": "Submitting Bots\nTo get started, click the Login button to the left and then go to Submit Your Bot. On the bot submission page, it’s possible to submit with:\n\nCode text boxes directly on the webpage\nFile upload a single player.py Python file"
+  },
+  {
+    "objectID": "botguide.html#game-engine",
+    "href": "botguide.html#game-engine",
+    "title": "RPS Hackathon @ Recurse: Guide to Building a Bot",
+    "section": "Game Engine",
+    "text": "Game Engine\nIf you would like to clone the repository with the game engine, you can find it at https://github.com/pokercamp/rps-engine.\nIn players/default, the player.py file is where you write your bot. We don’t recommend changing any other files.\nThe engine is in engine.py. You can use engine.py to run two bots against each other. You can use this to test your bot against itself or other bots that you create.\nThe following code will run n_games between p1_name and p2_name and output the result to the specified output_dir.\nThe generic usage is:\npython3 engine.py -p1 {p1_name} {p1_file_path} -p2 {p2_name} {p2_file_path} -o {output_dir} -n {n_games}\"\nFor example, to run a 200 game match with two bots that are named p1 and p2 with files in the players/default/ folder and outputted to the p1p2test folder, do this:\npython3 engine.py -p1 'p1' players/default/ -p2 'p2' players/default/ -o p1p2test -n 200\nThe output files are in the folder p1p2test:\n\nscores.p1.p2.txt contains the raw scores of each player\nThe p1.p2 folder contains:\n\n\ngamelog.txt: A log of all hands played\nOther log files for each player"
+  },
+  {
+    "objectID": "index_old.html",
+    "href": "index_old.html",
+    "title": "Cards to Code",
+    "section": "",
+    "text": "A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch.\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm.\nThroughout the course, we’re building up code to first develop the game, and then piece by piece to develop the poker bot.\nWe end on opponent modeling and challenge problems that go beyond game theory optimal play.\nPrerequisites: Basic Python and math (no poker knowledge necessary)\nGroups/Questions: We encourage you to work through this in groups. You can chat in our Discord to discuss the course or look for others to work with.\nGet started now! Start with the Setup and Face-up Poker page."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RPS Hackathon @ Recurse: Homepage",
+    "section": "",
+    "text": "Welcome to the Rock Paper Scissors Hackathon @ Recurse Center in NYC taking place on Tuesday Sep 17, 2024.\nProceed to the Instructions to get started!",
+    "crumbs": [
+      "About",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "C2C: About",
+    "section": "",
+    "text": "We’re excited about learning through games. We developed Cards to Code as a foundational course on building a functional poker bot after running an AI Poker Camp course in San Francisco in summer 2024.\nCheck out Overbet.ai (under development) and Poker Camp.\nWe’ll also have more advanced courses available soon."
+  },
+  {
+    "objectID": "about.html#about-us",
+    "href": "about.html#about-us",
+    "title": "C2C: About",
+    "section": "",
+    "text": "We’re excited about learning through games. We developed Cards to Code as a foundational course on building a functional poker bot after running an AI Poker Camp course in San Francisco in summer 2024.\nCheck out Overbet.ai (under development) and Poker Camp.\nWe’ll also have more advanced courses available soon."
+  },
+  {
+    "objectID": "about.html#why-poker",
+    "href": "about.html#why-poker",
+    "title": "C2C: About",
+    "section": "Why poker?",
+    "text": "Why poker?\nLet’s split this into two questions.\n\nWhy play poker?\nGames of incomplete information like poker are most similar to real-life settings. Incomplete information means that there is some hidden information – in poker this is the private opponent cards and, in games like Texas Hold’em, the yet to be revealed board cards.\nThis means we need to infer our opponents’ hands and understand the probabilities of the cards that we can’t see.\nPoker is interesting from a math perspective – probability, expected value, risk, and bankroll management are all important skills.\nAlso from a psychological perspective – emotional control, reading opponents, and adapting to other players are all valuable.\nWe learn to make decisions and focus on the quality of the decision, rather than the results.\n\n\nWhy build a poker bot?\nPoker has clear rules and structure, so we can apply reinforcement learning where the rewards are the profits in the game. Reinforcement learning, game theory, and Monte Carlo methods are applicable across many domains.\nHere we mainly focus on a simplified poker game that can be solved in under a minute, but the same core principles apply for scaled up versions that are much larger and more complex, though they will also involve approximating states of the game.\nThe richness of the game is an ideal testbed for decision making under uncertainty, probabilistic reasoning, and taking actions that can have both immediate and longer horizon consequences.\nWe can use the bot solutions to gain insights from the underlying game itself. For example, you’ll see that bots automatically learn to bluff, showing that this is a theoretically correct play and not a “loss leader” just to get more action later.\nBeyond building a basic bot, there is a broad area for further research, including agent evaluation, opponent modeling, building an LLM model on top of the traditional poker agent, and intepretability of the agent."
+  },
+  {
+    "objectID": "about.html#modern-ai-agents",
+    "href": "about.html#modern-ai-agents",
+    "title": "C2C: About",
+    "section": "Modern AI agents",
+    "text": "Modern AI agents\nLLM-based AI agents are very popular in 2024. The poker bot we’re building here is different and uses the classic AI method of reinforcement learning, where the goal is to maximize long-term reward given feedback from the environment (i.e. maximizing winnings in a poker game).\nThe poker bot learns how to make optimal decisions given a state of the game by repeatedly playing the game against itself and optimizing the strategy over time.\nLLM agents generally use large amounts of text data to understand and generate human-like language based on patterns in the data, which could include strategy in a game like poker.\nSo is RL still relevant? Yes! OpenAI recently released their o1 chain of thought model:\n\nOur large-scale reinforcement learning algorithm teaches the model how to think productively using its chain of thought in a highly data-efficient training process.\n\nIn chain of thought, each step in the reasoning process can be seen as a state with possible actions. RLHF (Reinforcement Learning from Human Feedback) is also a popular technique for LLM agents where a human acts as the reward signal to shape a model’s outputs.\nHybrid approaches seem promising and may be a future direction for poker agents as well."
+  },
+  {
+    "objectID": "about.html#inspiration",
+    "href": "about.html#inspiration",
+    "title": "C2C: About",
+    "section": "Inspiration",
+    "text": "Inspiration\nSome inspiration for this course:\n\nNand to Tetris: Building a Modern Computer From First Principles\nNeural Networks: Zero to Hero: A course by Andrej Karpathy on building neural networks, from scratch, in code\nfast.ai’s Practical Deep Learning: A free course designed for people with some coding experience, who want to learn how to apply deep learning and machine learning to practical problems"
+  }
+]
