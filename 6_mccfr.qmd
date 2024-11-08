@@ -1,3 +1,0 @@
----
-title: "C2C #6: Monte Carlo CFR"
----

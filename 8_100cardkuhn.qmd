@@ -1,3 +1,0 @@
----
-title: "C2C #8: Scaling Up to 100-card Kuhn"
----

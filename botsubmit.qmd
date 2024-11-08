@@ -1,0 +1,428 @@
+---
+title: "RPS Hackathon @ Recurse: Submit"
+sidebar: rps-hackathon-recurse
+bread-crumbs: false
+format:
+  html:
+    math: false
+    header-includes:
+      - <script src="/login/auth.js"></script>
+      - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+      - <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+      - <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/python/python.min.js"></script>
+---
+
+<style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    #user-bar {
+        position: absolute;
+        top: 70px;
+        right: 10px;
+        display: inline-flex;
+        align-items: center;
+        background-color: #f1f1f1;
+        padding: 5px 5px;
+        border-radius: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #user-bar img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    #user-bar span {
+        margin-right: 10px;
+    }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        right: 0;
+        background-color: #f9f9f9;
+        min-width: 120px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 4px;
+    }
+    .dropdown:hover .dropdown-content { display: block; }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-content a:hover { background-color: #f1f1f1; border-radius: 4px; }
+    
+    button.submit {
+        padding: 8px 16px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .tab {
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+    }
+    .tab button {
+        background-color: #e0e0e0;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        flex-grow: 1;
+        border-radius: 10px 10px 0 0;
+        margin-right: 2px;
+        border: 1px solid #ccc;
+        border-bottom: none;
+    }
+    .tab button:last-child {
+        margin-right: 0;
+    }
+    .tab button:hover {
+        background-color: #ddd;
+    }
+    .tab button.active {
+        background-color: #fff;
+    }
+    .tabcontent {
+        display: none;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+    }
+    
+    #code-editor {
+        width: 100%;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    .CodeMirror {
+        height: auto;
+    }
+    .CodeMirror-scroll {
+    }
+    .fixed-text .CodeMirror {
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        padding: 3px;
+        padding-left: 0.5em;
+    }
+    .editor {
+        margin-bottom: 10px;
+    }
+    .editor, .fixed-text {
+        width: 100%;
+    }
+</style>
+
+<div id="user-bar"></div>
+
+<div class="tab">
+<button class="tablinks" onclick="openTab(event, 'Edit Code')" id="defaultOpen">Edit Code</button>
+<button class="tablinks" onclick="openTab(event, 'Upload File')">Upload File</button>
+<button class="tablinks" onclick="openTab(event, 'Link Repo')">Link Repo</button>
+</div>
+
+<div id="Edit Code" class="tabcontent">
+<button class="submit" onclick="submitCode()">Submit</button>
+<div id="code-editor"></div>
+</div>
+
+<div id="Upload File" class="tabcontent">
+<form id="uploadForm" enctype="multipart/form-data">
+<div style="margin-bottom:5px"><input type="file" id="file" name="file" accept=".py" required></div>
+<button type="submit" class="submit">Upload File</button><span id="uploadStatus"></span>
+</form>
+--- 
+The file you upload should be a Python file that looks something like this. You can download this file in the [rps-engine repo](https://github.com/pokercamp/rps-engine) at `players/default/player.py` and for more info on testing see: [Game Engine](botguide.qmd#game-engine).
+
+```python
+# Simple example bot, written in Python.
+
+from skeleton.actions import RockAction, PaperAction, ScissorsAction
+from skeleton.bot import Bot
+from skeleton.runner import parse_args, run_bot
+
+import random
+
+class Player(Bot):
+    # A bot for playing Rock-Paper-Scissors.
+
+    def __init__(self):
+        # Called when a new matchup starts. Called exactly once.
+        
+        self.my_profit = 0
+        self.history = []
+
+    def handle_results(self, *, my_action, their_action, my_payoff, match_clock):
+        # Called after a round. Called NUM_ROUNDS times.
+        
+        self.history.append((my_action, their_action))
+        self.my_profit += my_payoff
+
+    def get_action(self, *, match_clock):
+        # Where the magic happens. Called when the engine needs an action from
+        # your bot. Called NUM_ROUNDS times.
+        #
+        # Returns a RockAction(), PaperAction(), or ScissorsAction().
+        
+        return random.choice([RockAction(), PaperAction(), ScissorsAction()])
+
+if __name__ == '__main__':
+    run_bot(Player(), parse_args())
+```
+</div>
+
+<div id="Link Repo" class="tabcontent">
+<p>Coming soon! Ask if you'd like to use this to upload multiple files or something else that doesn't fit into a `player.py` file.</p>
+</div>
+
+<script>
+let editors = [];
+let fixedEditors = [];
+let enable_autosave = false;
+
+const initialCode = [
+    [0,`import random`],
+    [4,`# You can add class-level attributes here if needed`],
+    [8,`# Called when a new matchup starts. Called exactly once.
+self.my_profit = 0
+self.history = []`],
+    [8,`# Called after a round. Called NUM_ROUNDS times.
+self.history.append((my_action, their_action))
+self.my_profit += my_payoff`],
+    [8,`# Where the magic happens.
+# Called when the engine needs an action from your bot, NUM_ROUNDS times in total.
+#
+# Should return a RockAction(), PaperAction(), or ScissorsAction().
+return random.choice([RockAction(), PaperAction(), ScissorsAction()])`]
+];
+
+const fixedCode = [
+    [0, `from skeleton.actions import RockAction, PaperAction, ScissorsAction
+from skeleton.bot import Bot
+from skeleton.runner import parse_args, run_bot`],
+    [0, `class Player(Bot):`],
+    [4, `def __init__(self):`],
+    [4, `def handle_results(self, *, my_action, their_action, my_payoff, match_clock):`],
+    [4, `def get_action(self, *, match_clock):`],
+    [0, `if __name__ == '__main__':
+    run_bot(Player(), parse_args())`]
+];
+
+function initializeEditor() {
+    const codeEditor = document.getElementById("code-editor");
+    codeEditor.innerHTML = ''; // Clear existing content
+
+    for (let i = 0; i < fixedCode.length; i++) {
+        addFixedText(codeEditor, i);
+        if (i < initialCode.length) {
+            createEditor(codeEditor, i);
+        }
+    }
+
+    // Set up autosave after editors are created
+    setupAutosave();
+}
+
+function addFixedText(parent, index) {
+    const fixedTextDiv = document.createElement('div');
+    fixedTextDiv.className = 'fixed-text';
+    fixedTextDiv.setAttribute('style', `padding-left: ${fixedCode[index][0]}em`);
+    parent.appendChild(fixedTextDiv);
+
+    fixedEditors[index] = CodeMirror(fixedTextDiv, {
+        value: fixedCode[index][1],
+        mode: "python",
+        theme: "default",
+        readOnly: true,
+        lineNumbers: false,
+        lineWrapping: true,
+        indentUnit: 4,
+        tabSize: 4,
+    });
+}
+
+function createEditor(parent, index) {
+    const editorDiv = document.createElement('div');
+    editorDiv.className = 'editor';
+    editorDiv.setAttribute('style', `padding-left: ${initialCode[index][0]+0.5}em`);
+    parent.appendChild(editorDiv);
+
+    editors[index] = CodeMirror(editorDiv, {
+        value: initialCode[index][1],
+        mode: "python",
+        theme: "default",
+        lineNumbers: false,
+        indentUnit: 4,
+        tabSize: 4,
+        indentWithTabs: false,
+        lineWrapping: true,
+        viewportMargin: Infinity,
+        extraKeys: {
+            "Enter": function(cm) {
+                cm.replaceSelection("\n");
+                cm.refresh();
+            }
+        }
+    });
+
+    // Add change listener to each editor
+    editors[index].on('change', function(cm) {
+        autoSave();
+        cm.refresh();
+    });
+
+    // Ensure the editor is properly sized
+    setTimeout(() => editors[index].refresh(), 1);
+}
+
+function setupAutosave() {
+    enable_autosave = true;
+}
+
+function autoSave() {
+    if (!enable_autosave) {
+        return;
+    }
+    
+    console.log('autosave');
+    const savedCode = editors.map(editor => editor.getValue());
+    localStorage.setItem('autoSavedCode', JSON.stringify(savedCode));
+}
+
+function refreshAllEditors() {
+    editors.forEach(editor => {
+        editor.refresh();
+    });
+}
+
+function refreshAllCodeMirrors() {
+    editors.forEach(editor => editor.refresh());
+    fixedEditors.forEach(editor => editor.refresh());
+}
+
+function loadSavedCode() {
+    console.log('load');
+    const savedCode = JSON.parse(localStorage.getItem('autoSavedCode'));
+    if (savedCode && editors.length === savedCode.length) {
+        editors.forEach((editor, index) => {
+            editor.setValue(savedCode[index]);
+            editor.refresh();  // Refresh each editor after setting value
+        });
+    }
+    refreshAllEditors();  // Refresh all editors after loading
+}
+
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+    setTimeout(refreshAllCodeMirrors, 10); // Add this line
+}
+
+function submitCode() {
+    autoSave();
+    const username = localStorage.getItem('github_username') || 'unknown';
+    const token = localStorage.getItem('github_oauth_token') || 'unknown';
+    
+    const data = {
+        'username': username,
+        'token': token,
+        'snippets': {}
+    };
+    
+    // Map the editors to their respective snippet keys
+    const snippetKeys = ['imports', 'classlevel', 'init', 'handle_results', 'get_action'];
+    
+    editors.forEach((editor, index) => {
+        data['snippets'][snippetKeys[index]] = {
+            'contents': editor.getValue(),
+            'indent': initialCode[index][0]
+        };
+    });
+
+    fetch('https://staff-dev1.poker.camp:8443/submit-rps-hackathon-20240917', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        alert('Code submitted successfully!');
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('Error submitting code. Please try again.');
+    });
+}
+
+document.getElementById('uploadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData();
+    const fileField = document.querySelector('input[type="file"]');
+    const username = localStorage.getItem('github_username') || 'unknown';
+    const token = localStorage.getItem('github_oauth_token') || 'unknown';
+    
+    formData.append('file', fileField.files[0]);
+    formData.append('username', username);
+    formData.append('token', token);
+
+    fetch('https://staff-dev1.poker.camp:8443/upload-rps-hackathon-20240917', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        document.getElementById('uploadStatus').textContent = 'Success: ' + result.message;
+        console.log('Success:', result);
+    })
+    .catch(error => {
+        document.getElementById('uploadStatus').textContent = 'Error: ' + error.message;
+        console.error('Error:', error);
+    });
+});
+
+window.addEventListener('load', function() {
+    initializeEditor();
+    loadSavedCode();
+    document.getElementById("defaultOpen").click();
+    // Add a delay before refreshing to ensure DOM is fully rendered
+    setTimeout(refreshAllCodeMirrors, 100);
+});
+</script>

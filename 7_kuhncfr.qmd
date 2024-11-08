@@ -1,3 +1,0 @@
----
-title: "C2C #7: Evals and Kuhn CFR Results"
----

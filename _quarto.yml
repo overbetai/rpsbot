@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Cards to Code"
+  title: "RPS.bot"
   page-footer: "\xA9 2024 Overbet.ai. All rights reserved."
   open-graph: true
   google-analytics: G-68E8GHZRHQ
@@ -29,30 +29,13 @@ website:
     contents:
         - text: "Home"
           href: "index.qmd"
-        - text: "Setup and Face-up Poker"
-          href: "setup.qmd"
-        - text: "#1: Game Theory"
-          href: "1_gametheory.qmd"
-        - text: "#2: Kuhn Poker"
-          href: "2_kuhnpoker.qmd"
-        - text: "#3: Game Trees"
-          href: "3_gametrees.qmd"
-        - text: "#4: Regret"
-          href: "4_regret.qmd"
-        - text: "#5: CFR"
-          href: "5_cfr.qmd"
-        - text: "#6: Monte Carlo CFR"
-          href: "6_mccfr.qmd"
-        - text: "#7: Evals and Results"
-          href: "7_kuhncfr.qmd"
-        - text: "#8: 100-card Kuhn"
-          href: "8_100cardkuhn.qmd"
-        - text: "#9: Opponent Modeling"
-          href: "9_opponentmodeling.qmd"
-        - text: "#10: Challenge Projects"
-          href: "10_challenge.qmd"
-        - text: "Next Directions"
-          href: "next.qmd"
+        - text: "Intro to RPS"
+          href: "intro.qmd"
+        - text: "RPS Theory"
+          href: "rpstheory.qmd"
+        - text: "RPS Opponent Modeling"
+          href: "rpsom.qmd"
+
 format:
   html:
     theme: 
