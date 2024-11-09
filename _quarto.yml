@@ -31,8 +31,6 @@ website:
           href: "index.qmd"
         - text: "Intro to RPS"
           href: "intro.qmd"
-        - text: "RPS Theory"
-          href: "rpstheory.qmd"
         - text: "RPS Opponent Modeling"
           href: "rpsom.qmd"
         - text: "RPS Bot Challenge"
