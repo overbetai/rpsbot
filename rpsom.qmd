@@ -5,47 +5,46 @@ format:
   html:
     math: true
 ---
+At the heart of opponent modeling is predicting your opponent's next move. While ![game theory optimal](intro.qmd#expected-value) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice. 
 
+Humans tend to be predictably irrational. This can manifest itself as someone having favorite moves, making "tilted" decisions, reacting to previous games in predictable ways, or having "leaks" like never throwing the same move three times in a row. 
 
+There can be levels to the game -- maybe you think your opponent expects you to play Rock, so then you expect that they'll play Paper, so you should play Scissors, but maybe they'll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on. 
 
-In poker, many players start with GTO then exploit
+We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to our opponents. The overall goal is to maximize payoffs, which is in practice countering opponent weaknesses while minimizing your own exploitability. 
 
+## Axes of opponent modeling
 
-maximizing reward while not being exploitable
+### Types of opponents 
 
+Bad static opponents: Playing Rock 
 
-RPS opponent modeling going through stages of simple opponent given to complex mix of opponents prediction stuff
+Better static opponents: Playing 60% Rock, 20% Paper, 20% Scissors
 
-From simple to Iocaine
-How to parametrize opponent
-Multiple hypotheses, run counterfactually, pick best one  
-Pattern hypotheses, compare to general pattern about something else 
-Play against levels
-Take from rps bot spreadsheet
-LLM
-Add rps.bot as tutorial on opponent modeling focused on RPS that leads to our competitions 
+Dynamic with no relation to game, i.e. a static Markov model: Playing RPSRPSRPS...
 
-Intro opponent modeling progression course (see high level/weekly challenge below) 
+![](markovrps.png)
 
+Dynamic only related to limited subset of actions, like: 
 
-Build a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)
+1. Only our own actions
+2. Only opponent actions: 
+3. Only most recent action: 
 
-Range of opponents: 
-Static bad
-Static better
-Dynamic with no relation to game (e.g. RPSRPSRPS)
-RR: I think "dynamic with no relation to game" can be generalized to "static Markov model" where you have a hidden state, your hidden state completely defines your probabilities, and the round moves + outcome + your state makes you transition to a specific new state
-Dynamic only related to own or opponent actions
-Dynamic only related to recent actions
-Dynamic related to entire history of actions
-Adversarial actions, i.e. intelligently exploiting opponents
+Dynamic related to entire history of actions: Play the move that beats the most frequent opponent move so far
 
-Range of games: 
-We tell you single opponent
-We tell you multiple opponents
-You detect single opponent
-You detect multiple opponents
-Enter weekly challenge of unknown multiple opponents + other human created bots from that week 
+Adversarial prediction: 
+
+### Types of games
+We tell you a single opponent's strategy
+
+We tell you multiple opponents' strategies
+
+Play a single opponent with no advance knowledge of strategy
+
+Play multiple opponents with no advance knowledge of strategy
+
+Play multiple opponents that include some suboptimal house bots and some human-created bots
 
 ## Starter Code
 We provide Python starter code that you can submit directly on the Submission page or that you can download and submit through file upload. 
@@ -75,6 +74,29 @@ And the history of your actions and your opponent actions are stored in the foll
 - `def get_action(self, *, match_clock)`: 
   - This is the main function where you run your strategy and return an action
   - You can return `RockAction()`, `PaperAction()`, or `ScissorsAction()`
+
+## Beating simple opponents
+
+### Rockbot
+
+### r532bot
+
+### RPSbot
+
+### Combination of the first 3 bots
+
+### Mimicbot
+
+### Beatprevbot
+
+### Freqbot 
+
+### Combination of all 6 bots		
+
+## General strategies
+In poker, many players start with GTO then exploit
+
+don't know the opponent in advance? can try to detect, or predictors
 
 ## Problem Solving and Strategy
 The goal of the hackathon is to figure out how to adapt to your opponents (other participants and house bots)! 
@@ -222,3 +244,15 @@ def get_action(self, *, match_clock):
   # If it's the first move or opponent hasn't only played Rock, play randomly
   return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
+
+### Claudebot
+
+## Predicting
+How to parametrize opponent
+Multiple hypotheses, run counterfactually, pick best one  
+Pattern hypotheses, compare to general pattern about something else 
+
+### Iocaine Powder
+
+## Challenges
+Build a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)

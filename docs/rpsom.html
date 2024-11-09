@@ -248,11 +248,28 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#starter-code" id="toc-starter-code" class="nav-link active" data-scroll-target="#starter-code">Starter Code</a>
+  <li><a href="#axes-of-opponent-modeling" id="toc-axes-of-opponent-modeling" class="nav-link active" data-scroll-target="#axes-of-opponent-modeling">Axes of opponent modeling</a>
+  <ul class="collapse">
+  <li><a href="#types-of-opponents" id="toc-types-of-opponents" class="nav-link" data-scroll-target="#types-of-opponents">Types of opponents</a></li>
+  <li><a href="#types-of-games" id="toc-types-of-games" class="nav-link" data-scroll-target="#types-of-games">Types of games</a></li>
+  </ul></li>
+  <li><a href="#starter-code" id="toc-starter-code" class="nav-link" data-scroll-target="#starter-code">Starter Code</a>
   <ul class="collapse">
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   </ul></li>
+  <li><a href="#beating-simple-opponents" id="toc-beating-simple-opponents" class="nav-link" data-scroll-target="#beating-simple-opponents">Beating simple opponents</a>
+  <ul class="collapse">
+  <li><a href="#rockbot" id="toc-rockbot" class="nav-link" data-scroll-target="#rockbot">Rockbot</a></li>
+  <li><a href="#r532bot" id="toc-r532bot" class="nav-link" data-scroll-target="#r532bot">r532bot</a></li>
+  <li><a href="#rpsbot" id="toc-rpsbot" class="nav-link" data-scroll-target="#rpsbot">RPSbot</a></li>
+  <li><a href="#combination-of-the-first-3-bots" id="toc-combination-of-the-first-3-bots" class="nav-link" data-scroll-target="#combination-of-the-first-3-bots">Combination of the first 3 bots</a></li>
+  <li><a href="#mimicbot" id="toc-mimicbot" class="nav-link" data-scroll-target="#mimicbot">Mimicbot</a></li>
+  <li><a href="#beatprevbot" id="toc-beatprevbot" class="nav-link" data-scroll-target="#beatprevbot">Beatprevbot</a></li>
+  <li><a href="#freqbot" id="toc-freqbot" class="nav-link" data-scroll-target="#freqbot">Freqbot</a></li>
+  <li><a href="#combination-of-all-6-bots" id="toc-combination-of-all-6-bots" class="nav-link" data-scroll-target="#combination-of-all-6-bots">Combination of all 6 bots</a></li>
+  </ul></li>
+  <li><a href="#general-strategies" id="toc-general-strategies" class="nav-link" data-scroll-target="#general-strategies">General strategies</a></li>
   <li><a href="#problem-solving-and-strategy" id="toc-problem-solving-and-strategy" class="nav-link" data-scroll-target="#problem-solving-and-strategy">Problem Solving and Strategy</a></li>
   <li><a href="#llms" id="toc-llms" class="nav-link" data-scroll-target="#llms">LLMs</a></li>
   <li><a href="#writing-your-own-bot" id="toc-writing-your-own-bot" class="nav-link" data-scroll-target="#writing-your-own-bot">Writing Your Own Bot</a>
@@ -262,7 +279,13 @@ window.Quarto = {
   <li><a href="#win-vs.-full-opponent-history-most-frequent" id="toc-win-vs.-full-opponent-history-most-frequent" class="nav-link" data-scroll-target="#win-vs.-full-opponent-history-most-frequent">Win vs.&nbsp;Full Opponent History Most Frequent</a></li>
   <li><a href="#sometimes-playing-randomly" id="toc-sometimes-playing-randomly" class="nav-link" data-scroll-target="#sometimes-playing-randomly">Sometimes Playing Randomly</a></li>
   <li><a href="#exploiting-a-weak-bot" id="toc-exploiting-a-weak-bot" class="nav-link" data-scroll-target="#exploiting-a-weak-bot">Exploiting a Weak Bot</a></li>
+  <li><a href="#claudebot" id="toc-claudebot" class="nav-link" data-scroll-target="#claudebot">Claudebot</a></li>
   </ul></li>
+  <li><a href="#predicting" id="toc-predicting" class="nav-link" data-scroll-target="#predicting">Predicting</a>
+  <ul class="collapse">
+  <li><a href="#iocaine-powder" id="toc-iocaine-powder" class="nav-link" data-scroll-target="#iocaine-powder">Iocaine Powder</a></li>
+  </ul></li>
+  <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
   </ul>
 </nav>
     </div>
@@ -288,15 +311,36 @@ window.Quarto = {
 </header>
 
 
-<p>In poker, many players start with GTO then exploit</p>
-<p>maximizing reward while not being exploitable</p>
-<p>RPS opponent modeling going through stages of simple opponent given to complex mix of opponents prediction stuff</p>
-<p>From simple to Iocaine How to parametrize opponent Multiple hypotheses, run counterfactually, pick best one<br>
-Pattern hypotheses, compare to general pattern about something else Play against levels Take from rps bot spreadsheet LLM Add rps.bot as tutorial on opponent modeling focused on RPS that leads to our competitions</p>
-<p>Intro opponent modeling progression course (see high level/weekly challenge below)</p>
-<p>Build a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)</p>
-<p>Range of opponents: Static bad Static better Dynamic with no relation to game (e.g.&nbsp;RPSRPSRPS) RR: I think “dynamic with no relation to game” can be generalized to “static Markov model” where you have a hidden state, your hidden state completely defines your probabilities, and the round moves + outcome + your state makes you transition to a specific new state Dynamic only related to own or opponent actions Dynamic only related to recent actions Dynamic related to entire history of actions Adversarial actions, i.e.&nbsp;intelligently exploiting opponents</p>
-<p>Range of games: We tell you single opponent We tell you multiple opponents You detect single opponent You detect multiple opponents Enter weekly challenge of unknown multiple opponents + other human created bots from that week</p>
+<p>At the heart of opponent modeling is predicting your opponent’s next move. While <img src="intro.qmd#expected-value" class="img-fluid" alt="game theory optimal"> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.</p>
+<p>Humans tend to be predictably irrational. This can manifest itself as someone having favorite moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.</p>
+<p>There can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.</p>
+<p>We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to our opponents. The overall goal is to maximize payoffs, which is in practice countering opponent weaknesses while minimizing your own exploitability.</p>
+<section id="axes-of-opponent-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="axes-of-opponent-modeling">Axes of opponent modeling</h2>
+<section id="types-of-opponents" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-opponents">Types of opponents</h3>
+<p>Bad static opponents: Playing Rock</p>
+<p>Better static opponents: Playing 60% Rock, 20% Paper, 20% Scissors</p>
+<p>Dynamic with no relation to game, i.e.&nbsp;a static Markov model: Playing RPSRPSRPS…</p>
+<p><img src="markovrps.png" class="img-fluid"></p>
+<p>Dynamic only related to limited subset of actions, like:</p>
+<ol type="1">
+<li>Only our own actions</li>
+<li>Only opponent actions:</li>
+<li>Only most recent action:</li>
+</ol>
+<p>Dynamic related to entire history of actions: Play the move that beats the most frequent opponent move so far</p>
+<p>Adversarial prediction:</p>
+</section>
+<section id="types-of-games" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-games">Types of games</h3>
+<p>We tell you a single opponent’s strategy</p>
+<p>We tell you multiple opponents’ strategies</p>
+<p>Play a single opponent with no advance knowledge of strategy</p>
+<p>Play multiple opponents with no advance knowledge of strategy</p>
+<p>Play multiple opponents that include some suboptimal house bots and some human-created bots</p>
+</section>
+</section>
 <section id="starter-code" class="level2">
 <h2 class="anchored" data-anchor-id="starter-code">Starter Code</h2>
 <p>We provide Python starter code that you can submit directly on the Submission page or that you can download and submit through file upload.</p>
@@ -334,6 +378,38 @@ Pattern hypotheses, compare to general pattern about something else Play against
 </ul></li>
 </ul>
 </section>
+</section>
+<section id="beating-simple-opponents" class="level2">
+<h2 class="anchored" data-anchor-id="beating-simple-opponents">Beating simple opponents</h2>
+<section id="rockbot" class="level3">
+<h3 class="anchored" data-anchor-id="rockbot">Rockbot</h3>
+</section>
+<section id="r532bot" class="level3">
+<h3 class="anchored" data-anchor-id="r532bot">r532bot</h3>
+</section>
+<section id="rpsbot" class="level3">
+<h3 class="anchored" data-anchor-id="rpsbot">RPSbot</h3>
+</section>
+<section id="combination-of-the-first-3-bots" class="level3">
+<h3 class="anchored" data-anchor-id="combination-of-the-first-3-bots">Combination of the first 3 bots</h3>
+</section>
+<section id="mimicbot" class="level3">
+<h3 class="anchored" data-anchor-id="mimicbot">Mimicbot</h3>
+</section>
+<section id="beatprevbot" class="level3">
+<h3 class="anchored" data-anchor-id="beatprevbot">Beatprevbot</h3>
+</section>
+<section id="freqbot" class="level3">
+<h3 class="anchored" data-anchor-id="freqbot">Freqbot</h3>
+</section>
+<section id="combination-of-all-6-bots" class="level3">
+<h3 class="anchored" data-anchor-id="combination-of-all-6-bots">Combination of all 6 bots</h3>
+</section>
+</section>
+<section id="general-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="general-strategies">General strategies</h2>
+<p>In poker, many players start with GTO then exploit</p>
+<p>don’t know the opponent in advance? can try to detect, or predictors</p>
 </section>
 <section id="problem-solving-and-strategy" class="level2">
 <h2 class="anchored" data-anchor-id="problem-solving-and-strategy">Problem Solving and Strategy</h2>
@@ -469,10 +545,25 @@ Pattern hypotheses, compare to general pattern about something else Play against
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If it's the first move or opponent hasn't only played Rock, play randomly</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
-
 </section>
+<section id="claudebot" class="level3">
+<h3 class="anchored" data-anchor-id="claudebot">Claudebot</h3>
+</section>
+</section>
+<section id="predicting" class="level2">
+<h2 class="anchored" data-anchor-id="predicting">Predicting</h2>
+<p>How to parametrize opponent Multiple hypotheses, run counterfactually, pick best one<br>
+Pattern hypotheses, compare to general pattern about something else</p>
+<section id="iocaine-powder" class="level3">
+<h3 class="anchored" data-anchor-id="iocaine-powder">Iocaine Powder</h3>
+</section>
+</section>
+<section id="challenges" class="level2">
+<h2 class="anchored" data-anchor-id="challenges">Challenges</h2>
+<p>Build a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)</p>
+
+
+
 </section>
 
 </main> <!-- /main -->
