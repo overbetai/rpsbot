@@ -5,72 +5,39 @@ format:
   html:
     math: true
 ---
-2) Separate weekly competition for non-1st time people (all non-1st time people + assortment of house bots) 
+RPS bot challenges are coming soon! 
 
-3) Daily RPS v1 is X number of games vs. one of the weekly competition bot entrants from the previous week (or from whenever, or also including occasional LLM or house bots). You can elect to play vs. the bot manually, with some-code, or full-code. 
+In these challenges, there are always suboptimal "house bots". Think bots that always play Rock or always play the sequence "RPSRPSRPS..."
 
-4) Daily RPS v2 is “Medium level” from below, but can we sustain this? But also if we do #3 above is that going to get 
+This means that playing the *game theory optimal* strategy will not maximize your payoff against them. 
 
-### Competition Rounds
-There will be 5 rounds of RPS competitions. Each will have: 
+The challenge is to predict what they're doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots! 
 
-- 1 bot entered by each participant
-- 4 new house bots
+## Weekly Challenge
+Enter your best bot to play against that week's other human-made bot entrants as well as a selection of our own house-bots that will vary each week. You'll play every other entrant for 1000 games.  
 
-You'll play 200 games against each other bot twice. 
+Entries start each Monday and end each Sunday, with results posted the Monday after. **[Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]**
 
-Before each round, you'll be given the next round's name, which will be a hint about the strategies for all of those bots. 
+![](matrix.png)
 
-### House Bots
-Each house bot that enters during a round will stay for all future rounds. 
+Each week has a special rookie division for those who are entering for their first time. 
 
-The bot names reveal the bot strategies. The names will be anonymized during each round and then revealed afterwards (except for the final round where they will be revealed, but won't be that useful!).  
+## Daily Challenge
+Play 200 games against a single RPS bot each day. 
 
-### Submissions
-- For each round, you can submit as many times as you want up to the end of that round
-- Starting in the 2nd round, each submission *during* the round will receive a *test result* based on how that bot would have done in the *previous* round 
-  - Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new environment bots
-- The final submission before the end of the round will be entered into that round's competition (and will stay active for future rounds as well until you submit a new one)
-- At the end of each round, we'll run the tournament and show the results
+The bots will get roughly more difficult as the week goes on from Monday to Sunday. They'll be all different types -- LLM-generated, our own house bots, human-made bots from our weekly challenges, etc. 
 
-### Scoring
-At the end of each round, you'll get the following information: 
+You can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don't know how to code. 
 
-- Matrix score report with results against every other bot
-  - Your score is reported as profit per 100 games
-- Game histories for each match
+**[What about the timer play every second thing?]**
 
-Your cumulative score is the sum of all of the round scores, where the first round is worth 1x and each future round increases by 1.3x (_i.e._, round 2 is 1.3x, round 3 is 1.69x, etc.). 
+## Hackathon
+We periodically run virtual and in-person hackathons that we'll announce on RPS.bot and on our [mailing list](https://overbetai.substack.com/)/social channels.
 
-### Prizes
-There will be a small on-theme prize for the overall winner. 
+The hackathons are run over a few hours with new rounds every 30 minutes. The format is similar to the weekly challenge above, where you face off against other human-made bots and our own house bots. We enter a new selection of progressively smarter house bots every round. Once a house bot enters, it stays in for subsequent rounds. 
 
-## Strategy
-Your mission is to play well against the environment bots without getting counterplayed by other participant bots. 
+After each round, you can see the entire play history against each bot and a matrix score report. Once a house bot enters, it stays in for subsequent rounds. 
 
-### Strategy vs. House Bots
-The histories that are shown against the bots will generally be very useful in discovering patterns. Combine this with the bot names, and you'll be able to develop a strong strategy against these bots for future rounds. 
+![](history.png)
 
-### Strategy vs. Participant Bots
-Look for patterns. If participant bots are only trying to exploit environment bots, then they might be exploitable themselves. 
-
-## Writing Bots
-[Click here](botguide.qmd) for our guide on getting started writing RPS bots.
-
-## Schedule
-
-**2:00pm:** Get set up
-
-**2:15pm:** Begin Round 1
-
-**2:45pm:** Round 1 results, begin Round 2
-
-**3:15pm:** Round 2 results, begin Round 3
-
-**3:45pm:** Round 3 results, begin Round 4
-
-**4:15pm:** Round 4 results, begin Round 5
-
-**4:45pm:** Round 5 results, finish up/hang out
-
-**5:00pm:** End
+You can submit multiple times during a round, and for each submission, you'll get a test result showing how your bot would have performed in the *previous* round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.

@@ -216,7 +216,7 @@ window.Quarto = {
   <ul>
   <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link active" data-scroll-target="#how-it-works">How it Works</a></li>
   <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why?</a></li>
-  <li><a href="#game-theory-equilibrium" id="toc-game-theory-equilibrium" class="nav-link" data-scroll-target="#game-theory-equilibrium">Game Theory Equilibrium</a>
+  <li><a href="#rps-game-theory" id="toc-rps-game-theory" class="nav-link" data-scroll-target="#rps-game-theory">RPS game theory</a>
   <ul class="collapse">
   <li><a href="#payoff-matrix" id="toc-payoff-matrix" class="nav-link" data-scroll-target="#payoff-matrix">Payoff matrix</a></li>
   <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value">Expected value</a></li>
@@ -264,14 +264,21 @@ window.Quarto = {
 </section>
 <section id="why" class="level2">
 <h2 class="anchored" data-anchor-id="why">Why?</h2>
-<p>We think RPS is fun and while simple enough that everyone knows it and understands the rules, it’s still a great domain for thinking about strategy in a repeated game against a variety of opponents.</p>
+<p>We think RPS is fun and while it’s simple enough that everyone knows it and understands the rules, it’s still a great domain for thinking about strategy in a repeated game against a variety of opponents.</p>
 <p>From DeepMind in 2023:</p>
 <blockquote class="blockquote">
 <p>In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g.&nbsp;beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.</p>
 </blockquote>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+gonna 3d print the exploitability of a player’s rock-paper-scissors strategy over their strategy simplex <a href="https://t.co/cSXFKyI5E8">pic.twitter.com/cSXFKyI5E8</a>
+</p>
+— Kevin a. Wang (<span class="citation" data-cites="often_wang"><span class="citation" data-cites="often_wang">@often_wang</span></span>) <a href="https://twitter.com/often_wang/status/1838711689732132929?ref_src=twsrc%5Etfw">September 24, 2024</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </section>
-<section id="game-theory-equilibrium" class="level2">
-<h2 class="anchored" data-anchor-id="game-theory-equilibrium">Game Theory Equilibrium</h2>
+<section id="rps-game-theory" class="level2">
+<h2 class="anchored" data-anchor-id="rps-game-theory">RPS game theory</h2>
 <section id="payoff-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="payoff-matrix">Payoff matrix</h3>
 <p>The core features of a game are its players, the actions of each player, and the payoffs. We can show this for RPS in the below payoff matrix, also known as normal-form.</p>
@@ -573,7 +580,7 @@ s + r = 2p \\
 </section>
 <section id="exploiting-vs.-nash" class="level3">
 <h3 class="anchored" data-anchor-id="exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</h3>
-<p>The equilibrium strategy vs.&nbsp;a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing the worst possible strategy, yet equilibrium is still breaking even!</p>
+<p>The equilibrium strategy vs.&nbsp;a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing perhaps the worst possible strategy, yet equilibrium is still breaking even against it!</p>
 <p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. This is called a <strong>best response</strong> strategy. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
 <p><span class="math display">
 \begin{equation}
@@ -584,7 +591,7 @@ s + r = 2p \\
 \end{split}
 \end{equation}
 </span></p>
-<p>We’d win 1 each game playing Paper vs.&nbsp;Rock.</p>
+<p>We’d win 1 each game playing Paper vs.&nbsp;Rock. Though now always playing Paper means that the opponent could always play Scissors and then we’d become the loser.</p>
 <p>How about against the opponent playing 60% Rock, 20% Paper, 20% Scissors? Here we can see that because they are overplaying Rock, our best strategy is again to always play Paper. We write the payoffs for playing Paper and the probabilities according to the <em>622</em> strategy.</p>
 <p><span class="math display">
 \begin{equation}

@@ -13,13 +13,21 @@ format:
 - You get +1 point for a win, -1 for a loss, and 0 for ties
 
 ## Why? 
-We think RPS is fun and while simple enough that everyone knows it and understands the rules, it's still a great domain for thinking about strategy in a repeated game against a variety of opponents. 
+We think RPS is fun and while it's simple enough that everyone knows it and understands the rules, it's still a great domain for thinking about strategy in a repeated game against a variety of opponents. 
 
 From DeepMind in 2023:
 
 > In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.
 
-## Game Theory Equilibrium
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+gonna 3d print the exploitability of a player's rock-paper-scissors strategy over their strategy simplex <a href="https://t.co/cSXFKyI5E8">pic.twitter.com/cSXFKyI5E8</a>
+</p>
+— Kevin a. Wang (<span class="citation" data-cites="often_wang">@often_wang</span>) <a href="https://twitter.com/often_wang/status/1838711689732132929?ref_src=twsrc%5Etfw">September 24, 2024</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+## RPS game theory
 
 ### Payoff matrix
 The core features of a game are its players, the actions of each player, and the payoffs. We can show this for RPS in the below payoff matrix, also known as normal-form.
@@ -231,7 +239,7 @@ $$
 The random equilibrium strategy will result in 0 against any pure strategy and any combination of strategies including *622* and the opponent playing the random strategy. 
 
 ### Exploiting vs. Nash
-The equilibrium strategy vs. a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing the worst possible strategy, yet equilibrium is still breaking even! 
+The equilibrium strategy vs. a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing perhaps the worst possible strategy, yet equilibrium is still breaking even against it! 
 
 What's the best that we could do against Rock only? We could play **purely paper**. This is called a **best response** strategy. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock. 
 
@@ -245,7 +253,7 @@ $$
 \end{equation}
 $$
 
-We'd win 1 each game playing Paper vs. Rock. 
+We'd win 1 each game playing Paper vs. Rock. Though now always playing Paper means that the opponent could always play Scissors and then we'd become the loser. 
 
 How about against the opponent playing 60% Rock, 20% Paper, 20% Scissors? Here we can see that because they are overplaying Rock, our best strategy is again to always play Paper. We write the payoffs for playing Paper and the probabilities according to the *622* strategy. 
 

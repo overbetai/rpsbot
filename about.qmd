@@ -6,10 +6,4 @@ RPS.bot by Max Chiswick and Ross Rheingans-Yoo.
 
 We're excited about learning through games. Check out [Overbet.ai](https://overbet.ai) (under development) and [Poker Camp](https://poker.camp) for more. 
 
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-gonna 3d print the exploitability of a player's rock-paper-scissors strategy over their strategy simplex <a href="https://t.co/cSXFKyI5E8">pic.twitter.com/cSXFKyI5E8</a>
-</p>
-— Kevin a. Wang (<span class="citation" data-cites="often_wang">@often_wang</span>) <a href="https://twitter.com/often_wang/status/1838711689732132929?ref_src=twsrc%5Etfw">September 24, 2024</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b0SoKWLkmLU?si=0AQ3_NgHOe4tc4OU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

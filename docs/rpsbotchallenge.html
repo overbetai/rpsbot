@@ -214,18 +214,9 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#competition-rounds" id="toc-competition-rounds" class="nav-link active" data-scroll-target="#competition-rounds">Competition Rounds</a></li>
-  <li><a href="#house-bots" id="toc-house-bots" class="nav-link" data-scroll-target="#house-bots">House Bots</a></li>
-  <li><a href="#submissions" id="toc-submissions" class="nav-link" data-scroll-target="#submissions">Submissions</a></li>
-  <li><a href="#scoring" id="toc-scoring" class="nav-link" data-scroll-target="#scoring">Scoring</a></li>
-  <li><a href="#prizes" id="toc-prizes" class="nav-link" data-scroll-target="#prizes">Prizes</a></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a>
-  <ul class="collapse">
-  <li><a href="#strategy-vs.-house-bots" id="toc-strategy-vs.-house-bots" class="nav-link" data-scroll-target="#strategy-vs.-house-bots">Strategy vs.&nbsp;House Bots</a></li>
-  <li><a href="#strategy-vs.-participant-bots" id="toc-strategy-vs.-participant-bots" class="nav-link" data-scroll-target="#strategy-vs.-participant-bots">Strategy vs.&nbsp;Participant Bots</a></li>
-  </ul></li>
-  <li><a href="#writing-bots" id="toc-writing-bots" class="nav-link" data-scroll-target="#writing-bots">Writing Bots</a></li>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
+  <li><a href="#weekly-challenge" id="toc-weekly-challenge" class="nav-link active" data-scroll-target="#weekly-challenge">Weekly Challenge</a></li>
+  <li><a href="#daily-challenge" id="toc-daily-challenge" class="nav-link" data-scroll-target="#daily-challenge">Daily Challenge</a></li>
+  <li><a href="#hackathon" id="toc-hackathon" class="nav-link" data-scroll-target="#hackathon">Hackathon</a></li>
   </ul>
 </nav>
     </div>
@@ -251,80 +242,31 @@ window.Quarto = {
 </header>
 
 
-<ol start="2" type="1">
-<li><p>Separate weekly competition for non-1st time people (all non-1st time people + assortment of house bots)</p></li>
-<li><p>Daily RPS v1 is X number of games vs.&nbsp;one of the weekly competition bot entrants from the previous week (or from whenever, or also including occasional LLM or house bots). You can elect to play vs.&nbsp;the bot manually, with some-code, or full-code.</p></li>
-<li><p>Daily RPS v2 is “Medium level” from below, but can we sustain this? But also if we do #3 above is that going to get</p></li>
-</ol>
-<section id="competition-rounds" class="level3">
-<h3 class="anchored" data-anchor-id="competition-rounds">Competition Rounds</h3>
-<p>There will be 5 rounds of RPS competitions. Each will have:</p>
-<ul>
-<li>1 bot entered by each participant</li>
-<li>4 new house bots</li>
-</ul>
-<p>You’ll play 200 games against each other bot twice.</p>
-<p>Before each round, you’ll be given the next round’s name, which will be a hint about the strategies for all of those bots.</p>
+<p>RPS bot challenges are coming soon!</p>
+<p>In these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”</p>
+<p>This means that playing the <em>game theory optimal</em> strategy will not maximize your payoff against them.</p>
+<p>The challenge is to predict what they’re doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots!</p>
+<section id="weekly-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="weekly-challenge">Weekly Challenge</h2>
+<p>Enter your best bot to play against that week’s other human-made bot entrants as well as a selection of our own house-bots that will vary each week. You’ll play every other entrant for 1000 games.</p>
+<p>Entries start each Monday and end each Sunday, with results posted the Monday after. <strong>[Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]</strong></p>
+<p><img src="matrix.png" class="img-fluid"></p>
+<p>Each week has a special rookie division for those who are entering for their first time.</p>
 </section>
-<section id="house-bots" class="level3">
-<h3 class="anchored" data-anchor-id="house-bots">House Bots</h3>
-<p>Each house bot that enters during a round will stay for all future rounds.</p>
-<p>The bot names reveal the bot strategies. The names will be anonymized during each round and then revealed afterwards (except for the final round where they will be revealed, but won’t be that useful!).</p>
+<section id="daily-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="daily-challenge">Daily Challenge</h2>
+<p>Play 200 games against a single RPS bot each day.</p>
+<p>The bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – LLM-generated, our own house bots, human-made bots from our weekly challenges, etc.</p>
+<p>You can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.</p>
+<p><strong>[What about the timer play every second thing?]</strong></p>
 </section>
-<section id="submissions" class="level3">
-<h3 class="anchored" data-anchor-id="submissions">Submissions</h3>
-<ul>
-<li>For each round, you can submit as many times as you want up to the end of that round</li>
-<li>Starting in the 2nd round, each submission <em>during</em> the round will receive a <em>test result</em> based on how that bot would have done in the <em>previous</em> round
-<ul>
-<li>Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new environment bots</li>
-</ul></li>
-<li>The final submission before the end of the round will be entered into that round’s competition (and will stay active for future rounds as well until you submit a new one)</li>
-<li>At the end of each round, we’ll run the tournament and show the results</li>
-</ul>
-</section>
-<section id="scoring" class="level3">
-<h3 class="anchored" data-anchor-id="scoring">Scoring</h3>
-<p>At the end of each round, you’ll get the following information:</p>
-<ul>
-<li>Matrix score report with results against every other bot
-<ul>
-<li>Your score is reported as profit per 100 games</li>
-</ul></li>
-<li>Game histories for each match</li>
-</ul>
-<p>Your cumulative score is the sum of all of the round scores, where the first round is worth 1x and each future round increases by 1.3x (<em>i.e.</em>, round 2 is 1.3x, round 3 is 1.69x, etc.).</p>
-</section>
-<section id="prizes" class="level3">
-<h3 class="anchored" data-anchor-id="prizes">Prizes</h3>
-<p>There will be a small on-theme prize for the overall winner.</p>
-</section>
-<section id="strategy" class="level2">
-<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
-<p>Your mission is to play well against the environment bots without getting counterplayed by other participant bots.</p>
-<section id="strategy-vs.-house-bots" class="level3">
-<h3 class="anchored" data-anchor-id="strategy-vs.-house-bots">Strategy vs.&nbsp;House Bots</h3>
-<p>The histories that are shown against the bots will generally be very useful in discovering patterns. Combine this with the bot names, and you’ll be able to develop a strong strategy against these bots for future rounds.</p>
-</section>
-<section id="strategy-vs.-participant-bots" class="level3">
-<h3 class="anchored" data-anchor-id="strategy-vs.-participant-bots">Strategy vs.&nbsp;Participant Bots</h3>
-<p>Look for patterns. If participant bots are only trying to exploit environment bots, then they might be exploitable themselves.</p>
-</section>
-</section>
-<section id="writing-bots" class="level2">
-<h2 class="anchored" data-anchor-id="writing-bots">Writing Bots</h2>
-<p><a href="botguide.qmd">Click here</a> for our guide on getting started writing RPS bots.</p>
-</section>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p><strong>2:00pm:</strong> Get set up</p>
-<p><strong>2:15pm:</strong> Begin Round 1</p>
-<p><strong>2:45pm:</strong> Round 1 results, begin Round 2</p>
-<p><strong>3:15pm:</strong> Round 2 results, begin Round 3</p>
-<p><strong>3:45pm:</strong> Round 3 results, begin Round 4</p>
-<p><strong>4:15pm:</strong> Round 4 results, begin Round 5</p>
-<p><strong>4:45pm:</strong> Round 5 results, finish up/hang out</p>
-<p><strong>5:00pm:</strong> End</p>
+<section id="hackathon" class="level2">
+<h2 class="anchored" data-anchor-id="hackathon">Hackathon</h2>
+<p>We periodically run virtual and in-person hackathons that we’ll announce on RPS.bot and on our <a href="https://overbetai.substack.com/">mailing list</a>/social channels.</p>
+<p>The hackathons are run over a few hours with new rounds every 30 minutes. The format is similar to the weekly challenge above, where you face off against other human-made bots and our own house bots. We enter a new selection of progressively smarter house bots every round. Once a house bot enters, it stays in for subsequent rounds.</p>
+<p>After each round, you can see the entire play history against each bot and a matrix score report. Once a house bot enters, it stays in for subsequent rounds.</p>
+<p><img src="history.png" class="img-fluid"></p>
+<p>You can submit multiple times during a round, and for each submission, you’ll get a test result showing how your bot would have performed in the <em>previous</em> round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.</p>
 
 
 
