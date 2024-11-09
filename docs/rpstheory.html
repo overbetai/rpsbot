@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RPS Hackathon @ Recurse: Leaderboard – RPS.bot</title>
+<title>RPS Hackathon @ Recurse: Guide to Building a Bot – RPS.bot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -76,7 +110,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'HTGTRFYPPN', { 'anonymize_ip': true});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -122,7 +155,8 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="RPS Hackathon @ Recurse: Leaderboard – RPS.bot">
+<meta property="og:title" content="RPS Hackathon @ Recurse: Guide to Building a Bot – RPS.bot">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="RPS.bot">
 </head>
 
@@ -168,7 +202,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS Hackathon @ Recurse: Leaderboard</h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS Hackathon @ Recurse: Guide to Building a Bot</h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -194,7 +228,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpstheory.html" class="sidebar-item-text sidebar-link">
+  <a href="./rpstheory.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">RPS Theory</span></a>
   </div>
 </li>
@@ -215,15 +249,23 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#game-theory-equilibrium" id="toc-game-theory-equilibrium" class="nav-link active" data-scroll-target="#game-theory-equilibrium">Game Theory Equilibrium</a></li>
+  <li><a href="#submitting-bots" id="toc-submitting-bots" class="nav-link" data-scroll-target="#submitting-bots">Submitting Bots</a></li>
+  <li><a href="#game-engine" id="toc-game-engine" class="nav-link" data-scroll-target="#game-engine">Game Engine</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">RPS Hackathon @ Recurse: Leaderboard</h1>
+<h1 class="title d-none d-lg-block">RPS Hackathon @ Recurse: Guide to Building a Bot</h1>
 </div>
 
 
@@ -240,402 +282,145 @@ window.Quarto = {
 </header>
 
 
-<style>
-    table {
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 2px;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    th {
-        background-color: #f1f1f1;
-        height: 13.7em;
-        white-space: nowrap;
-        padding: 8px;
-        vertical-align: bottom;
-    }
-    th > div {
-        writing-mode: vertical-lr;
-        transform: rotate(180deg);
-        height: 100%;
-        width: 100%;
-        text-align: left;
-        padding: 0 3px;
-    }
-    .half-row-gap {
-        height: 10px;
-        background-color: #f9f9f9;
-    }
-    .half-column-gap {
-        width: 10px;
-        background-color: #f9f9f9;
-    }
-    .score-cell {
-        color: black;
-        text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
-    }
-    .ebot {
-        display: none;
-    }
-    #last-scoring-round-info,
-    #last-freeplay-round-info {
-        margin-bottom: 20px;
-        font-style: italic;
-        width: 58em;
-    }
-    
-    .collapsible-section {
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        overflow-x: auto; /* Allow horizontal scrolling if needed */
-    }
-
-    .collapsible-title {
-        background-color: #f1f1f1;
-        padding: 10px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    }
-
-    .collapsible-content {
-        padding: 10px;
-        min-width: fit-content; /* Ensure content expands to fit the table */
-    }
-
-    .toggle-btn, .control-btn {
-        background-color: #999999; /* Neutral medium grey */
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 14px;
-        margin-right: 10px;
-        cursor: pointer;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-    }
-
-    .toggle-btn:hover, .control-btn:hover {
-        background-color: #666666; /* Slightly darker on hover */
-    }
-
-    #all-scoring-rounds {
-        overflow-x: auto; /* Allow horizontal scrolling for the entire container if needed */
-        width: 58em;
-    }
-
-    #expand-all, #collapse-all {
-        margin-bottom: 10px;
-    }
-</style>
-<h2 class="anchored">
-Latest freeplay round
-</h2>
-<div id="last-freeplay-round-info">
-Loading…
+<section id="game-theory-equilibrium" class="level2">
+<h2 class="anchored" data-anchor-id="game-theory-equilibrium">Game Theory Equilibrium</h2>
+<p>start with GTO then exploit</p>
+<p>RPS is a zero-sum game and the payouts are symmetrical as follows:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Player 1/2</th>
+<th>Rock</th>
+<th>Paper</th>
+<th>Scissors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rock</td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+</tr>
+<tr class="even">
+<td>Paper</td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+</tr>
+<tr class="odd">
+<td>Scissors</td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+</tr>
+</tbody>
+</table>
+<p>The Nash Equilibrium strategy is to play each action <span class="math inline">r = p = s = 1/3</span> of the time.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div id="last-freeplay-round-table-container">
-
+<div class="callout-title-container flex-fill">
+Nash Equilibrium Strategy for RPS
 </div>
-<h2 class="anchored">
-Latest scoring round
-</h2>
-<div id="last-scoring-round-info">
-Loading…
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="last-scoring-round-table-container">
-
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>If Player 1 plays Rock with probability <span class="math inline">r</span>, Paper with probability <span class="math inline">p</span>, and Scissors with probability <span class="math inline">s</span>, we have the following expected value equations for Player 2:</p>
+<p><span class="math inline">\mathbb{E}(\text{R}) = -1p + 1s</span></p>
+<p><span class="math inline">\mathbb{E}(\text{P}) = 1r - 1s</span></p>
+<p><span class="math inline">\mathbb{E}(\text{S}) = -1r + 1p</span></p>
+<p>Since no action dominates, we know that the EV of every strategic action should be equal (since if a certain strategy was best, we’d want to always play that strategy).</p>
+<p>To solve for <span class="math inline">r</span>, <span class="math inline">p</span>, and <span class="math inline">s</span>, we can start by setting these EVs equal:</p>
+<p><span class="math inline">\mathbb{E}(\text{R}) = \mathbb{E}(\text{P})</span></p>
+<p><span class="math inline">-1p + 1s = 1r - 1s</span></p>
+<p><span class="math inline">2s = p + r</span></p>
+<p>Then setting these equal:</p>
+<p><span class="math inline">\mathbb{E}(\text{R}) = \mathbb{E}(\text{S})</span></p>
+<p><span class="math inline">-1p + 1s = -1r + 1p</span></p>
+<p><span class="math inline">s + r = 2p</span></p>
+<p>And finally setting these equal:</p>
+<p><span class="math inline">\mathbb{E}(\text{P}) = \mathbb{E}(\text{S})</span></p>
+<p><span class="math inline">1r - 1s = -1r + 1p</span></p>
+<p><span class="math inline">2r = s + p</span></p>
+<p>Now we have these equations:</p>
+<p><span class="math display">
+\begin{cases}
+2s = p + r \\
+s + r = 2p \\
+2r = s + p
+\end{cases}
+</span></p>
+<p>We can rewrite the 1st:</p>
+<p><span class="math inline">r = 2s - p</span></p>
+<p>And combine with the 2nd:</p>
+<p><span class="math inline">s + (2s - p) = 2p</span></p>
+<p><span class="math inline">3s = 3p</span></p>
+<p>Resulting in:</p>
+<p><span class="math inline">s = p</span></p>
+<p>Now we can go back to the 2nd equation:</p>
+<p><span class="math inline">s + r = 2p</span></p>
+<p>And insert <span class="math inline">s</span> = <span class="math inline">p</span>:</p>
+<p><span class="math inline">s + r = 2s</span></p>
+<p>And arrive at:</p>
+<p><span class="math inline">r = s</span></p>
+<p>We now see that all are equal:</p>
+<p><span class="math inline">s = p = r</span></p>
+<p>We also know that they must all sum to <span class="math inline">1</span>:</p>
+<p><span class="math inline">r + p + s = 1</span></p>
+<p>Since they’re all equal and sum to <span class="math inline">1</span>, we can substitute <span class="math inline">p</span> and <span class="math inline">s</span> with <span class="math inline">r</span>:</p>
+<p><span class="math inline">3r = 1</span></p>
+<p><span class="math inline">r = 1/3</span></p>
+<p>So all actions are taken with probability <span class="math inline">1/3</span>:</p>
+<p><span class="math inline">r = p = s = 1/3 \quad \blacksquare</span></p>
 </div>
-<h2 class="anchored">
-Next round
-</h2>
-<p><em><span id="next-round-name"></span></em></p>
-<h2 class="anchored">
-All scoring rounds
-</h2>
-<div id="all-scoring-rounds">
-Loading…
 </div>
-<script>
-    const NON_EBOT_EXCEPTIONS = ['Di10n', 'Elijer', 'Crazytieguy'];
-
-    async function fetchLeaderboardTestingData() {
-        try {
-            const response = await axios.get('https://staff-dev1.poker.camp:8443/leaderboard-rps-hackathon-20240917/latest');
-            return response.data;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            return null;
-        }
-    }
-
-    async function fetchLeaderboardScoringData() {
-        try {
-            const response = await axios.get('https://staff-dev1.poker.camp:8443/leaderboard-rps-hackathon-20240917/scoring');
-            return response.data;
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            return null;
-        }
-    }
-
-    function getColorForValue(value) {
-        const normalizedValue = (value + 100) / 200; // Normalize to 0-1
-        if (normalizedValue < 0.5) {
-            // Red to White
-            const intensity = Math.round(255 * (normalizedValue * 2));
-            return `rgb(255, ${intensity}, ${intensity})`;
-        } else {
-            // White to Green
-            const intensity = Math.round(255 * ((1 - normalizedValue) * 2));
-            return `rgb(${intensity}, 255, ${intensity})`;
-        }
-    }
-
-    function formatNumber(value) {
-        return value > 0 ? `+${value.toFixed(2)}` : value.toFixed(2);
-    }
-
-    function isEBot(name) {
-        return /^\d-/.test(name) && !NON_EBOT_EXCEPTIONS.includes(name);
-    }
-
-    function formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleString();
-    }
-    
-    // Function to format date, dropping the date if it's today
-    function formatDateMaybe(dateString) {
-        const date = new Date(dateString);
-        const today = new Date();
-        if (date.toDateString() === today.toDateString()) {
-            return date.toLocaleTimeString();
-        } else {
-            return formatDate(dateString);
-        }
-    }
-
-    function createTournamentInfo(data) {
-        const { tournament_id, start_time, end_time, scoring_weight, groups, round_name } = data;
-        const username = localStorage.getItem('github_username');
-        let userScore = 'N/A';
-    
-        // Find the user's score
-        for (let group of groups) {
-            const player = group.players.find(p => p.name === username);
-            if (player) {
-                userScore = player.mean.toFixed(2);
-                break;
-            }
-        }
-    
-        return `
-            <strong>You: ${userScore}${scoring_weight !== undefined ? ` × weight ${scoring_weight.toFixed(2)}` : ''}</strong> | 
-            Tournament #${tournament_id} (<em>${round_name}</em>) | 
-            Started: ${formatDateMaybe(start_time)} | 
-            Ended: ${formatDateMaybe(end_time)}
-        `;
-    }
-
-    function calculateTotalScores(allRoundsData) {
-        const totalScores = {};
-        allRoundsData.forEach(roundData => {
-            const weight = roundData.scoring_weight;
-            roundData.groups.forEach(group => {
-                group.players.forEach(player => {
-                    if (!totalScores[player.name]) {
-                        totalScores[player.name] = 0;
-                    }
-                    totalScores[player.name] += player.mean * weight;
-                });
-            });
-        });
-        return totalScores;
-    }
-
-    function createMatrixTable(data, isLatestRound = false, allRoundsData = null) {
-        const players = data.groups.flatMap(group => group.players);
-        let nonEBots = players.filter(player => !isEBot(player.name));
-        let eBots = players.filter(player => isEBot(player.name));
-    
-        // Calculate sum of scores against non-eBots for each eBot
-        eBots.forEach(eBot => {
-            eBot.sumAgainstNonEBots = nonEBots.reduce((sum, nonEBot) => {
-                return sum + (eBot.matchups[nonEBot.name] || 0);
-            }, 0);
-        });
-    
-        if (isLatestRound && allRoundsData) {
-            // Calculate total scores
-            const totalScores = calculateTotalScores(allRoundsData);
-            players.forEach(player => {
-                player.totalScore = totalScores[player.name] || 0;
-            });
-            // Sort non-eBots by total score descending for the latest round
-            nonEBots.sort((a, b) => b.totalScore - a.totalScore);
-        } else {
-            // Sort non-eBots by round score descending for previous rounds
-            nonEBots.sort((a, b) => b.mean - a.mean);
-        }
-    
-        // Sort eBots by sum of scores against non-eBots ascending
-        eBots.sort((a, b) => a.sumAgainstNonEBots - b.sumAgainstNonEBots);
-    
-        const sortedPlayers = [...nonEBots, ...eBots];
-        const playerNames = sortedPlayers.map(player => player.name);
-    
-        let tableHTML = '<table><tr><th>Player</th>';
-        if (isLatestRound) {
-            tableHTML += '<th>Total Score</th>';
-        }
-        tableHTML += '<th>Round Score</th><th class="half-column-gap"></th>';
-        playerNames.forEach((name, index) => {
-            if (index === nonEBots.length) {
-                tableHTML += '<th class="half-column-gap"></th>';
-            }
-            tableHTML += `<th><div>${name}</div></th>`;
-        });
-        tableHTML += '</tr>';
-        
-        const username = localStorage.getItem('github_username');
-        
-        sortedPlayers.forEach((player, index) => {
-            const playerClass = player.name.replace(/[^a-zA-Z0-9]/g, '_');
-            const ebotClass = isEBot(player.name) ? 'ebot' : '';
-            const isUserRow = (player.name === username) || (player.name === username + '[UPDATE]');
-            const userRowClass = isUserRow ? 'user-row' : '';
-            const userRowStyle = isUserRow ? 'style="font-weight: bold; border: 2px solid #000;"' : '';
-            
-            tableHTML += `<tr class="${playerClass} ${ebotClass} ${userRowClass}" ${userRowStyle}>`;
-            tableHTML += `<td>${player.name}</td>`;
-            if (isLatestRound) {
-                tableHTML += `<td>${formatNumber(player.totalScore)}</td>`;
-            }
-            tableHTML += `<td>${formatNumber(player.mean)}${data.scoring_weight === undefined ? "" : " × " + data.scoring_weight}</td>`;
-            tableHTML += '<td class="half-column-gap"></td>';
-            playerNames.forEach((opponentName, opponentIndex) => {
-                if (opponentIndex === nonEBots.length) {
-                    tableHTML += '<td class="half-column-gap"></td>';
-                }
-                const matchupValue = player.matchups[opponentName];
-                if (matchupValue !== undefined) {
-                    const backgroundColor = getColorForValue(matchupValue);
-                    tableHTML += `<td class="score-cell" style="background-color: ${backgroundColor}">${formatNumber(matchupValue)}</td>`;
-                } else {
-                    tableHTML += '<td>-</td>';
-                }
-            });
-            tableHTML += '</tr>';
-        });
-    
-        tableHTML += '</table>';
-        return tableHTML;
-    }
-    async function initTables() {
-        const freeplay_data = await fetchLeaderboardTestingData();
-        if (freeplay_data) {
-            const tournamentInfoContainer = document.getElementById('last-freeplay-round-info');
-            tournamentInfoContainer.innerHTML = createTournamentInfo(freeplay_data);
-            const tableContainer = document.getElementById('last-freeplay-round-table-container');
-            tableContainer.innerHTML = createMatrixTable(freeplay_data, false);
-        }
-        
-        const data = await fetchLeaderboardScoringData();
-        const allRoundsData = data["scoring_rounds"];
-        const last_round_data = allRoundsData[0];
-        if (last_round_data) {
-            const tournamentInfoContainer = document.getElementById('last-scoring-round-info');
-            tournamentInfoContainer.innerHTML = createTournamentInfo(last_round_data);
-            const tableContainer = document.getElementById('last-scoring-round-table-container');
-            tableContainer.innerHTML = createMatrixTable(last_round_data, true, allRoundsData);
-        }
-        
-        const allScoringRoundsContainer = document.getElementById('all-scoring-rounds');
-        allScoringRoundsContainer.innerHTML = "";
-        
-        // Add "Expand All" and "Collapse All" buttons
-        const controlButtons = document.createElement('div');
-        controlButtons.innerHTML = `
-            <button id="expand-all" class="control-btn">Expand All</button>
-            <button id="collapse-all" class="control-btn">Collapse All</button>
-        `;
-        allScoringRoundsContainer.appendChild(controlButtons);
-    
-        const collapsibleSections = [];
-        
-        allRoundsData.reduce((index, this_round_data) => {
-            if (this_round_data) {
-                const collapsibleSection = document.createElement('div');
-                collapsibleSection.className = 'collapsible-section';
-                
-                const titleBar = document.createElement('div');
-                titleBar.className = 'collapsible-title';
-                titleBar.innerHTML = `
-                    <button class="toggle-btn">Expand</button>
-                    <span>${createTournamentInfo(this_round_data)}</span>
-                `;
-                
-                const content = document.createElement('div');
-                content.className = 'collapsible-content';
-                content.style.display = 'none';
-                content.innerHTML = createMatrixTable(this_round_data, index === 0, allRoundsData);
-                
-                collapsibleSection.appendChild(titleBar);
-                collapsibleSection.appendChild(content);
-                
-                allScoringRoundsContainer.appendChild(collapsibleSection);
-                
-                const toggleBtn = titleBar.querySelector('.toggle-btn');
-                toggleBtn.addEventListener('click', () => {
-                    content.style.display = content.style.display === 'none' ? 'block' : 'none';
-                    toggleBtn.textContent = content.style.display === 'none' ? 'Expand' : 'Collapse';
-                });
-    
-                collapsibleSections.push({ content, toggleBtn });
-    
-                return index + 1;
-            }
-            return index;
-        }, 1);
-    
-        // Add functionality to "Expand All" and "Collapse All" buttons
-        document.getElementById('expand-all').addEventListener('click', () => {
-            collapsibleSections.forEach(section => {
-                section.content.style.display = 'block';
-                section.toggleBtn.textContent = 'Collapse';
-            });
-        });
-    
-        document.getElementById('collapse-all').addEventListener('click', () => {
-            collapsibleSections.forEach(section => {
-                section.content.style.display = 'none';
-                section.toggleBtn.textContent = 'Expand';
-            });
-        });
-        
-        if (data["next_round_name"] === null) {
-            document.getElementById('next-round-name').innerHTML = `(no more rounds)`;
-        } else {
-            document.getElementById('next-round-name').innerHTML = `"${data["next_round_name"]}" scored at ${formatDateMaybe(data["next_round_time"])}`;
-        }
-    }
-
-    initTables();
-</script>
+</div>
+<p>Playing this strategy means that whatever your opponent does, you will breakeven! For example, think about an opponent that always plays Rock.</p>
+<p><span class="math display">
+\begin{equation}
+\begin{split}
+\mathbb{E}(\text{Equilibrium vs. Rock}) &amp;= r*0 + p*1 + s*-1 \\
+&amp;= 1/3*0 + 1/3*1 + 1/3*-1 \\
+&amp;= 0
+\end{split}
+\end{equation}
+</span></p>
+</section>
+<section id="submitting-bots" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-bots">Submitting Bots</h2>
+<p>To get started, click the <a href="https://poker.camp/login/">Login</a> button to the left and then go to <a href="https://poker.camp/rps-recurse/botsubmit.html">Submit Your Bot</a>. On the bot submission page, it’s possible to submit with:</p>
+<ul>
+<li>Code text boxes directly on the webpage</li>
+<li>File upload a single <code>player.py</code> Python file</li>
+</ul>
+</section>
+<section id="game-engine" class="level2">
+<h2 class="anchored" data-anchor-id="game-engine">Game Engine</h2>
+<p>If you would like to clone the repository with the game engine, you can find it at <a href="https://github.com/pokercamp/rps-engine">https://github.com/pokercamp/rps-engine</a>.</p>
+<p>In <code>players/default</code>, the <code>player.py</code> file is where you write your bot. We don’t recommend changing any other files.</p>
+<p>The engine is in <code>engine.py</code>. You can use <code>engine.py</code> to run two bots against each other. You can use this to test your bot against itself or other bots that you create.</p>
+<p>The following code will run <code>n_games</code> between <code>p1_name</code> and <code>p2_name</code> and output the result to the specified <code>output_dir</code>.</p>
+<p>The generic usage is:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>python3 engine.py <span class="op">-</span>p1 {p1_name} {p1_file_path} <span class="op">-</span>p2 {p2_name} {p2_file_path} <span class="op">-</span>o {output_dir} <span class="op">-</span>n {n_games}<span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For example, to run a 200 game match with two bots that are named <code>p1</code> and <code>p2</code> with files in the <code>players/default/</code> folder and outputted to the <code>p1p2test</code> folder, do this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>python3 engine.py <span class="op">-</span>p1 <span class="st">'p1'</span> players<span class="op">/</span>default<span class="op">/</span> <span class="op">-</span>p2 <span class="st">'p2'</span> players<span class="op">/</span>default<span class="op">/</span> <span class="op">-</span>o p1p2test <span class="op">-</span>n <span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output files are in the folder <code>p1p2test</code>:</p>
+<ol type="1">
+<li><p><code>scores.p1.p2.txt</code> contains the raw scores of each player</p></li>
+<li><p>The <code>p1.p2</code> folder contains:</p></li>
+</ol>
+<ul>
+<li><p><code>gamelog.txt</code>: A log of all hands played</p></li>
+<li><p>Other log files for each player</p></li>
+</ul>
 
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

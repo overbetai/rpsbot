@@ -101,14 +101,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-68E8GHZRHQ"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=HTGTRFYPPN"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-68E8GHZRHQ', { 'anonymize_ip': true});
+gtag('config', 'HTGTRFYPPN', { 'anonymize_ip': true});
 </script>
 <script src="./login/auth.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
@@ -182,20 +182,26 @@ gtag('config', 'G-68E8GHZRHQ', { 'anonymize_ip': true});
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to RPS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpstheory.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./rpstheory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RPS Theory</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpsom.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./rpsom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RPS Opponent Modeling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rpsbotchallenge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RPS Bot Challenge</span></a>
   </div>
 </li>
     </ul>
@@ -376,7 +382,7 @@ Upload File
 <span id="uploadStatus"></span>
 </form>
 <hr>
-<p>The file you upload should be a Python file that looks something like this. You can download this file in the <a href="https://github.com/pokercamp/rps-engine">rps-engine repo</a> at <code>players/default/player.py</code> and for more info on testing see: <a href="./botguide.html#game-engine">Game Engine</a>.</p>
+<p>The file you upload should be a Python file that looks something like this. You can download this file in the <a href="https://github.com/pokercamp/rps-engine">rps-engine repo</a> at <code>players/default/player.py</code> and for more info on testing see: <a href="botguide.qmd#game-engine">Game Engine</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple example bot, written in Python.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skeleton.actions <span class="im">import</span> RockAction, PaperAction, ScissorsAction</span>

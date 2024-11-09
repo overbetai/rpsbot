@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cards to Code – RPS.bot</title>
+<title>RPS Hackathon @ Recurse: Hackathon Instructions – RPS.bot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,14 +67,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-68E8GHZRHQ"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=HTGTRFYPPN"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-68E8GHZRHQ', { 'anonymize_ip': true});
+gtag('config', 'HTGTRFYPPN', { 'anonymize_ip': true});
 </script>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
@@ -121,7 +121,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Cards to Code – RPS.bot">
+<meta property="og:title" content="RPS Hackathon @ Recurse: Hackathon Instructions – RPS.bot">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="RPS.bot">
 </head>
@@ -168,7 +168,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Cards to Code</li></ol></nav>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS Hackathon @ Recurse: Hackathon Instructions</h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -188,20 +188,26 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Intro to RPS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpstheory.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./rpstheory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RPS Theory</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpsom.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./rpsom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RPS Opponent Modeling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rpsbotchallenge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RPS Bot Challenge</span></a>
   </div>
 </li>
     </ul>
@@ -209,15 +215,30 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link active" data-scroll-target="#how-it-works">How it Works</a></li>
+  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why?</a></li>
+  <li><a href="#game-theory-equilibrium" id="toc-game-theory-equilibrium" class="nav-link" data-scroll-target="#game-theory-equilibrium">Game Theory Equilibrium</a>
+  <ul class="collapse">
+  <li><a href="#payoff-matrix" id="toc-payoff-matrix" class="nav-link" data-scroll-target="#payoff-matrix">Payoff matrix</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value">Expected value</a></li>
+  <li><a href="#zero-sum" id="toc-zero-sum" class="nav-link" data-scroll-target="#zero-sum">Zero-sum</a></li>
+  <li><a href="#nash-equilibrium" id="toc-nash-equilibrium" class="nav-link" data-scroll-target="#nash-equilibrium">Nash equilibrium</a></li>
+  <li><a href="#exploiting-vs.-nash" id="toc-exploiting-vs.-nash" class="nav-link" data-scroll-target="#exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cards to Code</h1>
+<h1 class="title d-none d-lg-block">RPS Hackathon @ Recurse: Hackathon Instructions</h1>
 </div>
 
 
@@ -234,29 +255,355 @@ window.Quarto = {
 </header>
 
 
-<p>A course by Max Chiswick and Ross Rheingans-Yoo on building a basic poker bot from scratch.</p>
-<div>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How it Works</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="rps.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Image by <a href="https://en.wikipedia.org/wiki/Rock_paper_scissors#/media/File:Rock-paper-scissors.svg">Enzoklop</a> under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
+</figure>
+</div>
+<ul>
+<li>Rock defeats scissors, scissors defeats paper, and paper defeats rock</li>
+<li>You get +1 point for a win, -1 for a loss, and 0 for ties</li>
+</ul>
+</section>
+<section id="why" class="level2">
+<h2 class="anchored" data-anchor-id="why">Why?</h2>
+<p>We think RPS is fun and while simple enough that everyone knows it and understands the rules, it’s still a great domain for thinking about strategy in a repeated game against a variety of opponents.</p>
+</section>
+<section id="game-theory-equilibrium" class="level2">
+<h2 class="anchored" data-anchor-id="game-theory-equilibrium">Game Theory Equilibrium</h2>
+<section id="payoff-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="payoff-matrix">Payoff matrix</h3>
+<p>The core features of a game are its players, the actions of each player, and the payoffs. We can show this for RPS in the below payoff matrix, also known as normal-form.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Player 1/2</th>
+<th>Rock</th>
+<th>Paper</th>
+<th>Scissors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rock</strong></td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+</tr>
+<tr class="even">
+<td><strong>Paper</strong></td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+</tr>
+<tr class="odd">
+<td><strong>Scissors</strong></td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>payoffs</strong> for Player 1 are on the left and for Player 2 on the right in each payoff outcome of the game. For example, the bottom left payoff is when Player 1 plays Scissors and Player 2 plays Rock, resulting in -1 for P1 and +1 for P2.</p>
+<p>A <strong>strategy</strong> says which actions you would take for every state of the game.</p>
+</section>
+<section id="expected-value" class="level3">
+<h3 class="anchored" data-anchor-id="expected-value">Expected value</h3>
+<p><strong>Expected value</strong> in a game represents the average outcome of a strategy if it were repeated many times. It’s calculated by multiplying each possible outcome by its probability of occurrence and then summing these products.</p>
+<p>Suppose that Player 1 plays the strategy:</p>
+<p><span class="math display">
+\begin{cases}
+r_1 = 0.5 \\
+p_1 = 0.25 \\
+s_1 = 0.25
+\end{cases}
+</span></p>
+<p>and Player 2 plays the strategy:</p>
+<p><span class="math display">
+\begin{cases}
+r_2 = 0.1 \\
+p_2 = 0.3 \\
+s_2 = 0.6
+\end{cases}
+</span></p>
+<p>Let’s add these to the matrix:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Player 1/2</th>
+<th>Rock (<span class="math inline">r_2=0.1</span>)</th>
+<th>Paper (<span class="math inline">p_2=0.3</span>)</th>
+<th>Scissors (<span class="math inline">s_2=0.6</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rock (<span class="math inline">r_1=0.5</span>)</strong></td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+</tr>
+<tr class="even">
+<td><strong>Paper (<span class="math inline">p_1=0.25</span>)</strong></td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+</tr>
+<tr class="odd">
+<td><strong>Scissors (<span class="math inline">s_1=0.25</span>)</strong></td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+</tr>
+</tbody>
+</table>
+<p>To simplify, let’s just write the payoffs for Player 1 since payoffs for Player 2 will simply be the opposite:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Player 1/2</th>
+<th>Rock (<span class="math inline">r_2=0.1</span>)</th>
+<th>Paper (<span class="math inline">p_2=0.3</span>)</th>
+<th>Scissors (<span class="math inline">s_2=0.6</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rock (<span class="math inline">r_1=0.5</span>)</strong></td>
+<td>0</td>
+<td>-1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td><strong>Paper (<span class="math inline">p_1=0.25</span>)</strong></td>
+<td>1</td>
+<td>0</td>
+<td>-1</td>
+</tr>
+<tr class="odd">
+<td><strong>Scissors (<span class="math inline">s_1=0.25</span>)</strong></td>
+<td>-1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Now we can multiply the player action strategies together to get a percentage occurrence for each payoff in the matrix:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Player 1/2</th>
+<th>Rock (<span class="math inline">r_2=0.1</span>)</th>
+<th>Paper (<span class="math inline">p_2=0.3</span>)</th>
+<th>Scissors (<span class="math inline">s_2=0.6</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rock (<span class="math inline">r_1=0.5</span>)</strong></td>
+<td>Val: 0 <br>Pr: <span class="math inline">0.5(0.1) = .05</span></td>
+<td>Val: -1 <br>Pr: <span class="math inline">0.5(0.3) = .15</span></td>
+<td>Val: 1 <br>Pr: <span class="math inline">0.5(0.6) = .3</span></td>
+</tr>
+<tr class="even">
+<td><strong>Paper (<span class="math inline">p_1=0.25</span>)</strong></td>
+<td>Val: 1 <br>Pr: <span class="math inline">0.25(0.1) = .025</span></td>
+<td>Val: 0 <br>Pr: <span class="math inline">0.25(0.3) = .075</span></td>
+<td>Val: -1 <br>Pr: <span class="math inline">0.25(0.6) = .15</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Scissors (<span class="math inline">s_1=0.25</span>)</strong></td>
+<td>Val: -1 <br>Pr: <span class="math inline">0.25(0.1) = .025</span></td>
+<td>Val: 1 <br>Pr: <span class="math inline">0.25(0.3) = .075</span></td>
+<td>Val: 0 <br>Pr: <span class="math inline">0.25(0.6) = .15</span></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the total probabilities sum to 1 and each row and column sums to the probability of playing that row or column.</p>
+<p>We can work out the expected value of the game to Player 1 (summing all payoffs multiplied by probabilities from top left to bottom right):</p>
+<p><span class="math inline">\mathbb{E}[P_1] = 0(0.05) + -1(0.15) + 1(0.3) + 1(0.025) + 0(0.075) + -1(0.15) + -1(0.025) + 1(0.075) + 0(0.15) = 0.075</span></p>
+<p>Therefore P1 is <em>expected</em> to gain 0.075 per game given these strategies. Since payoffs are reversed for P2, P2’s expectation is -0.075 per game.</p>
+</section>
+<section id="zero-sum" class="level3">
+<h3 class="anchored" data-anchor-id="zero-sum">Zero-sum</h3>
+<p>We see in the matrix that every payoff is zero-sum, i.e.&nbsp;the sum of the payoffs to both players is 0. This means the game is one of pure competition. Any amount P1 wins is from P2 and vice versa.</p>
+</section>
+<section id="nash-equilibrium" class="level3">
+<h3 class="anchored" data-anchor-id="nash-equilibrium">Nash equilibrium</h3>
+<p>A Nash equilibrium means that no player can improve their expected payoff by unilaterally changing their strategy. That is, changing one’s strategy can only result in the same or worse payoff (assuming the other player does not change).</p>
+<p>In RPS, the Nash equilibrium strategy is to play each action <span class="math inline">r = p = s = 1/3</span> of the time. I.e., to play totally randomly.</p>
+<p>Playing a combination of strategies is called a mixed strategy, as opposed to a pure strategy, which would select only one action. Mixed strategies are useful in games of imperfect information because it’s valuable to not be predictable and to conceal your private information. In perfect information games, the theoretically optimal play would not contain any mixing (i.e., if you could calculate all possible moves to the end of the game).</p>
+<p>The equilibrium RPS strategy is worked out below:</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nash equilibrium strategy for RPS
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Player 1/2</th>
+<th>Rock</th>
+<th>Paper</th>
+<th>Scissors</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rock (<span class="math inline">r</span>)</strong></td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+</tr>
+<tr class="even">
+<td><strong>Paper (<span class="math inline">p</span>)</strong></td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+<td>(-1, 1)</td>
+</tr>
+<tr class="odd">
+<td><strong>Scissors (<span class="math inline">s</span>)</strong></td>
+<td>(-1, 1)</td>
+<td>(1, -1)</td>
+<td>(0, 0)</td>
+</tr>
+</tbody>
+</table>
+<p>If Player 1 plays Rock with probability <span class="math inline">r</span>, Paper with probability <span class="math inline">p</span>, and Scissors with probability <span class="math inline">s</span>, we have the following expected value equations for Player 2:</p>
+<p><span class="math inline">\mathbb{E}[P_2(R)] = 0r -1p + 1s</span></p>
+<p><span class="math inline">\mathbb{E}[P_2(P)] = 1r + 0p - 1s</span></p>
+<p><span class="math inline">\mathbb{E}[P_2(S)] = -1r + 1p + 0s</span></p>
+<p>(To compute each of these, sum the payoffs for each column with P2 payoffs and P1 probabilities. P2 payoffs because these are the expected values for P2 and P1 probabiltiies because the payoffs depend on the strategy probabilties of P1 against each of P2’s actions.)</p>
+<p>Since no action dominates, we know that the EV of every strategic action should be equal (since if a certain strategy was best, we’d want to always play that strategy).</p>
+<p>To solve for <span class="math inline">r</span>, <span class="math inline">p</span>, and <span class="math inline">s</span>, we can start by setting these EVs equal:</p>
+<p><span class="math inline">\mathbb{E}[P_2(R)] = \mathbb[P_2(P)]</span></p>
+<p><span class="math inline">-1p + 1s = 1r - 1s</span></p>
+<p><span class="math inline">2s = p + r</span></p>
+<p>Then setting these equal:</p>
+<p><span class="math inline">\mathbb{E}[P_2(R)] = \mathbb{E}[P_2(S)]</span></p>
+<p><span class="math inline">-1p + 1s = -1r + 1p</span></p>
+<p><span class="math inline">s + r = 2p</span></p>
+<p>And finally setting these equal:</p>
+<p><span class="math inline">\mathbb{E}[P_2(P)] = \mathbb{E}[P_2(S)]</span></p>
+<p><span class="math inline">1r - 1s = -1r + 1p</span></p>
+<p><span class="math inline">2r = s + p</span></p>
+<p>Now we have these equations:</p>
+<p><span class="math display">
+\begin{cases}
+2s = p + r \\
+s + r = 2p \\
+2r = s + p
+\end{cases}
+</span></p>
+<p>We can rewrite the 1st:</p>
+<p><span class="math inline">r = 2s - p</span></p>
+<p>And combine with the 2nd:</p>
+<p><span class="math inline">s + (2s - p) = 2p</span></p>
+<p><span class="math inline">3s = 3p</span></p>
+<p>Resulting in:</p>
+<p><span class="math inline">s = p</span></p>
+<p>Now we can go back to the 2nd equation:</p>
+<p><span class="math inline">s + r = 2p</span></p>
+<p>And insert <span class="math inline">s</span> = <span class="math inline">p</span>:</p>
+<p><span class="math inline">s + r = 2s</span></p>
+<p>And arrive at:</p>
+<p><span class="math inline">r = s</span></p>
+<p>We now see that all are equal:</p>
+<p><span class="math inline">s = p = r</span></p>
+<p>We also know that they must all sum to <span class="math inline">1</span>:</p>
+<p><span class="math inline">r + p + s = 1</span></p>
+<p>Since they’re all equal and sum to <span class="math inline">1</span>, we can substitute <span class="math inline">p</span> and <span class="math inline">s</span> with <span class="math inline">r</span>:</p>
+<p><span class="math inline">3r = 1</span></p>
+<p><span class="math inline">r = 1/3</span></p>
+<p>So all actions are taken with probability <span class="math inline">1/3</span>:</p>
+<p><span class="math inline">r = p = s = 1/3 \quad \blacksquare</span></p>
+<p>By symmetry, the same equilibrium strategy is true for Player 2.</p>
+</div>
+</div>
+</div>
+<p>Playing this strategy means that whatever your opponent does, you will breakeven! For example, think about an opponent that always plays Rock.</p>
+<p><span class="math display">
+\begin{equation}
+\begin{split}
+\mathbb{E}(\text{Equilibrium vs. Rock}) &amp;= 0(r) + 1(p) + -1(s) \\
+&amp;= 0(1/3) + 1(1/3) + -1(1/3) \\
+&amp;= 0
+\end{split}
+\end{equation}
+</span></p>
+<p>How about the case of the opponent playing 60% Rock, 20% Paper, 20% Scissors?</p>
+<p><span class="math display">
+\begin{equation}
+\begin{split}
+\mathbb{E}(\text{Equilibrium vs. 622}) &amp;= 0.6(\text{Equilibrium vs. Rock}) \\
+&amp;\quad{}+ 0.2(\text{Equilibrium vs. Paper}) \\  
+&amp;\quad{}+ 0.2(\text{Equilibrium vs. Scissors}) \\
+&amp;= 0.6(0) + 0.2(0) + 0.2(0) \\
+&amp;= 0
+\end{split}
+\end{equation}
+</span></p>
+<p>The random equilibrium strategy will result in 0 against any pure strategy and any combination of strategies including <em>622</em> and the opponent playing the random strategy.</p>
+</section>
+<section id="exploiting-vs.-nash" class="level3">
+<h3 class="anchored" data-anchor-id="exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</h3>
+<p>The equilibrium strategy vs.&nbsp;a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing the worst possible strategy, yet equilibrium is still breaking even!</p>
+<p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. This is called a best response strategy. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
+<p><span class="math display">
+\begin{equation}
+\begin{split}
+\mathbb{E}(\text{Paper vs. Rock}) &amp;= 1(r) + 0(p) + -1(s) \\
+&amp;= 1(1) + 0(0) + -1(0) \\
+&amp;= 1
+\end{split}
+\end{equation}
+</span></p>
+<p>We’d win 1 each game playing Paper vs.&nbsp;Rock.</p>
+<p>How about against the opponent playing 60% Rock, 20% Paper, 20% Scissors? Here we can see that because they are overplaying Rock, our best strategy is again to always play Paper. We write the payoffs for playing Paper and the probabilities according to the <em>622</em> strategy.</p>
+<p><span class="math display">
+\begin{equation}
+\begin{split}
+\mathbb{E}(\text{Paper vs. 622}) &amp;= 1(r) + 0(p) + -1(s) \\
+&amp;= 1(0.6) + 0(0.2) + -1(0.2) \\
+&amp;= 0.6 + 0 - 0.2 \\
+&amp;= 0.4
+\end{split}
+\end{equation}
+</span></p>
+<p>Playing Paper vs.&nbsp;<em>622</em> results in an expected win of 0.4 per game.</p>
 
-</div>
-<div class="quarto-layout-panel" data-layout="[[1,1]]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="assets/kuhn_strategy.gif" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="assets/kuhn_solve.gif" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>The course starts with game theory, then introduces a simplified poker setting, then the elements of the Counterfactual Regret Minimization (CFR) algorithm, and then beyond the vanilla CFR algorithm.</p>
-<p>Throughout the course, we’re building up code to first develop the game, and then piece by piece to develop the poker bot.</p>
-<p>We end on opponent modeling and challenge problems that go beyond game theory optimal play.</p>
-<p><strong>Prerequisites:</strong> Basic Python and math (no poker knowledge necessary)</p>
-<p><strong>Groups/Questions:</strong> We encourage you to work through this in groups. You can chat in our <a href="https://discord.gg/KZQK2xN8Da">Discord</a> to discuss the course or look for others to work with.</p>
-<p><strong>Get started now!</strong> Start with the <a href="setup.qmd">Setup and Face-up Poker</a> page.</p>
 
 
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

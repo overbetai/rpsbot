@@ -67,14 +67,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-68E8GHZRHQ"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=HTGTRFYPPN"></script>
 
 <script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-68E8GHZRHQ', { 'anonymize_ip': true});
+gtag('config', 'HTGTRFYPPN', { 'anonymize_ip': true});
 </script>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
@@ -188,20 +188,26 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to RPS</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpstheory.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./rpstheory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RPS Theory</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpsom.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./rpsom.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RPS Opponent Modeling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./rpsbotchallenge.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">RPS Bot Challenge</span></a>
   </div>
 </li>
     </ul>
@@ -214,15 +220,11 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link active" data-scroll-target="#how-it-works">How it Works</a>
-  <ul class="collapse">
-  <li><a href="#rock-paper-scissors" id="toc-rock-paper-scissors" class="nav-link" data-scroll-target="#rock-paper-scissors">Rock Paper Scissors</a></li>
-  <li><a href="#competition-rounds" id="toc-competition-rounds" class="nav-link" data-scroll-target="#competition-rounds">Competition Rounds</a></li>
+  <li><a href="#competition-rounds" id="toc-competition-rounds" class="nav-link active" data-scroll-target="#competition-rounds">Competition Rounds</a></li>
   <li><a href="#house-bots" id="toc-house-bots" class="nav-link" data-scroll-target="#house-bots">House Bots</a></li>
   <li><a href="#submissions" id="toc-submissions" class="nav-link" data-scroll-target="#submissions">Submissions</a></li>
   <li><a href="#scoring" id="toc-scoring" class="nav-link" data-scroll-target="#scoring">Scoring</a></li>
   <li><a href="#prizes" id="toc-prizes" class="nav-link" data-scroll-target="#prizes">Prizes</a></li>
-  </ul></li>
   <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a>
   <ul class="collapse">
   <li><a href="#strategy-vs.-house-bots" id="toc-strategy-vs.-house-bots" class="nav-link" data-scroll-target="#strategy-vs.-house-bots">Strategy vs.&nbsp;House Bots</a></li>
@@ -230,7 +232,6 @@ window.Quarto = {
   </ul></li>
   <li><a href="#writing-bots" id="toc-writing-bots" class="nav-link" data-scroll-target="#writing-bots">Writing Bots</a></li>
   <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why?</a></li>
   </ul>
 </nav>
     </div>
@@ -256,21 +257,11 @@ window.Quarto = {
 </header>
 
 
-<section id="how-it-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-it-works">How it Works</h2>
-<section id="rock-paper-scissors" class="level3">
-<h3 class="anchored" data-anchor-id="rock-paper-scissors">Rock Paper Scissors</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rps.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Image by <a href="https://en.wikipedia.org/wiki/Rock_paper_scissors#/media/File:Rock-paper-scissors.svg">Enzoklop</a> under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
-</figure>
-</div>
-<ul>
-<li>Rock defeats scissors, scissors defeats paper, and paper defeats rock</li>
-<li>You get +1 point for a win, -1 for a loss, and 0 for ties</li>
-</ul>
-</section>
+<ol start="2" type="1">
+<li><p>Separate weekly competition for non-1st time people (all non-1st time people + assortment of house bots)</p></li>
+<li><p>Daily RPS v1 is X number of games vs.&nbsp;one of the weekly competition bot entrants from the previous week (or from whenever, or also including occasional LLM or house bots). You can elect to play vs.&nbsp;the bot manually, with some-code, or full-code.</p></li>
+<li><p>Daily RPS v2 is “Medium level” from below, but can we sustain this? But also if we do #3 above is that going to get</p></li>
+</ol>
 <section id="competition-rounds" class="level3">
 <h3 class="anchored" data-anchor-id="competition-rounds">Competition Rounds</h3>
 <p>There will be 5 rounds of RPS competitions. Each will have:</p>
@@ -314,7 +305,6 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="prizes">Prizes</h3>
 <p>There will be a small on-theme prize for the overall winner.</p>
 </section>
-</section>
 <section id="strategy" class="level2">
 <h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
 <p>Your mission is to play well against the environment bots without getting counterplayed by other participant bots.</p>
@@ -329,7 +319,7 @@ window.Quarto = {
 </section>
 <section id="writing-bots" class="level2">
 <h2 class="anchored" data-anchor-id="writing-bots">Writing Bots</h2>
-<p><a href="./botguide.html">Click here</a> for our guide on getting started writing RPS bots.</p>
+<p><a href="botguide.qmd">Click here</a> for our guide on getting started writing RPS bots.</p>
 </section>
 <section id="schedule" class="level2">
 <h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
@@ -341,14 +331,6 @@ window.Quarto = {
 <p><strong>4:15pm:</strong> Round 4 results, begin Round 5</p>
 <p><strong>4:45pm:</strong> Round 5 results, finish up/hang out</p>
 <p><strong>5:00pm:</strong> End</p>
-</section>
-<section id="why" class="level2">
-<h2 class="anchored" data-anchor-id="why">Why?</h2>
-<p>Fun! And thinking about strategy in a repeated game against a variety of opponents.</p>
-<p>From DeepMind in 2023:</p>
-<blockquote class="blockquote">
-<p>In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g.&nbsp;beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.</p>
-</blockquote>
 
 
 
