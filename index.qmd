@@ -5,8 +5,6 @@ format:
   html:
     math: true
 ---
-![](math.jpeg)
-
 RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors. 
 
 **Get started now!** Start with [Intro to RPS](intro.qmd). 
