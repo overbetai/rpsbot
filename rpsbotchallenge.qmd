@@ -1,0 +1,13 @@
+---
+title: "RPS Hackathon @ Recurse: Hackathon Instructions"
+sidebar: rps-hackathon-recurse
+bread-crumbs: false
+format:
+  html:
+    math: true
+---
+2) Separate weekly competition for non-1st time people (all non-1st time people + assortment of house bots) 
+
+3) Daily RPS v1 is X number of games vs. one of the weekly competition bot entrants from the previous week (or from whenever, or also including occasional LLM or house bots). You can elect to play vs. the bot manually, with some-code, or full-code. 
+
+4) Daily RPS v2 is “Medium level” from below, but can we sustain this? But also if we do #3 above is that going to get 

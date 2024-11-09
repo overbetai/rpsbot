@@ -1,0 +1,124 @@
+---
+title: "RPS Hackathon @ Recurse: Hackathon Instructions"
+sidebar: rps-hackathon-recurse
+bread-crumbs: false
+format:
+  html:
+    math: true
+---
+
+maximizing reward while not being exploitable
+
+
+RPS opponent modeling going through stages of simple opponent given to complex mix of opponents prediction stuff
+
+From simple to Iocaine
+How to parametrize opponent
+Multiple hypotheses, run counterfactually, pick best one  
+Pattern hypotheses, compare to general pattern about something else 
+Play against levels
+Take from rps bot spreadsheet
+LLM
+Add rps.bot as tutorial on opponent modeling focused on RPS that leads to our competitions 
+
+Intro opponent modeling progression course (see high level/weekly challenge below) 
+1a) By end, you enter your bot into weekly competition for 1st time people (all 1st time people + assortment of house bots)
+
+Build a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)
+
+Range of opponents: 
+Static bad
+Static better
+Dynamic with no relation to game (e.g. RPSRPSRPS)
+RR: I think "dynamic with no relation to game" can be generalized to "static Markov model" where you have a hidden state, your hidden state completely defines your probabilities, and the round moves + outcome + your state makes you transition to a specific new state
+Dynamic only related to own or opponent actions
+Dynamic only related to recent actions
+Dynamic related to entire history of actions
+Adversarial actions, i.e. intelligently exploiting opponents
+
+Range of games: 
+We tell you single opponent
+We tell you multiple opponents
+You detect single opponent
+You detect multiple opponents
+Enter weekly challenge of unknown multiple opponents + other human created bots from that week 
+
+
+## How it Works
+
+### Rock Paper Scissors
+![Image by [Enzoklop](https://en.wikipedia.org/wiki/Rock_paper_scissors#/media/File:Rock-paper-scissors.svg) under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)](rps.png){width=50%}
+
+- Rock defeats scissors, scissors defeats paper, and paper defeats rock
+- You get +1 point for a win, -1 for a loss, and 0 for ties
+
+### Competition Rounds
+There will be 5 rounds of RPS competitions. Each will have: 
+
+- 1 bot entered by each participant
+- 4 new house bots
+
+You'll play 200 games against each other bot twice. 
+
+Before each round, you'll be given the next round's name, which will be a hint about the strategies for all of those bots. 
+
+### House Bots
+Each house bot that enters during a round will stay for all future rounds. 
+
+The bot names reveal the bot strategies. The names will be anonymized during each round and then revealed afterwards (except for the final round where they will be revealed, but won't be that useful!).  
+
+### Submissions
+- For each round, you can submit as many times as you want up to the end of that round
+- Starting in the 2nd round, each submission *during* the round will receive a *test result* based on how that bot would have done in the *previous* round 
+  - Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new environment bots
+- The final submission before the end of the round will be entered into that round's competition (and will stay active for future rounds as well until you submit a new one)
+- At the end of each round, we'll run the tournament and show the results
+
+### Scoring
+At the end of each round, you'll get the following information: 
+
+- Matrix score report with results against every other bot
+  - Your score is reported as profit per 100 games
+- Game histories for each match
+
+Your cumulative score is the sum of all of the round scores, where the first round is worth 1x and each future round increases by 1.3x (_i.e._, round 2 is 1.3x, round 3 is 1.69x, etc.). 
+
+### Prizes
+There will be a small on-theme prize for the overall winner. 
+
+## Strategy
+Your mission is to play well against the environment bots without getting counterplayed by other participant bots. 
+
+### Strategy vs. House Bots
+The histories that are shown against the bots will generally be very useful in discovering patterns. Combine this with the bot names, and you'll be able to develop a strong strategy against these bots for future rounds. 
+
+### Strategy vs. Participant Bots
+Look for patterns. If participant bots are only trying to exploit environment bots, then they might be exploitable themselves. 
+
+## Writing Bots
+[Click here](botguide.qmd) for our guide on getting started writing RPS bots.
+
+## Schedule
+
+**2:00pm:** Get set up
+
+**2:15pm:** Begin Round 1
+
+**2:45pm:** Round 1 results, begin Round 2
+
+**3:15pm:** Round 2 results, begin Round 3
+
+**3:45pm:** Round 3 results, begin Round 4
+
+**4:15pm:** Round 4 results, begin Round 5
+
+**4:45pm:** Round 5 results, finish up/hang out
+
+**5:00pm:** End
+
+## Why? 
+Fun! And thinking about strategy in a repeated game against a variety of opponents. 
+
+From DeepMind in 2023:
+
+> In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.

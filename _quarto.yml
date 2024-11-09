@@ -6,7 +6,7 @@ website:
   title: "RPS.bot"
   page-footer: "\xA9 2024 Overbet.ai. All rights reserved."
   open-graph: true
-  google-analytics: G-68E8GHZRHQ
+  # google-analytics:
   favicon: ./assets/logo.png
   navbar: 
     logo: ./assets/logo.png
@@ -35,6 +35,8 @@ website:
           href: "rpstheory.qmd"
         - text: "RPS Opponent Modeling"
           href: "rpsom.qmd"
+        - text: "RPS Bot Challenge"
+          href: "rpsbotchallenge.qmd"
 
 format:
   html:
