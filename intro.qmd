@@ -16,6 +16,10 @@ format:
 ## Why? 
 We think RPS is fun and while simple enough that everyone knows it and understands the rules, it's still a great domain for thinking about strategy in a repeated game against a variety of opponents. 
 
+From DeepMind in 2023:
+
+> In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.
+
 ## Game Theory Equilibrium
 
 ### Payoff matrix

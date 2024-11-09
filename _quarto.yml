@@ -6,7 +6,7 @@ website:
   title: "RPS.bot"
   page-footer: "\xA9 2024 Overbet.ai. All rights reserved."
   open-graph: true
-  google-analytics: 6GK6C5LZSG
+  google-analytics: G-6GK6C5LZSG
   favicon: ./assets/logo.png
   navbar: 
     logo: ./assets/logo.png
