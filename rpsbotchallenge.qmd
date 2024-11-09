@@ -38,6 +38,6 @@ The hackathons are run over a few hours with new rounds every 30 minutes. The fo
 
 After each round, you can see the entire play history against each bot and a matrix score report. 
 
-![](tournament90.jpg)
+![](tournament90.png)
 
 You can submit multiple times during a round, and for each submission, you'll get a test result showing how your bot would have performed in the *previous* round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.
