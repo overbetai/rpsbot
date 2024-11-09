@@ -7,6 +7,9 @@ format:
     math: true
 ---
 
+In poker, many players start with GTO then exploit
+
+
 maximizing reward while not being exploitable
 
 
@@ -122,3 +125,179 @@ Fun! And thinking about strategy in a repeated game against a variety of opponen
 From DeepMind in 2023:
 
 > In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.
+
+## Starter Code
+We provide Python starter code that you can submit directly on the Submission page or that you can download and submit through file upload. 
+
+We provide code that by default plays randomly. The random strategy [guarantees a breakeven result](#game-theory-equilibrium), which won't be good enough to win because it won't take advantage of the suboptimal house bots! 
+
+### Variables
+
+The profit so far in the match is stored in: 
+
+- `self.my_profit`
+
+And the history of your actions and your opponent actions are stored in the following array, where each history is a tuple of `(my_action, their_action)`.  
+
+- `self.history[]`
+
+### Functions
+
+- `def __init__(self)`: 
+  - Initializes profit `self.my_profit`
+  - Initializes the history array `self.history[]`
+- `handle_results(self, *, my_action, their_action, my_payoff, match_clock)`: 
+  - This is run at the end of every game
+  - It updates the history with `my_action` and `their_action` 
+  - It updates the payoff with `my_payoff`
+  - `match_clock` can be used to see how much of your 30 second total time is remaining (this can generally be ignored) 
+- `def get_action(self, *, match_clock)`: 
+  - This is the main function where you run your strategy and return an action
+  - You can return `RockAction()`, `PaperAction()`, or `ScissorsAction()`
+
+## Problem Solving and Strategy
+The goal of the hackathon is to figure out how to adapt to your opponents (other participants and house bots)! 
+
+A few possible strategies are: 
+
+- Single out specific bots that are exploitable and write code to identify and exploit them
+  - Build an ensemble of exploits targeting many opponents
+- Attempt to predict the next move of each bot using a general algorithm
+- Use random play as a backup plan (see [below](#game-theory-equilibrium) for a full explanation of why this Nash equilibrium strategy always breaks even)
+
+## LLMs
+We welcome you to use LLMs like [Claude](https://claude.ai) or [ChatGPT](https://chatgpt.com). You can provide the starter code/code samples and get their help with implementing better strategies. 
+
+## Writing Your Own Bot
+Your bot will be facing off against a variety of participant bots and house bots. Here we illustrate some examples of how to write more complex bots. The main function to modify is `get_action`, which is the one that returns the move for each game. 
+
+### Win vs. Last Action
+This bot plays to beat the opponent's last action. 
+
+```python
+def get_action(self, *, match_clock):
+  if self.history: # After the 1st game
+      last_opponent_move = self.history[-1][1] # Find last opponent move
+      if isinstance(last_opponent_move, RockAction): # If Rock
+          return PaperAction() # Play Paper
+      elif isinstance(last_opponent_move, PaperAction): # If Paper
+          return ScissorsAction() # Play Scissors
+      else: # If Scissors
+          return RockAction() # Play Rock
+  else: # 1st game play randomly 
+      return random.choice([RockAction(), PaperAction(), ScissorsAction()])
+```
+
+### Win vs. Opponent Playing "Win vs. Last Action"
+This bot plays to beat the opponent playing the above "win vs. last action" strategy.  
+
+If our last action is Rock, they would play Paper, so we should play Scissors. 
+
+If our last action is Paper, they would play Scissors, so we should play Rock. 
+
+If our last action is Scissors, they would play Rock, so we should play Paper. 
+
+```python
+def get_action(self, *, match_clock):
+  if self.history: # After the 1st game
+      our_last_move = self.history[-1][0] # Find our last move
+      if isinstance(our_last_move, RockAction): # If Rock
+          return ScissorsAction() # Play Scissors
+      elif isinstance(our_last_move, PaperAction): # If Paper
+          return RockAction() # Play Rock
+      else: # If Scissors
+          return PaperAction() # Play Paper
+  else: # 1st game play randomly 
+      return random.choice([RockAction(), PaperAction(), ScissorsAction()])
+```
+
+### Win vs. Full Opponent History Most Frequent
+Instead of just looking at the last action, this bot plays to beat the most frequent opponent action over the entire history. 
+
+```python
+def get_action(self, *, match_clock):
+  if self.history: # After the 1st game
+      opponent_moves = [move[1] for move in self.history]
+      
+      # Count the occurrences of each move
+      move_counts = {} # Count each R/P/S
+      for move in opponent_moves:
+          if move in move_counts:
+              move_counts[move] += 1 # Add to counter
+          else:
+              move_counts[move] = 1 # Start counter
+      
+      # Find the move with the highest count
+      most_common_move = None
+      highest_count = 0
+      for move, count in move_counts.items():
+          if count > highest_count:
+              most_common_move = move
+              highest_count = count
+      
+      if isinstance(most_common_move, RockAction):
+          return PaperAction()
+      elif isinstance(most_common_move, PaperAction):
+          return ScissorsAction()
+      else: # most_common_move is ScissorsAction
+          return RockAction()
+  else: # 1st game play randomly 
+      return random.choice([RockAction(), PaperAction(), ScissorsAction()])
+```
+
+### Sometimes Playing Randomly 
+Since there are many suboptimal environment bots, breaking even by playing randomly won't be a good enough overall strategy, but could be valuable to consider in some situations. Here is an example of using random play in combination with another strategy. 
+
+One of the bots above is [Win vs. Last Action](#win-vs.-last-action). Suppose that you have a theory that you should actually play to beat the action that they played *two* games ago. 
+
+You could try something like this: 
+
+- If you're winning or tying, then play to beat the action from two games ago 80% of the time and play randomly 20% of the time so that you aren't too predictable
+- If you're losing (i.e. maybe this strategy is not working well), then always play randomly
+
+```python
+def get_action(self, *, match_clock):
+
+  # If losing, play randomly
+  if self.my_profit < 0:
+      return random.choice([RockAction(), PaperAction(), ScissorsAction()])
+
+  # If winning or tying, and there are at least 2 rounds of history
+  if len(self.history) >= 2:
+      # 80% chance to play based on opponent's action from 2 rounds ago
+      if random.random() < 0.8:
+          two_rounds_ago = self.history[-2][1]  # Opponent's action from 2 rounds ago
+          if isinstance(two_rounds_ago, RockAction):
+              return PaperAction()
+          elif isinstance(two_rounds_ago, PaperAction):
+              return ScissorsAction()
+          else:  # ScissorsAction
+              return RockAction()
+
+  # In all other cases (including 1st 2 rounds), play randomly
+  return random.choice([RockAction(), PaperAction(), ScissorsAction()])
+```
+
+### Exploiting a Weak Bot
+In practice in this hackathon, a lot of value will come from exploiting weak bots or other opponents. 
+
+For example, you could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot. 
+
+Here's how to execute this strategy: 
+
+```python
+def get_action(self, *, match_clock):
+  if self.history: # Check if the opponent has played at least once
+      # Get all of the opponent's moves
+      opponent_moves = [move[1] for move in self.history]
+      
+      # Count how many times the opponent played Rock
+      rock_count = sum(1 for move in opponent_moves if isinstance(move, RockAction))
+      
+      # If opponent has only played Rock, we play Paper
+      if rock_count == len(opponent_moves):
+          return PaperAction()
+
+  # If it's the first move or opponent hasn't only played Rock, play randomly
+  return random.choice([RockAction(), PaperAction(), ScissorsAction()])
+```

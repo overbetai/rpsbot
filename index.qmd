@@ -9,6 +9,8 @@ format:
 
 RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors. 
 
+**Get started now!** Start with [Intro to RPS](intro.qmd). 
+
 Although seemingly very simple, RPS is valuable for thinking about strategy in a repeated game against a variety of opponents. 
 
 From DeepMind in 2023:
