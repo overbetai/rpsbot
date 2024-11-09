@@ -23,7 +23,7 @@ Entries start each Monday and end each Sunday, with results posted the Monday af
 Each week has a special rookie division for those who are entering for their first time. 
 
 ## Daily Challenge
-Play 200 games against a single RPS bot each day. 
+Play 200 **[how many?]** games against a single RPS bot each day. 
 
 The bots will get roughly more difficult as the week goes on from Monday to Sunday. They'll be all different types -- our own house bots, human-made bots from our weekly challenges, LLM-generated, etc. 
 

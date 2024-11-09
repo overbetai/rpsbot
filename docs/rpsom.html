@@ -248,26 +248,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#submitting-bots" id="toc-submitting-bots" class="nav-link active" data-scroll-target="#submitting-bots">Submitting Bots</a></li>
-  <li><a href="#game-engine" id="toc-game-engine" class="nav-link" data-scroll-target="#game-engine">Game Engine</a></li>
-  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How it Works</a>
-  <ul class="collapse">
-  <li><a href="#rock-paper-scissors" id="toc-rock-paper-scissors" class="nav-link" data-scroll-target="#rock-paper-scissors">Rock Paper Scissors</a></li>
-  <li><a href="#competition-rounds" id="toc-competition-rounds" class="nav-link" data-scroll-target="#competition-rounds">Competition Rounds</a></li>
-  <li><a href="#house-bots" id="toc-house-bots" class="nav-link" data-scroll-target="#house-bots">House Bots</a></li>
-  <li><a href="#submissions" id="toc-submissions" class="nav-link" data-scroll-target="#submissions">Submissions</a></li>
-  <li><a href="#scoring" id="toc-scoring" class="nav-link" data-scroll-target="#scoring">Scoring</a></li>
-  <li><a href="#prizes" id="toc-prizes" class="nav-link" data-scroll-target="#prizes">Prizes</a></li>
-  </ul></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy">Strategy</a>
-  <ul class="collapse">
-  <li><a href="#strategy-vs.-house-bots" id="toc-strategy-vs.-house-bots" class="nav-link" data-scroll-target="#strategy-vs.-house-bots">Strategy vs.&nbsp;House Bots</a></li>
-  <li><a href="#strategy-vs.-participant-bots" id="toc-strategy-vs.-participant-bots" class="nav-link" data-scroll-target="#strategy-vs.-participant-bots">Strategy vs.&nbsp;Participant Bots</a></li>
-  </ul></li>
-  <li><a href="#writing-bots" id="toc-writing-bots" class="nav-link" data-scroll-target="#writing-bots">Writing Bots</a></li>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#why" id="toc-why" class="nav-link" data-scroll-target="#why">Why?</a></li>
-  <li><a href="#starter-code" id="toc-starter-code" class="nav-link" data-scroll-target="#starter-code">Starter Code</a>
+  <li><a href="#starter-code" id="toc-starter-code" class="nav-link active" data-scroll-target="#starter-code">Starter Code</a>
   <ul class="collapse">
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
@@ -309,135 +290,13 @@ window.Quarto = {
 
 <p>In poker, many players start with GTO then exploit</p>
 <p>maximizing reward while not being exploitable</p>
-<section id="submitting-bots" class="level2">
-<h2 class="anchored" data-anchor-id="submitting-bots">Submitting Bots</h2>
-<p>To get started, click the <a href="https://poker.camp/login/">Login</a> button to the left and then go to <a href="https://poker.camp/rps-recurse/botsubmit.html">Submit Your Bot</a>. On the bot submission page, it’s possible to submit with:</p>
-<ul>
-<li>Code text boxes directly on the webpage</li>
-<li>File upload a single <code>player.py</code> Python file</li>
-</ul>
-</section>
-<section id="game-engine" class="level2">
-<h2 class="anchored" data-anchor-id="game-engine">Game Engine</h2>
-<p>If you would like to clone the repository with the game engine, you can find it at <a href="https://github.com/pokercamp/rps-engine">https://github.com/pokercamp/rps-engine</a>.</p>
-<p>In <code>players/default</code>, the <code>player.py</code> file is where you write your bot. We don’t recommend changing any other files.</p>
-<p>The engine is in <code>engine.py</code>. You can use <code>engine.py</code> to run two bots against each other. You can use this to test your bot against itself or other bots that you create.</p>
-<p>The following code will run <code>n_games</code> between <code>p1_name</code> and <code>p2_name</code> and output the result to the specified <code>output_dir</code>.</p>
-<p>The generic usage is:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>python3 engine.py <span class="op">-</span>p1 {p1_name} {p1_file_path} <span class="op">-</span>p2 {p2_name} {p2_file_path} <span class="op">-</span>o {output_dir} <span class="op">-</span>n {n_games}<span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For example, to run a 200 game match with two bots that are named <code>p1</code> and <code>p2</code> with files in the <code>players/default/</code> folder and outputted to the <code>p1p2test</code> folder, do this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>python3 engine.py <span class="op">-</span>p1 <span class="st">'p1'</span> players<span class="op">/</span>default<span class="op">/</span> <span class="op">-</span>p2 <span class="st">'p2'</span> players<span class="op">/</span>default<span class="op">/</span> <span class="op">-</span>o p1p2test <span class="op">-</span>n <span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The output files are in the folder <code>p1p2test</code>:</p>
-<ol type="1">
-<li><p><code>scores.p1.p2.txt</code> contains the raw scores of each player</p></li>
-<li><p>The <code>p1.p2</code> folder contains:</p></li>
-</ol>
-<ul>
-<li><p><code>gamelog.txt</code>: A log of all hands played</p></li>
-<li><p>Other log files for each player</p></li>
-</ul>
 <p>RPS opponent modeling going through stages of simple opponent given to complex mix of opponents prediction stuff</p>
 <p>From simple to Iocaine How to parametrize opponent Multiple hypotheses, run counterfactually, pick best one<br>
 Pattern hypotheses, compare to general pattern about something else Play against levels Take from rps bot spreadsheet LLM Add rps.bot as tutorial on opponent modeling focused on RPS that leads to our competitions</p>
-<p>Intro opponent modeling progression course (see high level/weekly challenge below) 1a) By end, you enter your bot into weekly competition for 1st time people (all 1st time people + assortment of house bots)</p>
+<p>Intro opponent modeling progression course (see high level/weekly challenge below)</p>
 <p>Build a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)</p>
 <p>Range of opponents: Static bad Static better Dynamic with no relation to game (e.g.&nbsp;RPSRPSRPS) RR: I think “dynamic with no relation to game” can be generalized to “static Markov model” where you have a hidden state, your hidden state completely defines your probabilities, and the round moves + outcome + your state makes you transition to a specific new state Dynamic only related to own or opponent actions Dynamic only related to recent actions Dynamic related to entire history of actions Adversarial actions, i.e.&nbsp;intelligently exploiting opponents</p>
 <p>Range of games: We tell you single opponent We tell you multiple opponents You detect single opponent You detect multiple opponents Enter weekly challenge of unknown multiple opponents + other human created bots from that week</p>
-</section>
-<section id="how-it-works" class="level2">
-<h2 class="anchored" data-anchor-id="how-it-works">How it Works</h2>
-<section id="rock-paper-scissors" class="level3">
-<h3 class="anchored" data-anchor-id="rock-paper-scissors">Rock Paper Scissors</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="rps.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Image by <a href="https://en.wikipedia.org/wiki/Rock_paper_scissors#/media/File:Rock-paper-scissors.svg">Enzoklop</a> under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
-</figure>
-</div>
-<ul>
-<li>Rock defeats scissors, scissors defeats paper, and paper defeats rock</li>
-<li>You get +1 point for a win, -1 for a loss, and 0 for ties</li>
-</ul>
-</section>
-<section id="competition-rounds" class="level3">
-<h3 class="anchored" data-anchor-id="competition-rounds">Competition Rounds</h3>
-<p>There will be 5 rounds of RPS competitions. Each will have:</p>
-<ul>
-<li>1 bot entered by each participant</li>
-<li>4 new house bots</li>
-</ul>
-<p>You’ll play 200 games against each other bot twice.</p>
-<p>Before each round, you’ll be given the next round’s name, which will be a hint about the strategies for all of those bots.</p>
-</section>
-<section id="house-bots" class="level3">
-<h3 class="anchored" data-anchor-id="house-bots">House Bots</h3>
-<p>Each house bot that enters during a round will stay for all future rounds.</p>
-<p>The bot names reveal the bot strategies. The names will be anonymized during each round and then revealed afterwards (except for the final round where they will be revealed, but won’t be that useful!).</p>
-</section>
-<section id="submissions" class="level3">
-<h3 class="anchored" data-anchor-id="submissions">Submissions</h3>
-<ul>
-<li>For each round, you can submit as many times as you want up to the end of that round</li>
-<li>Starting in the 2nd round, each submission <em>during</em> the round will receive a <em>test result</em> based on how that bot would have done in the <em>previous</em> round
-<ul>
-<li>Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new environment bots</li>
-</ul></li>
-<li>The final submission before the end of the round will be entered into that round’s competition (and will stay active for future rounds as well until you submit a new one)</li>
-<li>At the end of each round, we’ll run the tournament and show the results</li>
-</ul>
-</section>
-<section id="scoring" class="level3">
-<h3 class="anchored" data-anchor-id="scoring">Scoring</h3>
-<p>At the end of each round, you’ll get the following information:</p>
-<ul>
-<li>Matrix score report with results against every other bot
-<ul>
-<li>Your score is reported as profit per 100 games</li>
-</ul></li>
-<li>Game histories for each match</li>
-</ul>
-<p>Your cumulative score is the sum of all of the round scores, where the first round is worth 1x and each future round increases by 1.3x (<em>i.e.</em>, round 2 is 1.3x, round 3 is 1.69x, etc.).</p>
-</section>
-<section id="prizes" class="level3">
-<h3 class="anchored" data-anchor-id="prizes">Prizes</h3>
-<p>There will be a small on-theme prize for the overall winner.</p>
-</section>
-</section>
-<section id="strategy" class="level2">
-<h2 class="anchored" data-anchor-id="strategy">Strategy</h2>
-<p>Your mission is to play well against the environment bots without getting counterplayed by other participant bots.</p>
-<section id="strategy-vs.-house-bots" class="level3">
-<h3 class="anchored" data-anchor-id="strategy-vs.-house-bots">Strategy vs.&nbsp;House Bots</h3>
-<p>The histories that are shown against the bots will generally be very useful in discovering patterns. Combine this with the bot names, and you’ll be able to develop a strong strategy against these bots for future rounds.</p>
-</section>
-<section id="strategy-vs.-participant-bots" class="level3">
-<h3 class="anchored" data-anchor-id="strategy-vs.-participant-bots">Strategy vs.&nbsp;Participant Bots</h3>
-<p>Look for patterns. If participant bots are only trying to exploit environment bots, then they might be exploitable themselves.</p>
-</section>
-</section>
-<section id="writing-bots" class="level2">
-<h2 class="anchored" data-anchor-id="writing-bots">Writing Bots</h2>
-<p><a href="botguide.qmd">Click here</a> for our guide on getting started writing RPS bots.</p>
-</section>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<p><strong>2:00pm:</strong> Get set up</p>
-<p><strong>2:15pm:</strong> Begin Round 1</p>
-<p><strong>2:45pm:</strong> Round 1 results, begin Round 2</p>
-<p><strong>3:15pm:</strong> Round 2 results, begin Round 3</p>
-<p><strong>3:45pm:</strong> Round 3 results, begin Round 4</p>
-<p><strong>4:15pm:</strong> Round 4 results, begin Round 5</p>
-<p><strong>4:45pm:</strong> Round 5 results, finish up/hang out</p>
-<p><strong>5:00pm:</strong> End</p>
-</section>
-<section id="why" class="level2">
-<h2 class="anchored" data-anchor-id="why">Why?</h2>
-<p>Fun! And thinking about strategy in a repeated game against a variety of opponents.</p>
-<p>From DeepMind in 2023:</p>
-<blockquote class="blockquote">
-<p>In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g.&nbsp;beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.</p>
-</blockquote>
-</section>
 <section id="starter-code" class="level2">
 <h2 class="anchored" data-anchor-id="starter-code">Starter Code</h2>
 <p>We provide Python starter code that you can submit directly on the Submission page or that you can download and submit through file upload.</p>
@@ -499,17 +358,17 @@ Pattern hypotheses, compare to general pattern about something else Play against
 <section id="win-vs.-last-action" class="level3">
 <h3 class="anchored" data-anchor-id="win-vs.-last-action">Win vs.&nbsp;Last Action</h3>
 <p>This bot plays to beat the opponent’s last action.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      last_opponent_move <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="co"># Find last opponent move</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">isinstance</span>(last_opponent_move, RockAction): <span class="co"># If Rock</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction() <span class="co"># Play Paper</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">elif</span> <span class="bu">isinstance</span>(last_opponent_move, PaperAction): <span class="co"># If Paper</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> ScissorsAction() <span class="co"># Play Scissors</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>: <span class="co"># If Scissors</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction() <span class="co"># Play Rock</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      last_opponent_move <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="co"># Find last opponent move</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">isinstance</span>(last_opponent_move, RockAction): <span class="co"># If Rock</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction() <span class="co"># Play Paper</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">elif</span> <span class="bu">isinstance</span>(last_opponent_move, PaperAction): <span class="co"># If Paper</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> ScissorsAction() <span class="co"># Play Scissors</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>: <span class="co"># If Scissors</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction() <span class="co"># Play Rock</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="win-vs.-opponent-playing-win-vs.-last-action" class="level3">
 <h3 class="anchored" data-anchor-id="win-vs.-opponent-playing-win-vs.-last-action">Win vs.&nbsp;Opponent Playing “Win vs.&nbsp;Last Action”</h3>
@@ -517,49 +376,49 @@ Pattern hypotheses, compare to general pattern about something else Play against
 <p>If our last action is Rock, they would play Paper, so we should play Scissors.</p>
 <p>If our last action is Paper, they would play Scissors, so we should play Rock.</p>
 <p>If our last action is Scissors, they would play Rock, so we should play Paper.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>      our_last_move <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>][<span class="dv">0</span>] <span class="co"># Find our last move</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">isinstance</span>(our_last_move, RockAction): <span class="co"># If Rock</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> ScissorsAction() <span class="co"># Play Scissors</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">elif</span> <span class="bu">isinstance</span>(our_last_move, PaperAction): <span class="co"># If Paper</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction() <span class="co"># Play Rock</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>: <span class="co"># If Scissors</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction() <span class="co"># Play Paper</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      our_last_move <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>][<span class="dv">0</span>] <span class="co"># Find our last move</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">isinstance</span>(our_last_move, RockAction): <span class="co"># If Rock</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> ScissorsAction() <span class="co"># Play Scissors</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">elif</span> <span class="bu">isinstance</span>(our_last_move, PaperAction): <span class="co"># If Paper</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction() <span class="co"># Play Rock</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>: <span class="co"># If Scissors</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction() <span class="co"># Play Paper</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="win-vs.-full-opponent-history-most-frequent" class="level3">
 <h3 class="anchored" data-anchor-id="win-vs.-full-opponent-history-most-frequent">Win vs.&nbsp;Full Opponent History Most Frequent</h3>
 <p>Instead of just looking at the last action, this bot plays to beat the most frequent opponent action over the entire history.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      opponent_moves <span class="op">=</span> [move[<span class="dv">1</span>] <span class="cf">for</span> move <span class="kw">in</span> <span class="va">self</span>.history]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Count the occurrences of each move</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      move_counts <span class="op">=</span> {} <span class="co"># Count each R/P/S</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> move <span class="kw">in</span> opponent_moves:</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> move <span class="kw">in</span> move_counts:</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>              move_counts[move] <span class="op">+=</span> <span class="dv">1</span> <span class="co"># Add to counter</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>:</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>              move_counts[move] <span class="op">=</span> <span class="dv">1</span> <span class="co"># Start counter</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Find the move with the highest count</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      most_common_move <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      highest_count <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> move, count <span class="kw">in</span> move_counts.items():</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> count <span class="op">&gt;</span> highest_count:</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>              most_common_move <span class="op">=</span> move</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>              highest_count <span class="op">=</span> count</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">isinstance</span>(most_common_move, RockAction):</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction()</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      <span class="cf">elif</span> <span class="bu">isinstance</span>(most_common_move, PaperAction):</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> ScissorsAction()</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>: <span class="co"># most_common_move is ScissorsAction</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction()</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      opponent_moves <span class="op">=</span> [move[<span class="dv">1</span>] <span class="cf">for</span> move <span class="kw">in</span> <span class="va">self</span>.history]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Count the occurrences of each move</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      move_counts <span class="op">=</span> {} <span class="co"># Count each R/P/S</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> move <span class="kw">in</span> opponent_moves:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> move <span class="kw">in</span> move_counts:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              move_counts[move] <span class="op">+=</span> <span class="dv">1</span> <span class="co"># Add to counter</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>              move_counts[move] <span class="op">=</span> <span class="dv">1</span> <span class="co"># Start counter</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Find the move with the highest count</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      most_common_move <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      highest_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> move, count <span class="kw">in</span> move_counts.items():</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> count <span class="op">&gt;</span> highest_count:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>              most_common_move <span class="op">=</span> move</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>              highest_count <span class="op">=</span> count</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="bu">isinstance</span>(most_common_move, RockAction):</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction()</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>      <span class="cf">elif</span> <span class="bu">isinstance</span>(most_common_move, PaperAction):</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> ScissorsAction()</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>: <span class="co"># most_common_move is ScissorsAction</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction()</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sometimes-playing-randomly" class="level3">
 <h3 class="anchored" data-anchor-id="sometimes-playing-randomly">Sometimes Playing Randomly</h3>
@@ -570,46 +429,46 @@ Pattern hypotheses, compare to general pattern about something else Play against
 <li>If you’re winning or tying, then play to beat the action from two games ago 80% of the time and play randomly 20% of the time so that you aren’t too predictable</li>
 <li>If you’re losing (i.e.&nbsp;maybe this strategy is not working well), then always play randomly</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If losing, play randomly</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.my_profit <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If winning or tying, and there are at least 2 rounds of history</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.history) <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 80% chance to play based on opponent's action from 2 rounds ago</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> random.random() <span class="op">&lt;</span> <span class="fl">0.8</span>:</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>          two_rounds_ago <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">2</span>][<span class="dv">1</span>]  <span class="co"># Opponent's action from 2 rounds ago</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> <span class="bu">isinstance</span>(two_rounds_ago, RockAction):</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> PaperAction()</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>          <span class="cf">elif</span> <span class="bu">isinstance</span>(two_rounds_ago, PaperAction):</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> ScissorsAction()</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>:  <span class="co"># ScissorsAction</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> RockAction()</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In all other cases (including 1st 2 rounds), play randomly</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If losing, play randomly</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.my_profit <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If winning or tying, and there are at least 2 rounds of history</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">len</span>(<span class="va">self</span>.history) <span class="op">&gt;=</span> <span class="dv">2</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># 80% chance to play based on opponent's action from 2 rounds ago</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> random.random() <span class="op">&lt;</span> <span class="fl">0.8</span>:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>          two_rounds_ago <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">2</span>][<span class="dv">1</span>]  <span class="co"># Opponent's action from 2 rounds ago</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> <span class="bu">isinstance</span>(two_rounds_ago, RockAction):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> PaperAction()</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>          <span class="cf">elif</span> <span class="bu">isinstance</span>(two_rounds_ago, PaperAction):</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> ScissorsAction()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>          <span class="cf">else</span>:  <span class="co"># ScissorsAction</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>              <span class="cf">return</span> RockAction()</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In all other cases (including 1st 2 rounds), play randomly</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exploiting-a-weak-bot" class="level3">
 <h3 class="anchored" data-anchor-id="exploiting-a-weak-bot">Exploiting a Weak Bot</h3>
 <p>In practice in this hackathon, a lot of value will come from exploiting weak bots or other opponents.</p>
 <p>For example, you could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot.</p>
 <p>Here’s how to execute this strategy:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># Check if the opponent has played at least once</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Get all of the opponent's moves</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      opponent_moves <span class="op">=</span> [move[<span class="dv">1</span>] <span class="cf">for</span> move <span class="kw">in</span> <span class="va">self</span>.history]</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Count how many times the opponent played Rock</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      rock_count <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> move <span class="kw">in</span> opponent_moves <span class="cf">if</span> <span class="bu">isinstance</span>(move, RockAction))</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If opponent has only played Rock, we play Paper</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> rock_count <span class="op">==</span> <span class="bu">len</span>(opponent_moves):</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction()</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If it's the first move or opponent hasn't only played Rock, play randomly</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># Check if the opponent has played at least once</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Get all of the opponent's moves</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      opponent_moves <span class="op">=</span> [move[<span class="dv">1</span>] <span class="cf">for</span> move <span class="kw">in</span> <span class="va">self</span>.history]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Count how many times the opponent played Rock</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      rock_count <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> move <span class="kw">in</span> opponent_moves <span class="cf">if</span> <span class="bu">isinstance</span>(move, RockAction))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># If opponent has only played Rock, we play Paper</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> rock_count <span class="op">==</span> <span class="bu">len</span>(opponent_moves):</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If it's the first move or opponent hasn't only played Rock, play randomly</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 

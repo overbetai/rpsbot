@@ -80,84 +80,7 @@
     "href": "rpsom.html",
     "title": "RPS.bot: Opponent Modeling",
     "section": "",
-    "text": "In poker, many players start with GTO then exploit\nmaximizing reward while not being exploitable",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#submitting-bots",
-    "href": "rpsom.html#submitting-bots",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Submitting Bots",
-    "text": "Submitting Bots\nTo get started, click the Login button to the left and then go to Submit Your Bot. On the bot submission page, it’s possible to submit with:\n\nCode text boxes directly on the webpage\nFile upload a single player.py Python file",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#game-engine",
-    "href": "rpsom.html#game-engine",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Game Engine",
-    "text": "Game Engine\nIf you would like to clone the repository with the game engine, you can find it at https://github.com/pokercamp/rps-engine.\nIn players/default, the player.py file is where you write your bot. We don’t recommend changing any other files.\nThe engine is in engine.py. You can use engine.py to run two bots against each other. You can use this to test your bot against itself or other bots that you create.\nThe following code will run n_games between p1_name and p2_name and output the result to the specified output_dir.\nThe generic usage is:\npython3 engine.py -p1 {p1_name} {p1_file_path} -p2 {p2_name} {p2_file_path} -o {output_dir} -n {n_games}\"\nFor example, to run a 200 game match with two bots that are named p1 and p2 with files in the players/default/ folder and outputted to the p1p2test folder, do this:\npython3 engine.py -p1 'p1' players/default/ -p2 'p2' players/default/ -o p1p2test -n 200\nThe output files are in the folder p1p2test:\n\nscores.p1.p2.txt contains the raw scores of each player\nThe p1.p2 folder contains:\n\n\ngamelog.txt: A log of all hands played\nOther log files for each player\n\nRPS opponent modeling going through stages of simple opponent given to complex mix of opponents prediction stuff\nFrom simple to Iocaine How to parametrize opponent Multiple hypotheses, run counterfactually, pick best one\nPattern hypotheses, compare to general pattern about something else Play against levels Take from rps bot spreadsheet LLM Add rps.bot as tutorial on opponent modeling focused on RPS that leads to our competitions\nIntro opponent modeling progression course (see high level/weekly challenge below) 1a) By end, you enter your bot into weekly competition for 1st time people (all 1st time people + assortment of house bots)\nBuild a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)\nRange of opponents: Static bad Static better Dynamic with no relation to game (e.g. RPSRPSRPS) RR: I think “dynamic with no relation to game” can be generalized to “static Markov model” where you have a hidden state, your hidden state completely defines your probabilities, and the round moves + outcome + your state makes you transition to a specific new state Dynamic only related to own or opponent actions Dynamic only related to recent actions Dynamic related to entire history of actions Adversarial actions, i.e. intelligently exploiting opponents\nRange of games: We tell you single opponent We tell you multiple opponents You detect single opponent You detect multiple opponents Enter weekly challenge of unknown multiple opponents + other human created bots from that week",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#how-it-works",
-    "href": "rpsom.html#how-it-works",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "How it Works",
-    "text": "How it Works\n\nRock Paper Scissors\n\n\n\nImage by Enzoklop under CC BY-SA 3.0\n\n\n\nRock defeats scissors, scissors defeats paper, and paper defeats rock\nYou get +1 point for a win, -1 for a loss, and 0 for ties\n\n\n\nCompetition Rounds\nThere will be 5 rounds of RPS competitions. Each will have:\n\n1 bot entered by each participant\n4 new house bots\n\nYou’ll play 200 games against each other bot twice.\nBefore each round, you’ll be given the next round’s name, which will be a hint about the strategies for all of those bots.\n\n\nHouse Bots\nEach house bot that enters during a round will stay for all future rounds.\nThe bot names reveal the bot strategies. The names will be anonymized during each round and then revealed afterwards (except for the final round where they will be revealed, but won’t be that useful!).\n\n\nSubmissions\n\nFor each round, you can submit as many times as you want up to the end of that round\nStarting in the 2nd round, each submission during the round will receive a test result based on how that bot would have done in the previous round\n\nDoing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new environment bots\n\nThe final submission before the end of the round will be entered into that round’s competition (and will stay active for future rounds as well until you submit a new one)\nAt the end of each round, we’ll run the tournament and show the results\n\n\n\nScoring\nAt the end of each round, you’ll get the following information:\n\nMatrix score report with results against every other bot\n\nYour score is reported as profit per 100 games\n\nGame histories for each match\n\nYour cumulative score is the sum of all of the round scores, where the first round is worth 1x and each future round increases by 1.3x (i.e., round 2 is 1.3x, round 3 is 1.69x, etc.).\n\n\nPrizes\nThere will be a small on-theme prize for the overall winner.",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#strategy",
-    "href": "rpsom.html#strategy",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Strategy",
-    "text": "Strategy\nYour mission is to play well against the environment bots without getting counterplayed by other participant bots.\n\nStrategy vs. House Bots\nThe histories that are shown against the bots will generally be very useful in discovering patterns. Combine this with the bot names, and you’ll be able to develop a strong strategy against these bots for future rounds.\n\n\nStrategy vs. Participant Bots\nLook for patterns. If participant bots are only trying to exploit environment bots, then they might be exploitable themselves.",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#writing-bots",
-    "href": "rpsom.html#writing-bots",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Writing Bots",
-    "text": "Writing Bots\nClick here for our guide on getting started writing RPS bots.",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#schedule",
-    "href": "rpsom.html#schedule",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Schedule",
-    "text": "Schedule\n2:00pm: Get set up\n2:15pm: Begin Round 1\n2:45pm: Round 1 results, begin Round 2\n3:15pm: Round 2 results, begin Round 3\n3:45pm: Round 3 results, begin Round 4\n4:15pm: Round 4 results, begin Round 5\n4:45pm: Round 5 results, finish up/hang out\n5:00pm: End",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#why",
-    "href": "rpsom.html#why",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Why?",
-    "text": "Why?\nFun! And thinking about strategy in a repeated game against a variety of opponents.\nFrom DeepMind in 2023:\n\nIn sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.",
+    "text": "In poker, many players start with GTO then exploit\nmaximizing reward while not being exploitable\nRPS opponent modeling going through stages of simple opponent given to complex mix of opponents prediction stuff\nFrom simple to Iocaine How to parametrize opponent Multiple hypotheses, run counterfactually, pick best one\nPattern hypotheses, compare to general pattern about something else Play against levels Take from rps bot spreadsheet LLM Add rps.bot as tutorial on opponent modeling focused on RPS that leads to our competitions\nIntro opponent modeling progression course (see high level/weekly challenge below)\nBuild a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)\nRange of opponents: Static bad Static better Dynamic with no relation to game (e.g. RPSRPSRPS) RR: I think “dynamic with no relation to game” can be generalized to “static Markov model” where you have a hidden state, your hidden state completely defines your probabilities, and the round moves + outcome + your state makes you transition to a specific new state Dynamic only related to own or opponent actions Dynamic only related to recent actions Dynamic related to entire history of actions Adversarial actions, i.e. intelligently exploiting opponents\nRange of games: We tell you single opponent We tell you multiple opponents You detect single opponent You detect multiple opponents Enter weekly challenge of unknown multiple opponents + other human created bots from that week",
     "crumbs": [
       "About",
       "RPS Opponent Modeling"
@@ -248,7 +171,7 @@
     "href": "rpsbotchallenge.html#daily-challenge",
     "title": "RPS.bot: Bot Challenge",
     "section": "Daily Challenge",
-    "text": "Daily Challenge\nPlay 200 games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-made bots from our weekly challenges, LLM-generated, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[What about the timer play every second thing?]",
+    "text": "Daily Challenge\nPlay 200 [how many?] games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-made bots from our weekly challenges, LLM-generated, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[What about the timer play every second thing?]",
     "crumbs": [
       "About",
       "RPS Bot Challenge"
