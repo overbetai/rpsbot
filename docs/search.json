@@ -226,7 +226,7 @@
     "href": "rpsbotchallenge.html",
     "title": "RPS.bot: Bot Challenge",
     "section": "",
-    "text": "RPS bot challenges are coming soon!\nIn these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”\nThis means that playing the game theory optimal strategy will not maximize your payoff against them.\nThe challenge is to predict what they’re doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots!",
+    "text": "RPS bot challenges are coming soon!\nIn these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”.\nThis means that playing the game theory optimal strategy will not maximize your payoff against them.\nThe challenge is to predict what they’re doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots!",
     "crumbs": [
       "About",
       "RPS Bot Challenge"
@@ -248,7 +248,7 @@
     "href": "rpsbotchallenge.html#daily-challenge",
     "title": "RPS.bot: Bot Challenge",
     "section": "Daily Challenge",
-    "text": "Daily Challenge\nPlay 200 games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – LLM-generated, our own house bots, human-made bots from our weekly challenges, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[What about the timer play every second thing?]",
+    "text": "Daily Challenge\nPlay 200 games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-made bots from our weekly challenges, LLM-generated, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[What about the timer play every second thing?]",
     "crumbs": [
       "About",
       "RPS Bot Challenge"
@@ -259,7 +259,7 @@
     "href": "rpsbotchallenge.html#hackathon",
     "title": "RPS.bot: Bot Challenge",
     "section": "Hackathon",
-    "text": "Hackathon\nWe periodically run virtual and in-person hackathons that we’ll announce on RPS.bot and on our mailing list/social channels.\nThe hackathons are run over a few hours with new rounds every 30 minutes. The format is similar to the weekly challenge above, where you face off against other human-made bots and our own house bots. We enter a new selection of progressively smarter house bots every round. Once a house bot enters, it stays in for subsequent rounds.\nAfter each round, you can see the entire play history against each bot and a matrix score report. Once a house bot enters, it stays in for subsequent rounds.\n\nYou can submit multiple times during a round, and for each submission, you’ll get a test result showing how your bot would have performed in the previous round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.",
+    "text": "Hackathon\nWe periodically run virtual and in-person hackathons that we’ll announce on RPS.bot and on our mailing list/social channels.\nThe hackathons are run over a few hours with new rounds every 30 minutes. The format is similar to the weekly challenge above, where you face off against other human-made bots and our own house bots. We enter a new selection of progressively smarter house bots every round. Once a house bot enters, it stays in for subsequent rounds.\nAfter each round, you can see the entire play history against each bot and a matrix score report.\n\nYou can submit multiple times during a round, and for each submission, you’ll get a test result showing how your bot would have performed in the previous round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.",
     "crumbs": [
       "About",
       "RPS Bot Challenge"
