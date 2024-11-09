@@ -7,5 +7,3 @@ RPS.bot by Max Chiswick and Ross Rheingans-Yoo.
 We're excited about learning through games. Check out [Overbet.ai](https://overbet.ai) (under development) and [Poker Camp](https://poker.camp) for more.
 
 ![](history.jpeg)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b0SoKWLkmLU?si=0AQ3_NgHOe4tc4OU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
