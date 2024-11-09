@@ -238,7 +238,7 @@
     "href": "intro.html#why",
     "title": "RPS Hackathon @ Recurse: Hackathon Instructions",
     "section": "Why?",
-    "text": "Why?\nWe think RPS is fun and while simple enough that everyone knows it and understands the rules, it’s still a great domain for thinking about strategy in a repeated game against a variety of opponents.",
+    "text": "Why?\nWe think RPS is fun and while simple enough that everyone knows it and understands the rules, it’s still a great domain for thinking about strategy in a repeated game against a variety of opponents.\nFrom DeepMind in 2023:\n\nIn sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.",
     "crumbs": [
       "About",
       "Intro to RPS"
@@ -260,7 +260,7 @@
     "href": "index.html",
     "title": "RPS.bot",
     "section": "",
-    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nGet started now! Start with Intro to RPS.\nAlthough seemingly very simple, RPS is valuable for thinking about strategy in a repeated game against a variety of opponents.\nFrom DeepMind in 2023:\n\nIn sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.",
+    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nGet started now with Intro to RPS.",
     "crumbs": [
       "About",
       "Home"
