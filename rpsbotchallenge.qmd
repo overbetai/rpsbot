@@ -1,6 +1,5 @@
 ---
-title: "RPS Hackathon @ Recurse: Hackathon Instructions"
-sidebar: rps-hackathon-recurse
+title: "RPS.bot: Bot Challenge"
 bread-crumbs: false
 format:
   html:

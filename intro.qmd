@@ -1,6 +1,5 @@
 ---
-title: "RPS Hackathon @ Recurse: Hackathon Instructions"
-sidebar: rps-hackathon-recurse
+title: "RPS.bot: Intro"
 bread-crumbs: false
 format:
   html:
@@ -118,13 +117,13 @@ $\mathbb{E}[P_2(P)] = 1r + 0p - 1s$
 
 $\mathbb{E}[P_2(S)] = -1r + 1p + 0s$
 
-(To compute each of these, sum the payoffs for each column with P2 payoffs and P1 probabilities. P2 payoffs because these are the expected values for P2 and P1 probabiltiies because the payoffs depend on the strategy probabilties of P1 against each of P2's actions.)
+(To compute each of these, sum the payoffs for each column with P2 payoffs and P1 probabilities. P2 payoffs because we are calculating the expected payoffs for P2 and P1 probabilities because the payoffs depend on the strategy probabilties of P1 against each of P2's actions.)
 
 Since no action dominates, we know that the EV of every strategic action should be equal (since if a certain strategy was best, we'd want to always play that strategy). 
 
 To solve for $r$, $p$, and $s$, we can start by setting these EVs equal: 
 
-$\mathbb{E}[P_2(R)] = \mathbb[P_2(P)]$
+$\mathbb{E}[P_2(R)] = \mathbb{E}[P_2(P)]$
 
 $-1p + 1s = 1r - 1s$
 
@@ -234,7 +233,7 @@ The random equilibrium strategy will result in 0 against any pure strategy and a
 ### Exploiting vs. Nash
 The equilibrium strategy vs. a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing the worst possible strategy, yet equilibrium is still breaking even! 
 
-What's the best that we could do against Rock only? We could play **purely paper**. This is called a best response strategy. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock. 
+What's the best that we could do against Rock only? We could play **purely paper**. This is called a **best response** strategy. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock. 
 
 $$
 \begin{equation}
@@ -262,5 +261,3 @@ $$
 $$
 
 Playing Paper vs. *622* results in an expected win of 0.4 per game. 
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">gonna 3d print the exploitability of a player&#39;s rock-paper-scissors strategy over their strategy simplex <a href="https://t.co/cSXFKyI5E8">pic.twitter.com/cSXFKyI5E8</a></p>&mdash; Kevin a. Wang (@often_wang) <a href="https://twitter.com/often_wang/status/1838711689732132929?ref_src=twsrc%5Etfw">September 24, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

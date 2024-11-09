@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RPS Hackathon @ Recurse: Hackathon Instructions – RPS.bot</title>
+<title>RPS.bot: Intro – RPS.bot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,7 +121,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="RPS Hackathon @ Recurse: Hackathon Instructions – RPS.bot">
+<meta property="og:title" content="RPS.bot: Intro – RPS.bot">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="RPS.bot">
 </head>
@@ -168,7 +168,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS Hackathon @ Recurse: Hackathon Instructions</h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS.bot: Intro</h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -238,7 +238,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">RPS Hackathon @ Recurse: Hackathon Instructions</h1>
+<h1 class="title d-none d-lg-block">RPS.bot: Intro</h1>
 </div>
 
 
@@ -505,10 +505,10 @@ Nash equilibrium strategy for RPS
 <p><span class="math inline">\mathbb{E}[P_2(R)] = 0r -1p + 1s</span></p>
 <p><span class="math inline">\mathbb{E}[P_2(P)] = 1r + 0p - 1s</span></p>
 <p><span class="math inline">\mathbb{E}[P_2(S)] = -1r + 1p + 0s</span></p>
-<p>(To compute each of these, sum the payoffs for each column with P2 payoffs and P1 probabilities. P2 payoffs because these are the expected values for P2 and P1 probabiltiies because the payoffs depend on the strategy probabilties of P1 against each of P2’s actions.)</p>
+<p>(To compute each of these, sum the payoffs for each column with P2 payoffs and P1 probabilities. P2 payoffs because we are calculating the expected payoffs for P2 and P1 probabilities because the payoffs depend on the strategy probabilties of P1 against each of P2’s actions.)</p>
 <p>Since no action dominates, we know that the EV of every strategic action should be equal (since if a certain strategy was best, we’d want to always play that strategy).</p>
 <p>To solve for <span class="math inline">r</span>, <span class="math inline">p</span>, and <span class="math inline">s</span>, we can start by setting these EVs equal:</p>
-<p><span class="math inline">\mathbb{E}[P_2(R)] = \mathbb[P_2(P)]</span></p>
+<p><span class="math inline">\mathbb{E}[P_2(R)] = \mathbb{E}[P_2(P)]</span></p>
 <p><span class="math inline">-1p + 1s = 1r - 1s</span></p>
 <p><span class="math inline">2s = p + r</span></p>
 <p>Then setting these equal:</p>
@@ -580,7 +580,7 @@ s + r = 2p \\
 <section id="exploiting-vs.-nash" class="level3">
 <h3 class="anchored" data-anchor-id="exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</h3>
 <p>The equilibrium strategy vs.&nbsp;a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing the worst possible strategy, yet equilibrium is still breaking even!</p>
-<p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. This is called a best response strategy. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
+<p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. This is called a <strong>best response</strong> strategy. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
 <p><span class="math display">
 \begin{equation}
 \begin{split}
@@ -603,13 +603,6 @@ s + r = 2p \\
 \end{equation}
 </span></p>
 <p>Playing Paper vs.&nbsp;<em>622</em> results in an expected win of 0.4 per game.</p>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-gonna 3d print the exploitability of a player's rock-paper-scissors strategy over their strategy simplex <a href="https://t.co/cSXFKyI5E8">pic.twitter.com/cSXFKyI5E8</a>
-</p>
-— Kevin a. Wang (<span class="citation" data-cites="often_wang">@often_wang</span>) <a href="https://twitter.com/often_wang/status/1838711689732132929?ref_src=twsrc%5Etfw">September 24, 2024</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
 
