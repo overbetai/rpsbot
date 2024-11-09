@@ -14,7 +14,7 @@ This means that playing the *game theory optimal* strategy will not maximize you
 The challenge is to predict what they're doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots! 
 
 ## Weekly Challenge
-Enter your best bot to play against that week's other human-made bot entrants as well as a selection of our own house-bots that will vary each week. You'll play every other entrant for 1000 games.  
+Enter your best bot to play against that week's other human-made bot entrants as well as a selection of our own house bots that will vary each week. You'll play every other entrant for 1000 games.  
 
 Entries start each Monday and end each Sunday, with results posted the Monday after. **[Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]**
 

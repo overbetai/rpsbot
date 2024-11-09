@@ -6,7 +6,7 @@ format:
     math: true
 ---
 
-## How it Works
+## Rules
 ![Image by [Enzoklop](https://en.wikipedia.org/wiki/Rock_paper_scissors#/media/File:Rock-paper-scissors.svg) under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)](rps.png){width=50%}
 
 - Rock defeats scissors, scissors defeats paper, and paper defeats rock
