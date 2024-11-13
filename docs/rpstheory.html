@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RPS.bot: Bot Challenge – RPS.bot</title>
+<title>RPS.bot: Theory – RPS.bot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -121,7 +155,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="RPS.bot: Bot Challenge – RPS.bot">
+<meta property="og:title" content="RPS.bot: Theory – RPS.bot">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="RPS.bot">
 </head>
@@ -168,7 +202,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS.bot: Bot Challenge</h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS.bot: Theory</h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -200,7 +234,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rpsbotchallenge.html" class="sidebar-item-text sidebar-link active">
+  <a href="./rpsbotchallenge.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RPS Bot Challenge</span></a>
   </div>
 </li>
@@ -214,10 +248,8 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#rock-practice-gym" id="toc-rock-practice-gym" class="nav-link active" data-scroll-target="#rock-practice-gym">Rock Practice Gym</a></li>
-  <li><a href="#daily-challenge" id="toc-daily-challenge" class="nav-link" data-scroll-target="#daily-challenge">Daily Challenge</a></li>
-  <li><a href="#weekly-challenge" id="toc-weekly-challenge" class="nav-link" data-scroll-target="#weekly-challenge">Weekly Challenge</a></li>
-  <li><a href="#hackathon" id="toc-hackathon" class="nav-link" data-scroll-target="#hackathon">Hackathon</a></li>
+  <li><a href="#submitting-bots" id="toc-submitting-bots" class="nav-link active" data-scroll-target="#submitting-bots">Submitting Bots</a></li>
+  <li><a href="#game-engine" id="toc-game-engine" class="nav-link" data-scroll-target="#game-engine">Game Engine</a></li>
   </ul>
 </nav>
     </div>
@@ -226,7 +258,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">RPS.bot: Bot Challenge</h1>
+<h1 class="title d-none d-lg-block">RPS.bot: Theory</h1>
 </div>
 
 
@@ -243,35 +275,33 @@ window.Quarto = {
 </header>
 
 
-<p>RPS bot challenges are coming soon!</p>
-<p>In these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”.</p>
-<p>This means that playing the <em>game theory optimal</em> strategy will not maximize your payoff against them.</p>
-<p>The challenge is to predict what they’re doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots!</p>
-<section id="rock-practice-gym" class="level2">
-<h2 class="anchored" data-anchor-id="rock-practice-gym">Rock Practice Gym</h2>
-<p>Test your bot against a variety of our house bots in our Rock Practice Gym.</p>
+<section id="submitting-bots" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-bots">Submitting Bots</h2>
+<p>To get started, click the <a href="https://poker.camp/login/">Login</a> button to the left and then go to <a href="https://poker.camp/rps-recurse/botsubmit.html">Submit Your Bot</a>. On the bot submission page, it’s possible to submit with:</p>
+<ul>
+<li>Code text boxes directly on the webpage</li>
+<li>File upload a single <code>player.py</code> Python file</li>
+</ul>
 </section>
-<section id="daily-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="daily-challenge">Daily Challenge</h2>
-<p>Play 200 <strong>[how many?]</strong> games against a single RPS bot each day.</p>
-<p>The bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-made bots from our weekly challenges, LLM-generated, etc.</p>
-<p>You can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.</p>
-<p><strong>[What about the timer play every second thing?]</strong> <strong>[Do daily ones also enter into the weekly?]</strong></p>
-</section>
-<section id="weekly-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="weekly-challenge">Weekly Challenge</h2>
-<p>Enter your best bot to play against that week’s other human-made bot entrants as well as a selection of our own house bots that will vary each week. You’ll play every other entrant for 1000 games.</p>
-<p>Entries start each Monday and end each Sunday, with results posted the Monday after. <strong>[Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]</strong></p>
-<p><img src="matrix.png" class="img-fluid"></p>
-<p>Each week has a special rookie division for those who are entering for their first time.</p>
-</section>
-<section id="hackathon" class="level2">
-<h2 class="anchored" data-anchor-id="hackathon">Hackathon</h2>
-<p>We periodically run virtual and in-person hackathons that we’ll announce on RPS.bot and on our <a href="https://overbetai.substack.com/">mailing list</a>/social channels.</p>
-<p>The hackathons are run over a few hours with new rounds every 30 minutes. The format is similar to the weekly challenge above, where you face off against other human-made bots and our own house bots. We enter a new selection of progressively smarter house bots every round. Once a house bot enters, it stays in for subsequent rounds.</p>
-<p>After each round, you can see the entire play history against each bot and a matrix score report.</p>
-<p><img src="tournament90.png" class="img-fluid"></p>
-<p>You can submit multiple times during a round, and for each submission, you’ll get a test result showing how your bot would have performed in the <em>previous</em> round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.</p>
+<section id="game-engine" class="level2">
+<h2 class="anchored" data-anchor-id="game-engine">Game Engine</h2>
+<p>If you would like to clone the repository with the game engine, you can find it at <a href="https://github.com/pokercamp/rps-engine">https://github.com/pokercamp/rps-engine</a>.</p>
+<p>In <code>players/default</code>, the <code>player.py</code> file is where you write your bot. We don’t recommend changing any other files.</p>
+<p>The engine is in <code>engine.py</code>. You can use <code>engine.py</code> to run two bots against each other. You can use this to test your bot against itself or other bots that you create.</p>
+<p>The following code will run <code>n_games</code> between <code>p1_name</code> and <code>p2_name</code> and output the result to the specified <code>output_dir</code>.</p>
+<p>The generic usage is:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>python3 engine.py <span class="op">-</span>p1 {p1_name} {p1_file_path} <span class="op">-</span>p2 {p2_name} {p2_file_path} <span class="op">-</span>o {output_dir} <span class="op">-</span>n {n_games}<span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For example, to run a 200 game match with two bots that are named <code>p1</code> and <code>p2</code> with files in the <code>players/default/</code> folder and outputted to the <code>p1p2test</code> folder, do this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>python3 engine.py <span class="op">-</span>p1 <span class="st">'p1'</span> players<span class="op">/</span>default<span class="op">/</span> <span class="op">-</span>p2 <span class="st">'p2'</span> players<span class="op">/</span>default<span class="op">/</span> <span class="op">-</span>o p1p2test <span class="op">-</span>n <span class="dv">200</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output files are in the folder <code>p1p2test</code>:</p>
+<ol type="1">
+<li><p><code>scores.p1.p2.txt</code> contains the raw scores of each player</p></li>
+<li><p>The <code>p1.p2</code> folder contains:</p></li>
+</ol>
+<ul>
+<li><p><code>gamelog.txt</code>: A log of all hands played</p></li>
+<li><p>Other log files for each player</p></li>
+</ul>
 
 
 

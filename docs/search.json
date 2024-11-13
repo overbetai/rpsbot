@@ -1,34 +1,169 @@
 [
   {
-    "objectID": "botsubmit.html",
-    "href": "botsubmit.html",
-    "title": "RPS Hackathon @ Recurse: Submit",
+    "objectID": "rpstheory.html",
+    "href": "rpstheory.html",
+    "title": "RPS.bot: Theory",
     "section": "",
-    "text": "Edit Code\n\n\nUpload File\n\n\nLink Repo\n\n\n\n\nSubmit\n\n\n\n\n\n\n\n\n\n\n\nUpload File\n\n\n\n\nThe file you upload should be a Python file that looks something like this. You can download this file in the rps-engine repo at players/default/player.py and for more info on testing see: Game Engine.\n# Simple example bot, written in Python.\n\nfrom skeleton.actions import RockAction, PaperAction, ScissorsAction\nfrom skeleton.bot import Bot\nfrom skeleton.runner import parse_args, run_bot\n\nimport random\n\nclass Player(Bot):\n    # A bot for playing Rock-Paper-Scissors.\n\n    def __init__(self):\n        # Called when a new matchup starts. Called exactly once.\n        \n        self.my_profit = 0\n        self.history = []\n\n    def handle_results(self, *, my_action, their_action, my_payoff, match_clock):\n        # Called after a round. Called NUM_ROUNDS times.\n        \n        self.history.append((my_action, their_action))\n        self.my_profit += my_payoff\n\n    def get_action(self, *, match_clock):\n        # Where the magic happens. Called when the engine needs an action from\n        # your bot. Called NUM_ROUNDS times.\n        #\n        # Returns a RockAction(), PaperAction(), or ScissorsAction().\n        \n        return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\nif __name__ == '__main__':\n    run_bot(Player(), parse_args())\n\n\n\nComing soon! Ask if you’d like to use this to upload multiple files or something else that doesn’t fit into a player.py file."
+    "text": "To get started, click the Login button to the left and then go to Submit Your Bot. On the bot submission page, it’s possible to submit with:\n\nCode text boxes directly on the webpage\nFile upload a single player.py Python file"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "RPS.bot: About",
+    "objectID": "rpstheory.html#submitting-bots",
+    "href": "rpstheory.html#submitting-bots",
+    "title": "RPS.bot: Theory",
     "section": "",
-    "text": "RPS.bot by Max Chiswick and Ross Rheingans-Yoo.\nWe’re excited about learning through games. Check out Overbet.ai (under development) and Poker Camp for more."
+    "text": "To get started, click the Login button to the left and then go to Submit Your Bot. On the bot submission page, it’s possible to submit with:\n\nCode text boxes directly on the webpage\nFile upload a single player.py Python file"
   },
   {
-    "objectID": "about.html#about-us",
-    "href": "about.html#about-us",
-    "title": "RPS.bot: About",
-    "section": "",
-    "text": "RPS.bot by Max Chiswick and Ross Rheingans-Yoo.\nWe’re excited about learning through games. Check out Overbet.ai (under development) and Poker Camp for more."
+    "objectID": "rpstheory.html#game-engine",
+    "href": "rpstheory.html#game-engine",
+    "title": "RPS.bot: Theory",
+    "section": "Game Engine",
+    "text": "Game Engine\nIf you would like to clone the repository with the game engine, you can find it at https://github.com/pokercamp/rps-engine.\nIn players/default, the player.py file is where you write your bot. We don’t recommend changing any other files.\nThe engine is in engine.py. You can use engine.py to run two bots against each other. You can use this to test your bot against itself or other bots that you create.\nThe following code will run n_games between p1_name and p2_name and output the result to the specified output_dir.\nThe generic usage is:\npython3 engine.py -p1 {p1_name} {p1_file_path} -p2 {p2_name} {p2_file_path} -o {output_dir} -n {n_games}\"\nFor example, to run a 200 game match with two bots that are named p1 and p2 with files in the players/default/ folder and outputted to the p1p2test folder, do this:\npython3 engine.py -p1 'p1' players/default/ -p2 'p2' players/default/ -o p1p2test -n 200\nThe output files are in the folder p1p2test:\n\nscores.p1.p2.txt contains the raw scores of each player\nThe p1.p2 folder contains:\n\n\ngamelog.txt: A log of all hands played\nOther log files for each player"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "RPS.bot",
+    "objectID": "rpsbotchallenge.html",
+    "href": "rpsbotchallenge.html",
+    "title": "RPS.bot: Bot Challenge",
     "section": "",
-    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nGet started now with Intro to RPS.",
+    "text": "RPS bot challenges are coming soon!\nIn these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”.\nThis means that playing the game theory optimal strategy will not maximize your payoff against them.\nThe challenge is to predict what they’re doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots!",
     "crumbs": [
       "About",
-      "Home"
+      "RPS Bot Challenge"
+    ]
+  },
+  {
+    "objectID": "rpsbotchallenge.html#rock-practice-gym",
+    "href": "rpsbotchallenge.html#rock-practice-gym",
+    "title": "RPS.bot: Bot Challenge",
+    "section": "Rock Practice Gym",
+    "text": "Rock Practice Gym\nTest your bot against a variety of our house bots in our Rock Practice Gym.",
+    "crumbs": [
+      "About",
+      "RPS Bot Challenge"
+    ]
+  },
+  {
+    "objectID": "rpsbotchallenge.html#daily-challenge",
+    "href": "rpsbotchallenge.html#daily-challenge",
+    "title": "RPS.bot: Bot Challenge",
+    "section": "Daily Challenge",
+    "text": "Daily Challenge\nPlay 200 [how many?] games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-made bots from our weekly challenges, LLM-generated, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[What about the timer play every second thing?] [Do daily ones also enter into the weekly?]",
+    "crumbs": [
+      "About",
+      "RPS Bot Challenge"
+    ]
+  },
+  {
+    "objectID": "rpsbotchallenge.html#weekly-challenge",
+    "href": "rpsbotchallenge.html#weekly-challenge",
+    "title": "RPS.bot: Bot Challenge",
+    "section": "Weekly Challenge",
+    "text": "Weekly Challenge\nEnter your best bot to play against that week’s other human-made bot entrants as well as a selection of our own house bots that will vary each week. You’ll play every other entrant for 1000 games.\nEntries start each Monday and end each Sunday, with results posted the Monday after. [Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]\n\nEach week has a special rookie division for those who are entering for their first time.",
+    "crumbs": [
+      "About",
+      "RPS Bot Challenge"
+    ]
+  },
+  {
+    "objectID": "rpsbotchallenge.html#hackathon",
+    "href": "rpsbotchallenge.html#hackathon",
+    "title": "RPS.bot: Bot Challenge",
+    "section": "Hackathon",
+    "text": "Hackathon\nWe periodically run virtual and in-person hackathons that we’ll announce on RPS.bot and on our mailing list/social channels.\nThe hackathons are run over a few hours with new rounds every 30 minutes. The format is similar to the weekly challenge above, where you face off against other human-made bots and our own house bots. We enter a new selection of progressively smarter house bots every round. Once a house bot enters, it stays in for subsequent rounds.\nAfter each round, you can see the entire play history against each bot and a matrix score report.\n\nYou can submit multiple times during a round, and for each submission, you’ll get a test result showing how your bot would have performed in the previous round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.",
+    "crumbs": [
+      "About",
+      "RPS Bot Challenge"
+    ]
+  },
+  {
+    "objectID": "leaderboard.html",
+    "href": "leaderboard.html",
+    "title": "RPS Hackathon @ Recurse: Leaderboard",
+    "section": "",
+    "text": "Latest freeplay round\n\n\nLoading…\n\n\n\n\n\nLatest scoring round\n\n\nLoading…\n\n\n\n\n\nNext round\n\n\n\nAll scoring rounds\n\n\nLoading…"
+  },
+  {
+    "objectID": "testing.html",
+    "href": "testing.html",
+    "title": "RPS Hackathon @ Recurse: Tests and Logs",
+    "section": "",
+    "text": "Latest submission versus last scoring round\n\n\nLoading…\n\n\n\n\n\nNext round\n\nLoading…\n\nMatch logs\n\n\nLoading…"
+  },
+  {
+    "objectID": "rpsom.html",
+    "href": "rpsom.html",
+    "title": "RPS.bot: Opponent Modeling",
+    "section": "",
+    "text": "At the heart of opponent modeling is predicting your opponent’s next move. While  play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.\nHumans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.\nThere can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.\nWe use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which is in practice taking advantage of opponent weaknesses while minimizing your own exploitability.",
+    "crumbs": [
+      "About",
+      "RPS Opponent Modeling"
+    ]
+  },
+  {
+    "objectID": "rpsom.html#axes-of-opponent-modeling",
+    "href": "rpsom.html#axes-of-opponent-modeling",
+    "title": "RPS.bot: Opponent Modeling",
+    "section": "Axes of opponent modeling",
+    "text": "Axes of opponent modeling\nThere are two main axes for opponent modeling: opponents and games.\n\nTypes of opponents\nHere are a few types of opponents and an example for each.\nBad static opponents: Playing Rock\nBetter static opponents: Playing 60% Rock, 20% Paper, 20% Scissors\nDynamic with no relation to game, i.e. a static Markov model: Playing RPSRPSRPS…\n\nDynamic only related to a limited subset of actions, like:\n\nOnly our own actions: Randomly play an action that we didn’t play in the last 2 games\nOnly opponent actions: Play the action that beats the most frequent of the opponent’s last 3 moves\nOnly most recent action: Copy the opponent’s last move\n\nSimple dynamic related to entire history of actions: Play the move that beats the most frequent opponent move so far\nAgent that switches its main strategy: An agent that plays all Rock for the first 20 games and then all Scissors for the next 20 games and then plays the move that beats the most frequent opponent move so far\nAdvanced dynamic related to entire history of actions: Sophisticated adversarial prediction algorithm or set of algorithms\n\n\nTypes of games/knowledge\nPlay a single known opponent (known meaning you know their entire strategy)\nPlay multiple known opponents\nPlay a single unknown opponent\nPlay multiple unknown opponents\nPlay multiple unknown opponents that include some suboptimal house bots and some human-created bots",
+    "crumbs": [
+      "About",
+      "RPS Opponent Modeling"
+    ]
+  },
+  {
+    "objectID": "rpsom.html#starter-code",
+    "href": "rpsom.html#starter-code",
+    "title": "RPS.bot: Opponent Modeling",
+    "section": "Starter Code",
+    "text": "Starter Code\nWe provide Python starter code that you can use to build RPS bots.\nThe code by default plays randomly, which will guarantee a breakeven result (and won’t be very fun).\nThe main actions are in the get_action function:\ndef get_action(self, *, match_clock):\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\nVariables\nThe profit so far in the match is stored in:\n\nself.my_profit\n\nAnd the history of your actions and your opponent actions are stored in the following array, where each history is a tuple of (my_action, their_action).\n\nself.history[]\n\n\n\nFunctions\n\ndef __init__(self):\n\nInitializes profit self.my_profit\nInitializes the history array self.history[]\n\nhandle_results(self, *, my_action, their_action, my_payoff, match_clock):\n\nThis is run at the end of every game\nIt updates the history with my_action and their_action\nIt updates the payoff with my_payoff\nmatch_clock is used to see how much of your 30 second total time is remaining (this can be ignored)\n\ndef get_action(self, *, match_clock):\n\nThis is the main function where you run your strategy and return an action\nYou can return RockAction(), PaperAction(), or ScissorsAction()",
+    "crumbs": [
+      "About",
+      "RPS Opponent Modeling"
+    ]
+  },
+  {
+    "objectID": "rpsom.html#beating-simple-known-opponents",
+    "href": "rpsom.html#beating-simple-known-opponents",
+    "title": "RPS.bot: Opponent Modeling",
+    "section": "Beating simple known opponents",
+    "text": "Beating simple known opponents\nIt’s a lot easier to beat your opponents when you know their strategy! Though unrealistic, this is still a worthwhile first exercise for thinking about which strategies beat which opponent strategies and how to code them.\n\nRockbot\nOpponent strategy: 100% Rock\nOur counter-strategy: 100% Paper\nOur best EV: +1 per game\nOur counter-strategy in code:\ndef get_action(self, *, match_clock):\n  return PaperAction()\n\n\nr532bot\nOpponent strategy: 50% Rock, 30% Paper, 20% Scissors\nOur counter-strategy: 100% Paper\nOur best EV: 0.5(1) + 0.3(0) + 0.2(-1) = 0.3 per game\nOur counter-strategy in code:\ndef get_action(self, *, match_clock):\n  return PaperAction()\n\n\nRPSbot\nOpponent strategy: RPSRPSRPS…\nOur counter-strategy: PSRPSRPSR…\nOur best EV: +1 per game\nOur ounter-strategy in code:\ndef get_action(self, *, match_clock):\n    moves = [PaperAction(), ScissorsAction(), RockAction()]\n    move_index = len(self.history) % 3  # Use history length to cycle\n    return moves[move_index]\n\n\nMimicbot\nOpponent strategy: Copy our last action\nOur counter-strategy:\n\nIf our last action was Rock, play Paper\nIf our last action was Paper, play Scissors\nIf our last action was Scissors, play Rock\n\nOur best EV: +1 per game (after 1st)\nOur counter-strategy code:\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      our_last_move = self.history[-1][0] # Find our last move\n      if isinstance(our_last_move, RockAction): # If Rock\n          return PaperAction() # Play Paper\n      elif isinstance(our_last_move, PaperAction): # If Paper\n          return ScissorsAction() # Play Scissors\n      else: # If Scissors\n          return RockAction() # Play Rock\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nBeatprevbot\nOpponent strategy: Beat our last action\nOpponent strategy code:\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      last_opponent_move = self.history[-1][1] # Find last opponent move\n      if isinstance(last_opponent_move, RockAction): # If Rock\n          return PaperAction() # Play Paper\n      elif isinstance(last_opponent_move, PaperAction): # If Paper\n          return ScissorsAction() # Play Scissors\n      else: # If Scissors\n          return RockAction() # Play Rock\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\nOur counter-strategy:\n\nIf our last action was Rock, play Scissors\nIf our last action was Paper, play Rock\nIf our last action was Scissors, play Paper\n\nOur best EV: +1 per game (after 1st)\nOur counter-strategy code:\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      our_last_move = self.history[-1][0] # Find our last move\n      if isinstance(our_last_move, RockAction): # If Rock\n          return ScissorsAction() # Play Scissors\n      elif isinstance(our_last_move, PaperAction): # If Paper\n          return RockAction() # Play Rock\n      else: # If Scissors\n          return PaperAction() # Play Paper\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nFreqbot\nOpponent strategy: Beat our most frequent overall action\nOpponent strategy code:\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      opponent_moves = [move[1] for move in self.history]\n      \n      # Count the occurrences of each move\n      move_counts = {} # Count each R/P/S\n      for move in opponent_moves:\n          if move in move_counts:\n              move_counts[move] += 1 # Add to counter\n          else:\n              move_counts[move] = 1 # Start counter\n      \n      # Find the move with the highest count\n      most_common_move = None\n      highest_count = 0\n      for move, count in move_counts.items():\n          if count &gt; highest_count:\n              most_common_move = move\n              highest_count = count\n      \n      if isinstance(most_common_move, RockAction):\n          return PaperAction()\n      elif isinstance(most_common_move, PaperAction):\n          return ScissorsAction()\n      else: # most_common_move is ScissorsAction\n          return RockAction()\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\nOur counter-strategy:\n\nIf our most frequent action was Rock, play Scissors\nIf our most frequent action was Paper, play Rock\nIf our most frequent action was Scissors, play Paper\n\nOur best EV: +1 per game (after 1st)\nOur counter-strategy code: Exercise for the reader!",
+    "crumbs": [
+      "About",
+      "RPS Opponent Modeling"
+    ]
+  },
+  {
+    "objectID": "rpsom.html#general-strategies",
+    "href": "rpsom.html#general-strategies",
+    "title": "RPS.bot: Opponent Modeling",
+    "section": "General strategies",
+    "text": "General strategies\nIn poker, it’s common to start by attempting to play the game theory optimal (GTO) strategy and then as you see weaknesses in opponents, to deviate accordingly. If you see your opponent folds too much, then you can bluff more.\nHere are a few possible general strategic ideas for RPS:\n\nDetect the exact opponent strategy and exploit it\n\nBuild an ensemble of opponent detectors and exploits that target each of them\n\nUse random (game theory optimal) play to either:\n\nBreakeven forever\nStart with random and then update after you learn more about your opponent\nUse it as a backup plan to switch to if your current strategy is not going well\n\nAssume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly\nAttempt to predict the next move of each opponent using a general algorithm\n\n\nExploiting a weak bot\nIn practice, a lot of value will come from exploiting weak bots or other opponents.\nFor example, you could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot.\nHere’s how to execute this strategy:\ndef get_action(self, *, match_clock):\n  if self.history: # Check if the opponent has played at least once\n      # Get all of the opponent's moves\n      opponent_moves = [move[1] for move in self.history]\n      \n      # Count how many times the opponent played Rock\n      rock_count = sum(1 for move in opponent_moves if isinstance(move, RockAction))\n      \n      # If opponent has only played Rock, we play Paper\n      if rock_count == len(opponent_moves):\n          return PaperAction()\n\n  # If it's the first move or opponent hasn't only played Rock, play randomly\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nLeveling a known bot\n??\n\n\n\nBeat the thing opponent played after last hand = the prev hand most recent same history\n\n\nRandom play backup plan\nAssuming a setting with suboptimal bots, breaking even by playing randomly won’t be the most rewarding strategy, but could be valuable to consider in some situations. Here is an example of using random play in combination with another strategy.\nSuppose that you have a theory that a winning strategy is to beat the action that the opponent played two games ago.\nYou could try something like this:\n\nIf you’re winning or tying, then play to beat the action from two games ago 80% of the time and play randomly 20% of the time so that you aren’t too predictable\nIf you’re losing and down by more than 10 units (i.e. maybe this strategy is not working well), then always play randomly\n\ndef get_action(self, *, match_clock):\n\n  # If losing, play randomly\n  if self.my_profit &lt; -10:\n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n  # If winning or tying, and there are at least 2 rounds of history\n  if len(self.history) &gt;= 2:\n      # 80% chance to play based on opponent's action from 2 rounds ago\n      if random.random() &lt; 0.8:\n          two_rounds_ago = self.history[-2][1]  # Opponent's action from 2 rounds ago\n          if isinstance(two_rounds_ago, RockAction):\n              return PaperAction()\n          elif isinstance(two_rounds_ago, PaperAction):\n              return ScissorsAction()\n          else:  # ScissorsAction\n              return RockAction()\n\n  # In all other cases (including 1st 2 rounds), play randomly\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nBeating a combination of known bots\n\n\nAssume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly\ndirelecht",
+    "crumbs": [
+      "About",
+      "RPS Opponent Modeling"
+    ]
+  },
+  {
+    "objectID": "rpsom.html#predicting",
+    "href": "rpsom.html#predicting",
+    "title": "RPS.bot: Opponent Modeling",
+    "section": "Predicting",
+    "text": "Predicting\nHow to parametrize opponent Multiple hypotheses, run counterfactually, pick best one\nPattern hypotheses, compare to general pattern about something else\n\nIocaine Powder",
+    "crumbs": [
+      "About",
+      "RPS Opponent Modeling"
+    ]
+  },
+  {
+    "objectID": "rpsom.html#challenges",
+    "href": "rpsom.html#challenges",
+    "title": "RPS.bot: Opponent Modeling",
+    "section": "Challenges",
+    "text": "Challenges\nSee our Challenge page to get your bots into action in our:\n\nRock Practice Gym\nDaily Challenge\nWeekly Challenge\nOne-off Hackathons\n\nThere’s a special Weekly Challenge for first-timers.",
+    "crumbs": [
+      "About",
+      "RPS Opponent Modeling"
     ]
   },
   {
@@ -76,138 +211,35 @@
     ]
   },
   {
-    "objectID": "rpsom.html",
-    "href": "rpsom.html",
-    "title": "RPS.bot: Opponent Modeling",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "RPS.bot",
     "section": "",
-    "text": "At the heart of opponent modeling is predicting your opponent’s next move. While  play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.\nHumans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.\nThere can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.\nWe use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which is in practice taking advantage of opponent weaknesses while minimizing your own exploitability.",
+    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nGet started now with Intro to RPS.",
     "crumbs": [
       "About",
-      "RPS Opponent Modeling"
+      "Home"
     ]
   },
   {
-    "objectID": "rpsom.html#axes-of-opponent-modeling",
-    "href": "rpsom.html#axes-of-opponent-modeling",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Axes of opponent modeling",
-    "text": "Axes of opponent modeling\nThere are two main axes for opponent modeling: opponents and games.\n\nTypes of opponents\nBad static opponents: Playing Rock\nBetter static opponents: Playing 60% Rock, 20% Paper, 20% Scissors\nDynamic with no relation to game, i.e. a static Markov model: Playing RPSRPSRPS…\n\nDynamic only related to limited subset of actions, like:\n\nOnly our own actions: Randomly play an action that we didn’t play in the last 2 games\nOnly opponent actions: Play the action that beats the most frequent of the opponent’s last 3 moves\nOnly most recent action: Copy the opponent’s last move\n\nSimple dynamic related to entire history of actions: Play the move that beats the most frequent opponent move so far\nAdvanced dynamic relatd to entire history of actions: Sophisticated adversarial prediction algorithm or set of algorithms\n\n\nTypes of games/knowledge\nPlay a single known opponent (known meaning you know their entire strategy)\nPlay multiple known opponents\nPlay a single unknown opponent\nPlay multiple unknown opponents\nPlay multiple unknown opponents that include some suboptimal house bots and some human-created bots",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#starter-code",
-    "href": "rpsom.html#starter-code",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Starter Code",
-    "text": "Starter Code\nWe provide Python starter code that you can use to build RPS bots.\nThe code by default plays randomly, which will guarantee a breakeven result (and won’t be very fun).\nThe main actions are in the get_action function:\ndef get_action(self, *, match_clock):\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\nVariables\nThe profit so far in the match is stored in:\n\nself.my_profit\n\nAnd the history of your actions and your opponent actions are stored in the following array, where each history is a tuple of (my_action, their_action).\n\nself.history[]\n\n\n\nFunctions\n\ndef __init__(self):\n\nInitializes profit self.my_profit\nInitializes the history array self.history[]\n\nhandle_results(self, *, my_action, their_action, my_payoff, match_clock):\n\nThis is run at the end of every game\nIt updates the history with my_action and their_action\nIt updates the payoff with my_payoff\nmatch_clock is used to see how much of your 30 second total time is remaining (this can be ignored)\n\ndef get_action(self, *, match_clock):\n\nThis is the main function where you run your strategy and return an action\nYou can return RockAction(), PaperAction(), or ScissorsAction()",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#beating-simple-known-opponents",
-    "href": "rpsom.html#beating-simple-known-opponents",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Beating simple known opponents",
-    "text": "Beating simple known opponents\nIt’s a lot easier to beat your opponents when you know their strategy! This is still a worthwhile first exercise for thinking about which strategies beat which opponent strategies.\n\nRockbot\nOpponent strategy: 100% Rock\nCounter-strategy: 100% Paper\nEV: +1 per game\ndef get_action(self, *, match_clock):\n  return PaperAction()\n\n\nr532bot\nOpponent strategy: 50% Rock, 30% Paper, 20% Scissors\nCounter-strategy: 100% Paper\nEV: 0.5(1) + 0.3(0) + 0.2(-1) = 0.3 per game\ndef get_action(self, *, match_clock):\n  return PaperAction()\n\n\nRPSbot\nOpponent strategy: RPSRPSRPS…\nCounter-strategy: PSRPSRPSR…\nEV: +1 per game\ndef get_action(self, *, match_clock):\n    moves = [PaperAction(), ScissorsAction(), RockAction()]\n    move_index = len(self.history) % 3  # Use history length to cycle\n    return moves[move_index]\n\n\nCombination of the first 3 bots\n\n\nMimicbot\nOpponent strategy: RPSRPSRPS…\nCounter-strategy: PSRPSRPSR…\nEV: +1 per game\n\n\nBeatprevbot\nThis bot plays to beat the opponent’s last action.\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      last_opponent_move = self.history[-1][1] # Find last opponent move\n      if isinstance(last_opponent_move, RockAction): # If Rock\n          return PaperAction() # Play Paper\n      elif isinstance(last_opponent_move, PaperAction): # If Paper\n          return ScissorsAction() # Play Scissors\n      else: # If Scissors\n          return RockAction() # Play Rock\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\nOpponent strategy: RPSRPSRPS…\nCounter-strategy: PSRPSRPSR…\nEV: +1 per game\nThis bot plays to beat the opponent playing the above “win vs. last action” strategy.\nIf our last action is Rock, they would play Paper, so we should play Scissors.\nIf our last action is Paper, they would play Scissors, so we should play Rock.\nIf our last action is Scissors, they would play Rock, so we should play Paper.\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      our_last_move = self.history[-1][0] # Find our last move\n      if isinstance(our_last_move, RockAction): # If Rock\n          return ScissorsAction() # Play Scissors\n      elif isinstance(our_last_move, PaperAction): # If Paper\n          return RockAction() # Play Rock\n      else: # If Scissors\n          return PaperAction() # Play Paper\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nFreqbot\nOpponent strategy: RPSRPSRPS…\nCounter-strategy: PSRPSRPSR…\nEV: +1 per game\nInstead of just looking at the last action, this bot plays to beat the most frequent opponent action over the entire history.\ndef get_action(self, *, match_clock):\n  if self.history: # After the 1st game\n      opponent_moves = [move[1] for move in self.history]\n      \n      # Count the occurrences of each move\n      move_counts = {} # Count each R/P/S\n      for move in opponent_moves:\n          if move in move_counts:\n              move_counts[move] += 1 # Add to counter\n          else:\n              move_counts[move] = 1 # Start counter\n      \n      # Find the move with the highest count\n      most_common_move = None\n      highest_count = 0\n      for move, count in move_counts.items():\n          if count &gt; highest_count:\n              most_common_move = move\n              highest_count = count\n      \n      if isinstance(most_common_move, RockAction):\n          return PaperAction()\n      elif isinstance(most_common_move, PaperAction):\n          return ScissorsAction()\n      else: # most_common_move is ScissorsAction\n          return RockAction()\n  else: # 1st game play randomly \n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nCombination of all 6 bots",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#general-strategies",
-    "href": "rpsom.html#general-strategies",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "General strategies",
-    "text": "General strategies\nIn poker, many players start with GTO then exploit\ndon’t know the opponent in advance? can try to detect exact, detect deviation from GTO (direlecht?), or predictors\ngo 1 more level on one of these\nA few possible strategies are:\n\nSingle out specific bots that are exploitable and write code to identify and exploit them\n\nBuild an ensemble of exploits targeting many opponents\n\nAttempt to predict the next move of each bot using a general algorithm\nUse random play as a backup plan (see below for a full explanation of why this Nash equilibrium strategy always breaks even)\nSimple strategies to do decently\n\n\nWin vs. Last Action\n\n\nWin vs. Opponent Playing “Win vs. Last Action”\n\n\nSometimes Playing Randomly\nSince there are many suboptimal environment bots, breaking even by playing randomly won’t be a good enough overall strategy, but could be valuable to consider in some situations. Here is an example of using random play in combination with another strategy.\nOne of the bots above is Win vs. Last Action. Suppose that you have a theory that you should actually play to beat the action that they played two games ago.\nYou could try something like this:\n\nIf you’re winning or tying, then play to beat the action from two games ago 80% of the time and play randomly 20% of the time so that you aren’t too predictable\nIf you’re losing (i.e. maybe this strategy is not working well), then always play randomly\n\ndef get_action(self, *, match_clock):\n\n  # If losing, play randomly\n  if self.my_profit &lt; 0:\n      return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n  # If winning or tying, and there are at least 2 rounds of history\n  if len(self.history) &gt;= 2:\n      # 80% chance to play based on opponent's action from 2 rounds ago\n      if random.random() &lt; 0.8:\n          two_rounds_ago = self.history[-2][1]  # Opponent's action from 2 rounds ago\n          if isinstance(two_rounds_ago, RockAction):\n              return PaperAction()\n          elif isinstance(two_rounds_ago, PaperAction):\n              return ScissorsAction()\n          else:  # ScissorsAction\n              return RockAction()\n\n  # In all other cases (including 1st 2 rounds), play randomly\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nExploiting a Weak Bot\nIn practice in this hackathon, a lot of value will come from exploiting weak bots or other opponents.\nFor example, you could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot.\nHere’s how to execute this strategy:\ndef get_action(self, *, match_clock):\n  if self.history: # Check if the opponent has played at least once\n      # Get all of the opponent's moves\n      opponent_moves = [move[1] for move in self.history]\n      \n      # Count how many times the opponent played Rock\n      rock_count = sum(1 for move in opponent_moves if isinstance(move, RockAction))\n      \n      # If opponent has only played Rock, we play Paper\n      if rock_count == len(opponent_moves):\n          return PaperAction()\n\n  # If it's the first move or opponent hasn't only played Rock, play randomly\n  return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\n\nClaudebot",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#predicting",
-    "href": "rpsom.html#predicting",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Predicting",
-    "text": "Predicting\nHow to parametrize opponent Multiple hypotheses, run counterfactually, pick best one\nPattern hypotheses, compare to general pattern about something else\nBeat the thing opponent played after last hand = the prev hand most recent same history\n\nIocaine Powder",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "rpsom.html#challenges",
-    "href": "rpsom.html#challenges",
-    "title": "RPS.bot: Opponent Modeling",
-    "section": "Challenges",
-    "text": "Challenges\nBuild a single program that levels up as we give you progressively more difficult training games → enter into the weekly challenge by the end (or skip directly to that)",
-    "crumbs": [
-      "About",
-      "RPS Opponent Modeling"
-    ]
-  },
-  {
-    "objectID": "testing.html",
-    "href": "testing.html",
-    "title": "RPS Hackathon @ Recurse: Tests and Logs",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "RPS.bot: About",
     "section": "",
-    "text": "Latest submission versus last scoring round\n\n\nLoading…\n\n\n\n\n\nNext round\n\nLoading…\n\nMatch logs\n\n\nLoading…"
+    "text": "RPS.bot by Max Chiswick and Ross Rheingans-Yoo.\nWe’re excited about learning through games. Check out Overbet.ai (under development) and Poker Camp for more."
   },
   {
-    "objectID": "leaderboard.html",
-    "href": "leaderboard.html",
-    "title": "RPS Hackathon @ Recurse: Leaderboard",
+    "objectID": "about.html#about-us",
+    "href": "about.html#about-us",
+    "title": "RPS.bot: About",
     "section": "",
-    "text": "Latest freeplay round\n\n\nLoading…\n\n\n\n\n\nLatest scoring round\n\n\nLoading…\n\n\n\n\n\nNext round\n\n\n\nAll scoring rounds\n\n\nLoading…"
+    "text": "RPS.bot by Max Chiswick and Ross Rheingans-Yoo.\nWe’re excited about learning through games. Check out Overbet.ai (under development) and Poker Camp for more."
   },
   {
-    "objectID": "rpsbotchallenge.html",
-    "href": "rpsbotchallenge.html",
-    "title": "RPS.bot: Bot Challenge",
+    "objectID": "botsubmit.html",
+    "href": "botsubmit.html",
+    "title": "RPS Hackathon @ Recurse: Submit",
     "section": "",
-    "text": "RPS bot challenges are coming soon!\nIn these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”.\nThis means that playing the game theory optimal strategy will not maximize your payoff against them.\nThe challenge is to predict what they’re doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots!",
-    "crumbs": [
-      "About",
-      "RPS Bot Challenge"
-    ]
-  },
-  {
-    "objectID": "rpsbotchallenge.html#weekly-challenge",
-    "href": "rpsbotchallenge.html#weekly-challenge",
-    "title": "RPS.bot: Bot Challenge",
-    "section": "Weekly Challenge",
-    "text": "Weekly Challenge\nEnter your best bot to play against that week’s other human-made bot entrants as well as a selection of our own house bots that will vary each week. You’ll play every other entrant for 1000 games.\nEntries start each Monday and end each Sunday, with results posted the Monday after. [Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]\n\nEach week has a special rookie division for those who are entering for their first time.",
-    "crumbs": [
-      "About",
-      "RPS Bot Challenge"
-    ]
-  },
-  {
-    "objectID": "rpsbotchallenge.html#daily-challenge",
-    "href": "rpsbotchallenge.html#daily-challenge",
-    "title": "RPS.bot: Bot Challenge",
-    "section": "Daily Challenge",
-    "text": "Daily Challenge\nPlay 200 [how many?] games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-made bots from our weekly challenges, LLM-generated, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[What about the timer play every second thing?]",
-    "crumbs": [
-      "About",
-      "RPS Bot Challenge"
-    ]
-  },
-  {
-    "objectID": "rpsbotchallenge.html#hackathon",
-    "href": "rpsbotchallenge.html#hackathon",
-    "title": "RPS.bot: Bot Challenge",
-    "section": "Hackathon",
-    "text": "Hackathon\nWe periodically run virtual and in-person hackathons that we’ll announce on RPS.bot and on our mailing list/social channels.\nThe hackathons are run over a few hours with new rounds every 30 minutes. The format is similar to the weekly challenge above, where you face off against other human-made bots and our own house bots. We enter a new selection of progressively smarter house bots every round. Once a house bot enters, it stays in for subsequent rounds.\nAfter each round, you can see the entire play history against each bot and a matrix score report.\n\nYou can submit multiple times during a round, and for each submission, you’ll get a test result showing how your bot would have performed in the previous round. Doing better in the previous round is a sign of progress, but may not actually result in a better score in the current round, which will have updated participant bots and new house bots.",
-    "crumbs": [
-      "About",
-      "RPS Bot Challenge"
-    ]
+    "text": "Edit Code\n\n\nUpload File\n\n\nLink Repo\n\n\n\n\nSubmit\n\n\n\n\n\n\n\n\n\n\n\nUpload File\n\n\n\n\nThe file you upload should be a Python file that looks something like this. You can download this file in the rps-engine repo at players/default/player.py and for more info on testing see: Game Engine.\n# Simple example bot, written in Python.\n\nfrom skeleton.actions import RockAction, PaperAction, ScissorsAction\nfrom skeleton.bot import Bot\nfrom skeleton.runner import parse_args, run_bot\n\nimport random\n\nclass Player(Bot):\n    # A bot for playing Rock-Paper-Scissors.\n\n    def __init__(self):\n        # Called when a new matchup starts. Called exactly once.\n        \n        self.my_profit = 0\n        self.history = []\n\n    def handle_results(self, *, my_action, their_action, my_payoff, match_clock):\n        # Called after a round. Called NUM_ROUNDS times.\n        \n        self.history.append((my_action, their_action))\n        self.my_profit += my_payoff\n\n    def get_action(self, *, match_clock):\n        # Where the magic happens. Called when the engine needs an action from\n        # your bot. Called NUM_ROUNDS times.\n        #\n        # Returns a RockAction(), PaperAction(), or ScissorsAction().\n        \n        return random.choice([RockAction(), PaperAction(), ScissorsAction()])\n\nif __name__ == '__main__':\n    run_bot(Player(), parse_args())\n\n\n\nComing soon! Ask if you’d like to use this to upload multiple files or something else that doesn’t fit into a player.py file."
   }
 ]
