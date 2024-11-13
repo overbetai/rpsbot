@@ -260,7 +260,16 @@ window.Quarto = {
 </section>
 <section id="beat-multiple-opponents-with-one-bot" class="level2">
 <h2 class="anchored" data-anchor-id="beat-multiple-opponents-with-one-bot">Beat multiple opponents with one bot</h2>
-<p>Suppose that you have three opponents: 1. Rock only 2. Beat last move 3. Beat last move</p>
+<p>Suppose that you have three sequential opponents: 1. Rock only 2. Beat last move 3. Beat last move</p>
+<p>What happens if we run our last bot in this scenario? We’d crush the Rock only bot, but then get crushed ourselves by the Beat last move bots. Our EV would be <span class="math inline">100 - 99 - 99 = -98</span>!</p>
+<p>Well then we could do much better if we decided to beat the Beat last move bots instead of the Rock only bot. To beat them, we’d play:</p>
+<ul>
+<li>If last move Paper, opponent plays Scissors, we play Rock</li>
+<li>If last move Rock, opponent plays Paper, we play Scissors</li>
+<li>If last move Scissors, opponent plays Rock, we play Paper</li>
+</ul>
+<p>This means that if we play Rock on the first move, we’d forever play RSPRSPRSP… (similarly if we played Paper on the first move, we’d forever play PRSPRSPRS…)</p>
+<p>If we cycle, that means that we breakeven vs.&nbsp;Rock only. Exploiting and not getting exploited, but not fully exploiting.</p>
 </section>
 <section id="beat-multiple-opponents-with-one-bot-1" class="level2">
 <h2 class="anchored" data-anchor-id="beat-multiple-opponents-with-one-bot-1">Beat multiple opponents with one bot</h2>
@@ -269,6 +278,7 @@ window.Quarto = {
 <li>Beat last move</li>
 <li>Final bossbot</li>
 </ol>
+<p>loss circuitbreaker</p>
 </section>
 <section id="read-which-opponent-youre-playing-and-switch-to-ensemble-selection" class="level2">
 <h2 class="anchored" data-anchor-id="read-which-opponent-youre-playing-and-switch-to-ensemble-selection">Read which opponent you’re playing and switch to ensemble selection</h2>

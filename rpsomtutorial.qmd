@@ -19,15 +19,31 @@ If you know that your opponent is fixed and has a simple strategy, then you can:
 Automate this 
 
 ## Beat multiple opponents with one bot
-Suppose that you have three opponents: 
+Suppose that you have three sequential opponents: 
 1. Rock only
 2. Beat last move
 3. Beat last move
+
+What happens if we run our last bot in this scenario? We'd crush the Rock only bot, but then get crushed ourselves by the Beat last move bots. Our EV would be $100 - 99 - 99 = -98$! 
+
+Well then we could do much better if we decided to beat the Beat last move bots instead of the Rock only bot. To beat them, we'd play: 
+
+- If last move Paper, opponent plays Scissors, we play Rock
+- If last move Rock, opponent plays Paper, we play Scissors
+- If last move Scissors, opponent plays Rock, we play Paper
+
+This means that if we play Rock on the first move, we'd forever play RSPRSPRSP... (similarly if we played Paper on the first move, we'd forever play PRSPRSPRS...)
+
+If we cycle, that means that we breakeven vs. Rock only. Exploiting and not getting exploited, but not fully exploiting. 
+
+
 
 ## Beat multiple opponents with one bot
 1. Rock only
 2. Beat last move
 3. Final bossbot
+
+loss circuitbreaker 
 
 ## Read which opponent you're playing and switch to ensemble selection
 Read history and give last 10
