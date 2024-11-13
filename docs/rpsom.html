@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RPS.bot: Opponent Modeling – RPS.bot</title>
+<title>RPS.bot: Opponent Modeling Basics – RPS.bot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,7 +155,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="RPS.bot: Opponent Modeling – RPS.bot">
+<meta property="og:title" content="RPS.bot: Opponent Modeling Basics – RPS.bot">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="RPS.bot">
 </head>
@@ -202,7 +202,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS.bot: Opponent Modeling</h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS.bot: Opponent Modeling Basics</h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -269,18 +269,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#general-strategies" id="toc-general-strategies" class="nav-link" data-scroll-target="#general-strategies">General strategies</a>
   <ul class="collapse">
-  <li><a href="#exploiting-a-weak-bot" id="toc-exploiting-a-weak-bot" class="nav-link" data-scroll-target="#exploiting-a-weak-bot">Exploiting a weak bot</a></li>
-  <li><a href="#leveling-a-known-bot" id="toc-leveling-a-known-bot" class="nav-link" data-scroll-target="#leveling-a-known-bot">Leveling a known bot</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#breakeven-unless-youre-playing-rockbot" id="toc-breakeven-unless-youre-playing-rockbot" class="nav-link" data-scroll-target="#breakeven-unless-youre-playing-rockbot">Breakeven unless you’re playing Rockbot</a></li>
   <li><a href="#random-play-backup-plan" id="toc-random-play-backup-plan" class="nav-link" data-scroll-target="#random-play-backup-plan">Random play backup plan</a></li>
-  <li><a href="#beating-a-combination-of-known-bots" id="toc-beating-a-combination-of-known-bots" class="nav-link" data-scroll-target="#beating-a-combination-of-known-bots">Beating a combination of known bots</a></li>
-  <li><a href="#assume-by-default-that-the-opponent-is-playing-approximately-gto-and-then-detect-deviations-and-play-accordingly" id="toc-assume-by-default-that-the-opponent-is-playing-approximately-gto-and-then-detect-deviations-and-play-accordingly" class="nav-link" data-scroll-target="#assume-by-default-that-the-opponent-is-playing-approximately-gto-and-then-detect-deviations-and-play-accordingly">Assume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly</a></li>
   </ul></li>
-  <li><a href="#predicting" id="toc-predicting" class="nav-link" data-scroll-target="#predicting">Predicting</a>
-  <ul class="collapse">
-  <li><a href="#iocaine-powder" id="toc-iocaine-powder" class="nav-link" data-scroll-target="#iocaine-powder">Iocaine Powder</a></li>
-  </ul></li>
-  <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges">Challenges</a></li>
   </ul>
 </nav>
     </div>
@@ -289,7 +280,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">RPS.bot: Opponent Modeling</h1>
+<h1 class="title d-none d-lg-block">RPS.bot: Opponent Modeling Basics</h1>
 </div>
 
 
@@ -469,6 +460,11 @@ window.Quarto = {
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> PaperAction() <span class="co"># Play Paper</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There could be more levels to this! If you assume that your opponent knows that you are going to do this, then they might play the next level up and instead of “beat previous”, go to “beat the move that beats the move that beats previous”.</p>
+<p>We play: Paper Beat previous plays: Scissors Beat the move that beats the move that beats previous plays: Paper</p>
+<p>We play: Rock Beat previous plays: Paper Beat the move that beats the move that beats previous plays: Rock</p>
+<p>We play: Paper Beat previous plays: Scissors Beat the move that beats the move that beats previous plays: Paper</p>
+<p>This turns out to be mimicbot, which we saw in the previous section! And more levels are possible…</p>
 </section>
 <section id="freqbot" class="level3">
 <h3 class="anchored" data-anchor-id="freqbot">Freqbot</h3>
@@ -530,10 +526,9 @@ window.Quarto = {
 <li>Assume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly</li>
 <li>Attempt to predict the next move of each opponent using a general algorithm</li>
 </ul>
-<section id="exploiting-a-weak-bot" class="level3">
-<h3 class="anchored" data-anchor-id="exploiting-a-weak-bot">Exploiting a weak bot</h3>
-<p>In practice, a lot of value will come from exploiting weak bots or other opponents.</p>
-<p>For example, you could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot.</p>
+<section id="breakeven-unless-youre-playing-rockbot" class="level3">
+<h3 class="anchored" data-anchor-id="breakeven-unless-youre-playing-rockbot">Breakeven unless you’re playing Rockbot</h3>
+<p>You could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot.</p>
 <p>Here’s how to execute this strategy:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># Check if the opponent has played at least once</span></span>
@@ -549,14 +544,6 @@ window.Quarto = {
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If it's the first move or opponent hasn't only played Rock, play randomly</span></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="leveling-a-known-bot" class="level3">
-<h3 class="anchored" data-anchor-id="leveling-a-known-bot">Leveling a known bot</h3>
-<p>??</p>
-</section>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
-<p>Beat the thing opponent played after last hand = the prev hand most recent same history</p>
 </section>
 <section id="random-play-backup-plan" class="level3">
 <h3 class="anchored" data-anchor-id="random-play-backup-plan">Random play backup plan</h3>
@@ -587,36 +574,10 @@ window.Quarto = {
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In all other cases (including 1st 2 rounds), play randomly</span></span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="beating-a-combination-of-known-bots" class="level3">
-<h3 class="anchored" data-anchor-id="beating-a-combination-of-known-bots">Beating a combination of known bots</h3>
-</section>
-<section id="assume-by-default-that-the-opponent-is-playing-approximately-gto-and-then-detect-deviations-and-play-accordingly" class="level3">
-<h3 class="anchored" data-anchor-id="assume-by-default-that-the-opponent-is-playing-approximately-gto-and-then-detect-deviations-and-play-accordingly">Assume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly</h3>
-<p>direlecht</p>
-</section>
-</section>
-<section id="predicting" class="level2">
-<h2 class="anchored" data-anchor-id="predicting">Predicting</h2>
-<p>How to parametrize opponent Multiple hypotheses, run counterfactually, pick best one<br>
-Pattern hypotheses, compare to general pattern about something else</p>
-<section id="iocaine-powder" class="level3">
-<h3 class="anchored" data-anchor-id="iocaine-powder">Iocaine Powder</h3>
-</section>
-</section>
-<section id="challenges" class="level2">
-<h2 class="anchored" data-anchor-id="challenges">Challenges</h2>
-<p>See our <a href="./rpsbotchallenge.html">Challenge page</a> to get your bots into action in our:</p>
-<ul>
-<li>Rock Practice Gym</li>
-<li>Daily Challenge</li>
-<li>Weekly Challenge</li>
-<li>One-off Hackathons</li>
-</ul>
-<p>There’s a special Weekly Challenge for first-timers.</p>
 
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

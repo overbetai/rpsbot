@@ -1,5 +1,5 @@
 ---
-title: "RPS.bot: Opponent Modeling"
+title: "RPS.bot: Opponent Modeling Basics"
 bread-crumbs: false
 format:
   html:
@@ -201,6 +201,22 @@ def get_action(self, *, match_clock):
       return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
 
+There could be more levels to this! If you assume that your opponent knows that you are going to do this, then they might play the next level up and instead of "beat previous", go to "beat the move that beats the move that beats previous". 
+
+We play: Paper
+Beat previous plays: Scissors
+Beat the move that beats the move that beats previous plays: Paper
+
+We play: Rock
+Beat previous plays: Paper
+Beat the move that beats the move that beats previous plays: Rock
+
+We play: Paper
+Beat previous plays: Scissors
+Beat the move that beats the move that beats previous plays: Paper
+
+This turns out to be mimicbot, which we saw in the previous section! And more levels are possible...
+
 ### Freqbot 
 Opponent strategy: Beat our most frequent overall action
 
@@ -259,12 +275,10 @@ Here are a few possible general strategic ideas for RPS:
   - Start with random and then update after you learn more about your opponent
   - Use it as a backup plan to switch to if your current strategy is not going well
 - Assume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly 
-- Attempt to predict the next move of each opponent using a general algorithm
+- Attempt to predict the next move of each opponent using a general algorithm 
 
-### Exploiting a weak bot
-In practice, a lot of value will come from exploiting weak bots or other opponents. 
-
-For example, you could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot. 
+### Breakeven unless you're playing Rockbot
+You could check to see if any bot is always playing Rock. If so, you always play Paper. If not, you play randomly. Then you will breakeven against everyone, but crush the Rock-only bot. 
 
 Here's how to execute this strategy: 
 
@@ -284,13 +298,6 @@ def get_action(self, *, match_clock):
   # If it's the first move or opponent hasn't only played Rock, play randomly
   return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
-
-### Leveling a known bot
-??
-
-### 
-Beat the thing opponent played after last hand = the prev hand
-most recent same history 
 
 ### Random play backup plan
 Assuming a setting with suboptimal bots, breaking even by playing randomly won't be the most rewarding strategy, but could be valuable to consider in some situations. Here is an example of using random play in combination with another strategy. 
@@ -324,25 +331,3 @@ def get_action(self, *, match_clock):
   # In all other cases (including 1st 2 rounds), play randomly
   return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
-
-### Beating a combination of known bots	
-
-### Assume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly 
-direlecht
-
-## Predicting
-How to parametrize opponent
-Multiple hypotheses, run counterfactually, pick best one  
-Pattern hypotheses, compare to general pattern about something else
-
-### Iocaine Powder
-
-## Challenges
-See our [Challenge page](rpsbotchallenge.qmd) to get your bots into action in our:
-
-- Rock Practice Gym 
-- Daily Challenge
-- Weekly Challenge
-- One-off Hackathons
-
-There's a special Weekly Challenge for first-timers. 

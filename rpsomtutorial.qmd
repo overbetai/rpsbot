@@ -1,0 +1,60 @@
+---
+title: "RPS.bot: Opponent Modeling Tutorial"
+bread-crumbs: false
+format:
+  html:
+    math: true
+---
+For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot. 
+
+## Beat a fixed simple unknown opponent
+In practice, a lot of value will come from exploiting weak bots or other opponents. 
+
+If you know that your opponent is fixed and has a simple strategy, then you can: 
+
+- Start by playing random
+- See what happens
+- Beat simple opponent after you see what they're doing in the first few games
+
+Automate this 
+
+## Beat multiple opponents with one bot
+Suppose that you have three opponents: 
+1. Rock only
+2. Beat last move
+3. Beat last move
+
+## Beat multiple opponents with one bot
+1. Rock only
+2. Beat last move
+3. Final bossbot
+
+## Read which opponent you're playing and switch to ensemble selection
+Read history and give last 10
+Determine if playing vs. A, B, or C
+
+## GTO deviation
+Assume by default that the opponent is playing approximately GTO and then detect deviations and play accordingly
+dirichlet 
+What's the weakness here? This is only detecting probabilities and not patterns. 
+
+## N-gram 
+N-gram models of opponents
+most recent same history
+Always asking does this model work? 
+Playing to beat them if it does
+Look at a bunch of models, which has best predictive power against opponent, play that one
+How to parametrize opponent
+Multiple hypotheses, run counterfactually, pick best one  
+Pattern hypotheses, compare to general pattern about something else
+Iocaine Powder
+
+## Challenges
+See our [Challenge page](rpsbotchallenge.qmd) to get your bots into action in our:
+
+- Rock Practice Gym 
+- Daily Challenge
+- Weekly Challenge
+- One-off Hackathons
+
+There's a special Weekly Challenge for first-timers.
