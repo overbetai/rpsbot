@@ -19,14 +19,6 @@ From DeepMind in 2023:
 
 > In sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.
 
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-gonna 3d print the exploitability of a player's rock-paper-scissors strategy over their strategy simplex <a href="https://t.co/cSXFKyI5E8">pic.twitter.com/cSXFKyI5E8</a>
-</p>
-— Kevin a. Wang (<span class="citation" data-cites="often_wang">@often_wang</span>) <a href="https://twitter.com/often_wang/status/1838711689732132929?ref_src=twsrc%5Etfw">September 24, 2024</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 ## RPS game theory
 
 ### Payoff matrix

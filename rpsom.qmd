@@ -5,6 +5,9 @@ format:
   html:
     math: true
 ---
+maximize reward and not get exploited
+read https://openreview.net/forum?id=gQnJ7ODIAx
+
 At the heart of opponent modeling is predicting your opponent's next move. While ![game theory optimal](intro.qmd#nash-equilibrium) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice. 
 
 Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making "tilted" decisions, reacting to previous games in predictable ways, or having "leaks" like never throwing the same move three times in a row. 

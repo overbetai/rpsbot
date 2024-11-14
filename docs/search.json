@@ -4,7 +4,7 @@
     "href": "rpsomtutorial.html",
     "title": "RPS.bot: Opponent Modeling Tutorial",
     "section": "",
-    "text": "For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot as you encounter progressively more difficult challenges.",
+    "text": "For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot as you encounter progressively more difficult challenges. win X% before moving on?",
     "crumbs": [
       "About",
       "Opponent Modeling Tutorial"
@@ -113,7 +113,7 @@
     "href": "index.html",
     "title": "RPS.bot",
     "section": "",
-    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nGet started now with Intro to RPS.",
+    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nRRPS allows the challenge to focus mainly on the tenuous balance between maximizing reward while not being exploitable\nGet started now with Intro to RPS.",
     "crumbs": [
       "About",
       "Home"
@@ -146,7 +146,7 @@
     "href": "intro.html#why",
     "title": "RPS.bot: Intro",
     "section": "Why?",
-    "text": "Why?\nWe think RPS is fun and while it’s simple enough that everyone knows it and understands the rules, it’s still a great domain for thinking about strategy in a repeated game against a variety of opponents.\nFrom DeepMind in 2023:\n\nIn sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.\n\n\n\ngonna 3d print the exploitability of a player’s rock-paper-scissors strategy over their strategy simplex pic.twitter.com/cSXFKyI5E8\n\n— Kevin a. Wang (@often_wang) September 24, 2024",
+    "text": "Why?\nWe think RPS is fun and while it’s simple enough that everyone knows it and understands the rules, it’s still a great domain for thinking about strategy in a repeated game against a variety of opponents.\nFrom DeepMind in 2023:\n\nIn sequential decision-making, agent evaluation has largely been restricted to few interactions against experts, with the aim to reach some desired level of performance (e.g. beating a human professional player). We propose a benchmark for multiagent learning based on repeated play of the simple game Rock, Paper, Scissors.",
     "crumbs": [
       "About",
       "Intro to RPS"
@@ -168,7 +168,7 @@
     "href": "rpsom.html",
     "title": "RPS.bot: Opponent Modeling Basics",
     "section": "",
-    "text": "At the heart of opponent modeling is predicting your opponent’s next move. While  play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.\nHumans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.\nThere can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.\nWe use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which is in practice taking advantage of opponent weaknesses while minimizing your own exploitability.",
+    "text": "maximize reward and not get exploited read https://openreview.net/forum?id=gQnJ7ODIAx\nAt the heart of opponent modeling is predicting your opponent’s next move. While  play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.\nHumans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.\nThere can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.\nWe use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which is in practice taking advantage of opponent weaknesses while minimizing your own exploitability.",
     "crumbs": [
       "About",
       "Intro to Opponent Modeling"
