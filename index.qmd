@@ -7,8 +7,7 @@ format:
 ---
 RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors. 
 
-RRPS allows the challenge to focus mainly on the tenuous balance between maximizing reward while not being exploitable
-
+Repeated Rock Paper Scissors, while simple on the surface, "allows the challenge to focus mainly on the tenuous balance between maximizing reward while not being exploitable" (DeepMind, 2023). 
 
 **Get started now** with [Intro to RPS](intro.qmd).
 
