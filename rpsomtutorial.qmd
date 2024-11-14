@@ -5,7 +5,7 @@ format:
   html:
     math: true
 ---
-For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot. 
+For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot as you encounter progressively more difficult challenges. 
 
 ## Beat a fixed simple unknown opponent
 In practice, a lot of value will come from exploiting weak bots or other opponents. 
@@ -43,7 +43,19 @@ If we cycle, that means that we breakeven vs. Rock only. Exploiting and not gett
 2. Beat last move
 3. Final bossbot
 
-loss circuitbreaker 
+Assume that the final bossbot keeps a dictionary of your actions *after* each of the following action pairs, and then plays the move to beat those. 
+
+RR
+PP
+SS
+RP
+RS
+PR
+PS
+SR
+SP
+
+That seems difficult to beat! Although worth thinking about, let's prioritize beating the simpler bots that we already know how to beat. 
 
 ## Read which opponent you're playing and switch to ensemble selection
 Read history and give last 10
@@ -74,3 +86,5 @@ See our [Challenge page](rpsbotchallenge.qmd) to get your bots into action in ou
 - One-off Hackathons
 
 There's a special Weekly Challenge for first-timers.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/b0SoKWLkmLU?si=0AQ3_NgHOe4tc4OU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

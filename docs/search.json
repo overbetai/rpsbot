@@ -4,7 +4,7 @@
     "href": "rpsomtutorial.html",
     "title": "RPS.bot: Opponent Modeling Tutorial",
     "section": "",
-    "text": "For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot."
+    "text": "For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot as you encounter progressively more difficult challenges."
   },
   {
     "objectID": "rpsomtutorial.html#beat-a-fixed-simple-unknown-opponent",
@@ -25,7 +25,7 @@
     "href": "rpsomtutorial.html#beat-multiple-opponents-with-one-bot-1",
     "title": "RPS.bot: Opponent Modeling Tutorial",
     "section": "Beat multiple opponents with one bot",
-    "text": "Beat multiple opponents with one bot\n\nRock only\nBeat last move\nFinal bossbot\n\nloss circuitbreaker"
+    "text": "Beat multiple opponents with one bot\n\nRock only\nBeat last move\nFinal bossbot\n\nAssume that the final bossbot keeps a dictionary of your actions after each of the following action pairs, and then plays the move to beat those.\nRR PP SS RP RS PR PS SR SP\nThat seems difficult to beat! Although worth thinking about, let’s prioritize beating the simpler bots that we already know how to beat."
   },
   {
     "objectID": "rpsomtutorial.html#read-which-opponent-youre-playing-and-switch-to-ensemble-selection",
@@ -81,7 +81,7 @@
     "href": "index.html",
     "title": "RPS.bot",
     "section": "",
-    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nGet started now with Intro to RPS.",
+    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\n\nGet started now with Intro to RPS.",
     "crumbs": [
       "About",
       "Home"
