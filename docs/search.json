@@ -113,7 +113,7 @@
     "href": "index.html",
     "title": "RPS.bot",
     "section": "",
-    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nRRPS allows the challenge to focus mainly on the tenuous balance between maximizing reward while not being exploitable\nGet started now with Intro to RPS.",
+    "text": "RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors.\nRepeated Rock Paper Scissors, while simple on the surface, “allows the challenge to focus mainly on the tenuous balance between maximizing reward while not being exploitable” (DeepMind, 2023).\nGet started now with Intro to RPS.",
     "crumbs": [
       "About",
       "Home"
