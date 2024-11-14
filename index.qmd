@@ -5,6 +5,8 @@ format:
   html:
     math: true
 ---
-RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors. **Get started now** with [Intro to RPS](intro.qmd).
+RPS.bot is an intro to opponent modeling through the game Rock Paper Scissors. 
 
-![](s3ds.png){width=50%}
+**Get started now** with [Intro to RPS](intro.qmd).
+
+![](s3ds.png){width=75%}
