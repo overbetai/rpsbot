@@ -33,6 +33,8 @@ website:
           href: "intro.qmd"
         - text: "Intro to Opponent Modeling"
           href: "rpsom.qmd"
+        - text: "Intro to Opponent Modeling in Code"
+          href: "rpsomc.qmd"
         - text: "Opponent Modeling Tutorial"
           href: "rpsomtutorial.qmd"
         - text: "RPS Bot Challenge"
