@@ -33,7 +33,7 @@ website:
           href: "intro.qmd"
         - text: "Intro to Opponent Modeling"
           href: "rpsom.qmd"
-        - text: "Intro to Opponent Modeling in Code"
+        - text: "Opponent Modeling Starter Code"
           href: "rpsomc.qmd"
         - text: "Opponent Modeling Tutorial"
           href: "rpsomtutorial.qmd"
