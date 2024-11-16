@@ -110,6 +110,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-6GK6C5LZSG', { 'anonymize_ip': true});
 </script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
@@ -257,8 +260,8 @@ window.Quarto = {
   <li><a href="#axes-of-opponent-modeling" id="toc-axes-of-opponent-modeling" class="nav-link active" data-scroll-target="#axes-of-opponent-modeling">Axes of opponent modeling</a>
   <ul class="collapse">
   <li><a href="#types-of-opponents" id="toc-types-of-opponents" class="nav-link" data-scroll-target="#types-of-opponents">Types of opponents</a></li>
-  <li><a href="#types-of-gamesknowledge" id="toc-types-of-gamesknowledge" class="nav-link" data-scroll-target="#types-of-gamesknowledge">Types of games/knowledge</a></li>
   <li><a href="#human-play-vs.-bot-play" id="toc-human-play-vs.-bot-play" class="nav-link" data-scroll-target="#human-play-vs.-bot-play">Human play vs.&nbsp;bot play</a></li>
+  <li><a href="#types-of-gamesknowledge" id="toc-types-of-gamesknowledge" class="nav-link" data-scroll-target="#types-of-gamesknowledge">Types of games/knowledge</a></li>
   </ul></li>
   <li><a href="#measuring-performance" id="toc-measuring-performance" class="nav-link" data-scroll-target="#measuring-performance">Measuring performance</a></li>
   <li><a href="#starter-code" id="toc-starter-code" class="nav-link" data-scroll-target="#starter-code">Starter Code</a>
@@ -307,9 +310,45 @@ window.Quarto = {
 
 <p>At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent’s next move and not being predictable yourself.</p>
 <p>While <a href="./intro.html#nash-equilibrium">game theory optimal</a> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice, though it is useful to understand as a baseline.</p>
+<div class="cell" data-fig-width="8" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    B["Level 0: 'I'll just play Rock'"]
+    
+    B --&gt; C["Level 1: 'I think they'll play Rock,&lt;br&gt;so I'll play Paper'"]
+    
+    C --&gt; D["Level 2: 'They expect me to play Paper,&lt;br&gt;so they'll play Scissors,&lt;br&gt;therefore I should play Rock'"]
+    
+    D --&gt; E["Level 3: 'They think I'll play Rock&lt;br&gt;so they'll play Paper,&lt;br&gt;therefore I should play Scissors'"]
+    
+    E --&gt; F["Level 4: 'They think I'll play Scissors&lt;br&gt;so they'll play Rock,&lt;br&gt;therefore I should play Paper'"]
+    
+    F --&gt; H["Level 5: 'They think I'll play Paper&lt;br&gt;so they'll play Scissors,&lt;br&gt;therefore I should play Rock'"]
+    
+    H --&gt; I["Level 6: 'They think I'll play Rock&lt;br&gt;so they'll play Paper,&lt;br&gt;therefore I should play Scissors'"]
+    
+    I --&gt; G[". . ."]
+    
+    style B fill:#ffcccc,stroke:#666
+    style C fill:#cce5ff,stroke:#666
+    style D fill:#ffcccc,stroke:#666
+    style E fill:#d4edda,stroke:#666
+    style F fill:#cce5ff,stroke:#666
+    style H fill:#ffcccc,stroke:#666
+    style I fill:#d4edda,stroke:#666
+    style G fill:#f9f9f9,stroke:#666
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <section id="axes-of-opponent-modeling" class="level2">
 <h2 class="anchored" data-anchor-id="axes-of-opponent-modeling">Axes of opponent modeling</h2>
-<p>There are two main axes for opponent modeling: opponents and games.</p>
+<p>There are a few main axes for opponent modeling in games.</p>
 <section id="types-of-opponents" class="level3">
 <h3 class="anchored" data-anchor-id="types-of-opponents">Types of opponents</h3>
 <p>Here are a few types of opponents and an example for each.</p>
@@ -324,9 +363,20 @@ window.Quarto = {
 <li>Only most recent action: Copy the opponent’s last move (only most <span class="math inline">n</span> actions is also called <em>recall</em>, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions, etc.)</li>
 </ol>
 <p><strong>Simple dynamic related to entire history of actions:</strong> Play the move that beats the most frequent opponent move so far</p>
-<p><strong>Dynamic with randomness:</strong> An agent that</p>
-<p><strong>Agent that switches its main strategy:</strong> An agent that plays all Rock for the first 20 games and then all Scissors for the next 20 games and then plays the move that beats the most frequent opponent move so far</p>
+<p><strong>Dynamic with randomness:</strong> An agent that randomly selects between multiple dynamic or static strategies. For example: An agent that plays all Rock for the first 20 games and then all Scissors for the next 20 games and then plays the move that beats the most frequent opponent move so far.</p>
 <p><strong>Advanced dynamic related to entire history of actions:</strong> Sophisticated adversarial prediction algorithm or set of algorithms</p>
+</section>
+<section id="human-play-vs.-bot-play" class="level3">
+<h3 class="anchored" data-anchor-id="human-play-vs.-bot-play">Human play vs.&nbsp;bot play</h3>
+<p>Building bots is an exercise in meta-strategies, while playing as a human is more of a psychological battle, combining pattern recognition with adaptive thinking.</p>
+<p>Regardless of facing a bot or human, the overall goal remains to maximize payoffs by taking advantage of opponent weaknesses and minimizing your own exploitability.</p>
+<p><strong>Bot vs.&nbsp;human:</strong> Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.</p>
+<p>Bots playing against humans should focus on detecting and exploiting these kinds of cognitive biases and patterns.</p>
+<p><strong>Bot vs.&nbsp;bot:</strong> In RPS, single bot vs.&nbsp;single bot is generally less interesting because playing the Nash equilibrium is so simple.</p>
+<p>We use combinations of suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents.</p>
+<p><strong>Human vs.&nbsp;human:</strong> This is a very psychological game! “Leveling” is common in human vs.&nbsp;human play. Maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.</p>
+<p>Success comes from maintaining unpredictability while picking up on opponents’ patterns and emotional states.</p>
+<p><strong>Human vs.&nbsp;bot:</strong> When humans play against adversarial bots, they need to avoid falling into predictable patterns (not that easy!).</p>
 </section>
 <section id="types-of-gamesknowledge" class="level3">
 <h3 class="anchored" data-anchor-id="types-of-gamesknowledge">Types of games/knowledge</h3>
@@ -337,16 +387,6 @@ window.Quarto = {
 <li>Play multiple unknown opponents</li>
 <li><a href="./rpsbotchallenge.html">Play multiple unknown opponents that include some suboptimal house bots and some human-created bots</a></li>
 </ul>
-</section>
-<section id="human-play-vs.-bot-play" class="level3">
-<h3 class="anchored" data-anchor-id="human-play-vs.-bot-play">Human play vs.&nbsp;bot play</h3>
-<p><strong>Human vs.&nbsp;bot:</strong></p>
-<p><strong>Bot vs.&nbsp;human:</strong></p>
-<p><strong>Bot vs.&nbsp;bot:</strong></p>
-<p><strong>Human vs.&nbsp;human:</strong></p>
-<p>We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability.</p>
-<p>Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.</p>
-<p>There can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.</p>
 </section>
 </section>
 <section id="measuring-performance" class="level2">

@@ -223,6 +223,7 @@ window.Quarto = {
   <li><a href="#beat-a-fixed-simple-unknown-opponent" id="toc-beat-a-fixed-simple-unknown-opponent" class="nav-link active" data-scroll-target="#beat-a-fixed-simple-unknown-opponent">Beat a fixed simple unknown opponent</a></li>
   <li><a href="#beat-multiple-opponents-with-one-bot" id="toc-beat-multiple-opponents-with-one-bot" class="nav-link" data-scroll-target="#beat-multiple-opponents-with-one-bot">Beat multiple opponents with one bot</a></li>
   <li><a href="#beat-multiple-opponents-with-one-bot-1" id="toc-beat-multiple-opponents-with-one-bot-1" class="nav-link" data-scroll-target="#beat-multiple-opponents-with-one-bot-1">Beat multiple opponents with one bot</a></li>
+  <li><a href="#beat-multiple-opponents-with-one-bot-2" id="toc-beat-multiple-opponents-with-one-bot-2" class="nav-link" data-scroll-target="#beat-multiple-opponents-with-one-bot-2">Beat multiple opponents with one bot</a></li>
   <li><a href="#read-which-opponent-youre-playing-and-switch-to-ensemble-selection" id="toc-read-which-opponent-youre-playing-and-switch-to-ensemble-selection" class="nav-link" data-scroll-target="#read-which-opponent-youre-playing-and-switch-to-ensemble-selection">Read which opponent you’re playing and switch to ensemble selection</a></li>
   <li><a href="#gto-deviation" id="toc-gto-deviation" class="nav-link" data-scroll-target="#gto-deviation">GTO deviation</a></li>
   <li><a href="#n-gram" id="toc-n-gram" class="nav-link" data-scroll-target="#n-gram">N-gram</a></li>
@@ -263,6 +264,16 @@ window.Quarto = {
 <li>Beat simple opponent after you see what they’re doing in the first few games</li>
 </ul>
 <p>Automate this</p>
+<p>def detect_fixed_strategy(history, n_games=10): ““” Helper function to detect if opponent is using a fixed strategy Returns: (is_fixed, dominant_move) or (False, None) ““” if len(history) &lt; n_games: return False, None</p>
+<pre><code>recent_moves = [move[1] for move in history[-n_games:]]
+move_counts = Counter(recent_moves)
+
+# If any move appears &gt; 90% of the time
+for move, count in move_counts.items():
+    if count / n_games &gt; 0.9:
+        return True, move
+        
+return False, None</code></pre>
 </section>
 <section id="beat-multiple-opponents-with-one-bot" class="level2">
 <h2 class="anchored" data-anchor-id="beat-multiple-opponents-with-one-bot">Beat multiple opponents with one bot</h2>
@@ -279,6 +290,15 @@ window.Quarto = {
 </section>
 <section id="beat-multiple-opponents-with-one-bot-1" class="level2">
 <h2 class="anchored" data-anchor-id="beat-multiple-opponents-with-one-bot-1">Beat multiple opponents with one bot</h2>
+<ol type="1">
+<li>Rock only</li>
+<li>Beat last move</li>
+<li>Equilibrium bot</li>
+</ol>
+<p>That seems difficult to beat! Although worth thinking about, let’s prioritize beating the simpler bots that we already know how to beat.</p>
+</section>
+<section id="beat-multiple-opponents-with-one-bot-2" class="level2">
+<h2 class="anchored" data-anchor-id="beat-multiple-opponents-with-one-bot-2">Beat multiple opponents with one bot</h2>
 <ol type="1">
 <li>Rock only</li>
 <li>Beat last move</li>

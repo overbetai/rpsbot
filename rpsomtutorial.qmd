@@ -18,6 +18,24 @@ If you know that your opponent is fixed and has a simple strategy, then you can:
 
 Automate this 
 
+def detect_fixed_strategy(history, n_games=10):
+    """
+    Helper function to detect if opponent is using a fixed strategy
+    Returns: (is_fixed, dominant_move) or (False, None)
+    """
+    if len(history) < n_games:
+        return False, None
+    
+    recent_moves = [move[1] for move in history[-n_games:]]
+    move_counts = Counter(recent_moves)
+    
+    # If any move appears > 90% of the time
+    for move, count in move_counts.items():
+        if count / n_games > 0.9:
+            return True, move
+            
+    return False, None
+
 ## Beat multiple opponents with one bot
 Suppose that you have three sequential opponents: 
 1. Rock only
@@ -36,6 +54,12 @@ This means that if we play Rock on the first move, we'd forever play RSPRSPRSP..
 
 If we cycle, that means that we breakeven vs. Rock only. Exploiting and not getting exploited, but not fully exploiting. 
 
+## Beat multiple opponents with one bot
+1. Rock only
+2. Beat last move
+3. Equilibrium bot
+
+That seems difficult to beat! Although worth thinking about, let's prioritize beating the simpler bots that we already know how to beat. 
 
 
 ## Beat multiple opponents with one bot
