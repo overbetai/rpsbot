@@ -11,29 +11,32 @@ In these challenges, there are always suboptimal "house bots". Think bots that a
 
 This means that playing the *game theory optimal* strategy will not maximize your payoff against them. 
 
-The challenge is to predict what they're doing, and in cases where there are house bots and human-made bots, the challenge is to play well against the house bots without getting counterplayed by the human-made ones. And perhaps to counterplay the human-made bots that are prioritizing counterplaying the house bots! 
+The challenge is to predict what they're doing, and to play well against opponents without getting counterplayed yourself, and perhaps to counterplay those who are prioritizing beating the house bots! 
 
 ## Rock Practice Gym
 Test your bot against a variety of our house bots in our Rock Practice Gym. 
 
 ## Daily Challenge
-Play 200 **[how many?]** games against a single RPS bot each day. 
+Play up to 200 games against a single RPS bot each day. 
 
-The bots will get roughly more difficult as the week goes on from Monday to Sunday. They'll be all different types -- our own house bots, human-made bots from our weekly challenges, LLM-generated, etc. 
+The bots will get roughly more difficult as the week goes on from Monday to Sunday. They'll be all different types -- our own house bots, human-created bots from our weekly challenges, LLM-generated, etc. 
 
 You can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don't know how to code. 
 
+**[200 games? min? max?]**
 **[What about the timer play every second thing?]**
 **[Do daily ones also enter into the weekly?]**
 
 ## Weekly Challenge
-Enter your best bot to play against that week's other human-made bot entrants as well as a selection of our own house bots that will vary each week. You'll play every other entrant for 1000 games.  
+Enter your best bot to play against that week's other human-made bot entrants as well as a selection of our own house bots that will vary with a new theme each week. You'll play every other entrant for 1000 games.  
 
-Entries start each Monday and end each Sunday, with results posted the Monday after. **[Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]**
+Entries start each Monday and end each Sunday, with results posted the Monday after. 
 
 ![](matrix.png)
 
 Each week has a special rookie division for those who are entering for their first time. 
+
+**[Maybe: Some feedback mechanism to improve and resubmit throughout week, at least against house bots?]**
 
 ## Hackathon
 We periodically run virtual and in-person hackathons that we'll announce on RPS.bot and on our [mailing list](https://overbetai.substack.com/)/social channels.
