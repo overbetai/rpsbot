@@ -1,7 +1,6 @@
 ---
 title: "RPS.bot: About"
 ---
-## About Us
 RPS.bot by Max Chiswick and Ross Rheingans-Yoo. 
 
 We're excited about learning through games. Check out [Overbet.ai](https://overbet.ai) (under development) and [Poker Camp](https://poker.camp) for more.
