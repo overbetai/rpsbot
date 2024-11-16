@@ -1,20 +1,23 @@
 ---
-title: "RPS.bot: Opponent Modeling Basics"
+title: "RPS.bot: Intro to Opponent Modeling"
 bread-crumbs: false
 format:
   html:
     math: true
 ---
-maximize reward and not get exploited
-read https://openreview.net/forum?id=gQnJ7ODIAx
+At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent's next move and not being predictable yourself. While ![game theory optimal](intro.qmd#nash-equilibrium) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice.
 
-At the heart of opponent modeling is predicting your opponent's next move. While ![game theory optimal](intro.qmd#nash-equilibrium) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice. 
+There are a few ways to measure performance in games: 
+
+- Against a baseline opponent
+- Against a range of different opponents 
+- Against a maximally exploitable opponent
 
 Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making "tilted" decisions, reacting to previous games in predictable ways, or having "leaks" like never throwing the same move three times in a row. 
 
 There can be levels to the game -- maybe you think your opponent expects you to play Rock, so then you expect that they'll play Paper, so you should play Scissors, but maybe they'll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on. 
 
-We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which is in practice taking advantage of opponent weaknesses while minimizing your own exploitability. 
+We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability. 
 
 ## Axes of opponent modeling
 There are two main axes for opponent modeling: opponents and games. 
@@ -34,7 +37,7 @@ Here are a few types of opponents and an example for each.
 
 1. Only our own actions: Randomly play an action that we didn't play in the last 2 games
 2. Only opponent actions: Play the action that beats the most frequent of the opponent's last 3 moves
-3. Only most recent action: Copy the opponent's last move
+3. Only most recent action: Copy the opponent's last move (only most $n$ actions is also called *recall*, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions)
 
 **Simple dynamic related to entire history of actions:** Play the move that beats the most frequent opponent move so far
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>RPS.bot: Opponent Modeling Basics – RPS.bot</title>
+<title>RPS.bot: Intro to Opponent Modeling – RPS.bot</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,7 +155,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="RPS.bot: Opponent Modeling Basics – RPS.bot">
+<meta property="og:title" content="RPS.bot: Intro to Opponent Modeling – RPS.bot">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="RPS.bot">
 </head>
@@ -202,7 +202,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS.bot: Opponent Modeling Basics</h1>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs">RPS.bot: Intro to Opponent Modeling</h1>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -286,7 +286,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">RPS.bot: Opponent Modeling Basics</h1>
+<h1 class="title d-none d-lg-block">RPS.bot: Intro to Opponent Modeling</h1>
 </div>
 
 
@@ -303,11 +303,16 @@ window.Quarto = {
 </header>
 
 
-<p>maximize reward and not get exploited read https://openreview.net/forum?id=gQnJ7ODIAx</p>
-<p>At the heart of opponent modeling is predicting your opponent’s next move. While <img src="intro.qmd#nash-equilibrium" class="img-fluid" alt="game theory optimal"> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.</p>
+<p>At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent’s next move and not being predictable yourself. While <img src="intro.qmd#nash-equilibrium" class="img-fluid" alt="game theory optimal"> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.</p>
+<p>There are a few ways to measure performance in games:</p>
+<ul>
+<li>Against a baseline opponent</li>
+<li>Against a range of different opponents</li>
+<li>Against a maximally exploitable opponent</li>
+</ul>
 <p>Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.</p>
 <p>There can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.</p>
-<p>We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which is in practice taking advantage of opponent weaknesses while minimizing your own exploitability.</p>
+<p>We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability.</p>
 <section id="axes-of-opponent-modeling" class="level2">
 <h2 class="anchored" data-anchor-id="axes-of-opponent-modeling">Axes of opponent modeling</h2>
 <p>There are two main axes for opponent modeling: opponents and games.</p>
@@ -322,7 +327,7 @@ window.Quarto = {
 <ol type="1">
 <li>Only our own actions: Randomly play an action that we didn’t play in the last 2 games</li>
 <li>Only opponent actions: Play the action that beats the most frequent of the opponent’s last 3 moves</li>
-<li>Only most recent action: Copy the opponent’s last move</li>
+<li>Only most recent action: Copy the opponent’s last move (only most <span class="math inline">n</span> actions is also called <em>recall</em>, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions)</li>
 </ol>
 <p><strong>Simple dynamic related to entire history of actions:</strong> Play the move that beats the most frequent opponent move so far</p>
 <p><strong>Agent that switches its main strategy:</strong> An agent that plays all Rock for the first 20 games and then all Scissors for the next 20 games and then plays the move that beats the most frequent opponent move so far</p>
