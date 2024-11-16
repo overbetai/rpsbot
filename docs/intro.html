@@ -228,7 +228,8 @@ window.Quarto = {
   <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value">Expected value</a></li>
   <li><a href="#zero-sum" id="toc-zero-sum" class="nav-link" data-scroll-target="#zero-sum">Zero-sum</a></li>
   <li><a href="#nash-equilibrium" id="toc-nash-equilibrium" class="nav-link" data-scroll-target="#nash-equilibrium">Nash equilibrium</a></li>
-  <li><a href="#exploiting-vs.-nash" id="toc-exploiting-vs.-nash" class="nav-link" data-scroll-target="#exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</a></li>
+  <li><a href="#exploitation-compared-to-nash" id="toc-exploitation-compared-to-nash" class="nav-link" data-scroll-target="#exploitation-compared-to-nash">Exploitation compared to Nash</a></li>
+  <li><a href="#playing-against-equilibrium-and-non-equilibrium-opponents" id="toc-playing-against-equilibrium-and-non-equilibrium-opponents" class="nav-link" data-scroll-target="#playing-against-equilibrium-and-non-equilibrium-opponents">Playing against equilibrium and non-equilibrium opponents</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -575,10 +576,10 @@ s + r = 2p \\
 \end{split}
 \end{equation}
 </span></p>
-<p>The random equilibrium strategy will result in 0 against <em>any</em> strategy. This means any pure strategy and any combination of strategies including <em>622</em> and the opponent playing the random strateg themselves.</p>
+<p>The random equilibrium strategy will result in 0 against <em>any</em> strategy. This means any pure strategy and any combination of strategies including <em>622</em> and the opponent playing the random strategy themselves.</p>
 </section>
-<section id="exploiting-vs.-nash" class="level3">
-<h3 class="anchored" data-anchor-id="exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</h3>
+<section id="exploitation-compared-to-nash" class="level3">
+<h3 class="anchored" data-anchor-id="exploitation-compared-to-nash">Exploitation compared to Nash</h3>
 <p>The equilibrium strategy vs.&nbsp;a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing perhaps the worst possible strategy, yet equilibrium is still breaking even against it!</p>
 <p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. This is called a <strong>best response</strong> strategy. Any deterministic strategy can be fully exploited.</p>
 <p>The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
@@ -604,6 +605,11 @@ s + r = 2p \\
 \end{equation}
 </span></p>
 <p>Playing Paper vs.&nbsp;<em>622</em> results in an expected win of 0.4 per game.</p>
+</section>
+<section id="playing-against-equilibrium-and-non-equilibrium-opponents" class="level3">
+<h3 class="anchored" data-anchor-id="playing-against-equilibrium-and-non-equilibrium-opponents">Playing against equilibrium and non-equilibrium opponents</h3>
+<p>We know that in RPS, the equilibrium strategy is 1/3 Rock, 1/3 Paper, 1/3 Scissors. The <strong>support</strong> of the equilibrium is defined as the set of actions that are played with at least some probability. In this case, it’s all 3 possible actions.</p>
+<p>As long as you play any strategy in the support, you will have the same payoff against the equilibrium (in this case always breaking even). This means that if you are playing against a combination of equilibrium and non-equilibrium opponents, you could actually ignore the equilibrium opponent since you’ll always breakeven against them, and just target the non-equilibrium opponent.</p>
 
 
 

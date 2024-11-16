@@ -260,6 +260,7 @@ window.Quarto = {
   <li><a href="#types-of-gamesknowledge" id="toc-types-of-gamesknowledge" class="nav-link" data-scroll-target="#types-of-gamesknowledge">Types of games/knowledge</a></li>
   <li><a href="#human-play-vs.-bot-play" id="toc-human-play-vs.-bot-play" class="nav-link" data-scroll-target="#human-play-vs.-bot-play">Human play vs.&nbsp;bot play</a></li>
   </ul></li>
+  <li><a href="#measuring-performance" id="toc-measuring-performance" class="nav-link" data-scroll-target="#measuring-performance">Measuring performance</a></li>
   <li><a href="#starter-code" id="toc-starter-code" class="nav-link" data-scroll-target="#starter-code">Starter Code</a>
   <ul class="collapse">
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
@@ -278,7 +279,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#breakeven-unless-youre-playing-rockbot" id="toc-breakeven-unless-youre-playing-rockbot" class="nav-link" data-scroll-target="#breakeven-unless-youre-playing-rockbot">Breakeven unless you’re playing Rockbot</a></li>
   <li><a href="#random-play-backup-plan" id="toc-random-play-backup-plan" class="nav-link" data-scroll-target="#random-play-backup-plan">Random play backup plan</a></li>
-  <li><a href="#playing-against-equilibrium-and-non-equilibrium-opponents" id="toc-playing-against-equilibrium-and-non-equilibrium-opponents" class="nav-link" data-scroll-target="#playing-against-equilibrium-and-non-equilibrium-opponents">Playing against equilibrium and non-equilibrium opponents</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -306,22 +306,15 @@ window.Quarto = {
 
 
 <p>At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent’s next move and not being predictable yourself.</p>
-<p>While <img src="intro.qmd#nash-equilibrium" class="img-fluid" alt="game theory optimal"> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice, though it is useful to understand as a baseline.</p>
-<p>There are a few main ways to measure performance in games:</p>
-<ul>
-<li>Against a baseline opponent</li>
-<li>Against a range of different opponents</li>
-<li>Against a maximally exploitable opponent</li>
-</ul>
-<p>In RPS, we’ll mostly be thinking about matches against a range of different opponents, though will start by looking at counterstrategies against individual opponent strategies.</p>
+<p>While <a href="./intro.html#nash-equilibrium">game theory optimal</a> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice, though it is useful to understand as a baseline.</p>
 <section id="axes-of-opponent-modeling" class="level2">
 <h2 class="anchored" data-anchor-id="axes-of-opponent-modeling">Axes of opponent modeling</h2>
 <p>There are two main axes for opponent modeling: opponents and games.</p>
 <section id="types-of-opponents" class="level3">
 <h3 class="anchored" data-anchor-id="types-of-opponents">Types of opponents</h3>
 <p>Here are a few types of opponents and an example for each.</p>
-<p><strong>Bad static opponents:</strong> Playing Rock</p>
-<p><strong>Better static opponents:</strong> Playing 60% Rock, 20% Paper, 20% Scissors</p>
+<p><strong>Fixed static opponents:</strong> Playing Rock</p>
+<p><strong>Random static opponents:</strong> Playing 60% Rock, 20% Paper, 20% Scissors</p>
 <p><strong>Dynamic with no relation to game, i.e.&nbsp;a static Markov model:</strong> Playing RPSRPSRPS…</p>
 <p><img src="markovrps.png" class="img-fluid"></p>
 <p><strong>Dynamic only related to a limited subset of actions, like:</strong></p>
@@ -331,27 +324,40 @@ window.Quarto = {
 <li>Only most recent action: Copy the opponent’s last move (only most <span class="math inline">n</span> actions is also called <em>recall</em>, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions, etc.)</li>
 </ol>
 <p><strong>Simple dynamic related to entire history of actions:</strong> Play the move that beats the most frequent opponent move so far</p>
+<p><strong>Dynamic with randomness:</strong> An agent that</p>
 <p><strong>Agent that switches its main strategy:</strong> An agent that plays all Rock for the first 20 games and then all Scissors for the next 20 games and then plays the move that beats the most frequent opponent move so far</p>
 <p><strong>Advanced dynamic related to entire history of actions:</strong> Sophisticated adversarial prediction algorithm or set of algorithms</p>
 </section>
 <section id="types-of-gamesknowledge" class="level3">
 <h3 class="anchored" data-anchor-id="types-of-gamesknowledge">Types of games/knowledge</h3>
-<p>Play a single known opponent (known meaning you know their entire strategy)</p>
-<p>Play multiple known opponents</p>
-<p>Play a single unknown opponent</p>
-<p>Play multiple unknown opponents</p>
-<p><a href="./rpsbotchallenge.html">Play multiple unknown opponents that include some suboptimal house bots and some human-created bots</a></p>
+<ul>
+<li>Play a single known opponent (known meaning you know their entire strategy)</li>
+<li>Play multiple known opponents</li>
+<li>Play a single unknown opponent</li>
+<li>Play multiple unknown opponents</li>
+<li><a href="./rpsbotchallenge.html">Play multiple unknown opponents that include some suboptimal house bots and some human-created bots</a></li>
+</ul>
 </section>
 <section id="human-play-vs.-bot-play" class="level3">
 <h3 class="anchored" data-anchor-id="human-play-vs.-bot-play">Human play vs.&nbsp;bot play</h3>
-<p>Human vs.&nbsp;bot:</p>
-<p>Bot vs.&nbsp;human:</p>
-<p>Bot vs.&nbsp;bot:</p>
-<p>Human vs.&nbsp;human:</p>
+<p><strong>Human vs.&nbsp;bot:</strong></p>
+<p><strong>Bot vs.&nbsp;human:</strong></p>
+<p><strong>Bot vs.&nbsp;bot:</strong></p>
+<p><strong>Human vs.&nbsp;human:</strong></p>
 <p>We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability.</p>
 <p>Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.</p>
 <p>There can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.</p>
 </section>
+</section>
+<section id="measuring-performance" class="level2">
+<h2 class="anchored" data-anchor-id="measuring-performance">Measuring performance</h2>
+<p>There are a few main ways to measure performance in games:</p>
+<ul>
+<li>Against a baseline opponent</li>
+<li>Against a range of different opponents</li>
+<li>Against a maximally exploitable opponent</li>
+</ul>
+<p>In RPS, we’ll mostly be thinking about matches against a range of different opponents, though will start by looking at counter-strategies against individual opponent strategies.</p>
 </section>
 <section id="starter-code" class="level2">
 <h2 class="anchored" data-anchor-id="starter-code">Starter Code</h2>
@@ -399,28 +405,28 @@ window.Quarto = {
 <p>It’s a lot easier to beat your opponents when you know their strategy! Though unrealistic, this is still a worthwhile first exercise for thinking about which strategies beat which opponent strategies and how to code them.</p>
 <section id="rockbot" class="level3">
 <h3 class="anchored" data-anchor-id="rockbot">Rockbot</h3>
-<p>Opponent strategy: 100% Rock</p>
-<p>Our counter-strategy: 100% Paper</p>
-<p>Our best EV: +1 per game</p>
-<p>Our counter-strategy in code:</p>
+<p><strong>Opponent strategy:</strong> 100% Rock</p>
+<p><strong>Our counter-strategy:</strong> 100% Paper</p>
+<p><strong>Our best EV:</strong> +1 per game</p>
+<p><strong>Our counter-strategy in code:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> PaperAction()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="r532bot" class="level3">
 <h3 class="anchored" data-anchor-id="r532bot">r532bot</h3>
-<p>Opponent strategy: 50% Rock, 30% Paper, 20% Scissors</p>
-<p>Our counter-strategy: 100% Paper</p>
-<p>Our best EV: <span class="math inline">0.5(1) + 0.3(0) + 0.2(-1) = 0.3</span> per game</p>
-<p>Our counter-strategy in code:</p>
+<p><strong>Opponent strategy:</strong> 50% Rock, 30% Paper, 20% Scissors</p>
+<p><strong>Our counter-strategy:</strong> 100% Paper</p>
+<p><strong>Our best EV:</strong> <span class="math inline">0.5(1) + 0.3(0) + 0.2(-1) = 0.3</span> per game</p>
+<p><strong>Our counter-strategy in code:</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> PaperAction()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="rpsbot" class="level3">
 <h3 class="anchored" data-anchor-id="rpsbot">RPSbot</h3>
-<p>Opponent strategy: RPSRPSRPS…</p>
-<p>Our counter-strategy: PSRPSRPSR…</p>
-<p>Our best EV: +1 per game</p>
-<p>Our counter-strategy in code:</p>
+<p><strong>Opponent strategy:</strong> RPSRPSRPS…</p>
+<p><strong>Our counter-strategy:</strong> PSRPSRPSR…</p>
+<p><strong>Our best EV:</strong> +1 per game</p>
+<p><strong>Our counter-strategy in code:</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    moves <span class="op">=</span> [PaperAction(), ScissorsAction(), RockAction()]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    move_index <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.history) <span class="op">%</span> <span class="dv">3</span>  <span class="co"># Use history length to cycle</span></span>
@@ -428,15 +434,15 @@ window.Quarto = {
 </section>
 <section id="mimicbot" class="level3">
 <h3 class="anchored" data-anchor-id="mimicbot">Mimicbot</h3>
-<p>Opponent strategy: Copy our last action</p>
-<p>Our counter-strategy:</p>
+<p><strong>Opponent strategy:</strong> Copy our last action</p>
+<p><strong>Our counter-strategy:</strong></p>
 <ul>
 <li>If our last action was Rock, play Paper</li>
 <li>If our last action was Paper, play Scissors</li>
 <li>If our last action was Scissors, play Rock</li>
 </ul>
-<p>Our best EV: +1 per game (after 1st)</p>
-<p>Our counter-strategy code:</p>
+<p><strong>Our best EV:</strong> +1 per game (after 1st)</p>
+<p><strong>Our counter-strategy code:</strong></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      our_last_move <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>][<span class="dv">0</span>] <span class="co"># Find our last move</span></span>
@@ -451,8 +457,8 @@ window.Quarto = {
 </section>
 <section id="beatprevbot" class="level3">
 <h3 class="anchored" data-anchor-id="beatprevbot">Beatprevbot</h3>
-<p>Opponent strategy: Beat our last action</p>
-<p>Opponent strategy code:</p>
+<p><strong>Opponent strategy:</strong> Beat our last action</p>
+<p><strong>Opponent strategy code:</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      last_opponent_move <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>][<span class="dv">1</span>] <span class="co"># Find last opponent move</span></span>
@@ -464,14 +470,14 @@ window.Quarto = {
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction() <span class="co"># Play Rock</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Our counter-strategy:</p>
+<p><strong>Our counter-strategy:</strong></p>
 <ul>
 <li>If our last action was Rock, play Scissors</li>
 <li>If our last action was Paper, play Rock</li>
 <li>If our last action was Scissors, play Paper</li>
 </ul>
-<p>Our best EV: +1 per game (after 1st)</p>
-<p>Our counter-strategy code:</p>
+<p><strong>Our best EV:</strong> +1 per game (after 1st)</p>
+<p><strong>Our counter-strategy code:</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      our_last_move <span class="op">=</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>][<span class="dv">0</span>] <span class="co"># Find our last move</span></span>
@@ -491,8 +497,8 @@ window.Quarto = {
 </section>
 <section id="freqbot" class="level3">
 <h3 class="anchored" data-anchor-id="freqbot">Freqbot</h3>
-<p>Opponent strategy: Beat our most frequent overall action</p>
-<p>Opponent strategy code:</p>
+<p><strong>Opponent strategy:</strong> Beat our most frequent overall action</p>
+<p><strong>Opponent strategy code:</strong></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.history: <span class="co"># After the 1st game</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      opponent_moves <span class="op">=</span> [move[<span class="dv">1</span>] <span class="cf">for</span> move <span class="kw">in</span> <span class="va">self</span>.history]</span>
@@ -521,14 +527,14 @@ window.Quarto = {
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> RockAction()</span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Our counter-strategy:</p>
+<p><strong>Our counter-strategy:</strong></p>
 <ul>
 <li>If our most frequent action was Rock, play Scissors</li>
 <li>If our most frequent action was Paper, play Rock</li>
 <li>If our most frequent action was Scissors, play Paper</li>
 </ul>
-<p>Our best EV: +1 per game (after 1st)</p>
-<p>Our counter-strategy code: Exercise for the reader!</p>
+<p><strong>Our best EV:</strong> +1 per game (after 1st)</p>
+<p><strong>Our counter-strategy code:</strong> Exercise for the reader!</p>
 </section>
 </section>
 <section id="general-strategies" class="level2">
@@ -598,11 +604,6 @@ window.Quarto = {
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In all other cases (including 1st 2 rounds), play randomly</span></span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="playing-against-equilibrium-and-non-equilibrium-opponents" class="level3">
-<h3 class="anchored" data-anchor-id="playing-against-equilibrium-and-non-equilibrium-opponents">Playing against equilibrium and non-equilibrium opponents</h3>
-<p>We know that in RPS, the equilibrium strategy is 1/3 Rock, 1/3 Paper, 1/3 Scissors. The <strong>support</strong> of the equilibrium is defined as the set of actions that are played with at least some probability. In this case, it’s all 3 possible actions.</p>
-<p>As long as you play any strategy in the support, you will have the same payoff against the equilibrium (in this case always breaking even). This means that if you are playing against a combination of equilibrium and non-equilibrium opponents, you could actually ignore the equilibrium opponent since you’ll always breakeven against them, and just target the non-equilibrium opponent.</p>
 
 
 

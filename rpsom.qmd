@@ -7,15 +7,7 @@ format:
 ---
 At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent's next move and not being predictable yourself. 
 
-While ![game theory optimal](intro.qmd#nash-equilibrium) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice, though it is useful to understand as a baseline. 
-
-There are a few main ways to measure performance in games: 
-
-- Against a baseline opponent
-- Against a range of different opponents 
-- Against a maximally exploitable opponent
-
-In RPS, we'll mostly be thinking about matches against a range of different opponents, though will start by looking at counterstrategies against individual opponent strategies. 
+While [game theory optimal](intro.qmd#nash-equilibrium) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice, though it is useful to understand as a baseline. 
 
 ## Axes of opponent modeling
 There are two main axes for opponent modeling: opponents and games. 
@@ -23,9 +15,9 @@ There are two main axes for opponent modeling: opponents and games.
 ### Types of opponents 
 Here are a few types of opponents and an example for each. 
 
-**Bad static opponents:** Playing Rock 
+**Fixed static opponents:** Playing Rock 
 
-**Better static opponents:** Playing 60% Rock, 20% Paper, 20% Scissors
+**Random static opponents:** Playing 60% Rock, 20% Paper, 20% Scissors
 
 **Dynamic with no relation to game, i.e. a static Markov model:** Playing RPSRPSRPS...
 
@@ -39,30 +31,30 @@ Here are a few types of opponents and an example for each.
 
 **Simple dynamic related to entire history of actions:** Play the move that beats the most frequent opponent move so far
 
+**Dynamic with randomness:** An agent that 
+
 **Agent that switches its main strategy:** An agent that plays all Rock for the first 20 games and then all Scissors for the next 20 games and then plays the move that beats the most frequent opponent move so far
 
 **Advanced dynamic related to entire history of actions:** Sophisticated adversarial prediction algorithm or set of algorithms
 
 ### Types of games/knowledge
-Play a single known opponent (known meaning you know their entire strategy)
 
-Play multiple known opponents
-
-Play a single unknown opponent
-
-Play multiple unknown opponents
-
-[Play multiple unknown opponents that include some suboptimal house bots and some human-created bots](rpsbotchallenge.qmd)
+- Play a single known opponent (known meaning you know their entire strategy)
+- Play multiple known opponents
+- Play a single unknown opponent
+- Play multiple unknown opponents
+- [Play multiple unknown opponents that include some suboptimal house bots and some human-created bots](rpsbotchallenge.qmd)
 
 ### Human play vs. bot play
 
-Human vs. bot: 
 
-Bot vs. human: 
+**Human vs. bot:**
 
-Bot vs. bot: 
+**Bot vs. human:** 
 
-Human vs. human: 
+**Bot vs. bot:** 
+
+**Human vs. human:** 
 
 We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability. 
 
@@ -70,6 +62,15 @@ We use suboptimal bots in our challenge games to reinforce thinking strategicall
 Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making "tilted" decisions, reacting to previous games in predictable ways, or having "leaks" like never throwing the same move three times in a row. 
 
 There can be levels to the game -- maybe you think your opponent expects you to play Rock, so then you expect that they'll play Paper, so you should play Scissors, but maybe they'll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on. 
+
+## Measuring performance
+There are a few main ways to measure performance in games: 
+
+- Against a baseline opponent
+- Against a range of different opponents 
+- Against a maximally exploitable opponent
+
+In RPS, we'll mostly be thinking about matches against a range of different opponents, though will start by looking at counter-strategies against individual opponent strategies. 
 
 ## Starter Code
 We provide Python starter code that you can use to build RPS bots.  
@@ -109,13 +110,13 @@ And the history of your actions and your opponent actions are stored in the foll
 It's a lot easier to beat your opponents when you know their strategy! Though unrealistic, this is still a worthwhile first exercise for thinking about which strategies beat which opponent strategies and how to code them.
 
 ### Rockbot
-Opponent strategy: 100% Rock
+**Opponent strategy:** 100% Rock
 
-Our counter-strategy: 100% Paper
+**Our counter-strategy:** 100% Paper
 
-Our best EV: +1 per game
+**Our best EV:** +1 per game
 
-Our counter-strategy in code: 
+**Our counter-strategy in code:** 
 
 ```python
 def get_action(self, *, match_clock):
@@ -123,13 +124,13 @@ def get_action(self, *, match_clock):
 ```
 
 ### r532bot
-Opponent strategy: 50% Rock, 30% Paper, 20% Scissors
+**Opponent strategy:** 50% Rock, 30% Paper, 20% Scissors
 
-Our counter-strategy: 100% Paper
+**Our counter-strategy:** 100% Paper
 
-Our best EV: $0.5(1) + 0.3(0) + 0.2(-1) = 0.3$ per game
+**Our best EV:** $0.5(1) + 0.3(0) + 0.2(-1) = 0.3$ per game
 
-Our counter-strategy in code: 
+**Our counter-strategy in code:** 
 
 ```python
 def get_action(self, *, match_clock):
@@ -137,13 +138,13 @@ def get_action(self, *, match_clock):
 ```
 
 ### RPSbot
-Opponent strategy: RPSRPSRPS...
+**Opponent strategy:** RPSRPSRPS...
 
-Our counter-strategy: PSRPSRPSR...
+**Our counter-strategy:** PSRPSRPSR...
 
-Our best EV: +1 per game
+**Our best EV:** +1 per game
 
-Our counter-strategy in code: 
+**Our counter-strategy in code:** 
 
 ```python
 def get_action(self, *, match_clock):
@@ -153,17 +154,17 @@ def get_action(self, *, match_clock):
 ```
 
 ### Mimicbot
-Opponent strategy: Copy our last action
+**Opponent strategy:** Copy our last action
 
-Our counter-strategy: 
+**Our counter-strategy:** 
 
 - If our last action was Rock, play Paper
 - If our last action was Paper, play Scissors
 - If our last action was Scissors, play Rock
 
-Our best EV: +1 per game (after 1st)
+**Our best EV:** +1 per game (after 1st)
 
-Our counter-strategy code: 
+**Our counter-strategy code:** 
 
 ```python
 def get_action(self, *, match_clock):
@@ -180,9 +181,9 @@ def get_action(self, *, match_clock):
 ```
 
 ### Beatprevbot
-Opponent strategy: Beat our last action
+**Opponent strategy:** Beat our last action
 
-Opponent strategy code: 
+**Opponent strategy code:** 
 
 ```python
 def get_action(self, *, match_clock):
@@ -198,15 +199,15 @@ def get_action(self, *, match_clock):
       return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
 
-Our counter-strategy: 
+**Our counter-strategy:** 
 
 - If our last action was Rock, play Scissors
 - If our last action was Paper, play Rock
 - If our last action was Scissors, play Paper
 
-Our best EV: +1 per game (after 1st)
+**Our best EV:** +1 per game (after 1st)
 
-Our counter-strategy code: 
+**Our counter-strategy code:** 
 
 ```python
 def get_action(self, *, match_clock):
@@ -239,9 +240,9 @@ Beat the move that beats the move that beats previous plays: Paper
 This turns out to be mimicbot, which we saw in the previous section! And more levels are possible...
 
 ### Freqbot 
-Opponent strategy: Beat our most frequent overall action
+**Opponent strategy:** Beat our most frequent overall action
 
-Opponent strategy code: 
+**Opponent strategy code:**
 
 ```python
 def get_action(self, *, match_clock):
@@ -274,15 +275,15 @@ def get_action(self, *, match_clock):
       return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
 
-Our counter-strategy: 
+**Our counter-strategy:**
 
 - If our most frequent action was Rock, play Scissors
 - If our most frequent action was Paper, play Rock
 - If our most frequent action was Scissors, play Paper
 
-Our best EV: +1 per game (after 1st)
+**Our best EV:** +1 per game (after 1st)
 
-Our counter-strategy code: Exercise for the reader! 
+**Our counter-strategy code:** Exercise for the reader! 
 
 ## General strategies
 In poker, it's common to start by attempting to play the game theory optimal (GTO) strategy and then as you see weaknesses in opponents, to deviate accordingly. If you see your opponent folds too much, then you can bluff more. 
@@ -353,8 +354,3 @@ def get_action(self, *, match_clock):
   # In all other cases (including 1st 2 rounds), play randomly
   return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
-
-### Playing against equilibrium and non-equilibrium opponents
-We know that in RPS, the equilibrium strategy is 1/3 Rock, 1/3 Paper, 1/3 Scissors. The **support** of the equilibrium is defined as the set of actions that are played with at least some probability. In this case, it's all 3 possible actions. 
-
-As long as you play any strategy in the support, you will have the same payoff against the equilibrium (in this case always breaking even). This means that if you are playing against a combination of equilibrium and non-equilibrium opponents, you could actually ignore the equilibrium opponent since you'll always breakeven against them, and just target the non-equilibrium opponent. 
