@@ -77,9 +77,9 @@ Now we can multiply the player action strategies together to get a percentage oc
 
 | Player 1/2 | Rock ($r_2=0.1$)   | Paper ($p_2=0.3$)  | Scissors ($s_2=0.6$) |
 |--------|---------|---------|----------|
-| **Rock ($r_1=0.5$)**   | Val: 0 <br>Pr: $0.5(0.1) = .05$ | Val: -1 <br>Pr: $0.5(0.3) = .15$ | Val: 1 <br>Pr: $0.5(0.6) = .3$ |
-| **Paper ($p_1=0.25$)** | Val: 1 <br>Pr: $0.25(0.1) = .025$ | Val: 0  <br>Pr: $0.25(0.3) = .075$ | Val: -1 <br>Pr: $0.25(0.6) = .15$ |
-| **Scissors ($s_1=0.25$)** | Val: -1 <br>Pr: $0.25(0.1) = .025$ | Val: 1 <br>Pr: $0.25(0.3) = .075$ | Val: 0 <br>Pr: $0.25(0.6) = .15$ |
+| **Rock ($r_1=0.5$)**   | Val: $0$ <br>Pr: $0.5(0.1) = .05$ | Val: $-1$ <br>Pr: $0.5(0.3) = .15$ | Val: $1$ <br>Pr: $0.5(0.6) = .3$ |
+| **Paper ($p_1=0.25$)** | Val: $1$ <br>Pr: $0.25(0.1) = .025$ | Val: $0$  <br>Pr: $0.25(0.3) = .075$ | Val: $-1$ <br>Pr: $0.25(0.6) = .15$ |
+| **Scissors ($s_1=0.25$)** | Val: $-1$ <br>Pr: $0.25(0.1) = .025$ | Val: $1$ <br>Pr: $0.25(0.3) = .075$ | Val: $0$ <br>Pr: $0.25(0.6) = .15$ |
 
 Note that the total probabilities sum to 1 and each row and column sums to the probability of playing that row or column. 
 
@@ -90,14 +90,14 @@ $\mathbb{E}[P_1] = 0(0.05) + -1(0.15) + 1(0.3) + 1(0.025) + 0(0.075) + -1(0.15) 
 Therefore P1 is *expected* to gain 0.075 per game given these strategies. Since payoffs are reversed for P2, P2's expectation is -0.075 per game. 
 
 ### Zero-sum
-We see in the matrix that every payoff is zero-sum, i.e. the sum of the payoffs to both players is 0. This means the game is one of pure competition. Any amount P1 wins is from P2 and vice versa. 
+We see in the matrix that every payoff is **zero-sum**, i.e. the sum of the payoffs to both players is 0. This means the game is one of pure competition. Any amount P1 wins is from P2 and vice versa. 
 
 ### Nash equilibrium
-A Nash equilibrium means that no player can improve their expected payoff by unilaterally changing their strategy. That is, changing one's strategy can only result in the same or worse payoff (assuming the other player does not change). 
+A **Nash equilibrium** means that no player can improve their expected payoff by unilaterally changing their strategy. That is, if in Nash equilibrium, changing one's strategy can only result in the same or worse payoff (assuming the other player does not change).  
 
 In RPS, the Nash equilibrium strategy is to play each action $r = p = s = 1/3$ of the time. I.e., to play totally randomly. 
 
-Playing a combination of strategies is called a mixed strategy, as opposed to a pure strategy, which would select only one action. Mixed strategies are useful in games of imperfect information because it's valuable to not be predictable and to conceal your private information. In perfect information games, the theoretically optimal play would not contain any mixing (i.e., if you could calculate all possible moves to the end of the game). 
+Playing a combination of strategies is called a **mixed strategy**, as opposed to a **pure strategy**, which would select only one action. Mixed strategies are useful in games of imperfect information because it's valuable to not be predictable and to conceal your private information. In perfect information games, the theoretically optimal play would not contain any mixing (i.e., if you could calculate all possible moves to the end of the game). 
 
 The equilibrium RPS strategy is worked out below: 
 
@@ -202,7 +202,7 @@ $r = p = s = 1/3 \quad \blacksquare$
 By symmetry, the same equilibrium strategy is true for Player 2. 
 :::
 
-Playing this strategy means that whatever your opponent does, you will breakeven! For example, think about an opponent that always plays Rock. 
+Playing this strategy means that whatever your opponent does, you will breakeven! For example, think about an opponent that always plays Rock. You'll play Rock 1/3 of the time and tie, Paper 1/3 of the time and win, and Scissors 1/3 of the time and lose. 
 
 $$
 \begin{equation}
@@ -228,12 +228,14 @@ $$
 \end{equation}
 $$
 
-The random equilibrium strategy will result in 0 against any pure strategy and any combination of strategies including *622* and the opponent playing the random strategy. 
+The random equilibrium strategy will result in 0 against *any* strategy. This means any pure strategy and any combination of strategies including *622* and the opponent playing the random strateg themselves. 
 
 ### Exploiting vs. Nash
 The equilibrium strategy vs. a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing perhaps the worst possible strategy, yet equilibrium is still breaking even against it! 
 
-What's the best that we could do against Rock only? We could play **purely paper**. This is called a **best response** strategy. Any deterministic strategy can be fully exploited. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock. 
+What's the best that we could do against Rock only? We could play **purely paper**. This is called a **best response** strategy. Any deterministic strategy can be fully exploited. 
+
+The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock. 
 
 $$
 \begin{equation}
@@ -245,7 +247,7 @@ $$
 \end{equation}
 $$
 
-We'd win 1 each game playing Paper vs. Rock. Though now always playing Paper means that the opponent could always play Scissors and then we'd become the loser. 
+We'd win 1 each game playing Paper vs. Rock. Though now always playing Paper means that the opponent could always play Scissors and then we'd become the loser.
 
 How about against the opponent playing 60% Rock, 20% Paper, 20% Scissors? Here we can see that because they are overplaying Rock, our best strategy is again to always play Paper. We write the payoffs for playing Paper and the probabilities according to the *622* strategy. 
 

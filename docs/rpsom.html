@@ -258,6 +258,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#types-of-opponents" id="toc-types-of-opponents" class="nav-link" data-scroll-target="#types-of-opponents">Types of opponents</a></li>
   <li><a href="#types-of-gamesknowledge" id="toc-types-of-gamesknowledge" class="nav-link" data-scroll-target="#types-of-gamesknowledge">Types of games/knowledge</a></li>
+  <li><a href="#human-play-vs.-bot-play" id="toc-human-play-vs.-bot-play" class="nav-link" data-scroll-target="#human-play-vs.-bot-play">Human play vs.&nbsp;bot play</a></li>
   </ul></li>
   <li><a href="#starter-code" id="toc-starter-code" class="nav-link" data-scroll-target="#starter-code">Starter Code</a>
   <ul class="collapse">
@@ -277,6 +278,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#breakeven-unless-youre-playing-rockbot" id="toc-breakeven-unless-youre-playing-rockbot" class="nav-link" data-scroll-target="#breakeven-unless-youre-playing-rockbot">Breakeven unless you’re playing Rockbot</a></li>
   <li><a href="#random-play-backup-plan" id="toc-random-play-backup-plan" class="nav-link" data-scroll-target="#random-play-backup-plan">Random play backup plan</a></li>
+  <li><a href="#playing-against-equilibrium-and-non-equilibrium-opponents" id="toc-playing-against-equilibrium-and-non-equilibrium-opponents" class="nav-link" data-scroll-target="#playing-against-equilibrium-and-non-equilibrium-opponents">Playing against equilibrium and non-equilibrium opponents</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -303,16 +305,15 @@ window.Quarto = {
 </header>
 
 
-<p>At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent’s next move and not being predictable yourself. While <img src="intro.qmd#nash-equilibrium" class="img-fluid" alt="game theory optimal"> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice.</p>
-<p>There are a few ways to measure performance in games:</p>
+<p>At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent’s next move and not being predictable yourself.</p>
+<p>While <img src="intro.qmd#nash-equilibrium" class="img-fluid" alt="game theory optimal"> play is an interesting mathematical exercise, it’s often not actually the most rewarding strategy in practice, though it is useful to understand as a baseline.</p>
+<p>There are a few main ways to measure performance in games:</p>
 <ul>
 <li>Against a baseline opponent</li>
 <li>Against a range of different opponents</li>
 <li>Against a maximally exploitable opponent</li>
 </ul>
-<p>Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.</p>
-<p>There can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.</p>
-<p>We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability.</p>
+<p>In RPS, we’ll mostly be thinking about matches against a range of different opponents, though will start by looking at counterstrategies against individual opponent strategies.</p>
 <section id="axes-of-opponent-modeling" class="level2">
 <h2 class="anchored" data-anchor-id="axes-of-opponent-modeling">Axes of opponent modeling</h2>
 <p>There are two main axes for opponent modeling: opponents and games.</p>
@@ -327,7 +328,7 @@ window.Quarto = {
 <ol type="1">
 <li>Only our own actions: Randomly play an action that we didn’t play in the last 2 games</li>
 <li>Only opponent actions: Play the action that beats the most frequent of the opponent’s last 3 moves</li>
-<li>Only most recent action: Copy the opponent’s last move (only most <span class="math inline">n</span> actions is also called <em>recall</em>, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions)</li>
+<li>Only most recent action: Copy the opponent’s last move (only most <span class="math inline">n</span> actions is also called <em>recall</em>, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions, etc.)</li>
 </ol>
 <p><strong>Simple dynamic related to entire history of actions:</strong> Play the move that beats the most frequent opponent move so far</p>
 <p><strong>Agent that switches its main strategy:</strong> An agent that plays all Rock for the first 20 games and then all Scissors for the next 20 games and then plays the move that beats the most frequent opponent move so far</p>
@@ -340,6 +341,16 @@ window.Quarto = {
 <p>Play a single unknown opponent</p>
 <p>Play multiple unknown opponents</p>
 <p><a href="./rpsbotchallenge.html">Play multiple unknown opponents that include some suboptimal house bots and some human-created bots</a></p>
+</section>
+<section id="human-play-vs.-bot-play" class="level3">
+<h3 class="anchored" data-anchor-id="human-play-vs.-bot-play">Human play vs.&nbsp;bot play</h3>
+<p>Human vs.&nbsp;bot:</p>
+<p>Bot vs.&nbsp;human:</p>
+<p>Bot vs.&nbsp;bot:</p>
+<p>Human vs.&nbsp;human:</p>
+<p>We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability.</p>
+<p>Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making “tilted” decisions, reacting to previous games in predictable ways, or having “leaks” like never throwing the same move three times in a row.</p>
+<p>There can be levels to the game – maybe you think your opponent expects you to play Rock, so then you expect that they’ll play Paper, so you should play Scissors, but maybe they’ll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on.</p>
 </section>
 </section>
 <section id="starter-code" class="level2">
@@ -409,7 +420,7 @@ window.Quarto = {
 <p>Opponent strategy: RPSRPSRPS…</p>
 <p>Our counter-strategy: PSRPSRPSR…</p>
 <p>Our best EV: +1 per game</p>
-<p>Our ounter-strategy in code:</p>
+<p>Our counter-strategy in code:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_action(<span class="va">self</span>, <span class="op">*</span>, match_clock):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    moves <span class="op">=</span> [PaperAction(), ScissorsAction(), RockAction()]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    move_index <span class="op">=</span> <span class="bu">len</span>(<span class="va">self</span>.history) <span class="op">%</span> <span class="dv">3</span>  <span class="co"># Use history length to cycle</span></span>
@@ -525,7 +536,8 @@ window.Quarto = {
 <p>In poker, it’s common to start by attempting to play the game theory optimal (GTO) strategy and then as you see weaknesses in opponents, to deviate accordingly. If you see your opponent folds too much, then you can bluff more.</p>
 <p>Here are a few possible general strategic ideas for RPS:</p>
 <ul>
-<li>Detect the exact opponent strategy and exploit it
+<li>Make a rules-based agent that plays a strategy that seems good</li>
+<li>Detect the opponent strategy and exploit it
 <ul>
 <li>Build an ensemble of opponent detectors and exploits that target each of them</li>
 </ul></li>
@@ -586,6 +598,11 @@ window.Quarto = {
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># In all other cases (including 1st 2 rounds), play randomly</span></span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="playing-against-equilibrium-and-non-equilibrium-opponents" class="level3">
+<h3 class="anchored" data-anchor-id="playing-against-equilibrium-and-non-equilibrium-opponents">Playing against equilibrium and non-equilibrium opponents</h3>
+<p>We know that in RPS, the equilibrium strategy is 1/3 Rock, 1/3 Paper, 1/3 Scissors. The <strong>support</strong> of the equilibrium is defined as the set of actions that are played with at least some probability. In this case, it’s all 3 possible actions.</p>
+<p>As long as you play any strategy in the support, you will have the same payoff against the equilibrium (in this case always breaking even). This means that if you are playing against a combination of equilibrium and non-equilibrium opponents, you could actually ignore the equilibrium opponent since you’ll always breakeven against them, and just target the non-equilibrium opponent.</p>
 
 
 

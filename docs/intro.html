@@ -426,21 +426,21 @@ s_2 = 0.6
 <tbody>
 <tr class="odd">
 <td><strong>Rock (<span class="math inline">r_1=0.5</span>)</strong></td>
-<td>Val: 0 <br>Pr: <span class="math inline">0.5(0.1) = .05</span></td>
-<td>Val: -1 <br>Pr: <span class="math inline">0.5(0.3) = .15</span></td>
-<td>Val: 1 <br>Pr: <span class="math inline">0.5(0.6) = .3</span></td>
+<td>Val: <span class="math inline">0</span> <br>Pr: <span class="math inline">0.5(0.1) = .05</span></td>
+<td>Val: <span class="math inline">-1</span> <br>Pr: <span class="math inline">0.5(0.3) = .15</span></td>
+<td>Val: <span class="math inline">1</span> <br>Pr: <span class="math inline">0.5(0.6) = .3</span></td>
 </tr>
 <tr class="even">
 <td><strong>Paper (<span class="math inline">p_1=0.25</span>)</strong></td>
-<td>Val: 1 <br>Pr: <span class="math inline">0.25(0.1) = .025</span></td>
-<td>Val: 0 <br>Pr: <span class="math inline">0.25(0.3) = .075</span></td>
-<td>Val: -1 <br>Pr: <span class="math inline">0.25(0.6) = .15</span></td>
+<td>Val: <span class="math inline">1</span> <br>Pr: <span class="math inline">0.25(0.1) = .025</span></td>
+<td>Val: <span class="math inline">0</span> <br>Pr: <span class="math inline">0.25(0.3) = .075</span></td>
+<td>Val: <span class="math inline">-1</span> <br>Pr: <span class="math inline">0.25(0.6) = .15</span></td>
 </tr>
 <tr class="odd">
 <td><strong>Scissors (<span class="math inline">s_1=0.25</span>)</strong></td>
-<td>Val: -1 <br>Pr: <span class="math inline">0.25(0.1) = .025</span></td>
-<td>Val: 1 <br>Pr: <span class="math inline">0.25(0.3) = .075</span></td>
-<td>Val: 0 <br>Pr: <span class="math inline">0.25(0.6) = .15</span></td>
+<td>Val: <span class="math inline">-1</span> <br>Pr: <span class="math inline">0.25(0.1) = .025</span></td>
+<td>Val: <span class="math inline">1</span> <br>Pr: <span class="math inline">0.25(0.3) = .075</span></td>
+<td>Val: <span class="math inline">0</span> <br>Pr: <span class="math inline">0.25(0.6) = .15</span></td>
 </tr>
 </tbody>
 </table>
@@ -451,13 +451,13 @@ s_2 = 0.6
 </section>
 <section id="zero-sum" class="level3">
 <h3 class="anchored" data-anchor-id="zero-sum">Zero-sum</h3>
-<p>We see in the matrix that every payoff is zero-sum, i.e.&nbsp;the sum of the payoffs to both players is 0. This means the game is one of pure competition. Any amount P1 wins is from P2 and vice versa.</p>
+<p>We see in the matrix that every payoff is <strong>zero-sum</strong>, i.e.&nbsp;the sum of the payoffs to both players is 0. This means the game is one of pure competition. Any amount P1 wins is from P2 and vice versa.</p>
 </section>
 <section id="nash-equilibrium" class="level3">
 <h3 class="anchored" data-anchor-id="nash-equilibrium">Nash equilibrium</h3>
-<p>A Nash equilibrium means that no player can improve their expected payoff by unilaterally changing their strategy. That is, changing one’s strategy can only result in the same or worse payoff (assuming the other player does not change).</p>
+<p>A <strong>Nash equilibrium</strong> means that no player can improve their expected payoff by unilaterally changing their strategy. That is, if in Nash equilibrium, changing one’s strategy can only result in the same or worse payoff (assuming the other player does not change).</p>
 <p>In RPS, the Nash equilibrium strategy is to play each action <span class="math inline">r = p = s = 1/3</span> of the time. I.e., to play totally randomly.</p>
-<p>Playing a combination of strategies is called a mixed strategy, as opposed to a pure strategy, which would select only one action. Mixed strategies are useful in games of imperfect information because it’s valuable to not be predictable and to conceal your private information. In perfect information games, the theoretically optimal play would not contain any mixing (i.e., if you could calculate all possible moves to the end of the game).</p>
+<p>Playing a combination of strategies is called a <strong>mixed strategy</strong>, as opposed to a <strong>pure strategy</strong>, which would select only one action. Mixed strategies are useful in games of imperfect information because it’s valuable to not be predictable and to conceal your private information. In perfect information games, the theoretically optimal play would not contain any mixing (i.e., if you could calculate all possible moves to the end of the game).</p>
 <p>The equilibrium RPS strategy is worked out below:</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -553,7 +553,7 @@ s + r = 2p \\
 </div>
 </div>
 </div>
-<p>Playing this strategy means that whatever your opponent does, you will breakeven! For example, think about an opponent that always plays Rock.</p>
+<p>Playing this strategy means that whatever your opponent does, you will breakeven! For example, think about an opponent that always plays Rock. You’ll play Rock 1/3 of the time and tie, Paper 1/3 of the time and win, and Scissors 1/3 of the time and lose.</p>
 <p><span class="math display">
 \begin{equation}
 \begin{split}
@@ -575,12 +575,13 @@ s + r = 2p \\
 \end{split}
 \end{equation}
 </span></p>
-<p>The random equilibrium strategy will result in 0 against any pure strategy and any combination of strategies including <em>622</em> and the opponent playing the random strategy.</p>
+<p>The random equilibrium strategy will result in 0 against <em>any</em> strategy. This means any pure strategy and any combination of strategies including <em>622</em> and the opponent playing the random strateg themselves.</p>
 </section>
 <section id="exploiting-vs.-nash" class="level3">
 <h3 class="anchored" data-anchor-id="exploiting-vs.-nash">Exploiting vs.&nbsp;Nash</h3>
 <p>The equilibrium strategy vs.&nbsp;a pure Rock opponent is a useful illustration of the limitations of playing at equilibrium. The Rock opponent is playing perhaps the worst possible strategy, yet equilibrium is still breaking even against it!</p>
-<p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. This is called a <strong>best response</strong> strategy. Any deterministic strategy can be fully exploited. The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
+<p>What’s the best that we could do against Rock only? We could play <strong>purely paper</strong>. This is called a <strong>best response</strong> strategy. Any deterministic strategy can be fully exploited.</p>
+<p>The payoffs are written for playing Paper and the probabilities indicate the opponent playing only Rock.</p>
 <p><span class="math display">
 \begin{equation}
 \begin{split}

@@ -5,19 +5,17 @@ format:
   html:
     math: true
 ---
-At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent's next move and not being predictable yourself. While ![game theory optimal](intro.qmd#nash-equilibrium) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice.
+At the heart of opponent modeling is maximizing reward and not getting exploited, which in practice means predicting your opponent's next move and not being predictable yourself. 
 
-There are a few ways to measure performance in games: 
+While ![game theory optimal](intro.qmd#nash-equilibrium) play is an interesting mathematical exercise, it's often not actually the most rewarding strategy in practice, though it is useful to understand as a baseline. 
+
+There are a few main ways to measure performance in games: 
 
 - Against a baseline opponent
 - Against a range of different opponents 
 - Against a maximally exploitable opponent
 
-Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making "tilted" decisions, reacting to previous games in predictable ways, or having "leaks" like never throwing the same move three times in a row. 
-
-There can be levels to the game -- maybe you think your opponent expects you to play Rock, so then you expect that they'll play Paper, so you should play Scissors, but maybe they'll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on. 
-
-We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability. 
+In RPS, we'll mostly be thinking about matches against a range of different opponents, though will start by looking at counterstrategies against individual opponent strategies. 
 
 ## Axes of opponent modeling
 There are two main axes for opponent modeling: opponents and games. 
@@ -37,7 +35,7 @@ Here are a few types of opponents and an example for each.
 
 1. Only our own actions: Randomly play an action that we didn't play in the last 2 games
 2. Only opponent actions: Play the action that beats the most frequent of the opponent's last 3 moves
-3. Only most recent action: Copy the opponent's last move (only most $n$ actions is also called *recall*, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions)
+3. Only most recent action: Copy the opponent's last move (only most $n$ actions is also called *recall*, so if we say recall = 1 that means only based on the most recent action, while recall = 3 is based on the last 3 actions, etc.)
 
 **Simple dynamic related to entire history of actions:** Play the move that beats the most frequent opponent move so far
 
@@ -55,6 +53,23 @@ Play a single unknown opponent
 Play multiple unknown opponents
 
 [Play multiple unknown opponents that include some suboptimal house bots and some human-created bots](rpsbotchallenge.qmd)
+
+### Human play vs. bot play
+
+Human vs. bot: 
+
+Bot vs. human: 
+
+Bot vs. bot: 
+
+Human vs. human: 
+
+We use suboptimal bots in our challenge games to reinforce thinking strategically about how to respond to opponents. The overall goal is to maximize payoffs, which means discovering and taking advantage of opponent weaknesses while minimizing your own exploitability. 
+
+
+Humans tend to be predictably irrational. This can manifest itself as someone having favorite preferred moves, making "tilted" decisions, reacting to previous games in predictable ways, or having "leaks" like never throwing the same move three times in a row. 
+
+There can be levels to the game -- maybe you think your opponent expects you to play Rock, so then you expect that they'll play Paper, so you should play Scissors, but maybe they'll realize this and play Rock to counter the Scissors, so you should actually play Paper, and so on. 
 
 ## Starter Code
 We provide Python starter code that you can use to build RPS bots.  
@@ -128,7 +143,7 @@ Our counter-strategy: PSRPSRPSR...
 
 Our best EV: +1 per game
 
-Our ounter-strategy in code: 
+Our counter-strategy in code: 
 
 ```python
 def get_action(self, *, match_clock):
@@ -274,7 +289,8 @@ In poker, it's common to start by attempting to play the game theory optimal (GT
 
 Here are a few possible general strategic ideas for RPS: 
 
-- Detect the exact opponent strategy and exploit it
+- Make a rules-based agent that plays a strategy that seems good
+- Detect the opponent strategy and exploit it
   - Build an ensemble of opponent detectors and exploits that target each of them
 - Use random (game theory optimal) play to either: 
   - Breakeven forever
@@ -337,3 +353,8 @@ def get_action(self, *, match_clock):
   # In all other cases (including 1st 2 rounds), play randomly
   return random.choice([RockAction(), PaperAction(), ScissorsAction()])
 ```
+
+### Playing against equilibrium and non-equilibrium opponents
+We know that in RPS, the equilibrium strategy is 1/3 Rock, 1/3 Paper, 1/3 Scissors. The **support** of the equilibrium is defined as the set of actions that are played with at least some probability. In this case, it's all 3 possible actions. 
+
+As long as you play any strategy in the support, you will have the same payoff against the equilibrium (in this case always breaking even). This means that if you are playing against a combination of equilibrium and non-equilibrium opponents, you could actually ignore the equilibrium opponent since you'll always breakeven against them, and just target the non-equilibrium opponent. 

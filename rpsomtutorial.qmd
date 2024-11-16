@@ -6,7 +6,6 @@ format:
     math: true
 ---
 For the tutorial, suppose that you are entering 200-game matches in various scenarios. The scenarios lead to building a progressively more complex bot as you encounter progressively more difficult challenges. 
-win X% before moving on?
 
 ## Beat a fixed simple unknown opponent
 In practice, a lot of value will come from exploiting weak bots or other opponents. 
