@@ -67,7 +67,7 @@ Here are a few types of opponents and an example for each.
 **Advanced dynamic related to entire history of actions:** Sophisticated adversarial prediction algorithm or set of algorithms
 
 ### Human play vs. bot play
-Building bots is an exercise in meta-strategies, while playing as a human is more of a psychological battle, combining pattern recognition with adaptive thinking.
+Building bots is an exercise in meta-strategies, while playing as a human is traditionally more of a psychological battle, combining pattern recognition with adaptive thinking.
 
 Regardless of facing a bot or human, the overall goal remains to maximize payoffs by taking advantage of opponent weaknesses and minimizing your own exploitability. 
 
@@ -104,4 +104,4 @@ There are a few main ways to measure performance in games:
 - Against a range of different opponents 
 - Against a maximally exploitable opponent
 
-In RPS, we'll mostly be thinking about matches against a range of different opponents, though will start by looking at counter-strategies against individual opponent strategies. 
+In RPS, we'll mostly be thinking about matches against a range of different opponents, though will [start by looking at counter-strategies against individual opponent strategies](rpsomc.qmd). 

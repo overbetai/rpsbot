@@ -435,9 +435,17 @@ window.Quarto = {
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>: <span class="co"># 1st game play randomly </span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> random.choice([RockAction(), PaperAction(), ScissorsAction()])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There could be more levels to this! If you assume that your opponent knows that you are going to do this, then they might play the next level up and instead of “beat previous”, go to “beat the move that beats the move that beats previous”.</p>
-<p>We play: Paper Beat previous plays: Scissors Beat the move that beats the move that beats previous plays: Paper</p>
-<p>We play: Rock Beat previous plays: Paper Beat the move that beats the move that beats previous plays: Rock</p>
-<p>We play: Paper Beat previous plays: Scissors Beat the move that beats the move that beats previous plays: Paper</p>
+<ul>
+<li><p>We play: Paper</p></li>
+<li><p>Beat previous plays: Scissors</p></li>
+<li><p>Beat the move that beats the move that beats previous plays: Paper</p></li>
+<li><p>We play: Rock</p></li>
+<li><p>Beat previous plays: Paper</p></li>
+<li><p>Beat the move that beats the move that beats previous plays: Rock</p></li>
+<li><p>We play: Paper</p></li>
+<li><p>Beat previous plays: Scissors</p></li>
+<li><p>Beat the move that beats the move that beats previous plays: Paper</p></li>
+</ul>
 <p>This turns out to be mimicbot, which we saw in the previous section! And more levels are possible…</p>
 </section>
 <section id="freqbot" class="level3">
@@ -488,9 +496,9 @@ window.Quarto = {
 <p>Here are a few possible general strategic ideas for RPS:</p>
 <ul>
 <li>Make a rules-based agent that plays a strategy that seems good</li>
-<li>Detect the opponent strategy and exploit it
+<li>Detect a single opponent strategy and exploit it
 <ul>
-<li>Build an ensemble of opponent detectors and exploits that target each of them</li>
+<li>Build an ensemble of opponent detectors and exploits that target various types of opponents</li>
 </ul></li>
 <li>Use random (game theory optimal) play to either:
 <ul>

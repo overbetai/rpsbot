@@ -159,17 +159,17 @@ def get_action(self, *, match_clock):
 
 There could be more levels to this! If you assume that your opponent knows that you are going to do this, then they might play the next level up and instead of "beat previous", go to "beat the move that beats the move that beats previous". 
 
-We play: Paper
-Beat previous plays: Scissors
-Beat the move that beats the move that beats previous plays: Paper
+- We play: Paper
+- Beat previous plays: Scissors
+- Beat the move that beats the move that beats previous plays: Paper
 
-We play: Rock
-Beat previous plays: Paper
-Beat the move that beats the move that beats previous plays: Rock
+- We play: Rock
+- Beat previous plays: Paper
+- Beat the move that beats the move that beats previous plays: Rock
 
-We play: Paper
-Beat previous plays: Scissors
-Beat the move that beats the move that beats previous plays: Paper
+- We play: Paper
+- Beat previous plays: Scissors
+- Beat the move that beats the move that beats previous plays: Paper
 
 This turns out to be mimicbot, which we saw in the previous section! And more levels are possible...
 
@@ -225,8 +225,8 @@ In poker, it's common to start by attempting to play the game theory optimal (GT
 Here are a few possible general strategic ideas for RPS: 
 
 - Make a rules-based agent that plays a strategy that seems good
-- Detect the opponent strategy and exploit it
-  - Build an ensemble of opponent detectors and exploits that target each of them
+- Detect a single opponent strategy and exploit it
+  - Build an ensemble of opponent detectors and exploits that target various types of opponents
 - Use random (game theory optimal) play to either: 
   - Breakeven forever
   - Start with random and then update after you learn more about your opponent
