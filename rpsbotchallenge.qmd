@@ -5,11 +5,6 @@ format:
   html:
     math: true
 ---
-Add a "Getting Started" template that new players can use
-Include example submission format
-Add more details about scoring and rankings
-Consider adding a "Common Pitfalls" section
-
 RPS bot challenges are coming soon! 
 
 In these challenges, there are always suboptimal "house bots". Think bots that always play Rock or always play the sequence "RPSRPSRPS...".

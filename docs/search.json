@@ -263,7 +263,7 @@
     "href": "rpsbotchallenge.html",
     "title": "RPS.bot: Bot Challenge",
     "section": "",
-    "text": "Add a “Getting Started” template that new players can use Include example submission format Add more details about scoring and rankings Consider adding a “Common Pitfalls” section\nRPS bot challenges are coming soon!\nIn these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”.\nThis means that playing the game theory optimal strategy will not maximize your payoff against them.\nThe challenge is to predict what they’re doing, and to play well against opponents without getting counterplayed yourself, and perhaps to counterplay those who are prioritizing beating the house bots!",
+    "text": "RPS bot challenges are coming soon!\nIn these challenges, there are always suboptimal “house bots”. Think bots that always play Rock or always play the sequence “RPSRPSRPS…”.\nThis means that playing the game theory optimal strategy will not maximize your payoff against them.\nThe challenge is to predict what they’re doing, and to play well against opponents without getting counterplayed yourself, and perhaps to counterplay those who are prioritizing beating the house bots!",
     "crumbs": [
       "About",
       "RPS Bot Challenge"
