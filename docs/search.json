@@ -285,7 +285,7 @@
     "href": "rpsbotchallenge.html#daily-challenge",
     "title": "RPS.bot: Bot Challenge",
     "section": "Daily Challenge",
-    "text": "Daily Challenge\nPlay up to 200 games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-created bots from our weekly challenges, LLM-generated, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[200 games? min? max?] [What about the timer play every second thing?] [Do daily ones also enter into the weekly?]",
+    "text": "Daily Challenge\nPlay up to 200 games against a single RPS bot each day.\nThe bots will get roughly more difficult as the week goes on from Monday to Sunday. They’ll be all different types – our own house bots, human-created bots from our weekly challenges, LLM-generated, etc.\nYou can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don’t know how to code.\n[200 games? min? max?]\n[What about the timer play every second thing?]\n[Do daily ones also enter into the weekly?]",
     "crumbs": [
       "About",
       "RPS Bot Challenge"

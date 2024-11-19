@@ -24,7 +24,9 @@ The bots will get roughly more difficult as the week goes on from Monday to Sund
 You can play against the bot with your own bot, manually, or both. We have tools to help write your own bot even if you don't know how to code. 
 
 **[200 games? min? max?]**
+
 **[What about the timer play every second thing?]**
+
 **[Do daily ones also enter into the weekly?]**
 
 ## Weekly Challenge
